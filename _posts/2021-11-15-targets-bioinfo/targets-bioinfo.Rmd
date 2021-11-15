@@ -1,0 +1,136 @@
+---
+title: "Managing bioinformatics pipelines with R"
+description: |
+  Featuring: `targets`, `conda`, `renv`, and `docker`
+author:
+  - name: Joel Nitta
+date: 2021-11-15
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Bioinformatics projects tend to have a similar pattern: they all start with raw data, then pass the data through various programs until arriving at the final result. These "pipelines" can become very long and complicated, so there are many platforms that automate this process either relying on code (e.g., [nextflow](), [CWL]()) or graphical interfaces (e.g., [galaxy]()). Python's [snakemake]() is also commonly used for this purpose. That got me thinking - can we do this in R?
+
+## What I'm looking for in a pipeline manager
+
+These are some qualities that I want to see in a pipeline manager.
+
+1. **Automated**: I should be able to run one central script that will orchestrate the whole pipeline, rather than manually keeping track of which step depends on which and when each needs to be run. 
+2. **Efficient**: The pipeline manager should keep track of what is out of date and only re-run those parts, rather than re-run the whole pipeline each time.
+3. **Reproducible**: Software packages should be isolated and version controlled so that the same input results in the same output on any machine.
+
+## Enter `targets`
+
+The [targets]() R package pretty much fits the bill perfectly for Points **1** and **2**. [targets]() completely automates the workflow, so that the user doesn't have to manually run steps, and guarantees that the output is up-to-date (if the workflow is designed correctly). Furthermore, it has capabilities for easily looping and running processes in parallel, so it scales quite well to large analyses. I won't go into too many details of how to use [targets]() here, since it has an excellent [user manual]().
+
+## `targets` meets Docker
+
+However, [targets]() by itself isn't quite enough to meet all of my bioinformatics needs. What about Point **3**--how can we make [targets]() workflows reproducible?
+
+Most bioinformatics tools are open-source software packages that have a command-line interface (CLI). Furthermore, these days, most well-established bioinformatics tools have Docker images[^1] available to run them, such as on [biocontainers](). These free us from manual installations and [dependency hell](), as well as vastly improving reproducibility, since all the software versions are fixed within the container. So **I will run most of the steps of the pipeline in available Docker containers**.
+
+## Avoiding Docker-in-Docker
+
+However, I then encounter a problem: what about the environment to run R, `targets`, and launch the Docker containers? That environment should be version-controlled and reproducible too. Normally my solution to create such an environment **is** Docker, but it's generally a bad idea to try and run [docker from within docker]()[^2]
+
+The solution I reached is to use two more environment managers: [Conda](https://docs.conda.io/en/latest/)[^3] and [renv](https://rstudio.github.io/renv/articles/renv.html). I use Conda for **running R**, and [renv]() for **managing R packages**.
+
+
+## Running R with Conda
+
+Conda environments [can be recorded using a `yaml` file](). This is my Conda `environment.yaml` file:
+
+```
+name: renv
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - r-renv=0.12.*
+```
+
+It's quite short: all it does is install `renv` and its dependencies (which includes R). Here I've specified the most recent major version of `renv`, which will come with R v4.0.3.
+
+We can recreate the conda environment from the `yaml` file (after [installing conda]()) with:
+
+```{bash, eval = FALSE, include = FALSE}
+source ~/miniconda3/etc/profile.d/conda.sh
+conda env create -f environment.yml
+```
+
+```
+conda env create -f environment.yml
+```
+
+```
+## Collecting package metadata (repodata.json): ...working... done
+## Solving environment: ...working... done
+## Preparing transaction: ...working... done
+## Verifying transaction: ...working... done
+## Executing transaction: ...working... done
+## #
+## # To activate this environment, use
+## #
+## #     $ conda activate renv
+## #
+## # To deactivate an active environment, use
+## #
+## #     $ conda deactivate
+```
+
+As the output says, run `conda activate renv` to enter this environment, then from there you can use R as usual. Now we have a fixed version of R, with a fixed version of `r-env`.
+
+## Maintain R packages with `renv`
+
+The next step is to use `renv` to track R package versions. Here, I've provided an `renv.lock` file that includes all the package versions used in the code block below. From R within the conda environment, we can install this as follows:
+
+```
+renv::restore()
+```
+
+## Putting it all together
+
+OK, now we have all of the pieces in place, and can run Docker from a reproducible environment. What is the best way to run Docker from R? There are some functions in base R for running external commands (`system()`, `system2()`) as well as the excellent [processx]() package. Here, though I will use the [babelwhale]() package, which provides some nice wrappers to run Docker (or [Singularity]()).
+
+Here is an example `_targets.R` file using `babelwhale` to run Docker. This workflow downloads a pair of fasta files, then trims low-quality bases using the [fastp]() program.
+
+```
+library(targets)
+library(tarchetypes)
+
+# Set babelwhale backend for running containers
+# (here, we are using Docker, not Singularity)
+babelwhale::set_default_config(create_docker_config())
+
+# Define workflow
+list(
+  # Download some example fasta files
+  tar_file(
+    example_fasta_file,
+    download.file(
+      url = c(""),
+      destfile = "example_seq.fasta"
+    )
+  ),
+  # Clean the fasta file with fastp
+  tar_file(
+    cleaned_fasta_file,
+    # the run() function of babelwhale runs a container
+    babelwhale::run(
+      
+    )
+  )
+)
+```
+
+[^1]: [Docker images]() are basically completely self-contained computing environments, such that the software inside the image is exactly the same no matter where it is run. A major benefit of using a docker image is that you don't have to install all of the various dependencies for a particular package: it all comes bundled in the image. And if the image has been tagged (versioned) correctly, you can specify the exact software version and know that the results won't change in the future.
+
+[^2]: Think *Inception*.
+
+[^3]: Conda was originally developed for managing python and python packages, but it has expanded greatly and works as a general software package manager.
