@@ -1,0 +1,14 @@
+---
+title: "Publications"
+date: "`r Sys.Date()`"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## 2021
+
+Nitta et al. Title.
+

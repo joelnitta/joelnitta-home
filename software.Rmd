@@ -1,0 +1,23 @@
+---
+title: "Software"
+date: "`r Sys.Date()`"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## `canaper`
+
+R package for categorial analysis of neo-and paleo-endemism.
+
+- [Github repo](https://github.com/joelnitta/canaper/)
+- [Website](https://joelnitta.github.io/canaper/)
+
+## `taxastand`
+
+R package for taxonomic name resolution.
+
+- [Github repo](https://github.com/joelnitta/taxastand/)
+- [Website](https://joelnitta.github.io/taxastand/)

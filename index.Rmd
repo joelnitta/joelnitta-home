@@ -1,0 +1,52 @@
+---
+title: "Joel Nitta"
+image: "joel.png"
+links:
+  - label: LinkedIn
+    url: "https://linkedin.com/"
+  - label: Twitter
+    url: "https://twitter.com/"
+  - label: GitHub
+    url: "https://github.com/"
+  - label: Email
+    url: "mailto:email@email.com"
+output:
+  postcards::trestles
+site: distill::distill_website
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r deps, include = FALSE, message = FALSE, warning = FALSE}
+# Include dependencies to track with renv here
+library(distill)
+library(postcards)
+library(here)
+# Create new post with create_post()
+```
+
+I am a Project Research Associate in the Iwasaki Lab at the University of Tokyo. I study **ferns**, an ancient and diverse lineage of vascular plants.
+
+Ferns have a unique lifecycle combining two free-living stages (gametophyte and sporophyte) that differ from each other dramatically in appearance and physiology. This sets ferns apart from nearly all other land plants, and has important implications for their ecology and evolution. I am particularly interested in how different stages of the fern lifecycle contribute to community assembly processes, as well as fern ecology, evolution, and systematics.
+
+I am also an enthusiastic adherent of reproducible analysis and coding, especially with R! Please see my blog for more stories about this topic.
+
+## Education
+
+- **Harvard University** | PhD in Organismic and Evolutionary Biology | 2016
+
+- **The University of Tokyo** | MS in Biological Sciences | 2010
+
+- **The University of California, Berkeley** | BA in Integrative Biology and Japanese Language | 2007
+
+## Experience
+
+- **Iwasaki Lab, The University of Tokyo** | Project Research Associate | April 2020 - Present
+
+- **National Museum of Natural History, Smithsonian Institution** | Postdoctoral Fellow | January 2019 - March 2020
+
+- **National Museum of Nature and Science, Japan** | Postdoctoral Fellow | November 2016 - December 2018

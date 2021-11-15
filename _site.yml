@@ -1,0 +1,20 @@
+name: "."
+title: "Joel Nitta"
+description: |
+  Joel Nitta
+output_dir: "docs"
+navbar:
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "Publications"
+      href: publications.html
+    - text: "Software"
+      href: software.html
+    - text: "Blog"
+      href: blog.html
+    - text: "CV"
+      href: https://www.joelnitta.com/media/Nitta_CV.pdf
+    - text: "日本語"
+      href: https://www.joelnitta.com
+output: distill::distill_article
