@@ -3,6 +3,7 @@ title: "Joel Nitta"
 description: |
   Joel Nitta
 output_dir: "docs"
+theme: jnitta_theme.css
 navbar:
   right:
     - text: "Home"
