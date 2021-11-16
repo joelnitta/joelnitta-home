@@ -6,12 +6,12 @@
   --font-header: Rubik,Tahoma,"Helvetica Neue",Helvetica,Arial,sans-serif;
   --font-mono:   SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
  
-  /* color scheme save on https://coolors.co as "fire" */
-  --color-background:   #F5F3F4;
-  --color-primary:      #A4161A;
-  --color-primary-dark: #0B090A;
-  --color-secondary:    #660708;
-  --color-tertiary:     #B1A7A6;
+  /* color scheme save on https://coolors.co as "moorea" */
+  --color-background:   #F5EFED;
+  --color-primary:      #5F85A7;
+  --color-primary-dark: #0E0E52;
+  --color-secondary:    #6E928B;
+  --color-tertiary:     #D62839;
   --color-text:         #161A1D;
   --color-white:        #FFFFFF;
 }
