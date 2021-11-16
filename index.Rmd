@@ -27,6 +27,7 @@ library(distill)
 library(postcards)
 library(here)
 library(refinery)
+library(distilltools)
 # # Create new post with use_article_template()
 # refinery::use_article_template(
 #   template = "_templates/standard_post.Rmd",

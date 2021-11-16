@@ -6,18 +6,19 @@ output: distill::distill_article
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+library(distilltools)
 ```
 
 ## `canaper`
 
 R package for categorial analysis of neo-and paleo-endemism.
 
-- [Github repo](https://github.com/joelnitta/canaper/)
-- [Website](https://joelnitta.github.io/canaper/)
+`r icon_link("github", "Code", "https://github.com/joelnitta/canaper")`  
+`r icon_link("globe", "Website", "https://joelnitta.github.io/canaper/")`
 
 ## `taxastand`
 
 R package for taxonomic name resolution.
 
-- [Github repo](https://github.com/joelnitta/taxastand/)
-- [Website](https://joelnitta.github.io/taxastand/)
+`r icon_link("github", "Code", "https://github.com/joelnitta/taxastand/")`  
+`r icon_link("globe", "Website", "https://joelnitta.github.io/taxastand/")`
