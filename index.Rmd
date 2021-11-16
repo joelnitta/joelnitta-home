@@ -26,7 +26,13 @@ knitr::opts_chunk$set(echo = FALSE)
 library(distill)
 library(postcards)
 library(here)
-# Create new post with create_post()
+library(refinery)
+# # Create new post with use_article_template()
+# refinery::use_article_template(
+#   template = "_templates/standard_post.Rmd",
+#   slug = "fabulous-blog-post", 
+#   renv_new = TRUE
+# )
 ```
 
 I am a Project Research Associate in the Iwasaki Lab at the University of Tokyo. I study **ferns**, an ancient and diverse lineage of vascular plants.

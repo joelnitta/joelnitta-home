@@ -58,6 +58,13 @@
       "Repository": "CRAN",
       "Hash": "56ae7e1987b340186a8a5a157c2ec358"
     },
+    "cli": {
+      "Package": "cli",
+      "Version": "3.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "66a3834e54593c89d8beefb312347e58"
+    },
     "digest": {
       "Package": "digest",
       "Version": "0.6.28",
@@ -218,6 +225,18 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "5e3c5dc0b071b21fa128676560dbe94d"
+    },
+    "refinery": {
+      "Package": "refinery",
+      "Version": "0.0.0.9057",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "djnavarro",
+      "RemoteRepo": "refinery",
+      "RemoteRef": "master",
+      "RemoteSha": "09c1bdb8f39159c7fb21fdd7551eba949ccc66ad",
+      "Hash": "99261b15b785ba547481ca2328a478b5"
     },
     "renv": {
       "Package": "renv",
