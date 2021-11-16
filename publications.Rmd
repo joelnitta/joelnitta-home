@@ -2,16 +2,207 @@
 title: "Publications"
 date: "`r Sys.Date()`"
 output: distill::distill_article
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(distilltools)
+library(RefManageR)
+library(bib2df)
+library(janitor)
+library(lubridate)
+library(tidyverse)
+```
+
+```{r setup-refs}
+# Load bibliography
+bib_path <- "_bib/references.bib"
+mybib <- ReadBib(bib_path, check = FALSE) 
+mybib_df_raw <- bib2df(bib_path)
+
+# Format dataframe version of bibliography
+mybib_df <-
+mybib_df_raw %>%
+	clean_names() %>%
+	remove_empty("cols") %>%
+	select(key = bibtexkey, date, doi, title, author, journaltitle) %>%
+  mutate(
+  	date = parse_date_time(date, "ymd"),
+  	year = year(date)) %>%
+	arrange(desc(year), key)
+
+# Set RefManageR options
+oldopts <- BibOptions(
+	style = "text",
+	bib.style = "authoryear", 
+	no.print.fields = c("doi", "url", "urldate"),
+	dashed = FALSE, 
+	sorting = "ydnt")
+# Silently cite all references
+purrr::walk(seq_along(mybib), ~NoCite(mybib, .x))
+#
+```
+
+```{r cite-func}
+doi_button <- function(key_select, bib_df) {
+	doi <- filter(bib_df, key == key_select) %>% pull(doi)
+	icon_link("doi", doi, glue("https://doi.org/{doi}"))
+}
 ```
 
 `r icon_link("google-scholar", "Google Scholar", "https://scholar.google.com/citations?hl=en&user=FtzrMYwAAAAJ")`  
 
 ## 2021
 
-Nitta et al. Title.
+```{r, results = "asis"}
+print(mybib[["Nitta2021"]])
+```
+
+`r doi_button("Nitta2021", mybib_df)`
+
+## 2020
+
+```{r, results = "asis"}
+print(mybib[["Nitta2020"]])
+```
+
+`r doi_button("Nitta2020", mybib_df)`
+
+```{r, results = "asis"}
+print(mybib[["Nitta2020c"]])
+```
+
+`r doi_button("Nitta2020c", mybib_df)`
+
+## 2019
+
+```{r, results = "asis"}
+print(mybib[["Ebihara2019a"]])
+```
+
+```{r, results = "asis"}
+print(mybib[["Ebihara2019b"]])
+```
+
+`r doi_button("Ebihara2019b", mybib_df)`
+
+```{r, results = "asis"}
+print(mybib[["Nitta2019"]])
+```
+
+`r doi_button("Nitta2019", mybib_df)`
+
+## 2018
+
+```{r, results = "asis"}
+print(mybib[["Gilbert2018"]])
+```
+
+`r doi_button("Gilbert2018", mybib_df)`
+
+```{r, results = "asis"}
+print(mybib[["Nitta2018"]])
+```
+
+`r doi_button("Nitta2018", mybib_df)`
+
+## 2017
+
+```{r, results = "asis"}
+print(mybib[["Nitta2017"]])
+```
+
+`r doi_button("Nitta2017", mybib_df)`
+
+```{r, results = "asis"}
+print(mybib[["Pinson2016a"]])
+```
+
+`r doi_button("Pinson2016a", mybib_df)`
+
+```{r, results = "asis"}
+print(mybib[["Zhou2017"]])
+```
+
+`r doi_button("Zhou2017", mybib_df)`
+
+## 2016
+
+```{r, results = "asis"}
+print(mybib[["Pouteau2016"]])
+```
+
+`r doi_button("Pouteau2016", mybib_df)`
+
+## 2015
+
+```{r, results = "asis"}
+print(mybib[["Chen2015"]])
+```
+
+`r doi_button("Chen2015", mybib_df)`
+
+## 2013
+
+```{r, results = "asis"}
+print(mybib[["Ebihara2013"]])
+```
+
+`r doi_button("Ebihara2013", mybib_df)`
+
+## 2011
+
+```{r, results = "asis"}
+print(mybib[["Nitta2011"]])
+```
+
+`r doi_button("Nitta2011", mybib_df)`
+
+```{r, results = "asis"}
+print(mybib[["Nitta2011b"]])
+```
+
+`r doi_button("Nitta2011b", mybib_df)`
+
+## 2010
+
+```{r, results = "asis"}
+print(mybib[["Ebihara2010"]])
+```
+
+`r doi_button("Ebihara2010", mybib_df)`
+
+```{r, results = "asis"}
+print(mybib[["Ebihara2010a"]])
+```
+
+## 2009
+
+```{r, results = "asis"}
+print(mybib[["Ebihara2009b"]])
+```
+
+`r doi_button("Ebihara2009b", mybib_df)`
+
+```{r, results = "asis"}
+print(mybib[["Nitta2009"]])
+```
+
+`r doi_button("Nitta2009", mybib_df)`
+
+## 2008
+
+```{r, results = "asis"}
+print(mybib[["Nitta2008"]])
+```
+
+`r doi_button("Nitta2008", mybib_df)`
+
+```{r, results = "asis"}
+print(mybib[["Nitta2008a"]])
+```
+
+`r doi_button("Nitta2008a", mybib_df)`
 
