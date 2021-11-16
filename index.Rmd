@@ -36,6 +36,8 @@ library(distilltools)
 # )
 ```
 
+## Bio
+
 I am a Project Research Associate in the Iwasaki Lab at the University of Tokyo. I study **ferns**, an ancient and diverse lineage of vascular plants.
 
 Ferns have a unique lifecycle combining two free-living stages (gametophyte and sporophyte) that differ from each other dramatically in appearance and physiology. This sets ferns apart from nearly all other land plants, and has important implications for their ecology and evolution. I am particularly interested in how different stages of the fern lifecycle contribute to community assembly processes, as well as fern ecology, evolution, and systematics.
