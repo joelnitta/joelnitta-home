@@ -26,6 +26,7 @@ library(postcards)
 library(here)
 library(refinery)
 library(distilltools)
+library(icons)
 # # Create new post with use_article_template()
 # refinery::use_article_template(
 #   template = "_templates/standard_post.Rmd",
@@ -40,7 +41,7 @@ I am a Project Research Associate in the Iwasaki Lab at the University of Tokyo.
 
 Ferns have a unique lifecycle combining two free-living stages (gametophyte and sporophyte) that differ from each other dramatically in appearance and physiology. This sets ferns apart from nearly all other land plants, and has important implications for their ecology and evolution. I am particularly interested in how different stages of the fern lifecycle contribute to community assembly processes, as well as fern ecology, evolution, and systematics.
 
-I am also an enthusiastic adherent of reproducible analysis and coding, especially with R! Please see my blog for more stories about this topic.
+I am also an enthusiastic adherent of reproducible analysis and coding, especially with [`r icon_style(fontawesome$brands$"r-project", scale = 1.3, fill = "#5F85A7")`](https://www.r-project.org/)! Please see my blog for more stories about this topic.
 
 ## Education
 

@@ -13,12 +13,13 @@ library(distilltools)
 
 R package for categorial analysis of neo-and paleo-endemism.
 
-`r icon_link("github", "Code", "https://github.com/joelnitta/canaper")`  
+`r icon_link("github", "Code", "https://github.com/joelnitta/canaper")`
 `r icon_link("globe", "Website", "https://joelnitta.github.io/canaper/")`
+`r icon_link("zenodo", "Zenodo", "https://zenodo.org/record/5599240#.YZNJk1ORVBw")`
 
 ## `taxastand`
 
 R package for taxonomic name resolution.
 
-`r icon_link("github", "Code", "https://github.com/joelnitta/taxastand/")`  
+`r icon_link("github", "Code", "https://github.com/joelnitta/taxastand/")`
 `r icon_link("globe", "Website", "https://joelnitta.github.io/taxastand/")`
