@@ -18,4 +18,8 @@ navbar:
       href: https://www.joelnitta.com/media/Nitta_CV.pdf
     - text: "日本語"
       href: https://www.joelnitta.com
-output: distill::distill_article
+output: 
+  distill::distill_article:
+    includes:
+      in_header:
+        - header.html

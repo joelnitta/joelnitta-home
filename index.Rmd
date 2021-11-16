@@ -2,14 +2,12 @@
 title: "Joel Nitta"
 image: "joel.png"
 links:
-  - label: LinkedIn
-    url: "https://linkedin.com/"
-  - label: Twitter
-    url: "https://twitter.com/"
-  - label: GitHub
-    url: "https://github.com/"
-  - label: Email
-    url: "mailto:email@email.com"
+  - label: '<i class="fab fa-twitter"></i> Twitter'
+    url: "https://twitter.com/joel_nitta"
+  - label: '<i class="fab fa-github"></i> GitHub'
+    url: "https://github.com/joelnitta"
+  - label: '<i class="ai ai-orcid"></i> ORCID'
+    url: "https://orcid.org/0000-0003-4719-7472"
 output:
   postcards::trestles
 site: distill::distill_website
