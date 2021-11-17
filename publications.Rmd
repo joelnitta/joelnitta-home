@@ -112,9 +112,10 @@ print_ref <- function(key_select, bib = mybib, bib_df = mybib_df) {
 	github <- link_button(key_select, "github", "Code", bib_df)
 	dryad <- link_button(key_select, "dryad", "Data", bib_df)
 	figshare <- link_button(key_select, "figshare", "Data", bib_df)
+	pdf <- link_button(key_select, "file-pdf", "PDF", bib_df)
 	
 	main_ref <- paste(ref, doi, sep = " ")
-	buttons <- paste(biorxiv, github, dryad, figshare)
+	buttons <- paste(biorxiv, github, dryad, figshare, pdf)
 	paste(main_ref, buttons, sep = "<br>")
 }
 ```
