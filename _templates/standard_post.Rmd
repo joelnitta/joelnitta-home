@@ -14,15 +14,17 @@ date: INSERT-DATE-HERE
 preview: preview-image.jpg  # <---- UPDATE ME 
 creative_commons: CC BY
 citation_url: https://joelnitta.com/INSERT-SLUG-HERE 
-repository_url: https://github.com/joelnitta/joelnitta-site
+repository_url: https://github.com/joelnitta/joelnitta.com
 output:
   distill::distill_article:
     self_contained: false
 params:
   slug: INSERT-SLUG-HERE
   date: INSERT-DATE-HERE
-  repo: joelnitta/joelnitta-site
+  repo: joelnitta/joelnitta.com
   site: https://joelnitta.com
+editor_options: 
+  chunk_output_type: console
 ---
 
 <!----

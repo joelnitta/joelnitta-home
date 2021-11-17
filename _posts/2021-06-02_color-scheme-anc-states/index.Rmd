@@ -7,20 +7,20 @@ author:
     last_name: "Nitta"
     url: https://joelnitta.com
     affiliation: University of Tokyo
-    affiliation_url: http://iwasakilab.k.u-tokyo.ac.jp/
+    affiliation_url: http://iwasakilab.k.u-tokyo.ac.jp
     orcid_id: 0000-0003-4719-7472
 date: 2021-06-02
 preview: featured.png
 creative_commons: CC BY
 citation_url: https://joelnitta.com/color-scheme-anc-states 
-repository_url: https://github.com/joelnitta/joelnitta-site
+repository_url: https://github.com/joelnitta/joelnitta.com
 output:
   distill::distill_article:
     self_contained: false
 params:
   slug: color-scheme-anc-states
   date: 2021-06-02
-  repo: joelnitta/joelnitta-site
+  repo: joelnitta/joelnitta.com
   site: https://joelnitta.com
 editor_options: 
   chunk_output_type: console
@@ -29,7 +29,7 @@ editor_options:
 <!--------------- setup post ----------------->
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
+knitr::opts_chunk$set(echo = TRUE, cache = FALSE)
 refinery::renv_load(paste(params$date, params$slug, sep = "_"))
 ```
 
@@ -178,7 +178,7 @@ That's it!
 
 <!--------------- appendices ----------------->
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, cache = FALSE}
 refinery::insert_appendix(
   repo_spec = params$repo, 
   name = paste(params$date, params$slug, sep = "_")
