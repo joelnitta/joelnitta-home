@@ -11,44 +11,111 @@ knitr::opts_chunk$set(echo = FALSE)
 library(distilltools)
 library(RefManageR)
 library(bib2df)
+library(bibtex)
 library(janitor)
 library(lubridate)
+library(glue)
 library(tidyverse)
 ```
 
 ```{r setup-refs}
 # Load bibliography
 bib_path <- "_bib/references.bib"
+# - as list
 mybib <- ReadBib(bib_path, check = FALSE) 
+# - as dataframe
 mybib_df_raw <- bib2df(bib_path)
+# Load other metadata
+mybib_meta <- read_csv("_bib/ref_metadata.csv") %>% select(-title)
 
 # Format dataframe version of bibliography
 mybib_df <-
-mybib_df_raw %>%
+	mybib_df_raw %>%
 	clean_names() %>%
-	remove_empty("cols") %>%
 	select(key = bibtexkey, date, doi, title, author, journaltitle) %>%
-  mutate(
-  	date = parse_date_time(date, "ymd"),
-  	year = year(date)) %>%
-	arrange(desc(year), key)
+	mutate(
+		date = parse_date_time(date, "ymd"),
+		year = year(date)) %>%
+	arrange(desc(year), key) %>%
+	# add other metadata (github repo, dryad link, prprint, etc)
+	left_join(mybib_meta, by = "key")
 
 # Set RefManageR options
 oldopts <- BibOptions(
 	style = "text",
 	bib.style = "authoryear", 
-	no.print.fields = c("doi", "url", "urldate"),
+	no.print.fields = c("doi", "url", "urldate", "eprint", "eprinttype"),
+	max.names = 50,
 	dashed = FALSE, 
 	sorting = "ydnt")
-# Silently cite all references
-purrr::walk(seq_along(mybib), ~NoCite(mybib, .x))
-#
 ```
 
 ```{r cite-func}
-doi_button <- function(key_select, bib_df) {
+# Define functions for formatting a citation
+
+#' Make a link button
+#'
+#' @param key_select Bibtex key
+#' @param link_type Type of link ("github", "biorxiv", "figshare", "dryad", "pdf")
+#' Should be one of column names in bibliography metadata
+#' @param text Text to include next to to icon.
+#' @param bib_df Bibliography data (`mybib_df`)
+#'
+#' @return HTML to make a link button
+link_button <- function(key_select, link_type, text, bib_df = mybib_df) {
+	url <- filter(bib_df, key == key_select)[[link_type]]
+	if (is.na(url)) return(NULL)
+	icon_link(icon = link_type, text = text, url = url)
+}
+
+#' Make a DOI link
+#'
+#' @param key_select Bibtex key
+#' @param bib_df Bibliography data as dataframe
+#'
+#' @return HTML with link to DOI corresponding to citation specified with key
+doi_link <- function(key_select, bib_df = mybib_df) {
 	doi <- filter(bib_df, key == key_select) %>% pull(doi)
-	icon_link("doi", doi, glue("https://doi.org/{doi}"))
+	if (is.na(doi)) return(NULL)
+	glue("DOI: [{doi}](https://doi.org/{doi})")
+}
+
+#' Print a simple reference
+#'
+#' @param key_select Bibtex key
+#' @param bib Bibtex bibliography read in with RefManageR::ReadBib()
+#'
+#' @return Text of reference
+print_ref_simple <- function(key_select, bib = mybib) {
+	# Silently cite the key
+	NoCite(bib, key_select)
+	# Capture the output of printing the reference
+	capture.output(foo <- print(bib[[key_select]])) %>%
+		paste(collapse = " ") %>%
+		# Make my name in bold
+		str_replace_all("Nitta, J. H.", "__Nitta, J. H.__") %>%
+		str_replace_all("J. H. Nitta", "__J. H. Nitta__")
+}
+
+#' Print a reference with link buttons
+#'
+#' @param key_select Bibtex key
+#' @param bib Bibtex bibliography read in with RefManageR::ReadBib()
+#' @param bib_df Bibliography data as dataframe, including metadata
+#' (links to github, biorxiv, dryad, etc)
+#'
+#' @return Text of reference, with HTML buttons to links below it
+print_ref <- function(key_select, bib = mybib, bib_df = mybib_df) {
+	ref <- print_ref_simple(key_select = key_select, bib = bib)
+	doi <- doi_link(key_select, bib_df = bib_df)
+	biorxiv <- link_button(key_select, "biorxiv", "Preprint", bib_df)
+	github <- link_button(key_select, "github", "Code", bib_df)
+	dryad <- link_button(key_select, "dryad", "Data", bib_df)
+	figshare <- link_button(key_select, "figshare", "Data", bib_df)
+	
+	main_ref <- paste(ref, doi, sep = " ")
+	buttons <- paste(biorxiv, github, dryad, figshare)
+	paste(main_ref, buttons, sep = "<br>")
 }
 ```
 
@@ -56,153 +123,66 @@ doi_button <- function(key_select, bib_df) {
 
 ## 2021
 
-```{r, results = "asis"}
-print(mybib[["Nitta2021"]])
-```
-
-`r doi_button("Nitta2021", mybib_df)`
+`r print_ref("Nitta2021")`
 
 ## 2020
 
-```{r, results = "asis"}
-print(mybib[["Nitta2020"]])
-```
+`r print_ref("Nitta2020")`
 
-`r doi_button("Nitta2020", mybib_df)`
-
-```{r, results = "asis"}
-print(mybib[["Nitta2020c"]])
-```
-
-`r doi_button("Nitta2020c", mybib_df)`
+`r print_ref("Nitta2020c")`
 
 ## 2019
 
-```{r, results = "asis"}
-print(mybib[["Ebihara2019a"]])
-```
+`r print_ref("Ebihara2019a")`
 
-```{r, results = "asis"}
-print(mybib[["Ebihara2019b"]])
-```
+`r print_ref("Ebihara2019b")`
 
-`r doi_button("Ebihara2019b", mybib_df)`
-
-```{r, results = "asis"}
-print(mybib[["Nitta2019"]])
-```
-
-`r doi_button("Nitta2019", mybib_df)`
+`r print_ref("Nitta2019")`
 
 ## 2018
 
-```{r, results = "asis"}
-print(mybib[["Gilbert2018"]])
-```
+`r print_ref("Gilbert2018")`
 
-`r doi_button("Gilbert2018", mybib_df)`
-
-```{r, results = "asis"}
-print(mybib[["Nitta2018"]])
-```
-
-`r doi_button("Nitta2018", mybib_df)`
+`r print_ref("Nitta2018")`
 
 ## 2017
 
-```{r, results = "asis"}
-print(mybib[["Nitta2017"]])
-```
+`r print_ref("Nitta2017")`
 
-`r doi_button("Nitta2017", mybib_df)`
+`r print_ref("Pinson2016a")`
 
-```{r, results = "asis"}
-print(mybib[["Pinson2016a"]])
-```
-
-`r doi_button("Pinson2016a", mybib_df)`
-
-```{r, results = "asis"}
-print(mybib[["Zhou2017"]])
-```
-
-`r doi_button("Zhou2017", mybib_df)`
+`r print_ref("Zhou2017")`
 
 ## 2016
 
-```{r, results = "asis"}
-print(mybib[["Pouteau2016"]])
-```
-
-`r doi_button("Pouteau2016", mybib_df)`
+`r print_ref("Pouteau2016")`
 
 ## 2015
 
-```{r, results = "asis"}
-print(mybib[["Chen2015"]])
-```
-
-`r doi_button("Chen2015", mybib_df)`
+`r print_ref("Chen2015")`
 
 ## 2013
 
-```{r, results = "asis"}
-print(mybib[["Ebihara2013"]])
-```
-
-`r doi_button("Ebihara2013", mybib_df)`
+`r print_ref("Ebihara2013")`
 
 ## 2011
 
-```{r, results = "asis"}
-print(mybib[["Nitta2011"]])
-```
+`r print_ref("Nitta2011")`
 
-`r doi_button("Nitta2011", mybib_df)`
-
-```{r, results = "asis"}
-print(mybib[["Nitta2011b"]])
-```
-
-`r doi_button("Nitta2011b", mybib_df)`
+`r print_ref("Nitta2011b")`
 
 ## 2010
 
-```{r, results = "asis"}
-print(mybib[["Ebihara2010"]])
-```
-
-`r doi_button("Ebihara2010", mybib_df)`
-
-```{r, results = "asis"}
-print(mybib[["Ebihara2010a"]])
-```
+`r print_ref("Ebihara2010")`
 
 ## 2009
 
-```{r, results = "asis"}
-print(mybib[["Ebihara2009b"]])
-```
+`r print_ref("Ebihara2009b")`
 
-`r doi_button("Ebihara2009b", mybib_df)`
-
-```{r, results = "asis"}
-print(mybib[["Nitta2009"]])
-```
-
-`r doi_button("Nitta2009", mybib_df)`
+`r print_ref("Nitta2009")`
 
 ## 2008
 
-```{r, results = "asis"}
-print(mybib[["Nitta2008"]])
-```
+`r print_ref("Nitta2008")`
 
-`r doi_button("Nitta2008", mybib_df)`
-
-```{r, results = "asis"}
-print(mybib[["Nitta2008a"]])
-```
-
-`r doi_button("Nitta2008a", mybib_df)`
-
+`r print_ref("Nitta2008a")`

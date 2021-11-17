@@ -93,6 +93,18 @@
       "Repository": "CRAN",
       "Hash": "f2cf33875b859a757ad919a4471cdc0f"
     },
+    "bibtex": {
+      "Package": "bibtex",
+      "Version": "0.4.3",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "ROpenSci",
+      "RemoteRepo": "bibtex",
+      "RemoteRef": "master",
+      "RemoteSha": "1c0e12d0fbf9aefea4e72c4aef1c40b0b972cf6a",
+      "Hash": "a8d42f68b3d189aad9c600e38e45833e"
+    },
     "bit": {
       "Package": "bit",
       "Version": "4.0.4",
