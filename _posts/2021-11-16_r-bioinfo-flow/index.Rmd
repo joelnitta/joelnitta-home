@@ -13,14 +13,14 @@ date: 2021-11-16
 preview: preview-image.jpg  # <---- UPDATE ME 
 creative_commons: CC BY
 citation_url: https://joelnitta.com/r-bioinfo-flow 
-repository_url: https://github.com/joelnitta/joelnitta.com
+repository_url: https://github.com/joelnitta/joelnitta-home
 output:
   distill::distill_article:
     self_contained: false
 params:
   slug: r-bioinfo-flow
   date: 2021-11-16
-  repo: joelnitta/joelnitta.com
+  repo: joelnitta/joelnitta-home
   site: https://joelnitta.com
 draft: true
 ---
@@ -176,15 +176,5 @@ list(
 refinery::insert_appendix(
   repo_spec = params$repo, 
   name = paste(params$date, params$slug, sep = "_")
-)
-```
-
-
-<!--------------- miscellanea ----------------->
-
-```{r redirect, echo=FALSE}
-refinery::insert_netlify_redirect(
-  slug = params$slug, 
-  date = params$date
 )
 ```

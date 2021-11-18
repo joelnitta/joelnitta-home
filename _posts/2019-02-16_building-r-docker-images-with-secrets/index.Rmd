@@ -13,14 +13,14 @@ date: 2019-02-16
 preview: featured.png
 creative_commons: CC BY
 citation_url: https://joelnitta.com/building-r-docker-images-with-secrets 
-repository_url: https://github.com/joelnitta/joelnitta.com
+repository_url: https://github.com/joelnitta/joelnitta-home
 output:
   distill::distill_article:
     self_contained: false
 params:
   slug: building-r-docker-images-with-secrets
   date: 2019-02-16
-  repo: joelnitta/joelnitta.com
+  repo: joelnitta/joelnitta-home
   site: https://joelnitta.com
 editor_options: 
   chunk_output_type: console

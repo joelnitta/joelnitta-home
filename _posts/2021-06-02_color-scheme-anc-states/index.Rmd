@@ -13,14 +13,14 @@ date: 2021-06-02
 preview: featured.png
 creative_commons: CC BY
 citation_url: https://joelnitta.com/color-scheme-anc-states 
-repository_url: https://github.com/joelnitta/joelnitta.com
+repository_url: https://github.com/joelnitta/joelnitta-home
 output:
   distill::distill_article:
     self_contained: false
 params:
   slug: color-scheme-anc-states
   date: 2021-06-02
-  repo: joelnitta/joelnitta.com
+  repo: joelnitta/joelnitta-home
   site: https://joelnitta.com
 editor_options: 
   chunk_output_type: console

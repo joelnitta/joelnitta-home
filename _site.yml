@@ -15,7 +15,7 @@ navbar:
     - text: "Blog"
       href: blog.html
     - text: "CV"
-      href: https://www.joelnitta.com/media/Nitta_CV.pdf
+      href: content/pdf/Nitta_CV.pdf
     - text: "日本語"
       href: https://www.joelnitta.com
 output: 
