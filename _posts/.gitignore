@@ -1,5 +1,1 @@
-# Ignore everything but .gitignore, folders, and .Rmd
-*
-!.gitignore
-!*/
-!*.Rmd
+*_cache
