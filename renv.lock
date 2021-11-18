@@ -320,6 +320,13 @@
       "Repository": "CRAN",
       "Hash": "77bd60a6157420d4ffa93b27cf6a58b8"
     },
+    "fontawesome": {
+      "Package": "fontawesome",
+      "Version": "0.2.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "55624ed409e46c5f358b2c060be87f67"
+    },
     "forcats": {
       "Package": "forcats",
       "Version": "0.5.1",
@@ -452,18 +459,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "d521cf9db39ca79250a00029661fb7cd"
-    },
-    "icons": {
-      "Package": "icons",
-      "Version": "0.2.0",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteUsername": "mitchelloharawild",
-      "RemoteRepo": "icons",
-      "RemoteRef": "master",
-      "RemoteSha": "6e4dc378ac86c1d4f4ea167f408bed07b3df14fb",
-      "Hash": "73775362cd0dcad43ba00cfb9c89a928"
     },
     "ids": {
       "Package": "ids",
