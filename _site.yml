@@ -2,7 +2,7 @@ name: "."
 title: "Joel Nitta"
 description: |
   Joel Nitta
-output_dir: "site"
+output_dir: "_site"
 theme: jnitta_theme.css
 navbar:
   right:
