@@ -27,6 +27,9 @@ jobs:
         run: |-
           Rscript -e "install.packages('renv')"
           Rscript -e "renv::restore(confirm = FALSE)"
+          
+      - name: Install icons
+        run: Rscript -e 'icons::download_fontawesome()'
 
       - name: Render Site
         run: Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
