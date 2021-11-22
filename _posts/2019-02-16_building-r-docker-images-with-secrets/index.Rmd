@@ -155,6 +155,7 @@ That's it!
 ```{r, echo=FALSE}
 refinery::insert_appendix(
   repo_spec = params$repo, 
-  name = paste(params$date, params$slug, sep = "_")
+  name = paste(params$date, params$slug, sep = "_"),
+  source_branch = "main", lockfile_branch = "main"
 )
 ```
