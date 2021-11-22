@@ -2,22 +2,24 @@ name: "."
 title: "Joel Nitta"
 description: |
   Joel Nitta
-output_dir: "_site"
+output_dir: "_site-ja"
 include: ["_redirects"]
 theme: jnitta_theme.css
-base_url: https://joelnitta.com
+base_url: https://joelnitta.com/ja
 navbar:
   right:
-    - text: "Home"
+    - text: "ホーム"
       href: index.html
-    - text: "Publications"
+    - text: "論文"
       href: publications.html
-    - text: "Software"
+    - text: "ソフトウェア"
       href: software.html
-    - text: "Blog"
+    - text: "ブログ"
       href: blog.html
     - text: "CV"
       href: content/pdf/Nitta_CV.pdf
+    - text: "English"
+      href: https://joelnitta.com
 output: 
   distill::distill_article:
     includes:
