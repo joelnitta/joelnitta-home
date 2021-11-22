@@ -3,6 +3,7 @@ title: "Joel Nitta"
 description: |
   Joel Nitta
 output_dir: "_site"
+include: ["_redirects"]
 theme: jnitta_theme.css
 base_url: https://joelnitta.com
 navbar:
