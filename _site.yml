@@ -16,8 +16,6 @@ navbar:
       href: blog.html
     - text: "CV"
       href: content/pdf/Nitta_CV.pdf
-    - text: "日本語"
-      href: https://www.joelnitta.com
 output: 
   distill::distill_article:
     includes:
