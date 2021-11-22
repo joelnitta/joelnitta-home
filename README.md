@@ -4,12 +4,14 @@
 
 Source code for [personal website of Joel Nitta](https://www.joelnitta.com).
 
-Built with [Distill](https://rstudio.github.io/distill/) in R. Site built by [GitHub actions](.github/workflows/build_site.yml) to the `gh_pages` branch, deployed by [Netlify](https://www.netlify.com/).
+Created with [Distill](https://rstudio.github.io/distill/) in [R](https://www.r-project.org/). 
+
+Site built by [GitHub actions](.github/workflows/build_site.yml) to the [`gh_pages` branch](https://github.com/joelnitta/joelnitta-home/tree/gh-pages), deployed by [Netlify](https://www.netlify.com/).
 
 ## Licenses
 
 Code: [MIT](LICENSE)
 
-Text and images, unless otherwise indicated: Creative Commons Attribution CC BY 4.0[https://creativecommons.org/licenses/by/4.0/legalcode]
+Text and images, unless otherwise indicated: Creative Commons Attribution [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode)
 
 Publications (PDF files): Indicated in each publication.
