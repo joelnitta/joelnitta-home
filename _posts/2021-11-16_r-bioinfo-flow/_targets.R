@@ -12,7 +12,7 @@ list(
 	tar_file(
 		read_1, { 
 			download.file(
-				url = c("https://raw.githubusercontent.com/OpenGene/fastp/master/testdata/R1.fq"),
+				url = "https://raw.githubusercontent.com/OpenGene/fastp/master/testdata/R1.fq",
 				destfile = "R1.fq")
 			"R1.fq"
 		}
@@ -20,14 +20,14 @@ list(
 	tar_file(
 		read_2, { 
 			download.file(
-				url = c("https://raw.githubusercontent.com/OpenGene/fastp/master/testdata/R2.fq"),
+				url = "https://raw.githubusercontent.com/OpenGene/fastp/master/testdata/R2.fq",
 				destfile = "R2.fq")
 			"R2.fq"
 		}
 	),
 	# Clean the fastq file with fastp
 	tar_file(
-		cleaned_fasta_file, {
+		fastp_out, {
 			babelwhale::run(
 				# Name of docker image, with tag specifying version
 				"quay.io/biocontainers/fastp:0.23.1--h79da9fb_0",
@@ -44,6 +44,7 @@ list(
 					# trim report file
 					"-h", "/wd/trim_report.html"),
 				# Volume mounting specification
+				# this uses getwd(), but here::here() is also a good method
 				volumes = paste0(getwd(), ":/wd/")
 			)
 			c("R1_trim.fq", "R2_trim.fq", "trim_report.html")
