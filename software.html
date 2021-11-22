@@ -2509,12 +2509,16 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
        }
   
        var script = document.createElement("script");
-       script.src = "https://utteranc.es/client.js";
-       script.setAttribute("repo", "joelnitta/joelnitta-home");
-       script.setAttribute("issue-term", "title");
-       script.setAttribute("crossorigin", "anonymous");
-       script.setAttribute("label", "comments 💬");
-       script.setAttribute("theme", "github-light");
+       script.src = "https://giscus.app/client.js";
+       script.setAttribute("data-repo", "joelnitta/joelnitta-home");
+       script.setAttribute("data-repo-id", "R_kgDOGZGr3w");
+       script.setAttribute("data-category", "Comments");
+       script.setAttribute("data-category-id", "DIC_kwDOGZGr384B_-5M");
+       script.setAttribute("data-mapping", "pathname");
+       script.setAttribute("data-reactions-enabled", "0");
+       script.setAttribute("data-emit-metadata", "0");
+       script.setAttribute("data-theme", "light");
+       script.setAttribute("data-lang", "en");
   
        /* wait for article to load, append script to article element */
        var observer = new MutationObserver(function (mutations, observer) {
