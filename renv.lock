@@ -718,11 +718,11 @@
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteUsername": "djnavarro",
+      "RemoteUsername": "joelnitta",
       "RemoteRepo": "refinery",
-      "RemoteRef": "master",
-      "RemoteSha": "09c1bdb8f39159c7fb21fdd7551eba949ccc66ad",
-      "Hash": "99261b15b785ba547481ca2328a478b5"
+      "RemoteRef": "tweaks",
+      "RemoteSha": "906f0ade3668d45f662b97c9decd61c03c491cbb",
+      "Hash": "b009894a7e8458e9ff24c7b651fb5069"
     },
     "rematch": {
       "Package": "rematch",
