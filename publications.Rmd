@@ -126,6 +126,12 @@ print_ref <- function(key_select, bib = mybib, bib_df = mybib_df) {
 
 `r print_ref("Nitta2021")`
 
+<aside>
+```{r Nitta2021-cover, echo = FALSE}
+knitr::include_graphics("content/images/jpr_cover.jpg")
+```
+</aside>
+
 ## 2020
 
 `r print_ref("Nitta2020")`
@@ -169,6 +175,12 @@ print_ref <- function(key_select, bib = mybib, bib_df = mybib_df) {
 ## 2011
 
 `r print_ref("Nitta2011")`
+
+<aside>
+```{r Nitta2011-cover, echo = FALSE}
+knitr::include_graphics("content/images/ajb_cover.jpg")
+```
+</aside>
 
 `r print_ref("Nitta2011b")`
 
