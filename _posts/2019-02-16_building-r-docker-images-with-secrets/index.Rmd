@@ -159,3 +159,12 @@ refinery::insert_appendix(
   source_branch = "main", lockfile_branch = "main"
 )
 ```
+
+<!--------------- miscellanea ----------------->
+
+```{r redirect, echo=FALSE}
+refinery::insert_netlify_redirect(
+  slug = params$slug, 
+  date = params$date
+)
+```
