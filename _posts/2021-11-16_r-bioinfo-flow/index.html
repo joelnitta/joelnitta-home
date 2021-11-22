@@ -1566,6 +1566,7 @@ Figure 2: Image by <a href="https://unsplash.com/@reddgio">Giordano Rossoni</a> 
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://raw.githubusercontent.com/joelnitta/joelnitta-home/main/_posts/2021-11-16_r-bioinfo-flow/_targets.R <span class="op">&gt;</span> _targets.R</span></code></pre></div>
 </div>
 <p>From here on, I assume we are running everything a folder called <code>targets_bioinfo_example</code> containing the files <code>environment.yml</code>, <code>renv.lock</code>, and <code>_targets.R</code>.</p>
+<p>Also, although I’ve mentioned several pieces of software so far, there are only two required for this workflow: <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html">Conda</a> and <a href="https://docs.docker.com/get-docker/">Docker</a>. Make sure those are both installed before continuing.</p>
 <h2 id="running-r-with-conda">Running R with Conda</h2>
 <p>Conda environments <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file">can be specified using a <code>yml</code> file</a>, often named <code>environment.yml</code>.</p>
 <p><a href="https://raw.githubusercontent.com/joelnitta/targets_bioinfo_example/main/environment.yml">This is the <code>environment.yml</code> file</a> for this project:</p>

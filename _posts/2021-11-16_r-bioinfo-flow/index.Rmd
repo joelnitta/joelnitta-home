@@ -133,6 +133,8 @@ curl https://raw.githubusercontent.com/joelnitta/joelnitta-home/main/_posts/2021
 
 From here on, I assume we are running everything a folder called `targets_bioinfo_example` containing the files `environment.yml`, `renv.lock`, and `_targets.R`.
 
+Also, although I've mentioned several pieces of software so far, there are only two required for this workflow: [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) and [Docker](https://docs.docker.com/get-docker/). Make sure those are both installed before continuing.
+
 ## Running R with Conda
 
 Conda environments [can be specified using a `yml` file](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file), often named `environment.yml`.
