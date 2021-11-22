@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>Joel Nitta</title>
+    <link>https://joelnitta.com/ja</link>
+    <atom:link href="https://joelnitta.com/ja/blog.xml" rel="self" type="application/rss+xml"/>
+    <description>Joel Nitta
+</description>
+    <generator>Distill</generator>
+    <lastBuildDate>Tue, 16 Nov 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Managing bioinformatics pipelines with R</title>
+      <dc:creator>Joel Nitta</dc:creator>
+      <link>https://joelnitta.com/ja/posts/2021-11-16_r-bioinfo-flow</link>
+      <description>How to combine Conda, Docker, and R to run modular, reproducible bioinformatics pipelines</description>
+      <guid>https://joelnitta.com/ja/posts/2021-11-16_r-bioinfo-flow</guid>
+      <pubDate>Tue, 16 Nov 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://joelnitta.com/ja/posts/2021-11-16_r-bioinfo-flow/img/t-k-9AxFJaNySB8-unsplash.jpg" medium="image" type="image/jpeg"/>
+    </item>
+    <item>
+      <title>Selecting color schemes for mapping ancestral states</title>
+      <dc:creator>Joel Nitta</dc:creator>
+      <link>https://joelnitta.com/ja/posts/2021-06-02_color-scheme-anc-states</link>
+      <description>How to change the phytools default color scheme when visualizing the results of ancestral character state estimation</description>
+      <guid>https://joelnitta.com/ja/posts/2021-06-02_color-scheme-anc-states</guid>
+      <pubDate>Wed, 02 Jun 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://joelnitta.com/ja/posts/2021-06-02_color-scheme-anc-states/featured.png" medium="image" type="image/png" width="1024" height="920"/>
+    </item>
+    <item>
+      <title>Building R docker images with secrets</title>
+      <dc:creator>Joel Nitta</dc:creator>
+      <link>https://joelnitta.com/ja/posts/2019-02-16_building-r-docker-images-with-secrets</link>
+      <description>Keep it secret. Keep it safe.</description>
+      <guid>https://joelnitta.com/ja/posts/2019-02-16_building-r-docker-images-with-secrets</guid>
+      <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
+      <media:content url="https://joelnitta.com/ja/posts/2019-02-16_building-r-docker-images-with-secrets/featured.png" medium="image" type="image/png" width="300" height="150"/>
+    </item>
+  </channel>
+</rss>
