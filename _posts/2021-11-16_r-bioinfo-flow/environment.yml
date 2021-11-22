@@ -1,4 +1,4 @@
-name: renv
+name: bioinfo-example-env
 channels:
   - conda-forge
   - bioconda
