@@ -25,4 +25,4 @@ output:
     includes:
       in_header:
         - header.html
-        - utterances.html
+        - giscus.html
