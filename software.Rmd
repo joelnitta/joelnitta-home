@@ -11,7 +11,7 @@ library(distilltools)
 
 ## `canaper`
 
-R package for categorial analysis of neo-and paleo-endemism.
+系統的固有性（phylogenetic endemism）を測るためのRパッケージ
 
 `r icon_link("github", "Code", "https://github.com/joelnitta/canaper")`
 `r icon_link("globe", "Website", "https://joelnitta.github.io/canaper/")`
@@ -19,7 +19,7 @@ R package for categorial analysis of neo-and paleo-endemism.
 
 ## `taxastand`
 
-R package for taxonomic name resolution.
+学名を整理するためのRパッケージ
 
 `r icon_link("github", "Code", "https://github.com/joelnitta/taxastand/")`
 `r icon_link("globe", "Website", "https://joelnitta.github.io/taxastand/")`
