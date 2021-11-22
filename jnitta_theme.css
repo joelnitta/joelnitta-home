@@ -214,6 +214,7 @@ d-article div.sourceCode pre { /* Chunk code */
   background-color: #fff;
   color: black;
   padding: 5px 5px 5px 18px;
+  overflow: auto !important;
 }
 
 d-article div.sourceCode {
