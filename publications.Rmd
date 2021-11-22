@@ -1,5 +1,5 @@
 ---
-title: "Publications"
+title: "論文"
 date: "`r Sys.Date()`"
 output: distill::distill_article
 editor_options: 

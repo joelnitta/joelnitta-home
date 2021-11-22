@@ -1,4 +1,4 @@
 ---
-title: "Blog"  # any name you want here
+title: "ブログ"  # any name you want here
 listing: posts # do this exactly
 ---

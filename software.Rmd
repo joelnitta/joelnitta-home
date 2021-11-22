@@ -1,5 +1,5 @@
 ---
-title: "Software"
+title: "ソフトウェア"
 date: "`r Sys.Date()`"
 output: distill::distill_article
 ---
