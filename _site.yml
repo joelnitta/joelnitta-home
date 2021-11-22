@@ -4,6 +4,7 @@ description: |
   Joel Nitta
 output_dir: "_site"
 theme: jnitta_theme.css
+base_url: https://joelnitta.com
 navbar:
   right:
     - text: "Home"
