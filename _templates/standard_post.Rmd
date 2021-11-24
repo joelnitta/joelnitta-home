@@ -43,6 +43,18 @@ knitr::opts_chunk$set(echo = TRUE)
 refinery::renv_load(paste(params$date, params$slug, sep = "_"))
 ```
 
+```{r xaringanExtra-clipboard, echo=FALSE}
+# Enable copy-paste of code chunks
+# xaringanExtra::use_clipboard()
+htmltools::tagList(
+  xaringanExtra::use_clipboard(
+    button_text = "<i class=\"fa fa-clipboard fa-2x\"></i>",
+    success_text = "<i class=\"fa fa-check fa-2x\" style=\"color: #90BE6D\"></i>",
+    error_text = "<i class=\"fa fa-times-circle fa-2x\" style=\"color: #F94144\"></i>"
+  ),
+  rmarkdown::html_dependency_font_awesome()
+)
+```
 
 <!--------------- post ----------------->
 
@@ -54,7 +66,8 @@ At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praese
 ```{r, echo=FALSE}
 refinery::insert_appendix(
   repo_spec = params$repo, 
-  name = paste(params$date, params$slug, sep = "_")
+  name = paste(params$date, params$slug, sep = "_"),
+  source_branch = "main", lockfile_branch = "main"
 )
 ```
 
