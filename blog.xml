@@ -7,7 +7,16 @@
     <description>Joel Nitta
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Tue, 16 Nov 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 24 Nov 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Enable giscus in Distill</title>
+      <dc:creator>Joel Nitta</dc:creator>
+      <link>https://joelnitta.com/ja/posts/2021-11-24_using-giscus</link>
+      <description>How to use the giscus commenting system on a Distill blog</description>
+      <guid>https://joelnitta.com/ja/posts/2021-11-24_using-giscus</guid>
+      <pubDate>Wed, 24 Nov 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://joelnitta.com/ja/posts/2021-11-24_using-giscus/img/adam-solomon-WHUDOzd5IYU-unsplash.jpg" medium="image" type="image/jpeg"/>
+    </item>
     <item>
       <title>Managing bioinformatics pipelines with R</title>
       <dc:creator>Joel Nitta</dc:creator>
