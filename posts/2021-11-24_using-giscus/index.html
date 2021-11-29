@@ -2662,38 +2662,40 @@ Figure 3: <a href="https://giscus.app/">giscus</a> HTML block. Once you fill in 
 <ol start="5" type="1">
 <li>Add an <code>.html</code> file (I’ve called mine <code>giscus.html</code>) to the root of your blog repo that looks like this (and is based off of <a href="https://milesmcbain.micro.blog/2020/09/04/how-i-got.html">Miles’ HTML</a>):</li>
 </ol>
-<pre><code>&lt;script&gt;
-   document.addEventListener(&quot;DOMContentLoaded&quot;, function () {
-     if (!/posts/.test(location.pathname)) {
-       return;
-     }
-
-     var script = document.createElement(&quot;script&quot;);
-     script.src = &quot;https://giscus.app/client.js&quot;;
-     script.setAttribute(&quot;data-repo&quot;, &quot;[ENTER REPO HERE]&quot;);
-     script.setAttribute(&quot;data-repo-id&quot;, &quot;[ENTER REPO ID HERE]&quot;);
-     script.setAttribute(&quot;data-category&quot;, &quot;[ENTER CATEGORY NAME HERE]&quot;);
-     script.setAttribute(&quot;data-category-id&quot;, &quot;[ENTER CATEGORY ID HERE]&quot;);
-     script.setAttribute(&quot;data-mapping&quot;, &quot;pathname&quot;);
-     script.setAttribute(&quot;data-reactions-enabled&quot;, &quot;0&quot;);
-     script.setAttribute(&quot;data-emit-metadata&quot;, &quot;0&quot;);
-     script.setAttribute(&quot;data-theme&quot;, &quot;light&quot;);
-     script.setAttribute(&quot;data-lang&quot;, &quot;en&quot;);
-
-     /* wait for article to load, append script to article element */
-     var observer = new MutationObserver(function (mutations, observer) {
-       var article = document.querySelector(&quot;d-article&quot;);
-       if (article) {
-         observer.disconnect();
-         /* HACK: article scroll */
-         article.setAttribute(&quot;style&quot;, &quot;overflow-y: hidden&quot;);
-         article.appendChild(script);
-       }
-     });
-
-     observer.observe(document.body, { childList: true });
-   });
- &lt;/script&gt;</code></pre>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;script&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>   <span class="bu">document</span><span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;DOMContentLoaded&quot;</span><span class="op">,</span> <span class="kw">function</span> () {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>     <span class="cf">if</span> (<span class="op">!</span><span class="ss">/posts/</span><span class="op">.</span><span class="fu">test</span>(location<span class="op">.</span><span class="at">pathname</span>)) {</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>       <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>     }</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>     <span class="kw">var</span> script <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">&quot;script&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>     script<span class="op">.</span><span class="at">src</span> <span class="op">=</span> <span class="st">&quot;https://giscus.app/client.js&quot;</span><span class="op">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>     script<span class="op">.</span><span class="fu">setAttribute</span>(<span class="st">&quot;data-repo&quot;</span><span class="op">,</span> <span class="st">&quot;[ENTER REPO HERE]&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>     script<span class="op">.</span><span class="fu">setAttribute</span>(<span class="st">&quot;data-repo-id&quot;</span><span class="op">,</span> <span class="st">&quot;[ENTER REPO ID HERE]&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>     script<span class="op">.</span><span class="fu">setAttribute</span>(<span class="st">&quot;data-category&quot;</span><span class="op">,</span> <span class="st">&quot;[ENTER CATEGORY NAME HERE]&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>     script<span class="op">.</span><span class="fu">setAttribute</span>(<span class="st">&quot;data-category-id&quot;</span><span class="op">,</span> <span class="st">&quot;[ENTER CATEGORY ID HERE]&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>     script<span class="op">.</span><span class="fu">setAttribute</span>(<span class="st">&quot;data-mapping&quot;</span><span class="op">,</span> <span class="st">&quot;pathname&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>     script<span class="op">.</span><span class="fu">setAttribute</span>(<span class="st">&quot;data-reactions-enabled&quot;</span><span class="op">,</span> <span class="st">&quot;0&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>     script<span class="op">.</span><span class="fu">setAttribute</span>(<span class="st">&quot;data-emit-metadata&quot;</span><span class="op">,</span> <span class="st">&quot;0&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>     script<span class="op">.</span><span class="fu">setAttribute</span>(<span class="st">&quot;data-theme&quot;</span><span class="op">,</span> <span class="st">&quot;light&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>     script<span class="op">.</span><span class="fu">setAttribute</span>(<span class="st">&quot;data-lang&quot;</span><span class="op">,</span> <span class="st">&quot;en&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>     <span class="co">/* wait for article to load, append script to article element */</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>     <span class="kw">var</span> observer <span class="op">=</span> <span class="kw">new</span> <span class="bu">MutationObserver</span>(<span class="kw">function</span> (mutations<span class="op">,</span> observer) {</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>       <span class="kw">var</span> article <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">&quot;d-article&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>       <span class="cf">if</span> (article) {</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>         observer<span class="op">.</span><span class="fu">disconnect</span>()<span class="op">;</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>         <span class="co">/* </span><span class="al">HACK</span><span class="co">: article scroll */</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>         article<span class="op">.</span><span class="fu">setAttribute</span>(<span class="st">&quot;style&quot;</span><span class="op">,</span> <span class="st">&quot;overflow-y: hidden&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>         article<span class="op">.</span><span class="fu">appendChild</span>(script)<span class="op">;</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>       }</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>     })<span class="op">;</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>     observer<span class="op">.</span><span class="fu">observe</span>(<span class="bu">document</span><span class="op">.</span><span class="at">body</span><span class="op">,</span> { <span class="dt">childList</span><span class="op">:</span> <span class="kw">true</span> })<span class="op">;</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>   })<span class="op">;</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a> <span class="kw">&lt;/script&gt;</span></span></code></pre></div>
+</div>
 <p>If you compare the above code with the HTML block in the giscus app (Fig. <a href="#fig:giscus-html">3</a>), you should be able to see how the <code>script.setAttribute</code> lines above map to the key-value pairs in the HTML block in the giscus app. All we have to do is copy the contents of the HTML block over to this <code>giscus.html</code> file. You can <a href="https://github.com/joelnitta/joelnitta-home/blob/047152c2d1c6cfdeee438b6e23453d4330ece6ef/giscus.html">see what my <code>giscus.html</code> file looks like here</a>.</p>
 <ol start="6" type="1">
 <li><a href="https://rstudio.github.io/distill/website.html#site-output">Modify <code>_site.yml</code></a> so that the <code>giscus.html</code> file gets loaded on every Distill article page <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>:</li>
@@ -2706,7 +2708,7 @@ Figure 3: <a href="https://giscus.app/">giscus</a> HTML block. Once you fill in 
 <!--------------- appendices ----------------->
 <div class="layout-chunk" data-layout="l-body">
 <h2 class="appendix" id="last-updated">Last updated</h2>
-<p>2021-11-29 10:22:35 JST</p>
+<p>2021-11-29 10:35:23 JST</p>
 <h2 class="appendix" id="details">Details</h2>
 <p><a href="https://github.com/joelnitta/joelnitta-home/tree/main/_posts/2021-11-24_using-giscus/index.Rmd">source code</a>, <a href="https://github.com/joelnitta/joelnitta-home/tree/main/_renv/_posts/2021-11-24_using-giscus/renv.lock">R environment</a></p>
 </div>
