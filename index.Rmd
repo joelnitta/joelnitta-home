@@ -8,6 +8,8 @@ links:
     url: "https://github.com/joelnitta"
   - label: '<i class="ai ai-orcid"></i> ORCID'
     url: "https://orcid.org/0000-0003-4719-7472"
+  - label: "ResearchMap"
+    url: "https://researchmap.jp/joelnitta?lang=en"
 output:
   postcards::trestles
 site: distill::distill_website
