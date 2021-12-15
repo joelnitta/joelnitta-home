@@ -126,6 +126,7 @@ print_ref <- function(key_select, bib = mybib, bib_df = mybib_df) {
 
 **Nitta, J. H.** and S. M. Chambers. "Identifying cryptic fern gametophytes using DNA barcoding: A review". In: *Applications in Plant Sciences*. Accepted.
 
+`r icon_link(text = "Preprint", url = "https://ecoevorxiv.org/dr25p/")`
 `r icon_link(icon = "github", text = "Code", url = "https://github.com/joelnitta/gameto-barcode-review")`
 
 ## 2021
