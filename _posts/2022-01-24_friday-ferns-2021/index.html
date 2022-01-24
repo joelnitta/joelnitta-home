@@ -1,0 +1,1851 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+
+  <!--radix_placeholder_meta_tags-->
+  <title>#fernfriday 2021</title>
+
+  <meta property="description" itemprop="description" content="In which I answer the burning question on everybody&#39;s minds: what was&#10;the most popular fern of 2021??"/>
+
+  <link rel="license" href="https://creativecommons.org/licenses/by/4.0/"/>
+
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2022-01-24"/>
+  <meta property="article:created" itemprop="dateCreated" content="2022-01-24"/>
+  <meta name="article:author" content="Joel Nitta"/>
+
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="#fernfriday 2021"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="In which I answer the burning question on everybody&#39;s minds: what was&#10;the most popular fern of 2021??"/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="#fernfriday 2021"/>
+  <meta property="twitter:description" content="In which I answer the burning question on everybody&#39;s minds: what was&#10;the most popular fern of 2021??"/>
+
+  <!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
+  <meta name="citation_title" content="#fernfriday 2021"/>
+  <meta name="citation_fulltext_html_url" content="https://joelnitta.com/friday-ferns-2021"/>
+  <meta name="citation_fulltext_world_readable" content=""/>
+  <meta name="citation_online_date" content="2022/01/24"/>
+  <meta name="citation_publication_date" content="2022/01/24"/>
+  <meta name="citation_author" content="Joel Nitta"/>
+  <meta name="citation_author_institution" content="University of Tokyo"/>
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","preview","creative_commons","citation_url","repository_url","output","params","editor_options"]}},"value":[{"type":"character","attributes":{},"value":["#fernfriday 2021"]},{"type":"character","attributes":{},"value":["In which I answer the burning question on everybody's minds: what was\nthe most popular fern of 2021??\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["first_name","last_name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Joel"]},{"type":"character","attributes":{},"value":["Nitta"]},{"type":"character","attributes":{},"value":["https://joelnitta.com"]},{"type":"character","attributes":{},"value":["University of Tokyo"]},{"type":"character","attributes":{},"value":["http://iwasakilab.k.u-tokyo.ac.jp"]},{"type":"character","attributes":{},"value":["0000-0003-4719-7472"]}]}]},{"type":"character","attributes":{},"value":["2022-01-24"]},{"type":"character","attributes":{},"value":["preview-image.jpg"]},{"type":"character","attributes":{},"value":["CC BY"]},{"type":"character","attributes":{},"value":["https://joelnitta.com/friday-ferns-2021"]},{"type":"character","attributes":{},"value":["https://github.com/joelnitta/joelnitta-home"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["slug","date","repo","site"]}},"value":[{"type":"character","attributes":{},"value":["friday-ferns-2021"]},{"type":"character","attributes":{},"value":["2022-01-24"]},{"type":"character","attributes":{},"value":["joelnitta/joelnitta-home"]},{"type":"character","attributes":{},"value":["https://joelnitta.com"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["chunk_output_type"]}},"value":[{"type":"character","attributes":{},"value":["console"]}]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["ff-2021-tweet-content.txt","ff-2021-tweet-content.txt_gntagger/input.txt","ff-2021-tweet-content.txt_gntagger/meta.json","ff-2021-tweet-content.txt_gntagger/names.json","ff-2021-tweets.json","gntagger","images/gntagger.png","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/clipboard-2.0.6/clipboard.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/hannah-tweet-1.png","index_files/font-awesome-5.1.0/css/all.css","index_files/font-awesome-5.1.0/css/v4-shims.css","index_files/font-awesome-5.1.0/webfonts/fa-brands-400.eot","index_files/font-awesome-5.1.0/webfonts/fa-brands-400.svg","index_files/font-awesome-5.1.0/webfonts/fa-brands-400.ttf","index_files/font-awesome-5.1.0/webfonts/fa-brands-400.woff","index_files/font-awesome-5.1.0/webfonts/fa-brands-400.woff2","index_files/font-awesome-5.1.0/webfonts/fa-regular-400.eot","index_files/font-awesome-5.1.0/webfonts/fa-regular-400.svg","index_files/font-awesome-5.1.0/webfonts/fa-regular-400.ttf","index_files/font-awesome-5.1.0/webfonts/fa-regular-400.woff","index_files/font-awesome-5.1.0/webfonts/fa-regular-400.woff2","index_files/font-awesome-5.1.0/webfonts/fa-solid-900.eot","index_files/font-awesome-5.1.0/webfonts/fa-solid-900.svg","index_files/font-awesome-5.1.0/webfonts/fa-solid-900.ttf","index_files/font-awesome-5.1.0/webfonts/fa-solid-900.woff","index_files/font-awesome-5.1.0/webfonts/fa-solid-900.woff2","index_files/header-attrs-2.11/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/twitter-widget-0.0.1/widgets.js","index_files/webcomponents-2.0.0/webcomponents.js","index_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css","index_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+  <style type="text/css">
+
+  body {
+    background-color: white;
+  }
+
+  .pandoc-table {
+    width: 100%;
+  }
+
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .shaded-content {
+    background: white;
+  }
+
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+
+  d-appendix {
+    padding-top: 30px;
+  }
+
+  d-article>p>img {
+    width: 100%;
+  }
+
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+
+  /* Tweak code blocks */
+
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+
+  d-article div.sourceCode {
+    background-color: white;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  d-article pre a {
+    border-bottom: none;
+  }
+
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
+  @media(min-width: 768px) {
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+
+  d-article pre {
+    font-size: 14px;
+  }
+
+  }
+
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  /* CSS for d-contents */
+
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  .d-contents li {
+    list-style-type: none
+  }
+
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+
+  .d-contents ul {
+    padding-left: 1em
+  }
+
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+
+
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+
+
+  /* Figure */
+
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+
+  .figure img {
+    width: 100%;
+  }
+
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+
+  /* Citations */
+
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+
+
+  /* Tweak 1000px media break to show more text */
+
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+
+    .grid {
+      grid-column-gap: 16px;
+    }
+
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+
+
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Include appendix styles here so they can be overridden */
+
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  d-appendix > * {
+    grid-column: text;
+  }
+
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+
+  /* Include footnote styles here so they can be overridden */
+
+  d-footnote-list {
+    contain: layout style;
+  }
+
+  d-footnote-list > * {
+    grid-column: text;
+  }
+
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+
+
+
+  /* Anchor.js */
+
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  /* Social footer */
+
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+
+  .disqus-comments {
+    margin-right: 30px;
+  }
+
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  #disqus_thread {
+    margin-top: 30px;
+  }
+
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+
+
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+
+
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+
+  /* Styles for posts lists (not auto-injected) */
+
+
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .posts-list img {
+    opacity: 1;
+  }
+
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+
+  .posts-more {
+    clear: both;
+  }
+
+
+  .posts-sidebar {
+    font-size: 16px;
+  }
+
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+
+  .categories li>a {
+    border-bottom: none;
+  }
+
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .categories .active {
+    font-weight: 600;
+  }
+
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+
+
+
+  </style>
+
+  <script type="application/javascript">
+
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+
+  // show body when load is complete
+  function on_load_complete() {
+
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+
+
+    // set body to visible
+    document.body.style.visibility = 'visible';
+
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+
+  function init_distill() {
+
+    init_common();
+
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+
+      // capture layout
+      var layout = $(this).attr('data-layout');
+
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+
+
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+
+    // load distill framework
+    load_distill_framework();
+
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+
+      // clear polling timer
+      clearInterval(tid);
+
+      // show body now that everything is ready
+      on_load_complete();
+    }
+
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+
+  }
+
+  function init_downlevel() {
+
+    init_common();
+
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+
+    // remove toc
+    $('.d-contents').remove();
+
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+
+
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+
+    $('body').addClass('downlevel');
+
+    on_load_complete();
+  }
+
+
+  function init_common() {
+
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+
+      }
+    });
+
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+
+  </script>
+
+  <!--/radix_placeholder_distill-->
+  <script src="index_files/header-attrs-2.11/header-attrs.js"></script>
+  <script src="index_files/clipboard-2.0.6/clipboard.min.js"></script>
+  <link href="index_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+  <script src="index_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+  <script>window.xaringanExtraClipboard(null, {"button":"<i class=\"fa fa-clipboard fa-2x\"><\/i>","success":"<i class=\"fa fa-check fa-2x\" style=\"color: #90BE6D\"><\/i>","error":"<i class=\"fa fa-times-circle fa-2x\" style=\"color: #F94144\"><\/i>"})</script>
+  <link href="index_files/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+  <link href="index_files/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+  <script src="index_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="index_files/popper-2.6.0/popper.min.js"></script>
+  <link href="index_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="index_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="index_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="index_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="index_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="index_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="index_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"#fernfriday 2021","description":"In which I answer the burning question on everybody's minds: what was\nthe most popular fern of 2021??","authors":[{"author":"Joel Nitta","authorURL":"https://joelnitta.com","affiliation":"University of Tokyo","affiliationURL":"http://iwasakilab.k.u-tokyo.ac.jp","orcidID":"0000-0003-4719-7472"}],"publishedDate":"2022-01-24T00:00:00.000+09:00","citationText":"Nitta, 2022"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>#fernfriday 2021</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+<p><p>In which I answer the burning question on everybody’s minds: what was the most popular fern of 2021??</p></p>
+</div>
+
+<div class="d-byline">
+  
+  true
+  
+<br/>2022-01-24
+</div>
+
+<div class="d-article">
+<!----
+checklist:
+- check the "update me" messages in YAML above
+- initialise the _renv folder with refinery::renv_new("name of post folder")
+- populate the lockfile with refinery::renv_snapshot("name of post folder")
+- update the _renv folder from snapshot with refinery::restore("name of post folder")
+---->
+<!--------------- setup post ----------------->
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<!--------------- post ----------------->
+<p>One of the saving graces of twitter is the existence of things like <a href="https://twitter.com/hashtag/fernfriday?src=hashtag_click">#fernfriday</a> and other hashtags of people’s favorite organisms.</p>
+<p>Recently, <a href="https://twitter.com/HannahOish">@HannahOish</a> posted <a href="https://twitter.com/HannahOish/status/1477267832018776068">this brief analysis</a> of the <a href="https://twitter.com/hashtag/FishADay?src=hashtag_click">#FishADay</a> hashtag:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="index_files/figure-html5/hannah-tweet-1.png" width="624" /></p>
+</div>
+<p>Upon seeing it, I immediately knew what I had to do next: <strong>find out the most popular fern species of <a href="https://twitter.com/hashtag/fernfriday?src=hashtag_click">#fernfriday</a> in 2021!</strong></p>
+<p>First let’s load some packages.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/sfirke/janitor'>janitor</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/dgrtwo/fuzzyjoin'>fuzzyjoin</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h1 id="getting-tweets">Getting tweets</h1>
+<h2 id="rtweet">rtweet?</h2>
+<p>The <a href="https://github.com/ropensci/rtweet">rtweet</a> package is a great way to get twitter data into R.</p>
+<p>There is just one problem: it relies on the <a href="https://developer.twitter.com/en/docs/tutorials/getting-started-with-r-and-v2-of-the-twitter-api">official twitter API</a>, which is <strong>limited to tweets in the past week to 10 days or so</strong>, unless you want to shell out $$$ for a paid API account… which I don’t.</p>
+<h2 id="snscrape">snscrape</h2>
+<h3 id="installation">Installation</h3>
+<p>So I will get around this pesky problem by using the <a href="https://github.com/JustAnotherArchivist/snscrape">snscrape</a> twitter scraper written in python <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p>snscrape can be installed using <a href="https://pip.pypa.io/en/stable/">pip</a>.</p>
+<p>My preferred method for handling python is to use the conda environment manager. We can <a href="https://www.anaconda.com/blog/using-pip-in-a-conda-environment">use pip within conda</a> to install snscrape by writing an <code>environment.yml</code> file like this (thanks to <a href="https://github.com/hansheng0512/tweets-scrapping-using-python">@hansheng0512</a>):</p>
+<pre><code>name: tweets-scraping
+dependencies:
+- python=3.8
+- pip=21.1.3
+- pip:
+- git+https://github.com/JustAnotherArchivist/snscrape.git</code></pre>
+<p>Once that is in your working directory, run this to create the environment:</p>
+<pre><code>conda env create -f environment.yml</code></pre>
+<p>Now snscrape should be installed and ready to use!</p>
+<h3 id="scraping">Scraping</h3>
+<p>Since <code>snscrape</code> is a command-line interface (CLI), the normal way to use it would be to type commands from the command line. But this is an R blog, so let’s run it from R using the <code>system()</code> command <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Set some variables, in case we want to modify the search later</span>
+<span class='va'>DATE_START</span> <span class='op'>&lt;-</span> <span class='st'>"2021-01-01"</span>
+<span class='va'>DATE_END</span> <span class='op'>&lt;-</span> <span class='st'>"2021-12-31"</span>
+<span class='va'>HASHTAG</span> <span class='op'>&lt;-</span> <span class='st'>"fernfriday"</span>
+<span class='va'>JSON_FILENAME</span> <span class='op'>=</span> <span class='st'>"ff-2021-tweets"</span>
+
+<span class='co'># Compose the command for snscrape to retrieve tweets</span>
+<span class='va'>command</span> <span class='op'>&lt;-</span> <span class='fu'>glue</span><span class='fu'>::</span><span class='fu'><a href='https://glue.tidyverse.org/reference/glue.html'>glue</a></span><span class='op'>(</span><span class='st'>'snscrape --jsonl --since {DATE_START} twitter-hashtag "{HASHTAG} until:{DATE_END}" &gt; {JSON_FILENAME}.json'</span><span class='op'>)</span>
+
+<span class='co'># Run the command inside the conda env</span>
+<span class='fu'><a href='https://rdrr.io/r/base/system.html'>system</a></span><span class='op'>(</span>
+  <span class='fu'>glue</span><span class='fu'>::</span><span class='fu'><a href='https://glue.tidyverse.org/reference/glue.html'>glue</a></span><span class='op'>(</span>
+    <span class='st'>"source ~/miniconda3/etc/profile.d/conda.sh ; 
+       conda activate tweets-scraping ; 
+       {command} ; 
+       conda deactivate"</span><span class='op'>)</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Now the tweets have been downloaded in JSON format to <code>ff-2021-tweets.json</code>.</p>
+<h2 id="load-tweets-into-r">Load tweets into R</h2>
+<p>We can <a href="https://stackoverflow.com/questions/35276184/json-using-jsonlite-parsing-error-in-r">load the tweets into R</a> with the <code>jsonlite</code> package.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ff_tweets_raw</span> <span class='op'>&lt;-</span> <span class='fu'>jsonlite</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/jsonlite/man/stream_in.html'>stream_in</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/connections.html'>file</a></span><span class='op'>(</span><span class='st'>"ff-2021-tweets.json"</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+ Found 500 records...
+ Found 1000 records...
+ Found 1345 records...
+ Imported 1345 records. Simplifying...</code></pre>
+</div>
+<p>Let’s take a peek at the data.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>glimpse</span><span class='op'>(</span><span class='va'>ff_tweets_raw</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Rows: 1,345
+Columns: 28
+$ `_type`          &lt;chr&gt; &quot;snscrape.modules.twitter.Tweet&quot;, &quot;snscrape…
+$ url              &lt;chr&gt; &quot;https://twitter.com/bmoandkmo/status/14766…
+$ date             &lt;chr&gt; &quot;2021-12-30T23:31:27+00:00&quot;, &quot;2021-12-30T23…
+$ content          &lt;chr&gt; &quot;the last #FernFriday of this year\n\nAmazi…
+$ renderedContent  &lt;chr&gt; &quot;the last #FernFriday of this year\n\nAmazi…
+$ id               &lt;dbl&gt; 1.476697e+18, 1.476690e+18, 1.476681e+18, 1…
+$ user             &lt;df[,23]&gt; &lt;data.frame[23 x 23]&gt;
+$ replyCount       &lt;int&gt; 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, …
+$ retweetCount     &lt;int&gt; 1, 0, 1, 0, 0, 1, 0, 0, 5, 1, 0, 0, 3, 1, 1…
+$ likeCount        &lt;int&gt; 6, 3, 22, 4, 6, 7, 4, 35, 21, 27, 14, 15, 3…
+$ quoteCount       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0…
+$ conversationId   &lt;dbl&gt; 1.476697e+18, 1.476690e+18, 1.476681e+18, 1…
+$ lang             &lt;chr&gt; &quot;en&quot;, &quot;und&quot;, &quot;und&quot;, &quot;und&quot;, &quot;und&quot;, &quot;und&quot;, &quot;u…
+$ source           &lt;chr&gt; &quot;&lt;a href=\&quot;https://mobile.twitter.com\&quot; rel…
+$ sourceUrl        &lt;chr&gt; &quot;https://mobile.twitter.com&quot;, &quot;https://mobi…
+$ sourceLabel      &lt;chr&gt; &quot;Twitter Web App&quot;, &quot;Twitter Web App&quot;, &quot;Twit…
+$ outlinks         &lt;list&gt; &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NU…
+$ tcooutlinks      &lt;list&gt; &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;N…
+$ media            &lt;list&gt; [&lt;data.frame[2 x 3]&gt;], [&lt;data.frame[1 x 3]…
+$ retweetedTweet   &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ quotedTweet      &lt;df[,28]&gt; &lt;data.frame[23 x 28]&gt;
+$ inReplyToTweetId &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ inReplyToUser    &lt;df[,23]&gt; &lt;data.frame[23 x 23]&gt;
+$ mentionedUsers   &lt;list&gt; &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;,…
+$ coordinates      &lt;df[,3]&gt; &lt;data.frame[23 x 3]&gt;
+$ place            &lt;df[,6]&gt; &lt;data.frame[23 x 6]&gt;
+$ hashtags         &lt;list&gt; &quot;FernFriday&quot;, &quot;FernFriday&quot;, &lt;&quot;FernFriday&quot;, …
+$ cashtags         &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</code></pre>
+</div>
+<p>There’s a lot of stuff in there! Let’s clean up the data a bit and just keep the useful bits.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ff_tweets</span> <span class='op'>&lt;-</span>
+  <span class='va'>ff_tweets_raw</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>as_tibble</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>select</span><span class='op'>(</span>
+      <span class='va'>date</span>, <span class='va'>url</span>, <span class='va'>user</span>, <span class='va'>id</span>,
+      content <span class='op'>=</span> <span class='va'>renderedContent</span>,
+      <span class='va'>lang</span>, <span class='va'>coordinates</span>, <span class='va'>place</span>,
+      <span class='fu'>contains</span><span class='op'>(</span><span class='st'>"count"</span><span class='op'>)</span>
+    <span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='co'># Extract data from nested dataframes </span>
+  <span class='fu'>mutate</span><span class='op'>(</span>
+    user <span class='op'>=</span> <span class='fu'>select</span><span class='op'>(</span><span class='va'>user</span>, <span class='va'>username</span><span class='op'>)</span>,
+    place <span class='op'>=</span> <span class='fu'>select</span><span class='op'>(</span><span class='va'>place</span>, <span class='va'>country</span><span class='op'>)</span>,
+    coordinates <span class='op'>=</span> <span class='fu'>select</span><span class='op'>(</span><span class='va'>coordinates</span>, <span class='va'>longitude</span>, <span class='va'>latitude</span><span class='op'>)</span>
+    <span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>unnest</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>user</span>, <span class='va'>place</span>, <span class='va'>coordinates</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/janitor/man/clean_names.html'>clean_names</a></span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='va'>ff_tweets</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 1,345 × 13
+   date   url      username      id content   lang  longitude latitude
+   &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+ 1 2021-… https:/… bmoandk… 1.48e18 &quot;the las… en           NA       NA
+ 2 2021-… https:/… ALULUAL… 1.48e18 &quot;#FernFr… und          NA       NA
+ 3 2021-… https:/… vatanek… 1.48e18 &quot;#FernFr… und          NA       NA
+ 4 2021-… https:/… ALULUAL… 1.48e18 &quot;#FernFr… und          NA       NA
+ 5 2021-… https:/… ALULUAL… 1.48e18 &quot;#FernFr… und          NA       NA
+ 6 2021-… https:/… ALULUAL… 1.48e18 &quot;#FernFr… und          NA       NA
+ 7 2021-… https:/… ALULUAL… 1.48e18 &quot;#FernFr… und          NA       NA
+ 8 2021-… https:/… duckinw… 1.47e18 &quot;Wishing… en           NA       NA
+ 9 2021-… https:/… helecho… 1.47e18 &quot;¡Felici… pt           NA       NA
+10 2021-… https:/… KOKESHI… 1.47e18 &quot;＃FernF… en           NA       NA
+# … with 1,335 more rows, and 5 more variables: country &lt;chr&gt;,
+#   reply_count &lt;int&gt;, retweet_count &lt;int&gt;, like_count &lt;int&gt;,
+#   quote_count &lt;int&gt;</code></pre>
+</div>
+<p>That’s better.</p>
+<h1 id="extract-scientific-names-with-gntagger">Extract scientific names with gntagger</h1>
+<p>So getting our twitter data wasn’t that hard, now just to find all the fern species…</p>
+<p>Uh-oh. This is easier said than done. Twitter doesn’t have a JSON field for fern species!</p>
+<p>Luckily this post does have some biological content. For this task I will use <a href="https://github.com/gnames/gntagger"><code>gntagger</code></a>. <code>gntagger</code> is a fantastic little CLI written in GO that handles exactly this sort of situation: <strong>it automatically detects species names in raw text</strong> <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
+<p>Installation <a href="https://github.com/gnames/gntagger#installation">is quite simple as described in the <code>gntagger</code> docs</a>, so I won’t go into that any more here.</p>
+<p><code>gntagger</code> requires a plain-text file as input, so let’s write out the tweets to a plain text file with one line per tweet:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ff_tweets</span> <span class='op'>%&gt;%</span>
+  <span class='co'># Replace line breaks with spaces so we get one tweet per line</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>content <span class='op'>=</span> <span class='fu'>str_replace_all</span><span class='op'>(</span><span class='va'>content</span>, <span class='st'>"\n"</span>, <span class='st'>" "</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>pull</span><span class='op'>(</span><span class='va'>content</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>write_lines</span><span class='op'>(</span><span class='st'>"ff-2021-tweet-content.txt"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Now, open the text file with <code>gntagger</code> <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>:</p>
+<pre><code>gntagger ff-2021-tweet-content.txt</code></pre>
+<p>You should see a screen that looks like this:</p>
+<p><img src="images/gntagger.png" /></p>
+<p><code>gntagger</code> takes a “android” approach to tagging species names. It first uses its own algorithm to automatically identify all possible species names, then has a very simple user interface (UI) so the user can confirm or reject each candidate name rapidly. According to the <a href="https://github.com/gnames/gntagger#gntagger-"><code>gntagger</code> docs</a>, you should be able to get through about “4000 names spread over 600 pages in about 2 hours”.</p>
+<p>It saves the intermediate output to a folder named after the input file, in this case <code>ff-2021-tweet-content.txt_gntagger</code>.</p>
+<p>I recommend trying out <code>gntagger</code> to see how it works—it definitely looks great for parsing names from old literature!</p>
+<p>But you don’t have to go through all of the names yourself. In fact, <code>gntagger</code>’s initial “guesses” are pretty darn good, and can be used as-is for a rough analysis. Or, you can download the cleaned up version from FIXME: ADD LINK.</p>
+<p>Let’s read in the <code>gntagger</code> results, which are again JSON:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ff_species_raw</span> <span class='op'>&lt;-</span> <span class='fu'>jsonlite</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/jsonlite/man/fromJSON.html'>fromJSON</a></span><span class='op'>(</span><span class='st'>"ff-2021-tweet-content.txt_gntagger/names.json"</span><span class='op'>)</span>
+
+<span class='va'>ff_species</span> <span class='op'>&lt;-</span> <span class='va'>ff_species_raw</span><span class='op'>[[</span><span class='st'>"names"</span><span class='op'>]</span><span class='op'>]</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>as_tibble</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>select</span><span class='op'>(</span><span class='va'>type</span>, <span class='va'>name</span>, <span class='va'>start</span>, <span class='va'>end</span><span class='op'>)</span>
+
+<span class='va'>ff_species</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 664 × 4
+   type             name                   start   end
+   &lt;chr&gt;            &lt;chr&gt;                  &lt;int&gt; &lt;int&gt;
+ 1 Binomial         Elaphoglossum crinitum   430   452
+ 2 Binomial         Aglaomorpha heraclea    1230  1250
+ 3 Binomial         Arachniodes standishii  1325  1347
+ 4 Uninomial        Platycerium             1398  1409
+ 5 PossibleBinomial P. alcicorne            1562  1574
+ 6 Binomial         Angiopteris evecta      2457  2475
+ 7 Binomial         Dryopteris shibipedis   2508  2529
+ 8 Uninomial        Pyrrosia                2914  2923
+ 9 Binomial         Doodia australis        3161  3178
+10 Binomial         Lastreopsis hispida     3189  3209
+# … with 654 more rows</code></pre>
+</div>
+<p>The tricky part here is that <code>gntagger</code> outputs location by character position, not line.</p>
+<p>So we need to figure out which characters match which lines, which in turn match tweets…</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ff_tweets_start_end</span> <span class='op'>&lt;-</span>
+  <span class='va'>ff_tweets</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>
+    <span class='co'># Replace line breaks with spaces so we get one tweet per line</span>
+    content <span class='op'>=</span> <span class='fu'>str_replace_all</span><span class='op'>(</span><span class='va'>content</span>, <span class='st'>"\n"</span>, <span class='st'>" "</span><span class='op'>)</span>,
+    <span class='co'># Count number of characters per tweet</span>
+    num_char <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/nchar.html'>nchar</a></span><span class='op'>(</span><span class='va'>content</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>select</span><span class='op'>(</span><span class='va'>id</span>, <span class='va'>num_char</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='co'># Calculate start and end of each tweet in characters</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>
+    end <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/cumsum.html'>cumsum</a></span><span class='op'>(</span><span class='va'>num_char</span><span class='op'>)</span>,
+    start <span class='op'>=</span> <span class='va'>end</span> <span class='op'>-</span> <span class='va'>num_char</span> <span class='op'>+</span> <span class='fl'>1</span>,
+    start <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='va'>start</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>select</span><span class='op'>(</span><span class='va'>id</span>, <span class='va'>start</span>, <span class='va'>end</span><span class='op'>)</span>
+
+<span class='va'>ff_tweets_start_end</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 1,345 × 3
+        id start   end
+     &lt;dbl&gt; &lt;int&gt; &lt;int&gt;
+ 1 1.48e18     1    96
+ 2 1.48e18    97   131
+ 3 1.48e18   132   188
+ 4 1.48e18   189   223
+ 5 1.48e18   224   258
+ 6 1.48e18   259   293
+ 7 1.48e18   294   328
+ 8 1.47e18   329   552
+ 9 1.47e18   553   623
+10 1.47e18   624   658
+# … with 1,335 more rows</code></pre>
+</div>
+<p>Now we can use the <code>fuzzyjoin</code> package to join the species names to the tweets by position.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ff_tweets_species</span> <span class='op'>&lt;-</span>
+<span class='va'>ff_tweets</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>left_join</span><span class='op'>(</span><span class='va'>ff_tweets_start_end</span>, by <span class='op'>=</span> <span class='st'>"id"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='co'># interval_left_join requires the Bioconductor IRanges package to be installed</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/fuzzyjoin/man/interval_join.html'>interval_left_join</a></span><span class='op'>(</span>
+    <span class='va'>ff_species</span>
+  <span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='fu'>matches</span><span class='op'>(</span><span class='st'>"start|end"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='co'># Drop tweets without any species mentioned</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>name</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Let’s take a peek at the results.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>select</span><span class='op'>(</span><span class='va'>ff_tweets_species</span>, <span class='va'>content</span>, <span class='va'>name</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 761 × 2
+   content                                            name            
+   &lt;chr&gt;                                              &lt;chr&gt;           
+ 1 &quot;Wishing all a happy, safe and peacefull #FernFri… Elaphoglossum c…
+ 2 &quot;Quedan pocos días del año.\n今年も残すところあと… Aglaomorpha her…
+ 3 &quot;#FernFriday \n\nArachniodes standishii https://t… Arachniodes sta…
+ 4 &quot;🎄🎉Merry Christmaserati🎅🎁\n\nPlatycerium Mase… Platycerium     
+ 5 &quot;#FernFriday\n好き\nP. alcicorne (Madagascar) htt… P. alcicorne    
+ 6 &quot;#FernFriday 🌃🌿✨\n\nAngiopteris evecta https:/… Angiopteris eve…
+ 7 &quot;シビイタチシダ Dryopteris shibipedis #Fernfriday… Angiopteris eve…
+ 8 &quot;シビイタチシダ Dryopteris shibipedis #Fernfriday… Dryopteris shib…
+ 9 &quot;✌️\n\n #Fernfriday https://t.co/LdQgp4Wcw0&quot;        Dryopteris shib…
+10 &quot;I told my friend that if I ever had a kid, I wou… Pyrrosia        
+# … with 751 more rows</code></pre>
+</div>
+<p>Yay! We’ve got species names mapped to tweets (and user ID, etc). Notice that some tweets now appear duplicated, since our data are have one row per species mentioned, and some tweets may include multiple species.</p>
+<!--------------- appendices ----------------->
+<div class="layout-chunk" data-layout="l-body">
+<h2 class="appendix" id="last-updated">Last updated</h2>
+<p>2022-01-24 16:21:29 JST</p>
+<h2 class="appendix" id="details">Details</h2>
+<p><a href="https://github.com/joelnitta/joelnitta-home/tree/main/_posts/2022-01-24_friday-ferns-2021/index.Rmd">source code</a>, <a href="https://github.com/joelnitta/joelnitta-home/tree/main/_renv/_posts/2022-01-24_friday-ferns-2021/renv.lock">R environment</a></p>
+</div>
+<!--------------- miscellanea ----------------->
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>This is probably not within twitter’s user guidelines, so use at your own discretion<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>A good way to limit the number of hits when you are testing code is with the <code>--max-results</code> option, e.g., <code>--max-results 10</code><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>Again, inspired by <a href="https://github.com/hansheng0512/tweets-scrapping-using-python/blob/master/main.py">@hansheng0512</a>’s code<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>OK it was probably designed more with old biodiversity literature in mind and not twitter, but it works fine either way!<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>You may need to execute this with <code>./gntagger</code> if you didn’t make <code>gntagger</code> executable everywhere by putting it on your <code>PATH</code><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom">
+<h3 id="updates-and-corrections">Corrections</h3>
+<p>If you see mistakes or want to suggest changes, please <a href="https://github.com/joelnitta/joelnitta-home/issues/new">create an issue</a> on the source repository.</p>
+<h3 id="reuse">Reuse</h3>
+<p>Text and figures are licensed under Creative Commons Attribution <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Source code is available at <a href="https://github.com/joelnitta/joelnitta-home">https://github.com/joelnitta/joelnitta-home</a>, unless otherwise noted. The figures that have been reused from other sources don't fall under this license and can be recognized by a note in their caption: "Figure from ...".</p>
+<h3 id="citation">Citation</h3>
+<p>For attribution, please cite this work as</p>
+<pre class="citation-appendix short">Nitta (2022, Jan. 24). #fernfriday 2021. Retrieved from https://joelnitta.com/friday-ferns-2021</pre>
+<p>BibTeX citation</p>
+<pre class="citation-appendix long">@misc{nitta2022#fernfriday,
+  author = {Nitta, Joel},
+  title = {#fernfriday 2021},
+  url = {https://joelnitta.com/friday-ferns-2021},
+  year = {2022}
+}</pre>
+</div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>
