@@ -11,13 +11,15 @@ author:
     affiliation_url: http://iwasakilab.k.u-tokyo.ac.jp
     orcid_id: 0000-0003-4719-7472
 date: 2022-01-24
-preview: preview-image.jpg  # <---- UPDATE ME 
+preview: 'img/new-zealand-fantail-3729278_960_720.jpg'
 creative_commons: CC BY
 citation_url: https://joelnitta.com/friday-ferns-2021 
 repository_url: https://github.com/joelnitta/joelnitta-home
 output:
   distill::distill_article:
     self_contained: false
+    toc: true
+    toc_depth: 3
 params:
   slug: friday-ferns-2021
   date: 2022-01-24
@@ -27,15 +29,6 @@ editor_options:
   chunk_output_type: console
 draft: true
 ---
-
-<!----
-checklist:
-- check the "update me" messages in YAML above
-- initialise the _renv folder with refinery::renv_new("name of post folder")
-- populate the lockfile with refinery::renv_snapshot("name of post folder")
-- update the _renv folder from snapshot with refinery::restore("name of post folder")
----->
-
 
 <!--------------- setup post ----------------->
 
@@ -61,6 +54,21 @@ htmltools::tagList(
 
 <!--------------- post ----------------->
 
+## tl;dr
+
+I show how to analyze #fernfriday tweets from 2021, including
+
+- Scraping tweets with `snscraper`
+- Extracting species names with `gntagger`
+- Loading JSON data into R with `jsonlite`
+
+```{r fern-bird}
+#| echo = FALSE,
+#| fig.cap = "Image by [jewelie108](https://pixabay.com/users/jewelie108-2884314/) on [pixabay](https://pixabay.com/photos/new-zealand-fantail-bird-3729278/)." 
+
+knitr::include_graphics("img/new-zealand-fantail-3729278_960_720.jpg")
+```
+
 One of the saving graces of twitter is the existence of things like [#fernfriday](https://twitter.com/hashtag/fernfriday?src=hashtag_click) and other hashtags of people's favorite organisms.
 
 Recently, [\@HannahOish](https://twitter.com/HannahOish) posted [this brief analysis](https://twitter.com/HannahOish/status/1477267832018776068) of the [#FishADay](https://twitter.com/hashtag/FishADay?src=hashtag_click) hashtag:
@@ -79,19 +87,15 @@ library(janitor)
 library(fuzzyjoin)
 ```
 
-# Getting tweets
+## Getting tweets with snscrape
 
-## rtweet?
+There are at least two R packages to get twitter data in R,  [rtweet](https://github.com/ropensci/rtweet) and [tweetR](https://cran.r-project.org/web/packages/twitteR/README.html)
 
-The [rtweet](https://github.com/ropensci/rtweet) package is a great way to get twitter data into R.
-
-There is just one problem: it relies on the [official twitter API](https://developer.twitter.com/en/docs/tutorials/getting-started-with-r-and-v2-of-the-twitter-api), which is **limited to tweets in the past week to 10 days or so**, unless you want to shell out \$\$\$ for a paid API account... which I don't.
-
-## snscrape
-
-### Installation
+There is just one problem: they rely on the [official twitter API](https://developer.twitter.com/en/docs/tutorials/getting-started-with-r-and-v2-of-the-twitter-api), which is **limited to tweets in the past week to 10 days or so**, unless you want to shell out \$\$\$ for a paid API account... which I don't.
 
 So I will get around this pesky problem by using the [snscrape](https://github.com/JustAnotherArchivist/snscrape) twitter scraper written in python ^[This is probably not within twitter's user guidelines, so use at your own discretion].
+
+### Installation
 
 snscrape can be installed using [pip](https://pip.pypa.io/en/stable/).
 
@@ -140,7 +144,7 @@ system(
 
 Now the tweets have been downloaded in JSON format to `ff-2021-tweets.json`.
 
-## Load tweets into R
+### Loading tweets into R
 
 We can [load the tweets into R](https://stackoverflow.com/questions/35276184/json-using-jsonlite-parsing-error-in-r) with the `jsonlite` package.
 
@@ -184,15 +188,17 @@ ff_tweets
 
 That's better.
 
-# Extract scientific names with gntagger
+## Extracting scientific names with gntagger
 
 So getting our twitter data wasn't that hard, now just to find all the fern species...
 
 Uh-oh. This is easier said than done. Twitter doesn't have a JSON field for fern species!
 
-Luckily this post does have some biological content. For this task I will use [`gntagger`](https://github.com/gnames/gntagger). `gntagger` is a fantastic little CLI written in GO that handles exactly this sort of situation: **it automatically detects species names in raw text** ^[OK it was probably designed more with old biodiversity literature in mind and not twitter, but it works fine either way!].
+Luckily this post *does* have some biological content. For this task I will use [`gntagger`](https://github.com/gnames/gntagger). `gntagger` is a fantastic little CLI written in GO that handles exactly this sort of situation: **it automatically detects species names in raw text** ^[OK it was probably designed more with old biodiversity literature in mind and not twitter, but it works fine either way!].
 
 Installation [is quite simple as described in the `gntagger` docs](https://github.com/gnames/gntagger#installation), so I won't go into that any more here.
+
+### Tagging names
 
 `gntagger` requires a plain-text file as input, so let's write out the tweets to a plain text file with one line per tweet:
 
@@ -221,11 +227,13 @@ gntagger ff-2021-tweet-content.txt
 
 You should see a screen that looks like this:
 
-![](images/gntagger.png)
+![](img/gntagger.png)
 
 `gntagger` takes a "android" approach to tagging species names. It first uses its own algorithm to automatically identify all possible species names, then has a very simple user interface (UI) so the user can confirm or reject each candidate name rapidly. According to the [`gntagger` docs](https://github.com/gnames/gntagger#gntagger-), you should be able to get through about "4000 names spread over 600 pages in about 2 hours".
 
 It saves the intermediate output to a folder named after the input file, in this case `ff-2021-tweet-content.txt_gntagger`.
+
+### Reading gntagger output back into R
 
 I recommend trying out `gntagger` to see how it works---it definitely looks great for parsing names from old literature!
 
@@ -238,7 +246,9 @@ ff_species_raw <- jsonlite::fromJSON("ff-2021-tweet-content.txt_gntagger/names.j
 
 ff_species <- ff_species_raw[["names"]] %>% 
   as_tibble() %>%
-  select(type, name, start, end)
+		# I'll call the name output by gntagger "taxon", since
+	# not all of them are species
+  select(type, taxon = name, start, end)
 
 ff_species
 ```
@@ -248,7 +258,9 @@ ff_species_raw <- jsonlite::fromJSON(here::here("_posts/2022-01-24_friday-ferns-
 
 ff_species <- ff_species_raw[["names"]] %>% 
   as_tibble() %>%
-  select(type, name, start, end)
+	# I'll call the name output by gntagger "taxon", since
+	# not all of them are species
+  select(type, taxon = name, start, end)
 
 ff_species
 ```
@@ -283,21 +295,62 @@ ff_tweets_species <-
 ff_tweets %>%
   left_join(ff_tweets_start_end, by = "id") %>%
   # interval_left_join requires the Bioconductor IRanges package to be installed
+	# and joins by columns "start" and "end" by default
   interval_left_join(
     ff_species
   ) %>%
   select(-matches("start|end")) %>%
-  # Drop tweets without any species mentioned
-  filter(!is.na(name))
+  # Drop tweets without any fern names mentioned
+  filter(!is.na(taxon))
 ```
 
 Let's take a peek at the results.
 
 ```{r peek-post-join}
-select(ff_tweets_species, content, name)
+select(ff_tweets_species, content, taxon)
 ```
 
 Yay! We've got species names mapped to tweets (and user ID, etc). Notice that some tweets now appear duplicated, since our data are have one row per species mentioned, and some tweets may include multiple species.
+
+## Data analysis (finally!)
+
+OK, we can finally analyze the data and see **who is the most popular fern of 2021**!
+
+I guess a simple approach would be to see what fern got the most tweets?
+
+```{r top-species}
+ff_tweets_species %>%
+	# Filter to only taxa that look like species names
+	filter(str_detect(type, "Binomial")) %>%
+	# Just look at the top 10
+	mutate(taxon = fct_lump_n(taxon, n = 10)) %>%
+	count(taxon) %>%
+	mutate(taxon = fct_reorder(taxon, n)) %>%
+	ggplot(aes(x = n, y = taxon)) + geom_col()
+```
+
+That's... not that interesting. Probably because very few species are actually tweeted multiple times. Also, it's possible that some users are tweeting the same species multiple times, which is kind of unfair right?
+
+Let's just look at the number of users tweeting about each species, and dump the "Other" category.
+
+```{r top-species-users}
+ff_tweets_species %>% 
+	# Filter to only taxa that look like species names
+  filter(str_detect(type, "Binomial")) %>%
+	# Only allow one "vote" per species per user
+	select(taxon, username) %>% 
+	unique() %>% 
+	# Just look at the top 10
+	mutate(taxon = fct_lump_n(taxon, n = 10)) %>%
+	# Exclude "Other"
+	filter(taxon != "Other") %>%
+	count(taxon) %>%
+	mutate(taxon = fct_reorder(taxon, n)) %>%
+	ggplot(aes(x = n, y = taxon)) + geom_col()
+
+```
+
+Cool! Those are some solid picks. And the top 10 species here all include > 3 three unique users tweeting about them.
 
 <!--------------- appendices ----------------->
 
