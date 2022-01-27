@@ -27,7 +27,7 @@ params:
   site: https://joelnitta.com
 editor_options: 
   chunk_output_type: console
-draft: true
+draft: false
 ---
 
 <!--------------- setup post ----------------->
@@ -83,6 +83,7 @@ First let's load some packages.
 
 ```{r load-packages, cache = FALSE}
 library(tidyverse)
+library(ggrepel)
 library(janitor)
 library(fuzzyjoin)
 ```
@@ -229,11 +230,11 @@ You should see a screen that looks like this:
 
 ![](img/gntagger.png)
 
-`gntagger` takes a "android" approach to tagging species names. It first uses its own algorithm to automatically identify all possible species names, then has a very simple user interface (UI) so the user can confirm or reject each candidate name rapidly. According to the [`gntagger` docs](https://github.com/gnames/gntagger#gntagger-), you should be able to get through about "4000 names spread over 600 pages in about 2 hours".
+`gntagger` takes a "android" approach to tagging species names. It first uses its own algorithm to automatically identify all possible species names, then [it has a simple user interface](https://github.com/gnames/gntagger#user-interface) so the user can confirm or reject each candidate name rapidly. According to the [`gntagger` docs](https://github.com/gnames/gntagger#gntagger-), you should be able to get through about "4000 names spread over 600 pages in about 2 hours". It took me around 10--15 min. for this dataset, which included 664 candidate names to process.
 
 It saves the intermediate output to a folder named after the input file, in this case `ff-2021-tweet-content.txt_gntagger`.
 
-### Reading gntagger output back into R
+### Loading gntagger output into R
 
 I recommend trying out `gntagger` to see how it works---it definitely looks great for parsing names from old literature!
 
@@ -242,32 +243,38 @@ But you don't have to go through all of the names yourself. In fact, `gntagger`'
 Let's read in the `gntagger` results, which are again JSON:
 
 ```{r load-gntagger-show, echo = TRUE, eval = FALSE}
-ff_species_raw <- jsonlite::fromJSON("ff-2021-tweet-content.txt_gntagger/names.json")
+ff_taxa_raw <- jsonlite::fromJSON("ff-2021-tweet-content.txt_gntagger/names.json")
 
-ff_species <- ff_species_raw[["names"]] %>% 
+ff_taxa <- ff_taxa_raw[["names"]] %>% 
   as_tibble() %>%
 		# I'll call the name output by gntagger "taxon", since
 	# not all of them are species
-  select(type, taxon = name, start, end)
+  select(type, annotation, taxon = name, start, end)
 
-ff_species
+ff_taxa
 ```
 
 ```{r load-gntagger-run, echo = FALSE, eval = TRUE}
-ff_species_raw <- jsonlite::fromJSON(here::here("_posts/2022-01-24_friday-ferns-2021/ff-2021-tweet-content.txt_gntagger/names.json"))
+ff_taxa_raw <- jsonlite::fromJSON(here::here("_posts/2022-01-24_friday-ferns-2021/ff-2021-tweet-content.txt_gntagger/names.json"))
 
-ff_species <- ff_species_raw[["names"]] %>% 
+ff_taxa <- ff_taxa_raw[["names"]] %>% 
   as_tibble() %>%
 	# I'll call the name output by gntagger "taxon", since
 	# not all of them are species
-  select(type, taxon = name, start, end)
+  select(type, annotation, taxon = name, start, end) %>%
+	# Exclude candidate names that I flagged as bad
+	filter(annotation != "NotName")
 
-ff_species
+ff_taxa
 ```
 
-The tricky part here is that `gntagger` outputs location by character position, not line.
+A bit about the column names we are reading in from `gntagger`:
 
-So we need to figure out which characters match which lines, which in turn match tweets...
+- `type` is something automatically defined by `gntagger`. I'm not quite sure what it means... but I'm guessing "Binomial" indicates that the name is a species.
+- `annotation` is the annotation I selected during the tagging process. It includes values "Accepted", "Genus", "NotName", "Species", and "Uninomial". It wasn't totally clear to me how to apply these during the tagging part. I mostly just hit the forward arrow for names that looked like species, so those are annotated as "Accepted". Towards the end I noticed I could select "Species", so a few are annotated as "Species" instead of "Accepted" ^[I actually think using a single variable for both taxonomic status ("Accepted") and rank ("Species", "Genus", etc) is rather confusing, and have filed an [issue](https://github.com/gnames/gntagger/issues/68) about this].
+- `start` and `end` indicate the character position in the raw text matching the start and end of the name.
+
+The next step is to use the `start` and `end` fields to match species names to tweets. For that, we'll need a tibble with the start and end position of each tweet.
 
 ```{r calc_start_end}
 ff_tweets_start_end <-
@@ -291,13 +298,13 @@ ff_tweets_start_end
 Now we can use the `fuzzyjoin` package to join the species names to the tweets by position.
 
 ```{r fuzzy-join}
-ff_tweets_species <-
+ff_tweets_taxa <-
 ff_tweets %>%
   left_join(ff_tweets_start_end, by = "id") %>%
   # interval_left_join requires the Bioconductor IRanges package to be installed
 	# and joins by columns "start" and "end" by default
   interval_left_join(
-    ff_species
+    ff_taxa
   ) %>%
   select(-matches("start|end")) %>%
   # Drop tweets without any fern names mentioned
@@ -307,50 +314,127 @@ ff_tweets %>%
 Let's take a peek at the results.
 
 ```{r peek-post-join}
-select(ff_tweets_species, content, taxon)
+select(ff_tweets_taxa, content, taxon)
 ```
 
-Yay! We've got species names mapped to tweets (and user ID, etc). Notice that some tweets now appear duplicated, since our data are have one row per species mentioned, and some tweets may include multiple species.
+Yay! We've got fern names mapped to tweets (and user ID, etc). Notice that some tweets now appear duplicated, since our data are have one row per fern name mentioned, and some tweets may include multiple names.
 
 ## Data analysis (finally!)
 
 OK, we can finally analyze the data and see **who is the most popular fern of 2021**!
 
-I guess a simple approach would be to see what fern got the most tweets?
+Like any good data analysis, let's check the distribution of the data first.
 
-```{r top-species}
-ff_tweets_species %>%
+```{r species-distribution, fig.cap = "Histogram of species occurrences in tweets"}
+ff_tweets_taxa %>%
 	# Filter to only taxa that look like species names
 	filter(str_detect(type, "Binomial")) %>%
-	# Just look at the top 10
-	mutate(taxon = fct_lump_n(taxon, n = 10)) %>%
 	count(taxon) %>%
-	mutate(taxon = fct_reorder(taxon, n)) %>%
-	ggplot(aes(x = n, y = taxon)) + geom_col()
+	ggplot(aes(x = n, fill = n == 1)) + 
+	geom_histogram(bins = 20) +
+	labs(fill = "Singleton") +
+	scale_fill_viridis_d() +
+	labs(x = "n species", y = "n tweets")
 ```
 
-That's... not that interesting. Probably because very few species are actually tweeted multiple times. Also, it's possible that some users are tweeting the same species multiple times, which is kind of unfair right?
+So the vast majority of species are only tweeted about once ("singletons" in the plot), then there's a longer tail of a much smaller number of species that receive multiple tweets. Sort of like ecology---[common species are rare, and rare species are common](https://methodsblog.com/2021/04/26/fuzzyq-the-commonness-of-rarity/). Neat.
 
-Let's just look at the number of users tweeting about each species, and dump the "Other" category.
+Now that we have a feel for how the data are distributed, let's see who are the rare species with multiple tweets. It's possible that some users are tweeting the same species multiple times, and that seems sort of unfair right? So we will just consider one tweet per species per user, and look at the top 10.
 
-```{r top-species-users}
-ff_tweets_species %>% 
+```{r top-species-users, fig.cap = "Top 10 species by number of users tweeting"}
+ff_tweets_taxa %>% 
 	# Filter to only taxa that look like species names
   filter(str_detect(type, "Binomial")) %>%
 	# Only allow one "vote" per species per user
 	select(taxon, username) %>% 
 	unique() %>% 
 	# Just look at the top 10
+	# fct_lump_n() lumps the remainder into "Other"
 	mutate(taxon = fct_lump_n(taxon, n = 10)) %>%
 	# Exclude "Other"
 	filter(taxon != "Other") %>%
 	count(taxon) %>%
 	mutate(taxon = fct_reorder(taxon, n)) %>%
-	ggplot(aes(x = n, y = taxon)) + geom_col()
-
+	ggplot(aes(x = n, y = taxon)) + 
+	geom_col() +
+	labs(x = "n users tweeting") +
+	theme(axis.title.y = element_blank())
 ```
 
 Cool! Those are some solid picks. And the top 10 species here all include > 3 three unique users tweeting about them.
+
+What about the most popular genera?
+
+```{r top-genera-users, fig.cap = "Top 10 genera by number of users tweeting"}
+ff_tweets_taxa %>% 
+	# Split species names into genus and specific epithet
+	separate(
+		taxon, into = c("genus", "specific_epithet"), sep = " ",
+		fill = "right", extra = "drop") %>%
+	# Exclude names that I annotated as "Uninomial" (family names)
+	filter(annotation != "Uninomial") %>%
+	# Exclude abbreviated genera ("P.", etc)
+	mutate(n_genus_char = nchar(genus)) %>%
+	filter(n_genus_char > 3) %>%
+	# Only allow one "vote" per species per user
+	select(genus, username) %>% 
+	unique() %>% 
+	# Just look at the top 10
+	# fct_lump_n() lumps the remainder into "Other"
+	mutate(genus = fct_lump_n(genus, n = 10)) %>%
+	# Exclude "Other"
+	filter(genus != "Other") %>%
+	count(genus) %>%
+	mutate(genus = fct_reorder(genus, n)) %>%
+	ggplot(aes(x = n, y = genus)) + 
+	geom_col() +
+	labs(x = "n users tweeting") +
+	theme(axis.title.y = element_blank())
+```
+
+The trends change a bit: although no single *Asplenium* species gets lots of tweets, the genus as whole does. Cool!
+
+There is obviously a lot that can be done with twitter data, and text data in general. I won't be going there. But I just want to look at one more thing...
+
+Who are the most prolific [#fernfriday](https://twitter.com/hashtag/fernfriday?src=hashtag_click) tweeters?
+
+```{r prolific-tweeters, fig.cap = "Number of #fernfriday tweets per user", layout="l-body-outset"}
+ff_user_count <-
+	ff_tweets %>%
+	count(username) %>%
+	mutate(username = fct_reorder(username, n))
+
+ggplot(ff_user_count, aes(x = n, y = username)) +
+	geom_col(aes(fill = n == 1)) +
+	# Only label the top 10
+	geom_label_repel(
+		data = slice_max(ff_user_count, order_by = n, n = 10), 
+		aes(label = username),
+		force = 3,
+		box.padding = 0.5,
+		min.segment.length = 0, 
+		max.overlaps = Inf,
+		direction = "y") +
+	# ... plus me
+	geom_label_repel(
+		data = filter(ff_user_count, username == "joel_nitta"),
+		fill = "light blue",
+		min.segment.length = 0,
+		aes(label = username)) +
+	scale_fill_viridis_d() +
+	scale_x_continuous(expand = c(0,0)) +
+	labs(x = "n tweets", fill = "Singleton") +
+	theme(
+		axis.text.y = element_blank(),
+		axis.ticks.y = element_blank(),
+		legend.position = "bottom")
+```
+
+Wow, some people are really on top of this hashtag! I recognize some of these... [\@ALULUALULU_M](https://twitter.com/ALULUALULU_M) takes really nice photos, and [\@ja_pelosi](https://twitter.com/ja_pelosi) has been posting informative threads about one fern family per week at [\#51WeeksOfPteridophytes](https://twitter.com/hashtag/51WeeksOfPteridophytes?src=hashtag_click).
+
+Again we see a similar pattern to species: there are a small number of very regular [#fernfriday](https://twitter.com/hashtag/fernfriday?src=hashtag_click) tweeters, then a long tail of those who use the hashtag only occasionally... or just once (ahem)!
+
+Well I might not have the most [#fernfriday](https://twitter.com/hashtag/fernfriday?src=hashtag_click) tweets, but I think I'm definitely in the running for best [#fernfriday](https://twitter.com/hashtag/fernfriday?src=hashtag_click) blogpost :)
 
 <!--------------- appendices ----------------->
 
