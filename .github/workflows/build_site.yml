@@ -9,6 +9,7 @@ jobs:
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      RENV_PATHS_ROOT: ~/Library/Application Support/renv
     steps:
       - uses: actions/checkout@v2
 
@@ -16,17 +17,19 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@master
 
-      - uses: actions/cache@v1
-        if: startsWith(runner.os, 'macOS')
+      - name: Cache packages
+        uses: actions/cache@v1
         with:
-          path: ~/Library/Application Support/renv
+          path: ${{ env.RENV_PATHS_ROOT }}
           key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
           restore-keys: |
             ${{ runner.os }}-renv-
-      - name: Install Package Dependencies
-        run: |-
-          Rscript -e "install.packages('renv')"
-          Rscript -e "renv::restore(confirm = FALSE)"
+            
+      - name: Restore packages
+        shell: Rscript {0}
+        run: |
+          if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
+          renv::restore()
           
       - name: Render Site
         run: Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
