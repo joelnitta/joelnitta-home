@@ -7,8 +7,6 @@ author:
   - first_name: "Joel"
     last_name: "Nitta"
     url: https://joelnitta.com
-    affiliation: University of Tokyo
-    affiliation_url: http://iwasakilab.k.u-tokyo.ac.jp
     orcid_id: 0000-0003-4719-7472
 date: 2022-01-24
 preview: 'img/new-zealand-fantail-3729278_960_720.jpg'
@@ -27,7 +25,7 @@ params:
   site: https://joelnitta.com
 editor_options: 
   chunk_output_type: console
-draft: false
+draft: true
 ---
 
 <!--------------- setup post ----------------->
@@ -58,7 +56,7 @@ htmltools::tagList(
 
 I show how to analyze #fernfriday tweets from 2021, including
 
-- Scraping tweets with `snscraper`
+- Downloading tweets with `snscraper`
 - Extracting species names with `gntagger`
 - Loading JSON data into R with `jsonlite`
 
@@ -85,22 +83,22 @@ First let's load some packages.
 library(tidyverse)
 library(ggrepel)
 library(janitor)
-library(fuzzyjoin)
+library(tidytext)
 ```
 
 ## Getting tweets with snscrape
 
 There are at least two R packages to get twitter data in R,  [rtweet](https://github.com/ropensci/rtweet) and [tweetR](https://cran.r-project.org/web/packages/twitteR/README.html)
 
-There is just one problem: they rely on the [official twitter API](https://developer.twitter.com/en/docs/tutorials/getting-started-with-r-and-v2-of-the-twitter-api), which is **limited to tweets in the past week to 10 days or so**, unless you want to shell out \$\$\$ for a paid API account... which I don't.
+There is just one problem: they rely on the [official twitter API](https://developer.twitter.com/en/docs/tutorials/getting-started-with-r-and-v2-of-the-twitter-api), which is **limited to tweets from the past week to 10 days or so** ^[For the free version, anyways].
 
-So I will get around this pesky problem by using the [snscrape](https://github.com/JustAnotherArchivist/snscrape) twitter scraper written in python ^[This is probably not within twitter's user guidelines, so use at your own discretion].
+So I will get around this problem by using [snscrape](https://github.com/JustAnotherArchivist/snscrape), a program written in python that can help us obtain twitter data without using the API ^[This may not be within twitter's terms of service, so use at your own discretion].
 
 ### Installation
 
-snscrape can be installed using [pip](https://pip.pypa.io/en/stable/).
+`snscrape` can be installed using [pip](https://pip.pypa.io/en/stable/).
 
-My preferred method for handling python is to use the conda environment manager. We can [use pip within conda](https://www.anaconda.com/blog/using-pip-in-a-conda-environment) to install snscrape by writing an `environment.yml` file like this (thanks to [\@hansheng0512](https://github.com/hansheng0512/tweets-scrapping-using-python)):
+My preferred method for handling python is to use the conda environment manager. We can [use pip within conda](https://www.anaconda.com/blog/using-pip-in-a-conda-environment) to install `snscrape` by writing an `environment.yml` file like this (thanks to [\@hansheng0512](https://github.com/hansheng0512/tweets-scrapping-using-python)):
 
 ```
 name: tweets-scraping
@@ -117,9 +115,9 @@ Once that is in your working directory, run this to create the environment:
 conda env create -f environment.yml
 ```
 
-Now snscrape should be installed and ready to use!
+Now `snscrape` should be installed and ready to use!
 
-### Scraping
+### Downloading tweets
 
 Since `snscrape` is a command-line interface (CLI), the normal way to use it would be to type commands from the command line. But this is an R blog, so let's run it from R using the `system()` command ^[A good way to limit the number of hits when you are testing code is with the `--max-results` option, e.g., `--max-results 10`] ^[Again, inspired by [\@hansheng0512]( https://github.com/hansheng0512/tweets-scrapping-using-python/blob/master/main.py)'s code].
 
@@ -274,50 +272,53 @@ A bit about the column names we are reading in from `gntagger`:
 - `annotation` is the annotation I selected during the tagging process. It includes values "Accepted", "Genus", "NotName", "Species", and "Uninomial". It wasn't totally clear to me how to apply these during the tagging part. I mostly just hit the forward arrow for names that looked like species, so those are annotated as "Accepted". Towards the end I noticed I could select "Species", so a few are annotated as "Species" instead of "Accepted" ^[I actually think using a single variable for both taxonomic status ("Accepted") and rank ("Species", "Genus", etc) is rather confusing, and have filed an [issue](https://github.com/gnames/gntagger/issues/68) about this].
 - `start` and `end` indicate the character position in the raw text matching the start and end of the name.
 
-The next step is to use the `start` and `end` fields to match species names to tweets. For that, we'll need a tibble with the start and end position of each tweet.
+The next is to join the tibble of species we've found with `gntagger` back to the tibble of tweets.
 
-```{r calc_start_end}
-ff_tweets_start_end <-
-  ff_tweets %>%
-  mutate(
-    # Replace line breaks with spaces so we get one tweet per line
-    content = str_replace_all(content, "\n", " "),
-    # Count number of characters per tweet
-    num_char = nchar(content)) %>%
-  select(id, num_char) %>%
-  # Calculate start and end of each tweet in characters
-  mutate(
-    end = cumsum(num_char),
-    start = end - num_char + 1,
-    start = as.integer(start)) %>%
-  select(id, start, end)
+My original plan of attack for this was to use the `start` and `end` fields... but it didn't work out so well because there was some non-trivial difference in the way `gntagger` counts characters and the way I was counting characters with R.
 
-ff_tweets_start_end
+So time for Plan B: let's use the list of species names from `gntagger` as a [grep pattern](https://stringr.tidyverse.org/articles/regular-expressions.html), and extract matching strings from the tweets.
+
+First, let's compose a grep pattern that will match on any species name in the tweets:
+
+```{r extract-species-from-tweets-1}
+species_pattern <-
+ff_taxa %>%
+	# Only use names that are probably species (not genus, etc)
+	filter(type == "Binomial") %>%
+	# Extract names as character vector
+	pull(taxon) %>%
+	unique() %>%
+	sort() %>%
+	# Paste these together separated by \\b|
+	# - the \\b part means to only match on whole words
+	# - the | part means "or"
+	paste0(collapse = "\\b|\\b") %>%
+	paste0("\\b", .) %>%
+	paste0(., "\\b")
+
+# Take a peek at our pattern
+substr(species_pattern, 1, 50)
 ```
 
-Now we can use the `fuzzyjoin` package to join the species names to the tweets by position.
+Next, use the pattern to extract species names from the tweets:
 
-```{r fuzzy-join}
-ff_tweets_taxa <-
+```{r extract-species-from-tweets-2}
+ff_tweets_species <-
 ff_tweets %>%
-  left_join(ff_tweets_start_end, by = "id") %>%
-  # interval_left_join requires the Bioconductor IRanges package to be installed
-	# and joins by columns "start" and "end" by default
-  interval_left_join(
-    ff_taxa
-  ) %>%
-  select(-matches("start|end")) %>%
-  # Drop tweets without any fern names mentioned
-  filter(!is.na(taxon))
+	mutate(
+		species = str_match_all(content, species_pattern) %>%
+			map(~.[,1]) # converts str_match_all() output to character vector
+	) %>%
+	unnest(species) # drops any tweets with no matching species
 ```
 
 Let's take a peek at the results.
 
 ```{r peek-post-join}
-select(ff_tweets_taxa, content, taxon)
+select(ff_tweets_species, content, species)
 ```
 
-Yay! We've got fern names mapped to tweets (and user ID, etc). Notice that some tweets now appear duplicated, since our data are have one row per fern name mentioned, and some tweets may include multiple names.
+Yay! We've got fern species names mapped to tweets (and user ID, etc). Notice that some tweets now appear duplicated, since our data are have one row per fern species mentioned, and some tweets may include multiple species. Also, the overall number of tweets has dropped quite a bit because we filtered out any without a detected species name.
 
 ## Data analysis (finally!)
 
@@ -326,53 +327,51 @@ OK, we can finally analyze the data and see **who is the most popular fern of 20
 Like any good data analysis, let's check the distribution of the data first.
 
 ```{r species-distribution, fig.cap = "Histogram of species occurrences in tweets"}
-ff_tweets_taxa %>%
-	# Filter to only taxa that look like species names
-	filter(str_detect(type, "Binomial")) %>%
-	count(taxon) %>%
+ff_tweets_species %>%
+	count(species) %>%
 	ggplot(aes(x = n, fill = n == 1)) + 
 	geom_histogram(bins = 20) +
 	labs(fill = "Singleton") +
-	scale_fill_viridis_d() +
+	scale_fill_brewer(palette = "Dark2") +
 	labs(x = "n species", y = "n tweets")
 ```
 
 So the vast majority of species are only tweeted about once ("singletons" in the plot), then there's a longer tail of a much smaller number of species that receive multiple tweets. Sort of like ecology---[common species are rare, and rare species are common](https://methodsblog.com/2021/04/26/fuzzyq-the-commonness-of-rarity/). Neat.
 
+### Most tweets per species
+
 Now that we have a feel for how the data are distributed, let's see who are the rare species with multiple tweets. It's possible that some users are tweeting the same species multiple times, and that seems sort of unfair right? So we will just consider one tweet per species per user, and look at the top 10.
 
 ```{r top-species-users, fig.cap = "Top 10 species by number of users tweeting"}
-ff_tweets_taxa %>% 
-	# Filter to only taxa that look like species names
-  filter(str_detect(type, "Binomial")) %>%
+ff_tweets_species %>% 
 	# Only allow one "vote" per species per user
-	select(taxon, username) %>% 
+	select(species, username) %>% 
 	unique() %>% 
 	# Just look at the top 10
 	# fct_lump_n() lumps the remainder into "Other"
-	mutate(taxon = fct_lump_n(taxon, n = 10)) %>%
+	mutate(species = fct_lump_n(species, n = 10)) %>%
 	# Exclude "Other"
-	filter(taxon != "Other") %>%
-	count(taxon) %>%
-	mutate(taxon = fct_reorder(taxon, n)) %>%
-	ggplot(aes(x = n, y = taxon)) + 
+	filter(species != "Other") %>%
+	count(species) %>%
+	mutate(species = fct_reorder(species, n)) %>%
+	ggplot(aes(x = n, y = species)) + 
 	geom_col() +
 	labs(x = "n users tweeting") +
 	theme(axis.title.y = element_blank())
 ```
 
-Cool! Those are some solid picks. And the top 10 species here all include > 3 three unique users tweeting about them.
+**AND WE HAVE A WINNER:** *Osmunda regalis*, by far!! [Fitting for royalty I guess?](https://en.wikipedia.org/wiki/Osmunda_regalis)
+
+### Most tweets per genus
 
 What about the most popular genera?
 
 ```{r top-genera-users, fig.cap = "Top 10 genera by number of users tweeting"}
-ff_tweets_taxa %>% 
+ff_tweets_species %>% 
 	# Split species names into genus and specific epithet
 	separate(
-		taxon, into = c("genus", "specific_epithet"), sep = " ",
+		species, into = c("genus", "specific_epithet"), sep = " ",
 		fill = "right", extra = "drop") %>%
-	# Exclude names that I annotated as "Uninomial" (family names)
-	filter(annotation != "Uninomial") %>%
 	# Exclude abbreviated genera ("P.", etc)
 	mutate(n_genus_char = nchar(genus)) %>%
 	filter(n_genus_char > 3) %>%
@@ -392,11 +391,61 @@ ff_tweets_taxa %>%
 	theme(axis.title.y = element_blank())
 ```
 
-The trends change a bit: although no single *Asplenium* species gets lots of tweets, the genus as whole does. Cool!
+Now *Osmunda* slides a bit as *Asplenium* makes up some ground.
 
-There is obviously a lot that can be done with twitter data, and text data in general. I won't be going there. But I just want to look at one more thing...
+### Most likes, retweets, etc.
 
-Who are the most prolific [#fernfriday](https://twitter.com/hashtag/fernfriday?src=hashtag_click) tweeters?
+This being twitter, we need to look at some social networking performance indicators... How about number of retweets, etc? My end goal here is to use a [facet plot](https://ggplot2-book.org/facet.html) with one facet per indicator, so first I need to convert the data into long form.
+
+```{r convert-to-long}
+ff_tweets_species_long <-
+ff_tweets_species %>%
+	# Convert to long format for facet plotting
+	select(contains("_count"), species) %>%
+	select(-followers_count) %>%
+	pivot_longer(names_to = "count_type", values_to = "count", -species) %>%
+	group_by(count_type) %>%
+	nest() %>%
+	# Within each indicator type, keep only the top 10 species (include ties)
+	mutate(data = map(data, ~slice_max(., order_by = count, n = 10))) %>%
+	unnest(data) %>%
+	ungroup()
+
+ff_tweets_species_long
+```
+
+The next step is to order species as a factor within each count type. It turns out this isn't possible with `ggplot2` alone... we need to use `tidytext::reorder_within()`. For more details on that, check out [Julia Silge's excellent blog post`](https://juliasilge.com/blog/reorder-within/).
+
+```{r retweet-like-etc-plot, fig.cap = "Top #fernfriday species by social networking indicator", layout="l-body-outset"}
+ff_tweets_species_long %>%
+	mutate(
+		species = reorder_within(species, count, count_type)
+	) %>%
+	ggplot(aes(x = count, y = species, fill = count_type)) +
+	geom_col(show.legend = FALSE) +
+	scale_y_reordered() +
+	facet_wrap(~count_type, scales = "free") +
+	scale_fill_brewer(palette = "Dark2")
+```
+
+Many of these look quite similar, probably because the number of retweets and likes are correlated.
+
+I wonder what is the content of some of these most popular tweets?
+
+```{r top-tweet-content}
+# Look at the username and content of the top three most retweeted tweets
+ff_tweets_species %>%
+	slice_max(order_by = retweet_count, n = 3) %>%
+	select(username, content)
+```
+
+All from [\@ja_pelosi](https://twitter.com/ja_pelosi), who has been posting informative threads about one fern family per week at [\#51WeeksOfPteridophytes](https://twitter.com/hashtag/51WeeksOfPteridophytes?src=hashtag_click). Nice going [\@ja_pelosi](https://twitter.com/ja_pelosi)!
+
+### Most active tweeters
+
+So that's the story for the top fern species of [#fernfriday](https://twitter.com/hashtag/fernfriday?src=hashtag_click).
+
+But who are the most active [#fernfriday](https://twitter.com/hashtag/fernfriday?src=hashtag_click) tweeters?
 
 ```{r prolific-tweeters, fig.cap = "Number of #fernfriday tweets per user", layout="l-body-outset"}
 ff_user_count <-
@@ -421,7 +470,7 @@ ggplot(ff_user_count, aes(x = n, y = username)) +
 		fill = "light blue",
 		min.segment.length = 0,
 		aes(label = username)) +
-	scale_fill_viridis_d() +
+	scale_fill_brewer(palette = "Dark2") +
 	scale_x_continuous(expand = c(0,0)) +
 	labs(x = "n tweets", fill = "Singleton") +
 	theme(
@@ -430,9 +479,9 @@ ggplot(ff_user_count, aes(x = n, y = username)) +
 		legend.position = "bottom")
 ```
 
-Wow, some people are really on top of this hashtag! I recognize some of these... [\@ALULUALULU_M](https://twitter.com/ALULUALULU_M) takes really nice photos, and [\@ja_pelosi](https://twitter.com/ja_pelosi) has been posting informative threads about one fern family per week at [\#51WeeksOfPteridophytes](https://twitter.com/hashtag/51WeeksOfPteridophytes?src=hashtag_click).
-
 Again we see a similar pattern to species: there are a small number of very regular [#fernfriday](https://twitter.com/hashtag/fernfriday?src=hashtag_click) tweeters, then a long tail of those who use the hashtag only occasionally... or just once (ahem)!
+
+The most prolific [#fernfriday](https://twitter.com/hashtag/fernfriday?src=hashtag_click) tweeter, [\@ALULUALULU_M](https://twitter.com/ALULUALULU_M), is a photographer who clearly has some great taste in plants.
 
 Well I might not have the most [#fernfriday](https://twitter.com/hashtag/fernfriday?src=hashtag_click) tweets, but I think I'm definitely in the running for best [#fernfriday](https://twitter.com/hashtag/fernfriday?src=hashtag_click) blogpost :)
 

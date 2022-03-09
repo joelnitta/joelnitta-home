@@ -1,0 +1,88 @@
+{
+  "metadata": {
+    "date": "2022-01-28T14:45:49.889185+09:00",
+    "FinderVersion": "v0.9.0-1-gf990b7b",
+    "language": "eng",
+    "language_detected": "",
+    "detect_language": false,
+    "total_words": 9,
+    "total_candidates": 2,
+    "total_names": 2
+  },
+  "names": [
+    {
+      "type": "Binomial",
+      "verbatim": "(Blechnum orientale)",
+      "name": "Blechnum orientale",
+      "odds": 64634081962.370766,
+      "odds_details": {
+        "Name": {
+          "spLen": {
+            "9": 10.081642477424332
+          },
+          "PriorOdds": {
+            "true": 0.1
+          },
+          "uniLen": {
+            "8": 1.467152054157978
+          },
+          "uniDict": {
+            "WhiteGenus": 20194.430603370172
+          },
+          "abbr": {
+            "false": 0.8679430877999654
+          },
+          "uniEnd3": {
+            "num": 23.597054331788886
+          },
+          "spDict": {
+            "WhiteSpecies": 5628.6125203841275
+          },
+          "spEnd3": {
+            "ale": 18.77038412755934
+          }
+        }
+      },
+      "start": 32,
+      "end": 52,
+      "annotation": ""
+    },
+    {
+      "type": "Binomial",
+      "verbatim": "Blechnum orientale\u0000",
+      "name": "Blechnum orientale",
+      "odds": 64634081962.370766,
+      "odds_details": {
+        "Name": {
+          "uniEnd3": {
+            "num": 23.597054331788886
+          },
+          "spLen": {
+            "9": 10.081642477424332
+          },
+          "spDict": {
+            "WhiteSpecies": 5628.6125203841275
+          },
+          "spEnd3": {
+            "ale": 18.77038412755934
+          },
+          "PriorOdds": {
+            "true": 0.1
+          },
+          "uniLen": {
+            "8": 1.467152054157978
+          },
+          "uniDict": {
+            "WhiteGenus": 20194.430603370172
+          },
+          "abbr": {
+            "false": 0.8679430877999654
+          }
+        }
+      },
+      "start": 62,
+      "end": 81,
+      "annotation": ""
+    }
+  ]
+}
