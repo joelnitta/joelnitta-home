@@ -124,6 +124,11 @@ print_ref <- function(key_select, bib = mybib, bib_df = mybib_df) {
 
 ## Forthcoming
 
+**Nitta, J. H.**, E. Schuettpelz, S. Ramírez-Barahona, and W. Iwasaki. "An open and continuously updated Fern Tree of Life (FTOL)". Submitted.
+
+`r icon_link(text = "Preprint", url = "https://doi.org/10.1101/2022.03.31.486640")`
+`r icon_link(icon = "github", text = "Code", url = "https://github.com/fernphy/ftol")`
+
 **Nitta, J. H.**, B. D. Mishler, W. Iwasaki, and A. Ebihara. "Spatial phylogenetics of Japanese ferns: Patterns, processes, and implications for conservation". In: *American Journal of Botany*. Accepted.
 
 `r icon_link(text = "Preprint", url = "https://doi.org/10.1101/2021.08.26.457744")`
