@@ -13,6 +13,7 @@ about:
       href: https://researchmap.jp/joelnitta?lang=en
 execute:
   echo: false
+comments: false
 ---
 
 ```{r}

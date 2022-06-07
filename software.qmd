@@ -4,6 +4,7 @@ date: "`r Sys.Date()`"
 output: distill::distill_article
 execute:
   echo: false
+comments: false
 ---
 
 ```{r}
