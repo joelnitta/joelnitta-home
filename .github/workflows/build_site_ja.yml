@@ -1,8 +1,8 @@
 on:
   push:
-    branches: main
+    branches: ja
   pull_request:
-    branches: main
+    branches: ja
   # to be able to trigger a manual build
   workflow_dispatch:
 
@@ -11,8 +11,29 @@ name: Render and deploy Book
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      RENV_PATHS_ROOT: ~/Library/Application Support/renv
     steps:
       - uses: actions/checkout@v2
+      
+      - name: Install cURL Headers
+      run: |
+        sudo apt-get install libcurl4-openssl-dev
+
+      - name: Cache packages
+        uses: actions/cache@v1
+        with:
+          path: ${{ env.RENV_PATHS_ROOT }}
+          key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-renv-
+     
+      - name: Restore packages
+        shell: Rscript {0}
+        run: |
+          if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
+          renv::restore()
 
       - name: Install Quarto
         uses: quarto-dev/quarto-actions/install-quarto@v1
