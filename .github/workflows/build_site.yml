@@ -16,6 +16,10 @@ jobs:
       RENV_PATHS_ROOT: ~/Library/Application Support/renv
     steps:
       - uses: actions/checkout@v2
+      
+      # need libcurl for {curl} R package
+      - name: Install cURL Headers
+      run: sudo apt-get install libcurl4-openssl-dev
 
       - name: Cache packages
         uses: actions/cache@v1
