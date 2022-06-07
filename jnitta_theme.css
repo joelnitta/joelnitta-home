@@ -1,3 +1,5 @@
+/* variables inherit from bootswatch css */
+
 /* Links */
 
 a {
@@ -28,7 +30,7 @@ d-article a:hover, a:focus {
 
 .icon-link {
     background-color: var(--bs-primary);
-    color: var(--color-white);
+    color: var(--bs-white);
     padding: 3px 5px 3px 5px;
     margin: 0 2px 0 2px;
     border-radius: 5px; /* Rounded edges */
@@ -36,5 +38,5 @@ d-article a:hover, a:focus {
 
 .icon-link:hover {
     background-color: var(--bs-secondary);
-    color: var(--color-white);
+    color: var(--bs-white);
 }

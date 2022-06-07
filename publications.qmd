@@ -210,7 +210,6 @@ knitr::include_graphics("content/images/jpr_cover.jpg")
 ```{r}
 #| label: nitta2011-cover
 #| echo: false
-
 knitr::include_graphics("content/images/ajb_cover.jpg")
 ```
 </aside>
