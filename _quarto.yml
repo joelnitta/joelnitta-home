@@ -1,0 +1,29 @@
+project:
+  type: website
+
+website:
+  title: "Joel Nitta"
+  navbar:
+    background: primary
+    right:
+      - href: index.qmd
+        text: Home
+      - href: publications.qmd
+        text: Publications
+      - href: software.qmd
+        text: Software
+      - href: blog.qmd
+        text: Blog
+      - href: content/pdf/Nitta_CV.pdf
+        text: "CV"
+      - href: https://www.ja.joelnitta.com
+        text: "日本語"
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: superhero
+    css: jnitta_theme.css
+    toc: true
+    include-in-header: header.html

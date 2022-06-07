@@ -1,5 +1,0 @@
-# Ignore everything but .gitignore, folders, and renv.lock
-*
-!./.gitignore
-!*/
-!*renv.lock

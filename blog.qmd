@@ -1,0 +1,8 @@
+---
+title: "Blog"  # any name you want here
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+---
