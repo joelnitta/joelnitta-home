@@ -144,15 +144,11 @@ print_ref <- function(key_select, bib = mybib, bib_df = mybib_df) {
 `r icon_link(text = "Preprint", url = "https://doi.org/10.1101/2022.03.31.486640")`
 `r icon_link(icon = "github", text = "Code", url = "https://github.com/fernphy/ftol")`
 
-**Nitta, J. H.**, B. D. Mishler, W. Iwasaki, and A. Ebihara. "Spatial phylogenetics of Japanese ferns: Patterns, processes, and implications for conservation". In: *American Journal of Botany*. Accepted.
+## 2022
 
-`r icon_link(text = "Preprint", url = "https://doi.org/10.1101/2021.08.26.457744")`
-`r icon_link(icon = "github", text = "Code", url = "https://github.com/joelnitta/japan_ferns_spatial_phy")`
+`r print_ref("Nitta2022a")`
 
-**Nitta, J. H.** and S. M. Chambers. "Identifying cryptic fern gametophytes using DNA barcoding: A review". In: *Applications in Plant Sciences*. Accepted.
-
-`r icon_link(text = "Preprint", url = "https://ecoevorxiv.org/dr25p/")`
-`r icon_link(icon = "github", text = "Code", url = "https://github.com/joelnitta/gameto-barcode-review")`
+`r print_ref("Nitta2022")`
 
 ## 2021
 
