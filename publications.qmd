@@ -20,12 +20,15 @@ library(janitor)
 library(lubridate)
 library(glue)
 library(tidyverse)
+
+source(here::here("R/functions.R"))
 ```
 
 ```{r}
 #| label: setup-refs
 #| message: false
 #| warning: false
+#| echo: false
 
 # Load bibliography
 bib_path <- "_bib/references.bib"
@@ -40,6 +43,20 @@ mybib_df_raw <-
   )
 # Load other metadata
 mybib_meta <- read_csv("_bib/ref_metadata.csv") %>% select(-title)
+
+# Check that all pdf files exist
+pdf_check <- fs::file_exists(mybib_meta$`file-pdf`)
+pdf_missing <- pdf_check[pdf_check == FALSE]
+pdf_assert <- assertthat::assert_that(
+  length(pdf_missing) == 0,
+  msg = glue::glue("The following pdf files are missing: {paste(names(pdf_missing), sep = ', ')}")
+)
+
+# Check that all links work
+github_check <- check_urls(mybib_meta$github)
+biorxiv_check <- check_urls(mybib_meta$biorxiv)
+figshare_check <- check_urls(mybib_meta$figshare)
+dryad_check <- check_urls(mybib_meta$dryad)
 
 # Format dataframe version of bibliography
 mybib_df <-
@@ -66,85 +83,22 @@ oldopts <- BibOptions(
 ```{r}
 #| label: cite-func
 
-# Define functions for formatting a citation
 
-#' Make a link button
-#'
-#' @param key_select Bibtex key
-#' @param link_type Type of link ("github", "biorxiv", "figshare", "dryad", "pdf")
-#' Should be one of column names in bibliography metadata
-#' @param text Text to include next to to icon.
-#' @param bib_df Bibliography data (`mybib_df`)
-#'
-#' @return HTML to make a link button
-link_button <- function(key_select, link_type, text, bib_df = mybib_df) {
-	url <- filter(bib_df, key == key_select)[[link_type]]
-	if (is.na(url)) return(NULL)
-	icon_link(icon = link_type, text = text, url = url)
-}
-
-#' Make a DOI link
-#'
-#' @param key_select Bibtex key
-#' @param bib_df Bibliography data as dataframe
-#'
-#' @return HTML with link to DOI corresponding to citation specified with key
-doi_link <- function(key_select, bib_df = mybib_df) {
-	doi <- filter(bib_df, key == key_select) %>% pull(doi)
-	if (is.na(doi)) return(NULL)
-	glue("DOI: [{doi}](https://doi.org/{doi})")
-}
-
-#' Print a simple reference
-#'
-#' @param key_select Bibtex key
-#' @param bib Bibtex bibliography read in with RefManageR::ReadBib()
-#'
-#' @return Text of reference
-print_ref_simple <- function(key_select, bib = mybib) {
-	# Silently cite the key
-	NoCite(bib, key_select)
-	# Capture the output of printing the reference
-	capture.output(foo <- print(bib[[key_select]])) %>%
-		paste(collapse = " ") %>%
-		# Make my name in bold
-		str_replace_all("Nitta, J. H.", "__Nitta, J. H.__") %>%
-		str_replace_all("J. H. Nitta", "__J. H. Nitta__")
-}
-
-#' Print a reference with link buttons
-#'
-#' @param key_select Bibtex key
-#' @param bib Bibtex bibliography read in with RefManageR::ReadBib()
-#' @param bib_df Bibliography data as dataframe, including metadata
-#' (links to github, biorxiv, dryad, etc)
-#'
-#' @return Text of reference, with HTML buttons to links below it
-print_ref <- function(key_select, bib = mybib, bib_df = mybib_df) {
-	ref <- print_ref_simple(key_select = key_select, bib = bib)
-	doi <- doi_link(key_select, bib_df = bib_df)
-	biorxiv <- link_button(key_select, "biorxiv", "Preprint", bib_df)
-	github <- link_button(key_select, "github", "Code", bib_df)
-	dryad <- link_button(key_select, "dryad", "Data", bib_df)
-	figshare <- link_button(key_select, "figshare", "Data", bib_df)
-	pdf <- link_button(key_select, "file-pdf", "PDF", bib_df)
-	
-	main_ref <- paste(ref, doi, sep = " ")
-	buttons <- paste(biorxiv, github, dryad, figshare, pdf)
-	paste(main_ref, buttons, sep = "<br>")
-}
 ```
 
 `r icon_link("google-scholar", "Google Scholar", "https://scholar.google.com/citations?hl=en&user=FtzrMYwAAAAJ")`  
 
-## Forthcoming
+<!-- Manually add forthcoming pubs !-->
+<!-- ## Forthcoming
 
 **Nitta, J. H.**, E. Schuettpelz, S. Ramírez-Barahona, and W. Iwasaki. "An open and continuously updated Fern Tree of Life (FTOL)". Submitted.
 
 `r icon_link(text = "Preprint", url = "https://doi.org/10.1101/2022.03.31.486640")`
-`r icon_link(icon = "github", text = "Code", url = "https://github.com/fernphy/ftol")`
+`r icon_link(icon = "github", text = "Code", url = "https://github.com/fernphy/ftol")` !-->
 
 ## 2022
+
+`r print_ref("Nitta2022b")`
 
 `r print_ref("Nitta2022a")`
 
@@ -164,15 +118,15 @@ knitr::include_graphics("content/images/jpr_cover.jpg")
 
 ## 2020
 
-`r print_ref("Nitta2020")`
+`r print_ref("Nitta2020b")`
 
-`r print_ref("Nitta2020c")`
+`r print_ref("Nitta2020")`
 
 ## 2019
 
-`r print_ref("Ebihara2019a")`
-
 `r print_ref("Ebihara2019b")`
+
+`r print_ref("Ebihara2019a")`
 
 `r print_ref("Nitta2019")`
 
@@ -219,6 +173,8 @@ knitr::include_graphics("content/images/ajb_cover.jpg")
 ## 2010
 
 `r print_ref("Ebihara2010")`
+
+`r print_ref("Ebihara2010a")`
 
 ## 2009
 
