@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-10-04 05:49+0000\n"
+"POT-Creation-Date: 2022-10-04 06:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,6 +21,12 @@ msgstr ""
 #, no-wrap
 msgid "false"
 msgstr ""
+
+#. type: YAML Front Matter: lang
+#: /409952fb95fbb825992593fca10961ea_1/blog.qmd:1
+#, no-wrap
+msgid "en"
+msgstr "ja"
 
 #. type: YAML Front Matter: listing categories
 #: /409952fb95fbb825992593fca10961ea_1/blog.qmd:1

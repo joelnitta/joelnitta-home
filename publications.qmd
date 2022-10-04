@@ -1,5 +1,6 @@
 ---
 title: "Publications"
+lang: en
 date: "`r Sys.Date()`"
 output: distill::distill_article
 editor_options: 

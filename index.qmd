@@ -1,5 +1,6 @@
 ---
 title: "Joel Nitta"
+lang: en
 about:
   template: trestles
   image: "content/images/joel.png"

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-10-04 05:49+0000\n"
+"POT-Creation-Date: 2022-10-04 06:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,6 +34,12 @@ msgstr ""
 msgid "console"
 msgstr ""
 
+#. type: YAML Front Matter: lang
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:1
+#, no-wrap
+msgid "en"
+msgstr "ja"
+
 #. type: YAML Front Matter: output
 #: /409952fb95fbb825992593fca10961ea_1/publications.qmd:1
 #, no-wrap
@@ -47,7 +53,7 @@ msgid "Publications"
 msgstr "論文"
 
 #. type: Fenced code block ({r})
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:12
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:13
 #, no-wrap
 msgid ""
 "#| label: setup\n"
@@ -65,7 +71,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block ({r})
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:27
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:28
 #, no-wrap
 msgid ""
 "#| label: setup-refs\n"
@@ -124,7 +130,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block ({r})
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:83
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:84
 #, no-wrap
 msgid ""
 "#| label: cite-func\n"
@@ -133,78 +139,76 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:89
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:90
+#, no-wrap
 msgid "`r icon_link(\"google-scholar\", \"Google Scholar\", \"https://scholar.google.com/citations?hl=en&user=FtzrMYwAAAAJ\")`  \n"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:93
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:94
+#, no-wrap
 msgid ""
 "<!-- Manually add forthcoming pubs !-->\n"
-"<!-- ## 近刊\n"
+"<!-- ## Forthcoming\n"
 msgstr ""
+"<!-- Manually add forthcoming pubs !-->\n"
+"<!-- ## 近刊\n"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:95
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:96
+#, no-wrap
 msgid "**Nitta, J. H.**, E. Schuettpelz, S. RamÃ­rez-Barahona, and W. Iwasaki. \"An open and continuously updated Fern Tree of Life (FTOL)\". Submitted.\n"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:98
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:99
+#, no-wrap
 msgid ""
 "`r icon_link(text = \"Preprint\", url = \"https://doi.org/10.1101/2022.03.31.486640\")`\n"
 "`r icon_link(icon = \"github\", text = \"Code\", url = \"https://github.com/fernphy/ftol\")` !-->\n"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:99
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:100
+#, no-wrap
 msgid "2022"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:102
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:103
 msgid "`r print_ref(\"Nitta2022b\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:104
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:105
 msgid "`r print_ref(\"Nitta2022a\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:106
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:107
 msgid "`r print_ref(\"Nitta2022\")`"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:107
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:108
+#, no-wrap
 msgid "2021"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:110
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:111
 msgid "`r print_ref(\"Nitta2021\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:112
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:164
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:113
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:165
+#, no-wrap
 msgid "<aside>\n"
 msgstr ""
 
 #. type: Fenced code block ({r})
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:112
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:113
 #, no-wrap
 msgid ""
 "#| label: Nitta2021-cover\n"
@@ -213,146 +217,132 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:118
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:170
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:119
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:171
+#, no-wrap
 msgid "</aside>\n"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:119
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:120
+#, no-wrap
 msgid "2020"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:122
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:123
 msgid "`r print_ref(\"Nitta2020b\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:124
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:125
 msgid "`r print_ref(\"Nitta2020\")`"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:125
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:126
+#, no-wrap
 msgid "2019"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:128
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:129
 msgid "`r print_ref(\"Ebihara2019b\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:130
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:131
 msgid "`r print_ref(\"Ebihara2019a\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:132
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:133
 msgid "`r print_ref(\"Nitta2019\")`"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:133
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:134
+#, no-wrap
 msgid "2018"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:136
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:137
 msgid "`r print_ref(\"Gilbert2018\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:138
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:139
 msgid "`r print_ref(\"Nitta2018\")`"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:139
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:140
+#, no-wrap
 msgid "2017"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:142
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:143
 msgid "`r print_ref(\"Nitta2017\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:144
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:145
 msgid "`r print_ref(\"Pinson2016a\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:146
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:147
 msgid "`r print_ref(\"Zhou2017\")`"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:147
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:148
+#, no-wrap
 msgid "2016"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:150
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:151
 msgid "`r print_ref(\"Pouteau2016\")`"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:151
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:152
+#, no-wrap
 msgid "2015"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:154
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:155
 msgid "`r print_ref(\"Chen2015\")`"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:155
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:156
+#, no-wrap
 msgid "2013"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:158
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:159
 msgid "`r print_ref(\"Ebihara2013\")`"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:159
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:160
+#, no-wrap
 msgid "2011"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:162
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:163
 msgid "`r print_ref(\"Nitta2011\")`"
 msgstr ""
 
 #. type: Fenced code block ({r})
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:164
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:165
 #, no-wrap
 msgid ""
 "#| label: nitta2011-cover\n"
@@ -361,61 +351,54 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:172
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:173
 msgid "`r print_ref(\"Nitta2011b\")`"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:173
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:174
+#, no-wrap
 msgid "2010"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:176
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:177
 msgid "`r print_ref(\"Ebihara2010\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:178
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:179
 msgid "`r print_ref(\"Ebihara2010a\")`"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:179
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:180
+#, no-wrap
 msgid "2009"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:182
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:183
 msgid "`r print_ref(\"Ebihara2009b\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:184
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:185
 msgid "`r print_ref(\"Nitta2009\")`"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:185
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:186
+#, no-wrap
 msgid "2008"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:188
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:189
 msgid "`r print_ref(\"Nitta2008\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:189
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:190
 msgid "`r print_ref(\"Nitta2008a\")`"
 msgstr ""

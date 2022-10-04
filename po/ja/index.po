@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-10-04 04:27+0000\n"
+"POT-Creation-Date: 2022-10-04 06:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,6 +76,12 @@ msgstr ""
 msgid "false"
 msgstr ""
 
+#. type: YAML Front Matter: lang
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
+#, no-wrap
+msgid "en"
+msgstr "ja"
+
 #. type: YAML Front Matter: title
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
@@ -83,7 +89,7 @@ msgid "Joel Nitta"
 msgstr "ニッタ ジョエル"
 
 #. type: Fenced code block ({r})
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:19
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:20
 #, no-wrap
 msgid ""
 "#| label: deps\n"
@@ -96,7 +102,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced div block ({.column-body-outset})
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:29
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:30
 #, no-wrap
 msgid ""
 "\n"
