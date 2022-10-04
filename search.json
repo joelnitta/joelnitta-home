@@ -1,0 +1,296 @@
+[
+  {
+    "objectID": "software.html",
+    "href": "software.html",
+    "title": "ソフトウェア",
+    "section": "",
+    "text": "系統的固有性を測るRパッケージ\n Code  Website"
+  },
+  {
+    "objectID": "software.html#taxastand",
+    "href": "software.html#taxastand",
+    "title": "ソフトウェア",
+    "section": "taxastand ",
+    "text": "taxastand \n学名を統一するRパッケージ\n Code  Website"
+  },
+  {
+    "objectID": "software.html#dwctaxon",
+    "href": "software.html#dwctaxon",
+    "title": "ソフトウェア",
+    "section": "dwctaxon ",
+    "text": "dwctaxon \nダーウィンコア形式に従った学名の整理をするRパッケージ\n Code  Website"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ニッタ ジョエル",
+    "section": "",
+    "text": "初めまして、東京大学大学院理学系研究科・岩崎研究室の特任助教のニッタ ジョエルです。私はシダ植物の進化と生態学を研究しています。\nシダ植物は非常にユニークなライフサイクルを持つ、とても面白い研究対象です。普段目にしている植物は「胞子体」（二倍体）ですが、もう一つ、極めて小さな（通常は１センチ以下）「配偶体」（一倍体）というライフステージもあり、両方とも独立に生息しています。この特徴は他の陸上植物と根本的に異なり、シダ植物の進化にとって非常に大きな意味を持っています。私は特にシダ植物のライフサイクルがその群集形成のプロセスや生態学などに与える影響について研究しています。\nそして、再現性可能な解析やコード、特にに興味があります。この話については、ブログを見てみてください。\n\n\n\n\nハーバード大学 | 進化生物学研究科博士課程　修了 | 2016年\n東京大学 | 生物科学専攻修士課程　修了 | 2010年\nカリフォルニア大学バークレー校 | 総合生物学・日本語専攻　卒業 | 2007年\n\n\n\n\n\n東京大学大学院理学系研究科岩崎研究室 | 特任助教 | 2020年4月 - 現在\nスミソニアン国立自然史博物館 | 特別研究員 | 2019年1月 - 2020年3月\n国立科学博物館植物研究部 | 外国人特別研究員 | 2016年11月 - 2018年12月"
+  },
+  {
+    "objectID": "posts/2021-06-02_color-scheme-anc-states/index.html#about-contmap",
+    "href": "posts/2021-06-02_color-scheme-anc-states/index.html#about-contmap",
+    "title": "Selecting color schemes for mapping ancestral states",
+    "section": "About contMap()",
+    "text": "About contMap()\nThe phytools package provides (among many other things) the contMap() function for estimating ancestral character states and visualizing their changes along the branches of a phylogenetic tree. It can either produce the plot directly (default), or be saved as an object with the plot = FALSE argument, to be further manipulated and plotted later with plot()."
+  },
+  {
+    "objectID": "posts/2021-06-02_color-scheme-anc-states/index.html#default-colors",
+    "href": "posts/2021-06-02_color-scheme-anc-states/index.html#default-colors",
+    "title": "Selecting color schemes for mapping ancestral states",
+    "section": "Default colors",
+    "text": "Default colors\nI have to say I’m not a fan of the default color scheme, which is a rainbow palette going from red through yellow and green to blue.\nFor example, let’s borrow some example code and look at the default plot:\n\n# code modified slightly from http://www.phytools.org/eqg2015/asr.html\n\n## Load needed packages for this blogpost\nlibrary(phytools)\nlibrary(ggtree)\nlibrary(tidyverse)\nlibrary(scico)\nlibrary(viridisLite)\n\n## Load anole tree\nanole.tree <- read.tree(\"http://www.phytools.org/eqg2015/data/anole.tre\")\n\n## Load anole trait data, extract snout-vent-length (svl) as named vector\nsvl <- read_csv(\"http://www.phytools.org/eqg2015/data/svl.csv\") %>%\n  mutate(svl = set_names(svl, species)) %>%\n  pull(svl)\n\n# Plot with default color scheme\ncontmap_obj <- contMap(anole.tree, svl, plot = FALSE)\n\nplot(\n  contmap_obj, \n  type=\"fan\", \n  legend = 0.7*max(nodeHeights(anole.tree)),\n  fsize = c(0.5, 0.7))\n\n\n\n\nFigure 1: Default rainbow color scheme. Pretty, but confusing.\n\n\n\n\nAlthough this does provide a wide range of colors, it’s not obvious why one color is greater or less than the others. In particular it’s hard to discern the order of intermediate values (yellow, green, light blue). Indeed, there has been much written on why the rainbow palette is generally not a good way to visualize continuous data."
+  },
+  {
+    "objectID": "posts/2021-06-02_color-scheme-anc-states/index.html#defining-a-new-color-palette",
+    "href": "posts/2021-06-02_color-scheme-anc-states/index.html#defining-a-new-color-palette",
+    "title": "Selecting color schemes for mapping ancestral states",
+    "section": "Defining a new color palette",
+    "text": "Defining a new color palette\nphytools::setMap() can be used to specify another color palette. setMap() passes its second argument (a vector of color names or hexadecimals) to colorRampPalette(). colorRampPalette() is a bit unusual in that it’s a function that produces a function, in this case, one that generates a vector of colors interpolating between the original input values:\n\n# colorRampPalette() produces a function\nmy_color_func <- colorRampPalette(c(\"red\", \"yellow\"))\nclass(my_color_func)\n\n[1] \"function\"\n\n# The function generates n colors interpolating between\n# the colors originally passed to colorRampPalette()\nmy_colors <- my_color_func(n = 6)\nscales::show_col(my_colors)\n\n\n\n\nFigure 2: A red-to-yellow color ramp.\n\n\n\n\nSo, this works fine for generating custom color gradients. But designing accurate, color-blind friendly color palettes is not a simple task. Fortunately, there are several packages available with such carefully crafted palettes. Two of my favorite are viridis and scico. How can we use these with the plotting function in phytools?"
+  },
+  {
+    "objectID": "posts/2021-06-02_color-scheme-anc-states/index.html#using-viridis-or-scico-palettes",
+    "href": "posts/2021-06-02_color-scheme-anc-states/index.html#using-viridis-or-scico-palettes",
+    "title": "Selecting color schemes for mapping ancestral states",
+    "section": "Using viridis or scico palettes",
+    "text": "Using viridis or scico palettes\nWell, it turns out that as long as we specify the same number of colors, we can replicate the viridis color palette with colorRampPalette(). The only difference is the alpha, or transparency level, indicated at the end of each hexidecimal with two letters (here “FF”). There is no reason to use transparency here anyways, so that doesn’t matter.\n\n# viridis color palette with 6 colors\nviridis(6)\n\n[1] \"#440154FF\" \"#414487FF\" \"#2A788EFF\" \"#22A884FF\" \"#7AD151FF\" \"#FDE725FF\"\n\n# colorRampPalette() replicating viridis color palette\ncolorRampPalette(viridis(6))(6)\n\n[1] \"#440154\" \"#414487\" \"#2A788E\" \"#22A884\" \"#7AD151\" \"#FDE725\"\n\n\nSo here is the viridis version of the phytools plot:\n\n# Count the number of unique character states in the observed data:\nn_cols <- n_distinct(svl)\n\n# Change the color palette\ncontmap_obj_viridis <- setMap(contmap_obj, viridis(n_cols))\n\n# Plot the mapped characters with the new colors\nplot(\n  contmap_obj_viridis, \n  type=\"fan\", \n  legend = 0.7*max(nodeHeights(anole.tree)),\n  fsize = c(0.5, 0.7))\n\n\n\n\nFigure 3: Viridis colors. Better.\n\n\n\n\nAnd here is another one, this time using a palette from scico:\n\n# Change the color palette\ncontmap_obj_scico <- setMap(contmap_obj, scico(n_cols, palette = \"bilbao\"))\n\n# Plot the mapped characters with the new colors\nplot(\n  contmap_obj_scico, \n  type=\"fan\", \n  legend = 0.7*max(nodeHeights(anole.tree)),\n  fsize = c(0.5, 0.7))\n\n\n\n\nFigure 4: Scico colors. My personal favorite.\n\n\n\n\nI personally find this one even easier to interpret than viridis. It’s very clear which values are low and high."
+  },
+  {
+    "objectID": "posts/2021-06-02_color-scheme-anc-states/index.html#ggtree",
+    "href": "posts/2021-06-02_color-scheme-anc-states/index.html#ggtree",
+    "title": "Selecting color schemes for mapping ancestral states",
+    "section": "ggtree",
+    "text": "ggtree\nJust for completeness, here is code to replicate the plot in ggtree.\n\n# Modified from https://yulab-smu.top/treedata-book/chapter4.html#color-tree\n\n# Fit an ancestral state character reconstruction\nfit <- phytools::fastAnc(anole.tree, svl, vars = TRUE, CI = TRUE)\n\n# Make a dataframe with trait values at the tips\ntd <- data.frame(\n  node = nodeid(anole.tree, names(svl)),\n  trait = svl)\n\n# Make a dataframe with estimated trait values at the nodes\nnd <- data.frame(node = names(fit$ace), trait = fit$ace)\n\n# Combine these with the tree data for plotting with ggtree\nd <- rbind(td, nd)\nd$node <- as.numeric(d$node)\ntree <- full_join(anole.tree, d, by = 'node')\n\nggtree(\n  tree, \n  aes(color = trait), \n  layout = 'circular', \n  ladderize = FALSE, continuous = \"color\", size = 1) +\n  # >>> The important part! <<<\n  # Choose your favorite scale_color_* function here: \n  scale_color_scico(palette = \"bilbao\") + \n  geom_tiplab(hjust = -.1, size = 2, color = \"black\") + \n  xlim(0, 1.2) + \n  theme(\n    legend.position = c(0, .82),\n    legend.text = element_text(size = 8),\n    legend.title = element_text(size = 8)\n  ) \n\n\n\n\nFigure 5: Scico colors with ggtree.\n\n\n\n\nThat’s it!"
+  },
+  {
+    "objectID": "posts/2021-11-24_using-giscus/index.html",
+    "href": "posts/2021-11-24_using-giscus/index.html",
+    "title": "Enable giscus in Distill",
+    "section": "",
+    "text": "Since writing this blogpost, a new publishing system called Quarto is now available that supports giscus natively. If you are setting up a new blog or website, you may want to consider using Quarto instead of Distill1. It will save you the trouble of setting up everything like I describe below."
+  },
+  {
+    "objectID": "posts/2021-11-24_using-giscus/index.html#tldr",
+    "href": "posts/2021-11-24_using-giscus/index.html#tldr",
+    "title": "Enable giscus in Distill",
+    "section": "TL;DR",
+    "text": "TL;DR\n\ngiscus is a free, open-source commenting system for blogs that uses the GitHub API\ngiscus uses GitHub Discussions (not Issues) to store data\nI show how to enable giscus on a Distill blog\n\n\n\n\nFigure 1: Image by Adam Solomon on unsplash"
+  },
+  {
+    "objectID": "posts/2021-11-24_using-giscus/index.html#why-distill-and-giscus",
+    "href": "posts/2021-11-24_using-giscus/index.html#why-distill-and-giscus",
+    "title": "Enable giscus in Distill",
+    "section": "Why Distill and giscus?",
+    "text": "Why Distill and giscus?\nLike many R-bloggers these days, I have made some changes: I switched from blogdown to Distill 2, and from disqus to utterances 3. Several things about utterances appealed to me: free, open-source, no data tracking. But when I started using it, I immediately was turned off by the dual use of GitHub issues as a way to store comments. It just felt odd to have an issue that wasn’t an issue!\nFortunately, I’m not the only one to feel this way, and @laymonage actually did something about it: there is now a very similar app to utterances, called giscus. It offers almost the same functionality, but it uses GitHub Discussions as the place to store comments instead of Issues. This makes much more sense to me."
+  },
+  {
+    "objectID": "posts/2021-11-24_using-giscus/index.html#how-to-set-up-giscus-on-distill",
+    "href": "posts/2021-11-24_using-giscus/index.html#how-to-set-up-giscus-on-distill",
+    "title": "Enable giscus in Distill",
+    "section": "How to set up giscus on Distill",
+    "text": "How to set up giscus on Distill\nThere are several blogposts 4 on how to enable utterances on Distill, but none that I’ve found so far on giscus. So, here goes!\n\nEnable Discussions on your blog repo. Optionally, if you want to use a non-default Discussions category for storing giscus content, add a new category. I did this and called it “Comments”. As recommended by giscus, it’s a good idea to set the discussion format to “Announcement” so that non-authorized users can’t add content via the Discussions interface (only the giscus widget on your blog).\nInstall the giscus GitHub app and configure it to have access to your blog’s repo.\nGo to the giscus app interface, scroll down to “configuration” and fill in the details for your blog. Once you’ve done so, further down you should see an HTML code block under “Enable giscus” populated with your information.\n\n\n\n\nFigure 2: giscus configuration menu.\n\n\n\n\n\nFigure 3: giscus HTML block. Once you fill in the fields in the configuration menu, the parts starting with [ENTER ...] will get automatically populated.\n\n\nAs described in Miles McBain’s blogpost, unfortunately in Distill, you can’t just paste the HTML directly into an Rmd file. It won’t show up. But the same work-around that he describes for utterances also happily works for giscus! Read on…\n\nAdd an .html file (I’ve called mine giscus.html) to the root of your blog repo that looks like this (and is based off of Miles’ HTML):\n\n<script>\n   document.addEventListener(\"DOMContentLoaded\", function () {\n     if (!/posts/.test(location.pathname)) {\n       return;\n     }\n\n     var script = document.createElement(\"script\");\n     script.src = \"https://giscus.app/client.js\";\n     script.setAttribute(\"data-repo\", \"[ENTER REPO HERE]\");\n     script.setAttribute(\"data-repo-id\", \"[ENTER REPO ID HERE]\");\n     script.setAttribute(\"data-category\", \"[ENTER CATEGORY NAME HERE]\");\n     script.setAttribute(\"data-category-id\", \"[ENTER CATEGORY ID HERE]\");\n     script.setAttribute(\"data-mapping\", \"pathname\");\n     script.setAttribute(\"data-reactions-enabled\", \"0\");\n     script.setAttribute(\"data-emit-metadata\", \"0\");\n     script.setAttribute(\"data-theme\", \"light\");\n     script.setAttribute(\"data-lang\", \"en\");\n\n     /* wait for article to load, append script to article element */\n     var observer = new MutationObserver(function (mutations, observer) {\n       var article = document.querySelector(\"d-article\");\n       if (article) {\n         observer.disconnect();\n         /* HACK: article scroll */\n         article.setAttribute(\"style\", \"overflow-y: hidden\");\n         article.appendChild(script);\n       }\n     });\n\n     observer.observe(document.body, { childList: true });\n   });\n </script>\nIf you compare the above code with the HTML block in the giscus app (Figure 3), you should be able to see how the script.setAttribute lines above map to the key-value pairs in the HTML block in the giscus app. All we have to do is copy the contents of the HTML block over to this giscus.html file. You can see what my giscus.html file looks like here.\n\nModify _site.yml so that the giscus.html file gets loaded on every Distill article page 5:\n\noutput: \n  distill::distill_article:\n    includes:\n      in_header: giscus.html\nThat’s it! Or it should be anyways. I recommend trying a test comment to make sure everything is working (nobody will tell you otherwise…)"
+  },
+  {
+    "objectID": "posts/2019-02-16_building-r-docker-images-with-secrets/index.html",
+    "href": "posts/2019-02-16_building-r-docker-images-with-secrets/index.html",
+    "title": "Building R docker images with secrets",
+    "section": "",
+    "text": "Docker is an incredibly useful tool for running reproducible analysis workflows. For useRs, the rocker collection of images is very convenient for creating version-controlled R environments. This is pretty straightforward if you are using packages on CRAN, or publicly available packages on GitHub. But what if we want to use private packages on GitHub, or need for any other reason to enter authentication credentials during the build?\nThere are various ways to copy data into the image during the build, but when handling secrets that we don’t want hanging around after it’s finished, caution is needed. Approaches such as using COPY or ARGS will leave traces in the build. Staged builds are more secure, but tricky. Fortunately, as of v. 18.09, Docker is now providing official support for handling secrets."
+  },
+  {
+    "objectID": "posts/2019-02-16_building-r-docker-images-with-secrets/index.html#a-simple-example",
+    "href": "posts/2019-02-16_building-r-docker-images-with-secrets/index.html#a-simple-example",
+    "title": "Building R docker images with secrets",
+    "section": "A simple example",
+    "text": "A simple example\nHere is how to use the new Docker features to securely pass a secret during a build 1.\nThere are few non-default settings that need to be specified for this. First of all, prior to the docker build command, you need to specify that you want to use the new BuildKit backend with DOCKER_BUILDKIT=1. So the command starts DOCKER_BUILDKIT=1 docker build ...\nNext, we must add a syntax directive to the top line of the Dockerfile. For example, for a Dockerfile based on rocker/tidyverse:\n# syntax=docker/dockerfile:1.0.0-experimental\nFROM rocker/tidyverse\nSave your secrets in a text file. Let’s call it my_secret_stash2. If you are using it to store your GitHub PAT, it would just be one line with the PAT. Here, let’s put in some random word:\necho \"FABULOUS\" > my_secret_stash\nThis is all we need to use secrets during the build. Here is an example Dockerfile similar to the one in the Docker documentation.\n# syntax = docker/dockerfile:1.0-experimental\nFROM alpine\n\nRUN --mount=type=secret,id=mysecret cat /run/secrets/mysecret\nTo see how it works, save this as Dockerfile, then from the same directory containing Dockerfile and my_secret_stash, build the image:\nDOCKER_BUILDKIT=1 docker build --progress=plain --no-cache \\\n--secret id=mysecret,src=my_secret_stash .\nI’ve truncated the output, but you should see something like this (the exact build step number may vary).\n\n#7 [2/2] RUN --mount=type=secret,id=mysecret cat /run/secrets/mysecret\n#7       digest: sha256:75601a522ebe80ada66dedd9dd86772ca932d30d7e1b11bba94c04aa55c237de\n#7         name: \"[2/2] RUN --mount=type=secret,id=mysecret cat /run/secrets/mysecret\"\n#7      started: 2019-02-18 20:51:20.1092144 +0000 UTC\n#7 0.668 FABULOUS\n#7    completed: 2019-02-18 20:51:21.0927656 +0000 UTC\n#7     duration: 983.5512ms\n\nCan you spot our secret? It’s showing up from the cat command. However, it will not remain in the image."
+  },
+  {
+    "objectID": "posts/2019-02-16_building-r-docker-images-with-secrets/index.html#installing-a-private-r-package",
+    "href": "posts/2019-02-16_building-r-docker-images-with-secrets/index.html#installing-a-private-r-package",
+    "title": "Building R docker images with secrets",
+    "section": "Installing a private R package",
+    "text": "Installing a private R package\nTo install a package from my private GitHub repo, I created an additional simple R script, called install_git_packages.R:\n# install_git_packages.R\nsecret <- commandArgs(trailing = TRUE)\ndevtools::install_github(\"joelnitta/my-private-package\", auth_token = secret)\ncommandArgs(trailing = TRUE) will return whatever command line arguments were passed to Rscript after the name of the script, as a character vector.\nWe will call this script from the Dockerfile and pass the secret to it.\nHere is the Dockerfile to do that. (Note that although we copy the install_git_packages.R script into the image, we are passing it the secret variable that is only present during the build, so this should not remain afterwards.)\n# syntax = docker/dockerfile:1.0-experimental\nFROM rocker/tidyverse:3.5.1\n\nENV DEBIAN_FRONTEND noninteractive\n\nCOPY install_git_packages.R .\n\nRUN apt-get update\n\nRUN --mount=type=secret,id=mysecret \\\nRscript install_git_packages.R `cat /run/secrets/mysecret`\nLet’s build the image and tag it:\nDOCKER_BUILDKIT=1 docker build --progress=plain --no-cache \\\n--secret id=mysecret,src=my_secret_stash . -t my_special_image\nThat’s it!"
+  },
+  {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#tldr",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#tldr",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "tl;dr",
+    "text": "tl;dr\n\nThe targets R package is great for managing bioinformatics workflows\nrenv, Conda, and Docker can be combined so that all steps are modular and reproducible\nDemo available at https://github.com/joelnitta/targets_bioinfo_example\n\n\n\n\nFigure 1: Image by T K on unsplash.\n\n\nBioinformatics projects tend to have a similar pattern: they all start with raw data, then pass the data through various programs until arriving at the final result. These “pipelines” can become very long and complicated, so there are many platforms that automate this process either relying on code (e.g., nextflow, CWL) or graphical interfaces (e.g., galaxy). Python’s snakemake is also commonly used for this purpose. That got me thinking—can we do this in R?"
+  },
+  {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#what-im-looking-for-in-a-pipeline-manager",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#what-im-looking-for-in-a-pipeline-manager",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "What I’m looking for in a pipeline manager",
+    "text": "What I’m looking for in a pipeline manager\nThese are some qualities that I want to see in a pipeline manager.\n\nAutomated: I should be able to run one central script that will orchestrate the whole pipeline, rather than manually keeping track of which step depends on which and when each needs to be run.\nEfficient: The pipeline manager should keep track of what is out of date and only re-run those parts, rather than re-run the whole pipeline each time.\nReproducible: Software packages should be isolated and version controlled so that the same input results in the same output on any machine."
+  },
+  {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#enter-targets",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#enter-targets",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "Enter targets",
+    "text": "Enter targets\nThe targets R package pretty much fits the bill perfectly for Points 1 and 2. targets completely automates the workflow, so that the user doesn’t have to manually run steps, and guarantees that the output is up-to-date (if the workflow is designed correctly). Furthermore, it has capabilities for easily looping and running processes in parallel, so it scales quite well to large analyses. I won’t go into too many details of how to use targets here, since it has an excellent user manual."
+  },
+  {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#targets-meets-docker",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#targets-meets-docker",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "targets meets Docker",
+    "text": "targets meets Docker\nHowever, targets by itself isn’t quite enough to meet all of my bioinformatics needs. What about Point 3—how can we make targets workflows reproducible?\nMost bioinformatics tools are open-source software packages that have a command-line interface (CLI). Furthermore, these days, most well-established bioinformatics tools have Docker images1 available to run them. Good sources to find Docker images for bioinformatics software are Bioconda or Biocontainers2. Docker frees us from manual installations and dependency hell, as well as vastly improving reproducibility, since all the software versions are fixed within the container.\nSo I will run most of the steps of the pipeline in available Docker containers."
+  },
+  {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#avoiding-docker-in-docker",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#avoiding-docker-in-docker",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "Avoiding Docker-in-Docker",
+    "text": "Avoiding Docker-in-Docker\n\n\n\nFigure 2: Image by Giordano Rossoni on unsplash.\n\n\nHowever, I then encounter a problem: what about the environment to run R, targets, and launch the Docker containers? That environment should be version-controlled and reproducible too. Normally my solution to create such an environment is Docker, but it’s generally a bad idea to try and run docker from within docker3\nThe solution I reached is to use two more environment managers: Conda4 and renv. I use Conda for running R, and renv for managing R packages."
+  },
+  {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#first-things-first-set-up-the-project",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#first-things-first-set-up-the-project",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "First things first: Set up the project",
+    "text": "First things first: Set up the project\nI need to explain one thing before continuing: for this example, I’m following the practice of using a “project” for the analysis. This simply means all of the files needed for the analysis are put in a single folder (with subfolders as necessary), and that folder is used as the “home base” for the project. So if I type some command at the command line prompt, it is assumed that the project folder is the current working directory. The two main tools I use to maintain the pipeline, renv and targets, both rely on this concept.\nFrom the command line, that just looks like:\n\nmkdir targets_bioinfo_example\ncd targets_bioinfo_example\n\nNext, let’s download some files that I will use in the subsequent steps (don’t worry about what these do yet; I will explain each one below):\n\n\n# environment.yml\ncurl https://raw.githubusercontent.com/joelnitta/targets_bioinfo_example/main/environment.yml > environment.yml\n# renv.lock\ncurl https://raw.githubusercontent.com/joelnitta/targets_bioinfo_example/main/renv.lock > renv.lock\n# _targets.R\ncurl https://raw.githubusercontent.com/joelnitta/joelnitta-home/main/_posts/2021-11-16_r-bioinfo-flow/_targets.R > _targets.R\n\nFrom here on, I assume we are running everything a folder called targets_bioinfo_example containing the files environment.yml, renv.lock, and _targets.R.\nAlso, although I’ve mentioned several pieces of software so far, there are only two required for this workflow: Conda and Docker. Make sure those are both installed before continuing."
+  },
+  {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#running-r-with-conda",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#running-r-with-conda",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "Running R with Conda",
+    "text": "Running R with Conda\nConda environments can be specified using a yml file, often named environment.yml.\nThis is the environment.yml file for this project:\nname: bioinfo-example-env\nchannels:\n  - conda-forge\n  - bioconda\n  - defaults\ndependencies:\n  - r-renv=0.14.*\nIt’s quite short: all it does is install renv and its dependencies (which includes R). Here I’ve specified the most recent major version5 of renv, which will come with R v4.1.1.\nWe can recreate the Conda environment from environment.yml (you should have downloaded it above) with:\n\n\nconda env create -f environment.yml\n\n\n\nCollecting package metadata (repodata.json): ...working... done\nSolving environment: ...working... done\nPreparing transaction: ...working... done\nVerifying transaction: ...working... done\nExecuting transaction: ...working... done\n#\n# To activate this environment, use\n#\n#     $ conda activate bioinfo-example-env\n#\n# To deactivate an active environment, use\n#\n#     $ conda deactivate\n\n\nAs the output says near the bottom, run conda activate bioinfo-example-env to enter this environment, then from there you can use R as usual with R.\nOn my computer, this looks like:\n(base) Joels-iMac:targets_bioinfo_example joelnitta$ conda activate bioinfo-example-env\n(bioinfo-example-env) Joels-iMac:targets_bioinfo_example joelnitta$ R\n\nR version 4.1.1 (2021-08-10) -- \"Kick Things\"\nCopyright (C) 2021 The R Foundation for Statistical Computing\nPlatform: x86_64-apple-darwin13.4.0 (64-bit)\n\nR is free software and comes with ABSOLUTELY NO WARRANTY.\nYou are welcome to redistribute it under certain conditions.\nType 'license()' or 'licence()' for distribution details.\n\n  Natural language support but running in an English locale\n\nR is a collaborative project with many contributors.\nType 'contributors()' for more information and\n'citation()' on how to cite R or R packages in publications.\n\nType 'demo()' for some demos, 'help()' for on-line help, or\n'help.start()' for an HTML browser interface to help.\nType 'q()' to quit R.\n\n> \nNotice the change from (base) to (bioinfo-example-env), indicating that we are now inside the Conda environment.\nNow we have a fixed version of R, with a fixed version of renv."
+  },
+  {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#maintain-r-packages-with-renv",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#maintain-r-packages-with-renv",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "Maintain R packages with renv",
+    "text": "Maintain R packages with renv\nThe next step is to use renv to install and track R package versions. renv does this with a “lock file”, which is essentially a specification of every package needed to run the code, its version, and where it comes from.\nThis is what the entry in the renv.lock file for this project for the package Matrix looks like:\n\"Matrix\": {\n      \"Package\": \"Matrix\",\n      \"Version\": \"1.3-4\",\n      \"Source\": \"Repository\",\n      \"Repository\": \"CRAN\",\n      \"Hash\": \"4ed05e9c9726267e4a5872e09c04587c\"\n    }\nAssuming renv.lock is present in the working directory (you should have downloaded it above), we can install all packages needed for this example by running the following in R within the Conda environment:\n\nrenv::activate() # Turn on renv\nrenv::restore() # Install packages\n\nYou should see something like this6:\nThe following package(s) will be updated:\n\n# CRAN ===============================\n- Matrix          [* -> 1.3-4]\n- R6              [* -> 2.5.1]\n- Rcpp            [* -> 1.0.7]\n- RcppArmadillo   [* -> 0.10.6.0.0]\n- RcppParallel    [* -> 5.1.4]\n- assertthat      [* -> 0.2.1]\n- babelwhale      [* -> 1.0.3]\n- callr           [* -> 3.7.0]\n\n...\nIf you look at the contents of the project directory, you will also notice a new folder called renv that contains all of the R packages we just installed."
+  },
+  {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#putting-it-all-together",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#putting-it-all-together",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "Putting it all together",
+    "text": "Putting it all together\nOK, now we can run R and Docker from a reproducible environment. What is the best way to run Docker from R? There are some functions in base R for running external commands (system(), system2()) as well as the excellent processx package. Here, though I will use the babelwhale package, which provides some nice wrappers to run Docker (or Singularity)7.\nHere is an example _targets.R file using babelwhale to run Docker. This workflow downloads a pair of fasta files, then trims low-quality bases using the fastp program8:\n\nlibrary(targets)\nlibrary(tarchetypes)\nlibrary(babelwhale)\n\n# Set babelwhale backend for running containers\n# (here, we are using Docker, not Singularity)\nset_default_config(create_docker_config())\n\n# Define workflow\nlist(\n    # Download example fastq files\n    tar_file(\n        read_1, { \n            download.file(\n                url = \"https://raw.githubusercontent.com/OpenGene/fastp/master/testdata/R1.fq\",\n                destfile = \"R1.fq\")\n            \"R1.fq\"\n        }\n    ),\n    tar_file(\n        read_2, { \n            download.file(\n                url = \"https://raw.githubusercontent.com/OpenGene/fastp/master/testdata/R2.fq\",\n                destfile = \"R2.fq\")\n            \"R2.fq\"\n        }\n    ),\n    # Clean the fastq file with fastp\n    tar_file(\n        fastp_out, {\n            babelwhale::run(\n                # Name of docker image, with tag specifying version\n                \"quay.io/biocontainers/fastp:0.23.1--h79da9fb_0\",\n                # Command to run\n                command = \"fastp\",\n                # Arguments to the command\n                args = c(\n                    # fastq input files\n                    \"-i\", paste0(\"/wd/\", read_1), \n                    \"-I\", paste0(\"/wd/\", read_2), \n                    # fastq output files\n                    \"-o\", \"/wd/R1_trim.fq\",\n                  \"-O\", \"/wd/R2_trim.fq\",\n                    # trim report file\n                    \"-h\", \"/wd/trim_report.html\"),\n                # Volume mounting specification\n                # this uses getwd(), but here::here() is also a good method\n                volumes = paste0(getwd(), \":/wd/\")\n            )\n            c(\"R1_trim.fq\", \"R2_trim.fq\", \"trim_report.html\")\n        }\n    )\n)\n\nIn order to run this targets workflow, the above code must be saved as _targets.R in the project root directory (you should have downloaded it above).\nFinally, everything is in place! All we need to do now is run targets::tar_make(), sit back, and enjoy the show:\n\ntargets::tar_make()\n\n• start target read_1\ntrying URL 'https://raw.githubusercontent.com/OpenGene/fastp/master/testdata/R1.fq'\nContent type 'text/plain; charset=utf-8' length 3041 bytes\n==================================================\ndownloaded 3041 bytes\n\n• built target read_1\n• start target read_2\ntrying URL 'https://raw.githubusercontent.com/OpenGene/fastp/master/testdata/R2.fq'\nContent type 'text/plain; charset=utf-8' length 3343 bytes\n==================================================\ndownloaded 3343 bytes\n\n• built target read_2\n• start target fastp_out\n• built target fastp_out\n• end pipeline\n\n\nYou should be able to confirm that the read files were downloaded, cleaned, and a report generated in your working directory. Also, notice there is a new folder called _targets. This contains the metadata that targets uses to track each step of the pipeline (generally it should not be modified by hand; the same goes for the renv folder)."
+  },
+  {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#next-steps",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#next-steps",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "Next steps",
+    "text": "Next steps\n\n\n\nFigure 3: Image by JOHN TOWNER on unsplash\n\n\nThe example workflow just consists of a couple of steps, but I hope you can see how they are chained together: fastp_out depends on read_1 and read_2. We could add a third step that uses fastp_out for something else, and so forth.\nWe can also see this by visualizing the pipeline:\n\ntargets::tar_visnetwork()\n\n\n\n\n\nTo keep things simple for this post, I have written the workflow as a single R script, but that’s not really the ideal way to do it. You can see that the syntax is rather verbose, and such a script would rapidly become very long. The best practice for targets workflows is to write the targets plan and the functions that build each target separately, as _targets.R and functions.R, respectively.\nBy splitting the plan from the functions this way, our _targets.R file becomes much shorter and more readable:\n\nlibrary(targets)\nlibrary(tarchetypes)\nlibrary(babelwhale)\n\n# Set babelwhale backend for running containers\nset_default_config(create_docker_config())\n\n# Load functions\nsource(\"R/functions.R\")\n\ntar_plan(\n    # Download example fastq files\n    tar_file(read_1, download_read(\"R1.fq\")),\n    tar_file(read_2, download_read(\"R2.fq\")),\n    # Clean the fastq files with fastp\n    tar_file(\n        fastp_out, \n        fastp(read_1, read_2, \"R1_trim.fq\", \"R2_trim.fq\", \"trim_report.html\"\n        )\n    )\n)\n\nYou can see how it provides a high-level overview of each step in the workflow, without getting bogged down in the details. And the best part is, you don’t have to install fastp (or any other software used for a particular step)! Docker takes care of that for you.\nFurthermore, thanks to targets, if one part of the workflow changes and we run tar_make() again, only the part that changed will be run. Try it by deleting R1.fq, then run tar_make() again and see what happens.\nI have made this plan and the accompanying functions.R file available at this repo: https://github.com/joelnitta/targets_bioinfo_example. Please check it out!"
+  },
+  {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#conclusion",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#conclusion",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "Conclusion",
+    "text": "Conclusion\nI am really excited about using targets for reproducibly managing bioinformatics workflows from R. I hope this helps others who may want to do the same!"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "ブログ",
+    "section": "",
+    "text": "blogging\n\n\ndistill\n\n\n\n\nHow to use the giscus commenting system on a Distill blog\n\n\n\n\n\n\n2021/11/24\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nworkflow\n\n\nreproducibility\n\n\n\n\nHow to combine Conda, Docker, and R to run modular, reproducible bioinformatics pipelines\n\n\n\n\n\n\n2021/11/16\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nr\n\n\nplotting\n\n\n\n\nHow to change the phytools default color scheme when visualizing the results of ancestral character state estimation\n\n\n\n\n\n\n2021/06/02\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ndocker\n\n\n\n\nKeep it secret. Keep it safe.\n\n\n\n\n\n\n2019/02/16\n\n\nJoel Nitta\n\n\n\n\n\n\n一致なし"
+  },
+  {
+    "objectID": "publications.html",
+    "href": "publications.html",
+    "title": "論文",
+    "section": "",
+    "text": "Google Scholar"
+  },
+  {
+    "objectID": "publications.html#section",
+    "href": "publications.html#section",
+    "title": "論文",
+    "section": "2022",
+    "text": "2022\nNitta, J. H., E. Schuettpelz, S. Ramírez-Barahona, and W. Iwasaki (2022). “An open and continuously updated fern tree of life”. In: Frontiers in Plant Science 13, p. 909768. DOI: 10.3389/fpls.2022.909768 Preprint  Code  Data  PDF\nNitta, J. H., B. D. Mishler, W. Iwasaki, and A. Ebihara (2022). “Spatial phylogenetics of Japanese ferns: Patterns, processes, and implications for conservation”. In: American Journal of Botany 109.5, pp. 727-745. DOI: 10.1002/ajb2.1848 Preprint  Code  Data  PDF\nNitta, J. H. and S. M. Chambers (2022). “Identifying cryptic fern gametophytes using DNA barcoding: A review”. In: Applications in Plant Sciences 10, p. e11465. DOI: 10.1002/aps3.11465 Preprint  Code  PDF"
+  },
+  {
+    "objectID": "publications.html#section-1",
+    "href": "publications.html#section-1",
+    "title": "論文",
+    "section": "2021",
+    "text": "2021\nNitta, J. H., J. E. Watkins Jr., N. M. Holbrook, T. W. Wang, and C. C. Davis (2021). “Ecophysiological differentiation between life stages in filmy ferns (Hymenophyllaceae)”. In: Journal of Plant Research 134.5, pp. 971-988. DOI: 10.1007/s10265-021-01318-z Preprint  Code  Data  PDF"
+  },
+  {
+    "objectID": "publications.html#section-2",
+    "href": "publications.html#section-2",
+    "title": "論文",
+    "section": "2020",
+    "text": "2020\nNitta, J. H., A. Ebihara, and A. R. Smith (2020). “A taxonomic and molecular survey of the pteridophytes of the Nectandra Cloud Forest Reserve, Costa Rica”. In: PLoS ONE 15.11, p. e0241231. DOI: 10.1371/journal.pone.0241231  Code  Data  PDF\nNitta, J. H., J. E. Watkins Jr., and C. C. Davis (2020). “Life in the canopy: Community trait assessments reveal substantial functional diversity among fern epiphytes”. In: New Phytologist 227.6, pp. 1885-1899. DOI: 10.1111/nph.16607  Code  Data  PDF"
+  },
+  {
+    "objectID": "publications.html#section-3",
+    "href": "publications.html#section-3",
+    "title": "論文",
+    "section": "2019",
+    "text": "2019\nEbihara, A. and J. H. Nitta (2019). “An update and reassessment of fern and lycophyte diversity data in the Japanese Archipelago”. In: Journal of Plant Research 132.6, pp. 723-738. DOI: 10.1007/s10265-019-01137-3  Code  Data  PDF\nEbihara, A., J. H. Nitta, Y. Matsumoto, Y. Fukazawa, M. Kurihara, H. Yokote, K. Sakuma, O. Azakami, Y. Hirayama, and R. Imaichi (2019). “Growth dynamics of independent gametophytes of Pleurosoriopsis makinoi (Polypodiaceae)”. In: Bulletin of the National Museum of Nature and Science, Series B (Botany) 45.2, pp. 77-86.   Code  PDF\nNitta, J. H. and A. Ebihara (2019). “Virtual issue: Ecology and evolution of pteridophytes in the era of molecular genetics”. In: Journal of Plant Research 132.6, pp. 719-721. DOI: 10.1007/s10265-019-01139-1  PDF"
+  },
+  {
+    "objectID": "publications.html#section-4",
+    "href": "publications.html#section-4",
+    "title": "論文",
+    "section": "2018",
+    "text": "2018\nGilbert, K. J., J. H. Nitta, G. Talavera, and N. E. Pierce (2018). “Keeping an eye on coloration: Ecological correlates of the evolution of pitcher traits in the genus Nepenthes (Caryophyllales)”. In: Biological Journal of the Linnean Society 123.2, pp. 321-337. DOI: 10.1093/biolinnean/blx142  PDF\nNitta, J. H., S. Amer, and C. C. Davis (2018). “Microsorum × tohieaense (Polypodiaceae), a new hybrid fern from French Polynesia, with implications for the taxonomy of Microsorum”. In: Systematic Botany 43.2, pp. 397-413. DOI: 10.1600/036364418X697166  Data  PDF"
+  },
+  {
+    "objectID": "publications.html#section-5",
+    "href": "publications.html#section-5",
+    "title": "論文",
+    "section": "2017",
+    "text": "2017\nNitta, J. H., J. Meyer, R. Taputuarai, and C. C. Davis (2017). “Life cycle matters: DNA barcoding reveals contrasting community structure between fern sporophytes and gametophytes”. In: Ecological Monographs 87.2, pp. 278-296. DOI: 10.1002/ecm.1246  PDF\nPinson, J. B., S. M. Chambers, J. H. Nitta, L. Kuo, and E. B. Sessa (2017). “The separation of generations: Biology and biogeography of long-lived sporophyteless fern gametophytes”. In: International Journal of Plant Sciences 178.1, pp. 1-18. DOI: 10.1086/688773  PDF\nZhou, X., L. Zhang, C. Chen, C. Li, Y. Huang, D. Chen, N. T. Thi, D. Cicuzza, R. Knapp, T. T. Tam, J. H. Nitta, X. Gao, and L. Zhang (2017). “A plastid phylogeny and character evolution of the Old World fern genus Pyrrosia (Polypodiaceae) with the description of a new genus: Hovenkampia (Polypodiaceae)”. In: Molecular Phylogenetics and Evolution 114, pp. 271-294. DOI: 10.1016/j.ympev.2017.06.020  PDF"
+  },
+  {
+    "objectID": "publications.html#section-6",
+    "href": "publications.html#section-6",
+    "title": "論文",
+    "section": "2016",
+    "text": "2016\nPouteau, R., J. Meyer, P. Blanchard, J. H. Nitta, M. Terorotua, and R. Taputuarai (2016). “Fern species richness and abundance are indicators of climate change on high-elevation islands: evidence from an elevational gradient on Tahiti (French Polynesia)”. In: Climatic Change 138, pp. 143-156. DOI: 10.1007/s10584-016-1734-x  PDF"
+  },
+  {
+    "objectID": "publications.html#section-7",
+    "href": "publications.html#section-7",
+    "title": "論文",
+    "section": "2015",
+    "text": "2015\nChen, C., J. H. Nitta, M. Fanerii, T. Y. A. Yang, F. Pitisopa, C. W. Li, and W. Chiou (2015). “Antrophyum solomonense (Pteridaceae), a new species from the Solomon Islands, and its systematic position based on phylogenetic analysis”. In: Systematic Botany 40.3, pp. 645-651. DOI: 10.1600/036364415X689357  PDF"
+  },
+  {
+    "objectID": "publications.html#section-8",
+    "href": "publications.html#section-8",
+    "title": "論文",
+    "section": "2013",
+    "text": "2013\nEbihara, A., A. Yamaoka, N. Mizukami, A. Sakoda, J. H. Nitta, and R. Imaichi (2013). “A survey of the fern gametophyte flora of Japan: Frequent independent occurrences of noncordiform gametophytes”. In: American Journal of Botany 100.4, pp. 735-743. DOI: 10.3732/ajb.1200555  PDF"
+  },
+  {
+    "objectID": "publications.html#section-9",
+    "href": "publications.html#section-9",
+    "title": "論文",
+    "section": "2011",
+    "text": "2011\nNitta, J. H., A. Ebihara, and M. Ito (2011). “Reticulate evolution in the Crepidomanes minutum species complex (Hymenophyllaceae)”. In: American Journal of Botany 98.11, pp. 1782-1800. DOI: 10.3732/ajb.1000484  PDF\n\n\n\n\n\n\n\nNitta, J. H., J. Meyer, and A. R. Smith (2011). “Pteridophytes of Mo’orea, French Polynesia: Additional new records”. In: American Fern Journal 101.1, pp. 36-49. DOI: 10.1640/0002-8444-101.1.36  PDF"
+  },
+  {
+    "objectID": "publications.html#section-10",
+    "href": "publications.html#section-10",
+    "title": "論文",
+    "section": "2010",
+    "text": "2010\nEbihara, A., J. H. Nitta, and M. Ito (2010). “Molecular species identification with rich floristic sampling: DNA barcoding the pteridophyte flora of Japan”. In: PLoS ONE 5.12, p. e15136. DOI: 10.1371/journal.pone.0015136  PDF\nEbihara, A., J. H. Nitta, and K. Iwatsuki (2010). “The Hymenophyllaceae of the Pacific area. 2. Hymenophyllum (excluding subgen. Hymenophyllum)”. In: Bulletin of the National Museum of Nature and Science, Series B (Botany) 36.2, pp. 43-59.   PDF"
+  },
+  {
+    "objectID": "publications.html#section-11",
+    "href": "publications.html#section-11",
+    "title": "論文",
+    "section": "2009",
+    "text": "2009\nEbihara, A., J. H. Nitta, D. Lorence, and J. Dubuisson (2009). “New records of Polyphlebium borbonicum, an African filmy fern, in the New World and Polynesia”. In: American Fern Journal 99.3, pp. 200-206. DOI: 10.1640/0002-8444-99.3.200  PDF\nNitta, J. H. and M. J. Epps (2009). “Hemi-epiphytism in Vandenboschia collariata (Hymenophyllaceae)”. In: Brittonia 61.4, pp. 392-397. DOI: 10.1007/s12228-009-9097-5  PDF"
+  },
+  {
+    "objectID": "publications.html#section-12",
+    "href": "publications.html#section-12",
+    "title": "論文",
+    "section": "2008",
+    "text": "2008\nNitta, J. H. (2008). “Exploring the utility of three plastid loci for biocoding the filmy ferns (Hymenophyllaceae) of Moorea”. In: Taxon 57.3, pp. 725-736. DOI: 10.1002/tax.573006  PDF\nNitta, J. H. and P. O’grady (2008). “Mitochondrial phylogeny of the endemic Hawaiian craneflies (Diptera, Limoniidae, Dicranomyia): Implications for biogeography and species formation”. In: Molecular Phylogenetics and Evolution 46.3, pp. 1182-1190. DOI: 10.1016/j.ympev.2007.12.021  PDF"
+  }
+]
