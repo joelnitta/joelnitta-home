@@ -35,4 +35,7 @@ quarto_preview_stop()
 git_commit_all("Translate to JA")
 
 # Push to the remote
-git_push("origin", branch = "ja")
+git_push("origin")
+
+# Change back to main
+git_branch_checkout("main")
