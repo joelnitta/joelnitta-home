@@ -15,8 +15,8 @@ md2po(md_in = "publications.qmd", po = "po/ja/publications.po")
 
 # (edit PO files)
 
-# Switch to JA branch
-git_branch_checkout("ja")
+# Switch to ja-source branch (source code for JA website)
+git_branch_checkout("ja-source")
 
 # Translate MD files **in place**
 po2md(md_in = "_quarto.yml", po = "po/ja/_quarto.po", md_out = "_quarto.yml")
