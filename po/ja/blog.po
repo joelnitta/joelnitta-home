@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2022-10-04 05:49+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: YAML Front Matter: comments
+#: /409952fb95fbb825992593fca10961ea_1/blog.qmd:1
+#, no-wrap
+msgid "false"
+msgstr ""
+
+#. type: YAML Front Matter: listing categories
+#: /409952fb95fbb825992593fca10961ea_1/blog.qmd:1
+#, no-wrap
+msgid "true"
+msgstr ""
+
+#. type: YAML Front Matter: listing contents
+#: /409952fb95fbb825992593fca10961ea_1/blog.qmd:1
+#, no-wrap
+msgid "posts"
+msgstr ""
+
+#. type: YAML Front Matter: listing sort
+#: /409952fb95fbb825992593fca10961ea_1/blog.qmd:1
+#, no-wrap
+msgid "date desc"
+msgstr ""
+
+#. type: YAML Front Matter: listing type
+#: /409952fb95fbb825992593fca10961ea_1/blog.qmd:1
+#, no-wrap
+msgid "default"
+msgstr ""
+
+#. type: YAML Front Matter: title
+#: /409952fb95fbb825992593fca10961ea_1/blog.qmd:1
+#, no-wrap
+msgid "Blog"
+msgstr "ブログ"

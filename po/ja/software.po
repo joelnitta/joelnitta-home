@@ -1,0 +1,104 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2022-10-04 05:48+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: YAML Front Matter: toc
+#: /409952fb95fbb825992593fca10961ea_1/software.qmd:1
+#, no-wrap
+msgid "false"
+msgstr ""
+
+#. type: YAML Front Matter: date
+#: /409952fb95fbb825992593fca10961ea_1/software.qmd:1
+#, no-wrap
+msgid "`r Sys.Date()`"
+msgstr ""
+
+#. type: YAML Front Matter: output
+#: /409952fb95fbb825992593fca10961ea_1/software.qmd:1
+#, no-wrap
+msgid "distill::distill_article"
+msgstr ""
+
+#. type: YAML Front Matter: title
+#: /409952fb95fbb825992593fca10961ea_1/software.qmd:1
+#, no-wrap
+msgid "Software"
+msgstr "ソフトウェア"
+
+#. type: Fenced code block ({r})
+#: /409952fb95fbb825992593fca10961ea_1/software.qmd:11
+#, no-wrap
+msgid ""
+"#| label: setup\n"
+"#| include: false\n"
+"library(distilltools)\n"
+msgstr ""
+
+#. type: Title ##
+#: /409952fb95fbb825992593fca10961ea_1/software.qmd:17
+#, markdown-text, no-wrap
+msgid "`canaper` <img src=\"https://github.com/ropensci/canaper/blob/main/man/figures/logo.png?raw=true\" align=\"right\" alt=\"\" width=\"120\" />"
+msgstr "`canaper` <img src=\"https://github.com/ropensci/canaper/blob/main/man/figures/logo.png?raw=true\" align=\"right\" alt=\"\" width=\"120\" />"
+
+#. type: Plain text
+#: /409952fb95fbb825992593fca10961ea_1/software.qmd:20
+#, markdown-text, no-wrap
+msgid "R package for categorial analysis of neo-and paleo-endemism."
+msgstr "系統的固有性を測るRパッケージ"
+
+#. type: Plain text
+#: /409952fb95fbb825992593fca10961ea_1/software.qmd:23
+#, markdown-text, no-wrap
+msgid "`r icon_link(\"github\", \"Code\", \"https://github.com/ropensci/canaper\")` `r icon_link(\"globe\", \"Website\", \"https://docs.ropensci.org/canaper/\")`"
+msgstr "`r icon_link(\"github\", \"Code\", \"https://github.com/ropensci/canaper\")` `r icon_link(\"globe\", \"Website\", \"https://docs.ropensci.org/canaper/\")`"
+
+#. type: Title ##
+#: /409952fb95fbb825992593fca10961ea_1/software.qmd:24
+#, markdown-text, no-wrap
+msgid "`taxastand` <img src=\"https://github.com/joelnitta/taxastand/blob/main/man/figures/logo.png?raw=true\" align=\"right\" alt=\"\" width=\"120\" />"
+msgstr "`taxastand` <img src=\"https://github.com/joelnitta/taxastand/blob/main/man/figures/logo.png?raw=true\" align=\"right\" alt=\"\" width=\"120\" />"
+
+#. type: Plain text
+#: /409952fb95fbb825992593fca10961ea_1/software.qmd:27
+#, markdown-text, no-wrap
+msgid "R package for taxonomic name resolution."
+msgstr "学名を統一するRパッケージ"
+
+#. type: Plain text
+#: /409952fb95fbb825992593fca10961ea_1/software.qmd:30
+#, markdown-text, no-wrap
+msgid "`r icon_link(\"github\", \"Code\", \"https://github.com/joelnitta/taxastand/\")` `r icon_link(\"globe\", \"Website\", \"https://joelnitta.github.io/taxastand/\")`"
+msgstr "`r icon_link(\"github\", \"Code\", \"https://github.com/joelnitta/taxastand/\")` `r icon_link(\"globe\", \"Website\", \"https://joelnitta.github.io/taxastand/\")`"
+
+#. type: Title ##
+#: /409952fb95fbb825992593fca10961ea_1/software.qmd:31
+#, markdown-text, no-wrap
+msgid "`dwctaxon` <img src=\"https://github.com/joelnitta/dwctaxon/blob/main/man/figures/logo.png?raw=true\" align=\"right\" alt=\"\" width=\"120\" />"
+msgstr "`dwctaxon` <img src=\"https://github.com/joelnitta/dwctaxon/blob/main/man/figures/logo.png?raw=true\" align=\"right\" alt=\"\" width=\"120\" />"
+
+#. type: Plain text
+#: /409952fb95fbb825992593fca10961ea_1/software.qmd:34
+#, markdown-text, no-wrap
+msgid "R package for handling taxonomic data in Darwin Core format."
+msgstr "[ダーウィンコア形式](https://www.gbif.org/ja/darwin-core)に従った学名の整理をするRパッケージ"
+
+#. type: Plain text
+#: /409952fb95fbb825992593fca10961ea_1/software.qmd:36
+#, markdown-text, no-wrap
+msgid "`r icon_link(\"github\", \"Code\", \"https://github.com/joelnitta/dwctaxon/\")` `r icon_link(\"globe\", \"Website\", \"https://joelnitta.github.io/dwctaxon/\")`"
+msgstr "`r icon_link(\"github\", \"Code\", \"https://github.com/joelnitta/dwctaxon/\")` `r icon_link(\"globe\", \"Website\", \"https://joelnitta.github.io/dwctaxon/\")`"

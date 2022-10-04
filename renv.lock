@@ -59,6 +59,24 @@
       "Hash": "dab19adae4440ae55aa8a9d238b246bb",
       "Requirements": []
     },
+    "RcppArmadillo": {
+      "Package": "RcppArmadillo",
+      "Version": "0.11.1.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "631929e53829901562986c504f86104b",
+      "Requirements": [
+        "Rcpp"
+      ]
+    },
+    "RcppParallel": {
+      "Package": "RcppParallel",
+      "Version": "5.1.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "f3e94e34ff656a7c8336ce01207bc2b8",
+      "Requirements": []
+    },
     "RefManageR": {
       "Package": "RefManageR",
       "Version": "1.3.0",
@@ -84,6 +102,18 @@
         "sys"
       ]
     },
+    "assertr": {
+      "Package": "assertr",
+      "Version": "2.8",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "38c61c51fa8311904551d58895da2858",
+      "Requirements": [
+        "MASS",
+        "dplyr",
+        "rlang"
+      ]
+    },
     "assertthat": {
       "Package": "assertthat",
       "Version": "0.2.1",
@@ -91,6 +121,28 @@
       "Repository": "CRAN",
       "Hash": "50c838a310445e954bc13f26f26a6ecf",
       "Requirements": []
+    },
+    "babelwhale": {
+      "Package": "babelwhale",
+      "Version": "1.0.3",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "babelwhale",
+      "RemoteUsername": "joelnitta",
+      "RemoteRef": "jnfeat",
+      "RemoteSha": "db9e5aa1e59c3f89a063961c3ba17f33c2121400",
+      "Hash": "6d2db65f48ed53a019ad2231d0bfce0f",
+      "Requirements": [
+        "crayon",
+        "digest",
+        "dplyr",
+        "dynutils",
+        "fs",
+        "glue",
+        "processx",
+        "purrr"
+      ]
     },
     "backports": {
       "Package": "backports",
@@ -397,6 +449,33 @@
         "yaml"
       ]
     },
+    "dovetail": {
+      "Package": "dovetail",
+      "Version": "0.0.0.9000",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "joelnitta",
+      "RemoteRepo": "dovetail",
+      "RemoteRef": "main",
+      "RemoteSha": "c303c7904ef717b0478cb10498bbce60757a6cd5",
+      "Remotes": "anthonynorth/roxyglobals",
+      "Hash": "5ad0d1b2e50f1b5885cb6b319f04c08d",
+      "Requirements": [
+        "assertr",
+        "assertthat",
+        "babelwhale",
+        "digest",
+        "dplyr",
+        "fs",
+        "glue",
+        "magrittr",
+        "purrr",
+        "readr",
+        "stringr",
+        "tibble"
+      ]
+    },
     "downlit": {
       "Package": "downlit",
       "Version": "0.2.1",
@@ -450,6 +529,27 @@
         "tibble",
         "tidyselect",
         "vctrs"
+      ]
+    },
+    "dynutils": {
+      "Package": "dynutils",
+      "Version": "1.0.9",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "4f776e815a7fdc4ce324a595280468ac",
+      "Requirements": [
+        "Matrix",
+        "Rcpp",
+        "assertthat",
+        "crayon",
+        "desc",
+        "dplyr",
+        "magrittr",
+        "proxyC",
+        "purrr",
+        "remotes",
+        "stringr",
+        "tibble"
       ]
     },
     "ellipsis": {
@@ -554,10 +654,10 @@
     },
     "gert": {
       "Package": "gert",
-      "Version": "1.4.3",
+      "Version": "1.9.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "3a3f29a74f8bd85ed8d53ab039b18bcd",
+      "Hash": "56dc795889978f759ea0b0de06dcd5b4",
       "Requirements": [
         "askpass",
         "credentials",
@@ -845,6 +945,17 @@
       "Hash": "3d5108641f47470611a32d0bdf357a72",
       "Requirements": []
     },
+    "later": {
+      "Package": "later",
+      "Version": "1.3.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "7e7b457d7766bc47f2a5f21cc2984f8e",
+      "Requirements": [
+        "Rcpp",
+        "rlang"
+      ]
+    },
     "lattice": {
       "Package": "lattice",
       "Version": "0.20-45",
@@ -941,10 +1052,10 @@
     },
     "openssl": {
       "Package": "openssl",
-      "Version": "1.4.5",
+      "Version": "2.0.3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "5406fd37ef0bf9b88c8a4f264d6ec220",
+      "Hash": "b9621e75c0652041002a19609fb23c5a",
       "Requirements": [
         "askpass"
       ]
@@ -1034,6 +1145,19 @@
         "prettyunits"
       ]
     },
+    "proxyC": {
+      "Package": "proxyC",
+      "Version": "0.2.4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "e0cecf6d657d4fb9588a9b3698c5c199",
+      "Requirements": [
+        "Matrix",
+        "Rcpp",
+        "RcppArmadillo",
+        "RcppParallel"
+      ]
+    },
     "ps": {
       "Package": "ps",
       "Version": "1.6.0",
@@ -1051,6 +1175,21 @@
       "Requirements": [
         "magrittr",
         "rlang"
+      ]
+    },
+    "quarto": {
+      "Package": "quarto",
+      "Version": "1.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "8eea03d347a0002455feba966306307b",
+      "Requirements": [
+        "jsonlite",
+        "later",
+        "processx",
+        "rmarkdown",
+        "rstudioapi",
+        "yaml"
       ]
     },
     "rappdirs": {
@@ -1111,6 +1250,14 @@
       "Requirements": [
         "tibble"
       ]
+    },
+    "remotes": {
+      "Package": "remotes",
+      "Version": "2.4.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "227045be9aee47e6dda9bb38ac870d67",
+      "Requirements": []
     },
     "renv": {
       "Package": "renv",
