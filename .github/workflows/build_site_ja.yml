@@ -1,8 +1,8 @@
 on:
   push:
-    branches: ja
+    branches: ja-source
   pull_request:
-    branches: ja
+    branches: ja-source
   # to be able to trigger a manual build
   workflow_dispatch:
 
@@ -57,6 +57,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           # The branch the action should deploy to.
-          branch: gh-pages
+          branch: ja
           # The folder the action should deploy. Adapt if you changed in Quarto config
-          folder: _site-ja
+          folder: _site
