@@ -1,7 +1,6 @@
 ---
 title: "canaper is on CRAN"
-description:
-  Announcing the canaper R package!
+description: Announcing the canaper R package!
 bibliography: references.yaml
 date: 2022-10-07
 image: featured.png
