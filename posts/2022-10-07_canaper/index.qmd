@@ -12,6 +12,7 @@ categories:
 knitr:
   opts_chunk: 
       cache: true
+lang: en
 ---
 
 ## Introducing `canaper`
