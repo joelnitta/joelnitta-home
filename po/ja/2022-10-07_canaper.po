@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-10-07 03:09+0000\n"
+"POT-Creation-Date: 2022-10-07 05:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,6 +64,12 @@ msgstr ""
 msgid "true"
 msgstr ""
 
+#. type: YAML Front Matter: lang
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
+#, no-wrap
+msgid "en"
+msgstr "ja"
+
 #. type: YAML Front Matter: title
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
@@ -71,26 +77,34 @@ msgid "canaper is on CRAN"
 msgstr "canaperがCRANに登録されました"
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:17
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:18
+#, no-wrap
 msgid "Introducing `canaper`"
 msgstr "`canaper`への紹介"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:21
-#, markdown-text
-msgid "I am happy to announce that [`canaper`](https://github.com/ropensci/canaper) v1.0.0 is now available on [CRAN](https://cran.r-project.org/web/packages/canaper/index.html)! Although I have authored [several R packages](https://www.joelnitta.com/software.html) and made them available via [GitHub](https://github.com/joelnitta/#r-packages-), this is my first original package to be on CRAN."
-msgstr "[`canaper`](https://github.com/ropensci/canaper) v1.0.0が[CRAN](https://cran.r-project.org/web/packages/canaper/index.html)に登録されました！今までいくつかのRパッケージを書いてGitHubで公開したことがありますが、自分のパッケージがCRANに登録されるのが初めてです。"
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:22
+msgid ""
+"I am happy to announce that [`canaper`](https://github.com/ropensci/canaper) "
+"v1.0.0 is now available on [CRAN](https://cran.r-project.org/web/packages/"
+"canaper/index.html)! Although I have authored [several R packages](https://"
+"www.joelnitta.com/software.html) and made them available via [GitHub]"
+"(https://github.com/joelnitta/#r-packages-), this is my first original "
+"package to be on CRAN."
+msgstr ""
+"[`canaper`](https://github.com/ropensci/canaper) v1.0.0が[CRAN](https://cran."
+"r-project.org/web/packages/canaper/index.html)に登録されました！今までいくつ"
+"かのRパッケージを書いてGitHubで公開したことがありますが、自分のパッケージが"
+"CRANに登録されるのが初めてです。"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:23
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:24
 msgid "What is `canaper` you ask?"
 msgstr "そもそも、`canaper`って一体何だろう？"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:30
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:31
+#, no-wrap
 msgid ""
 "> `canaper` provides functions to analyze the spatial distribution of\n"
 "biodiversity, in particular categorical analysis of neo- and paleo-endemism\n"
@@ -109,74 +123,113 @@ msgstr ""
 "species.\n"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:32
-#, markdown-text
-msgid "(from the package [DESCRIPTION](https://github.com/ropensci/canaper/blob/main/DESCRIPTION))."
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:33
+msgid ""
+"(from the package [DESCRIPTION](https://github.com/ropensci/canaper/blob/"
+"main/DESCRIPTION))."
 msgstr ""
-"つまり、`canaper`は生物多様性の地理的分布を解析する関数を提供します。特に、生物の進化的な関係を配慮しながら、ある地域における固有性の種類を統計的に検証する、categorical analysis of neo- and paleo-endemism（CANAPE）というMishler等（2014）<doi:10.1038/ncomms5473> が開発した解析を行います。"
+"つまり、`canaper`は生物多様性の地理的分布を解析する関数を提供します。特に、生"
+"物の進化的な関係を配慮しながら、ある地域における固有性の種類を統計的に検証す"
+"る、categorical analysis of neo- and paleo-endemism（CANAPE）というMishler等"
+"（2014）<doi:10.1038/ncomms5473> が開発した解析を行います。"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:34
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:35
 msgid "If that interests you, please read on!"
 msgstr "もしも上の話を読んで「面白い！」と思ったら、是非続きを読んでください。"
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:35
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:36
+#, no-wrap
 msgid "Phylogenetic endemism and CANAPE"
 msgstr "系統的固有性とCANAPE"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:42
-#, markdown-text
-msgid "[Biodiversity](https://en.wikipedia.org/wiki/Biodiversity) is often measured by [species richness](https://en.wikipedia.org/wiki/Species_richness), or counting the number of species in an area.  Likewise, [endemism](https://en.wikipedia.org/wiki/Endemism) is often quantified by the number of species that are completely restricted (endemic) to an area.  However, such purely taxonomic approaches ignore evolutionary history.  Thanks to the widespread availability of molecular [phylogenies](https://en.wikipedia.org/wiki/Phylogenetic_tree), approaches have recently been developed that quantify biodiversity while taking into account the evolutionary history of species.  One such method is **phylogenetic endemism** [PE\\; @Rosauer2009], which quantifies endemism based on the range size of **branches of a phylogenetic tree** instead of species."
-msgstr "[生物多様性](https://ja.wikipedia.org/wiki/%E7%94%9F%E7%89%A9%E5%A4%9A%E6%A7%98%E6%80%A7)は種数、つまり、ある地域における種の数で測られることがよくあります。それと同じように、固有性はある地域にしか生息しない種の数で測ることがよくあります。しかし、このような、種名だけを使うアプローチは種の進化的な歴史を考慮しません。最近、[分子系統樹](https://ja.wikipedia.org/wiki/%E7%B3%BB%E7%B5%B1%E6%A8%B9)の増加によって、種の進化的な歴史を考慮した生物多様性を測定する方法がいくつか開発されました。その一つは系統的固有性[Phylogenetic endemism, PE\\; @Rosauer2009]。PEは種ではなく、系統樹の枝によって固有性を測る方法です。"
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:43
+msgid ""
+"[Biodiversity](https://en.wikipedia.org/wiki/Biodiversity) is often measured "
+"by [species richness](https://en.wikipedia.org/wiki/Species_richness), or "
+"counting the number of species in an area.  Likewise, [endemism](https://en."
+"wikipedia.org/wiki/Endemism) is often quantified by the number of species "
+"that are completely restricted (endemic) to an area.  However, such purely "
+"taxonomic approaches ignore evolutionary history.  Thanks to the widespread "
+"availability of molecular [phylogenies](https://en.wikipedia.org/wiki/"
+"Phylogenetic_tree), approaches have recently been developed that quantify "
+"biodiversity while taking into account the evolutionary history of species.  "
+"One such method is **phylogenetic endemism** [PE\\; @Rosauer2009], which "
+"quantifies endemism based on the range size of **branches of a phylogenetic "
+"tree** instead of species."
+msgstr ""
+"[生物多様性](https://ja.wikipedia.org/wiki/%E7%94%9F%E7%89%A9%E5%A4%9A"
+"%E6%A7%98%E6%80%A7)は種数、つまり、ある地域における種の数で測られることがよく"
+"あります。それと同じように、固有性はある地域にしか生息しない種の数で測ること"
+"がよくあります。しかし、このような、種名だけを使うアプローチは種の進化的な歴"
+"史を考慮しません。最近、[分子系統樹](https://ja.wikipedia.org/wiki/%E7%B3%BB"
+"%E7%B5%B1%E6%A8%B9)の増加によって、種の進化的な歴史を考慮した生物多様性を測定"
+"する方法がいくつか開発されました。その一つは系統的固有性[Phylogenetic "
+"endemism, PE\\; @Rosauer2009]。PEは種ではなく、系統樹の枝によって固有性を測る"
+"方法です。"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:47
-#, markdown-text
-msgid "An advantage of PE is that it provides insight into the **evolutionary processes generating biodiversity**.  For example, areas with high PE and many short branches may be due to recent speciation (radiation) and are termed **neo-endemic**.  In contrast, areas with high PE and many long branches may be due to extinction of previously widespread lineages and are termed **paleo-endemic**.  A method to detect these areas developed by @Mishler2014 is called CANAPE (\"**C**ategorical **A**nalysis of **N**eo- and **P**aleo-**E**ndemism\")."
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:48
+msgid ""
+"An advantage of PE is that it provides insight into the **evolutionary "
+"processes generating biodiversity**.  For example, areas with high PE and "
+"many short branches may be due to recent speciation (radiation) and are "
+"termed **neo-endemic**.  In contrast, areas with high PE and many long "
+"branches may be due to extinction of previously widespread lineages and are "
+"termed **paleo-endemic**.  A method to detect these areas developed by "
+"@Mishler2014 is called CANAPE (\"**C**ategorical **A**nalysis of **N**eo- "
+"and **P**aleo-**E**ndemism\")."
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:49
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:50
 msgid "The goal of `canaper` is to conduct CANAPE in R."
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:50
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:51
+#, no-wrap
 msgid "Example: Australian *Acacia*"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:53
-#, markdown-text
-msgid "![*Acacia pycnantha*, photo by [Bidgee](https://commons.wikimedia.org/wiki/User:Bidgee)](Golden-wattle.jpg)"
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:54
+msgid ""
+"![*Acacia pycnantha*, photo by [Bidgee](https://commons.wikimedia.org/wiki/"
+"User:Bidgee)](Golden-wattle.jpg)"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:56
-#, markdown-text
-msgid "`canaper` comes with the same dataset that was analyzed in the original CANAPE paper, a community (species $\\times$ sites) matrix and phylogenetic tree of Australian *Acacia*^[*Acacia* is the largest genus of flowering plants in Australia, with nearly 1,000 species] [@Mishler2014].  We will use this for a quick demo."
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:57
+msgid ""
+"`canaper` comes with the same dataset that was analyzed in the original "
+"CANAPE paper, a community (species $\\times$ sites) matrix and phylogenetic "
+"tree of Australian *Acacia*^[*Acacia* is the largest genus of flowering "
+"plants in Australia, with nearly 1,000 species] [@Mishler2014].  We will use "
+"this for a quick demo."
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:58
-#, markdown-text
-msgid "I won't go into the details here, but you can [read more about this example](https://docs.ropensci.org/canaper/articles/canape.html) on the [`canaper` website](https://docs.ropensci.org/canaper/index.html)."
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:59
+msgid ""
+"I won't go into the details here, but you can [read more about this example]"
+"(https://docs.ropensci.org/canaper/articles/canape.html) on the [`canaper` "
+"website](https://docs.ropensci.org/canaper/index.html)."
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:60
-#, markdown-text
-msgid "The entire CANAPE workflow can be run with just two commands, [`cpr_rand_test()`](https://docs.ropensci.org/canaper/reference/cpr_rand_test.html) and [`cpr_classify_endem()`](https://docs.ropensci.org/canaper/reference/cpr_classify_endem.html):"
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:61
+msgid ""
+"The entire CANAPE workflow can be run with just two commands, "
+"[`cpr_rand_test()`](https://docs.ropensci.org/canaper/reference/"
+"cpr_rand_test.html) and [`cpr_classify_endem()`](https://docs.ropensci.org/"
+"canaper/reference/cpr_classify_endem.html):"
 msgstr ""
 
 #. type: Fenced code block ({r})
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:61
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:62
 #, no-wrap
 msgid ""
 "#| label: acacia-demo\n"
@@ -202,19 +255,20 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:85
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:86
 msgid "Let's have a look at some of the output."
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:87
-#, markdown-text
-msgid "[`cpr_rand_test()`](https://docs.ropensci.org/canaper/reference/cpr_rand_test.html) returns a bunch (54 to be exact!) of metrics about each site in the community matrix, including PE:"
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:88
+msgid ""
+"[`cpr_rand_test()`](https://docs.ropensci.org/canaper/reference/"
+"cpr_rand_test.html) returns a bunch (54 to be exact!) of metrics about each "
+"site in the community matrix, including PE:"
 msgstr ""
 
 #. type: Fenced code block ({r})
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:88
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:89
 #, no-wrap
 msgid ""
 "#| label: acacia-rand-res\n"
@@ -222,13 +276,16 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:95
-#, markdown-text
-msgid "[`cpr_classify_endem()`](https://docs.ropensci.org/canaper/reference/cpr_classify_endem.html) appends another column, `endem_type`, that describes the various endemism types.  Let's count how many of each type was observed:"
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:96
+msgid ""
+"[`cpr_classify_endem()`](https://docs.ropensci.org/canaper/reference/"
+"cpr_classify_endem.html) appends another column, `endem_type`, that "
+"describes the various endemism types.  Let's count how many of each type was "
+"observed:"
 msgstr ""
 
 #. type: Fenced code block ({r})
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:96
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:97
 #, no-wrap
 msgid ""
 "#| label: acacia-endem-res\n"
@@ -236,13 +293,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:102
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:103
 msgid "This is what a map of those various endemism types looks like:"
 msgstr ""
 
 #. type: Fenced code block ({r})
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:103
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:104
 #, no-wrap
 msgid ""
 "#| label: acacia-plot\n"
@@ -273,55 +329,71 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:131
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:132
+#, no-wrap
 msgid "rOpenSci"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:135
-#, markdown-text
-msgid "Another first for me was submitting my package to [rOpenSci](https://ropensci.org/), an organization that [promotes and supports research software written with R](https://ropensci.org/about/).  **I can't recommend rOpenSci highly enough** for anyone interested in publishing their own R package for research."
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:136
+msgid ""
+"Another first for me was submitting my package to [rOpenSci](https://"
+"ropensci.org/), an organization that [promotes and supports research "
+"software written with R](https://ropensci.org/about/).  **I can't recommend "
+"rOpenSci highly enough** for anyone interested in publishing their own R "
+"package for research."
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:138
-#, markdown-text
-msgid "First, rOpenSci provides [extensive documentation](https://devguide.ropensci.org/) for authoring scientific R packages as well as [automated checks](https://docs.ropensci.org/pkgcheck/).  Just going through this process alone significantly improved my code."
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:139
+msgid ""
+"First, rOpenSci provides [extensive documentation](https://devguide.ropensci."
+"org/) for authoring scientific R packages as well as [automated checks]"
+"(https://docs.ropensci.org/pkgcheck/).  Just going through this process "
+"alone significantly improved my code."
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:140
-#, markdown-text
-msgid "Second, packages submitted to rOpenSci undergo thorough and open [code review](https://devguide.ropensci.org/softwarereviewintro.html), which lead me to [several improvements](https://github.com/ropensci/software-review/issues/475) I would have otherwise never thought of^[Thanks to reviewers [Klaus Schliep](https://github.com/KlausVigo) and [Luis Osorio](https://github.com/luismurao), and editor [Toby Hocking](https://github.com/tdhock)]."
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:141
+msgid ""
+"Second, packages submitted to rOpenSci undergo thorough and open [code "
+"review](https://devguide.ropensci.org/softwarereviewintro.html), which lead "
+"me to [several improvements](https://github.com/ropensci/software-review/"
+"issues/475) I would have otherwise never thought of^[Thanks to reviewers "
+"[Klaus Schliep](https://github.com/KlausVigo) and [Luis Osorio](https://"
+"github.com/luismurao), and editor [Toby Hocking](https://github.com/tdhock)]."
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:142
-#, markdown-text
-msgid "Finally, the [rOpenSci community](https://ropensci.org/community/) is highly active and welcoming, with [community calls](https://ropensci.org/commcalls/), [co-working sessions](https://ropensci.org/events/), and a lively Slack workspace."
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:143
+msgid ""
+"Finally, the [rOpenSci community](https://ropensci.org/community/) is highly "
+"active and welcoming, with [community calls](https://ropensci.org/"
+"commcalls/), [co-working sessions](https://ropensci.org/events/), and a "
+"lively Slack workspace."
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:144
-#, markdown-text
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:145
 msgid "So please check it out, and a big **thank-you** to rOpenSci!"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:145
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:146
+#, no-wrap
 msgid "More information"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:148
-#, markdown-text
-msgid "For more information about `canaper`, please see the [GitHub repo](https://github.com/ropensci/canaper) and [package website](https://docs.ropensci.org/canaper/)."
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:149
+msgid ""
+"For more information about `canaper`, please see the [GitHub repo](https://"
+"github.com/ropensci/canaper) and [package website](https://docs.ropensci.org/"
+"canaper/)."
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:149
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:150
+#, no-wrap
 msgid "References"
 msgstr ""
