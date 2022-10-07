@@ -1,0 +1,150 @@
+---
+title: "canaper is on CRAN"
+description:
+  Announcing the canaper R package!
+bibliography: references.yaml
+date: 2022-10-07
+image: featured.png
+citation:
+  url: https://www.joelnitta.com/posts/canaper/
+categories:
+  - R
+  - Spatial phylogenetics
+knitr:
+  opts_chunk: 
+      cache: true
+---
+
+## Introducing `canaper`
+
+I am happy to announce that [`canaper`](https://github.com/ropensci/canaper) v1.0.0 is now available on [CRAN](https://cran.r-project.org/web/packages/canaper/index.html)!
+Although I have authored [several R packages](https://www.joelnitta.com/software.html) and made them available via [GitHub](https://github.com/joelnitta/#r-packages-), this is my first original package to be on CRAN.
+
+What is `canaper` you ask?
+
+> `canaper` provides functions to analyze the spatial distribution of
+biodiversity, in particular categorical analysis of neo- and paleo-endemism
+(CANAPE) as described in Mishler et al (2014) <doi:10.1038/ncomms5473>.
+`canaper` conducts statistical tests to determine the types of endemism that
+occur in a study area while accounting for the evolutionary relationships of
+species.
+
+(from the package [DESCRIPTION](https://github.com/ropensci/canaper/blob/main/DESCRIPTION)).
+
+If that interests you, please read on!
+
+## Phylogenetic endemism and CANAPE
+
+[Biodiversity](https://en.wikipedia.org/wiki/Biodiversity) is often measured by [species richness](https://en.wikipedia.org/wiki/Species_richness), or counting the number of species in an area.
+Likewise, [endemism](https://en.wikipedia.org/wiki/Endemism) is often quantified by the number of species that are completely restricted (endemic) to an area.
+However, such purely taxonomic approaches ignore evolutionary history.
+Thanks to the widespread availability of molecular [phylogenies](https://en.wikipedia.org/wiki/Phylogenetic_tree), approaches have recently been developed that quantify biodiversity while taking into account the evolutionary history of species.
+One such method is **phylogenetic endemism** [PE\; @Rosauer2009], which quantifies endemism based on the range size of **branches of a phylogenetic tree** instead of species.
+
+An advantage of PE is that it provides insight into the **evolutionary processes generating biodiversity**.
+For example, areas with high PE and many short branches may be due to recent speciation (radiation) and are termed **neo-endemic**.
+In contrast, areas with high PE and many long branches may be due to extinction of previously widespread lineages and are termed **paleo-endemic**.
+A method to detect these areas developed by @Mishler2014 is called CANAPE ("**C**ategorical **A**nalysis of **N**eo- and **P**aleo-**E**ndemism").
+
+The goal of `canaper` is to conduct CANAPE in R.
+
+## Example: Australian *Acacia*
+
+![*Acacia pycnantha*, photo by [Bidgee](https://commons.wikimedia.org/wiki/User:Bidgee)](Golden-wattle.jpg)
+
+`canaper` comes with the same dataset that was analyzed in the original CANAPE paper, a community (species $\times$ sites) matrix and phylogenetic tree of Australian *Acacia*^[*Acacia* is the largest genus of flowering plants in Australia, with nearly 1,000 species] [@Mishler2014].
+We will use this for a quick demo.
+
+I won't go into the details here, but you can [read more about this example](https://docs.ropensci.org/canaper/articles/canape.html) on the [`canaper` website](https://docs.ropensci.org/canaper/index.html).
+
+The entire CANAPE workflow can be run with just two commands, [`cpr_rand_test()`](https://docs.ropensci.org/canaper/reference/cpr_rand_test.html) and [`cpr_classify_endem()`](https://docs.ropensci.org/canaper/reference/cpr_classify_endem.html):
+
+```{r}
+#| label: acacia-demo
+#| warning: false
+#| message: false
+
+library(canaper)
+library(tidyverse)
+
+# Set a seed for reproducibility
+set.seed(12345)
+
+# 1. Run randomization test
+acacia_rand_res <- cpr_rand_test(
+  acacia$comm, acacia$phy,
+  null_model = "curveball",
+  n_reps = 99, n_iterations = 10000,
+  tbl_out = TRUE
+)
+
+# 2. Classify endemism
+acacia_canape <- cpr_classify_endem(acacia_rand_res)
+```
+
+Let's have a look at some of the output.
+
+[`cpr_rand_test()`](https://docs.ropensci.org/canaper/reference/cpr_rand_test.html) returns a bunch (54 to be exact!) of metrics about each site in the community matrix, including PE:
+
+```{r}
+#| label: acacia-rand-res
+acacia_rand_res
+```
+
+[`cpr_classify_endem()`](https://docs.ropensci.org/canaper/reference/cpr_classify_endem.html) appends another column, `endem_type`, that describes the various endemism types.
+Let's count how many of each type was observed:
+
+```{r}
+#| label: acacia-endem-res
+count(acacia_canape, endem_type)
+```
+
+This is what a map of those various endemism types looks like:
+
+```{r}
+#| label: acacia-plot
+#| code-fold: true
+
+# Fist do some data wrangling to make the results easier to plot
+# (add lat/long columns)
+acacia_canape <- acacia_canape |>
+  separate(site, c("long", "lat"), sep = ":") |>
+  mutate(across(c(long, lat), parse_number))
+
+# Tweak the plot theme
+theme_update(
+  panel.background = element_rect(fill = "white", color = "white"),
+  panel.grid.major = element_line(color = "grey60"),
+  panel.grid.minor = element_blank()
+  )
+
+ggplot(acacia_canape, aes(x = long, y = lat, fill = endem_type)) +
+  geom_tile() +
+  # cpr_endem_cols_4 is a CVD-friendly color palette in canaper
+  scale_fill_manual(values = cpr_endem_cols_4) +
+  coord_fixed() +
+  guides(
+    fill = guide_legend(title.position = "top", label.position = "bottom")
+  ) +
+  theme(legend.position = "bottom", legend.title = element_blank())
+```
+
+## rOpenSci
+
+Another first for me was submitting my package to [rOpenSci](https://ropensci.org/), an organization that [promotes and supports research software written with R](https://ropensci.org/about/).
+**I can't recommend rOpenSci highly enough** for anyone interested in publishing their own R package for research.
+
+First, rOpenSci provides [extensive documentation](https://devguide.ropensci.org/) for authoring scientific R packages as well as [automated checks](https://docs.ropensci.org/pkgcheck/).
+Just going through this process alone significantly improved my code.
+
+Second, packages submitted to rOpenSci undergo thorough and open [code review](https://devguide.ropensci.org/softwarereviewintro.html), which lead me to [several improvements](https://github.com/ropensci/software-review/issues/475) I would have otherwise never thought of^[Thanks to reviewers [Klaus Schliep](https://github.com/KlausVigo) and [Luis Osorio](https://github.com/luismurao), and editor [Toby Hocking](https://github.com/tdhock)].
+
+Finally, the [rOpenSci community](https://ropensci.org/community/) is highly active and welcoming, with [community calls](https://ropensci.org/commcalls/), [co-working sessions](https://ropensci.org/events/), and a lively Slack workspace.
+
+So please check it out, and a big **thank-you** to rOpenSci!
+
+## More information
+
+For more information about `canaper`, please see the [GitHub repo](https://github.com/ropensci/canaper) and [package website](https://docs.ropensci.org/canaper/).
+
+## References

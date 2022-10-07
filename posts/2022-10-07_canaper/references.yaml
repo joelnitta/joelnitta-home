@@ -1,0 +1,303 @@
+---
+references:
+- id: Ellepola2022
+  accessed:
+    - year: 2022
+      month: 9
+      day: 29
+  author:
+    - family: Ellepola
+      given: Gajaba
+    - family: Pie
+      given: Marcio R.
+    - family: Pethiyagoda
+      given: Rohan
+    - family: Hanken
+      given: James
+    - family: Meegaskumbura
+      given: Madhava
+  citation-key: Ellepola2022
+  container-title: Communications Biology
+  container-title-short: Commun Biol
+  DOI: 10.1038/s42003-022-03292-1
+  ISSN: 2399-3642
+  issue: '1'
+  issued:
+    - year: 2022
+      month: 12
+  language: en
+  page: '347'
+  source: DOI.org (Crossref)
+  title: >-
+    The role of climate and islands in species diversification and
+    reproductive-mode evolution of Old World tree frogs
+  type: article-journal
+  URL: https://www.nature.com/articles/s42003-022-03292-1
+  volume: '5'
+
+- id: Grenié2022
+  accessed:
+    - year: 2022
+      month: 4
+      day: 28
+  author:
+    - family: Grenié
+      given: Matthias
+    - family: Berti
+      given: Emilio
+    - family: Carvajal‐Quintero
+      given: Juan
+    - family: Dädlow
+      given: Gala Mona Louise
+    - family: Sagouis
+      given: Alban
+    - family: Winter
+      given: Marten
+  citation-key: Grenié2022
+  container-title: Methods in Ecology and Evolution
+  container-title-short: Methods Ecol Evol
+  DOI: 10.1111/2041-210X.13802
+  ISSN: 2041-210X, 2041-210X
+  issued:
+    - year: 2022
+      month: 2
+      day: 18
+  language: en
+  page: 2041-210X.13802
+  source: DOI.org (Crossref)
+  title: >-
+    Harmonizing taxon names in biodiversity data: A review of tools, databases
+    and best practices
+  title-short: Harmonizing taxon names in biodiversity data
+  type: article-journal
+  URL: https://onlinelibrary.wiley.com/doi/10.1111/2041-210X.13802
+
+- id: Laffan2010
+  author:
+    - family: Laffan
+      given: Shawn W.
+    - family: Lubarsky
+      given: Eugene
+    - family: Rosauer
+      given: Dan F.
+  citation-key: Laffan2010
+  container-title: Ecography
+  DOI: 10.1111/j.1600-0587.2010.06237.x
+  ISSN: '09067590'
+  issue: '4'
+  issued:
+    - year: 2010
+  page: 643-647
+  title: >-
+    Biodiverse, a tool for the spatial analysis of biological and related
+    diversity
+  type: article-journal
+  volume: '33'
+
+- id: Maurin2020
+  accessed:
+    - year: 2022
+      month: 2
+      day: 15
+  author:
+    - family: Maurin
+      given: Kévin J. L.
+  citation-key: Maurin2020
+  container-title: arXiv:2008.07054 [q-bio]
+  issued:
+    - year: 2020
+      month: 8
+      day: 18
+  source: arXiv.org
+  title: >-
+    An empirical guide for producing a dated phylogeny with treePL in a maximum
+    likelihood framework
+  type: article-journal
+  URL: http://arxiv.org/abs/2008.07054
+
+- id: Mishler2014
+  author:
+    - family: Mishler
+      given: Brent D
+    - family: Knerr
+      given: Nunzio
+    - family: González-Orozco
+      given: Carlos E.
+    - family: Thornhill
+      given: Andrew H.
+    - family: Laffan
+      given: Shawn W.
+    - family: Miller
+      given: Joseph T.
+  citation-key: Mishler2014
+  container-title: Nature Communications
+  DOI: 10.1038/ncomms5473
+  ISSN: 2041-1723
+  issued:
+    - year: 2014
+  page: '4473'
+  title: >-
+    Phylogenetic measures of biodiversity and neo- and paleo-endemism in
+    Australian *Acacia*
+  type: article-journal
+  URL: http://www.nature.com/doifinder/10.1038/ncomms5473
+  volume: '5'
+
+- id: Nitta2022b
+  accessed:
+    - year: 2022
+      month: 9
+      day: 12
+  author:
+    - family: Nitta
+      given: Joel H.
+    - family: Schuettpelz
+      given: Eric
+    - family: Ramírez-Barahona
+      given: Santiago
+    - family: Iwasaki
+      given: Wataru
+  citation-key: Nitta2022b
+  container-title: Frontiers in Plant Science
+  container-title-short: Front. Plant Sci.
+  DOI: 10.3389/fpls.2022.909768
+  ISSN: 1664-462X
+  issued:
+    - year: 2022
+      month: 8
+      day: 24
+  license: Creative Commons Attribution 4.0 International License (CC-BY)
+  page: '909768'
+  source: DOI.org (Crossref)
+  title: An open and continuously updated fern tree of life
+  type: article-journal
+  URL: https://www.frontiersin.org/articles/10.3389/fpls.2022.909768/full
+  volume: '13'
+
+- id: Page2013
+  accessed:
+    - year: 2022
+      month: 7
+      day: 11
+  author:
+    - family: Page
+      given: Roderic D.M.
+  citation-key: Page2013
+  container-title: PeerJ
+  DOI: 10.7717/peerj.190
+  ISSN: 2167-8359
+  issued:
+    - year: 2013
+      month: 10
+      day: 29
+  language: en
+  page: e190
+  source: DOI.org (Crossref)
+  title: 'BioNames: linking taxonomy, texts, and trees'
+  title-short: BioNames
+  type: article-journal
+  URL: https://peerj.com/articles/190
+  volume: '1'
+
+- id: Rosauer2009
+  author:
+    - family: Rosauer
+      given: Dan
+    - family: Laffan
+      given: Shawn W.
+    - family: Crisp
+      given: Michael D.
+    - family: Donnellan
+      given: Stephen C.
+    - family: Cook
+      given: Lyn G.
+  citation-key: Rosauer2009
+  container-title: Molecular Ecology
+  DOI: 10.1111/j.1365-294X.2009.04311.x
+  ISSN: 1365294X
+  issue: '19'
+  issued:
+    - year: 2009
+      month: 10
+  page: 4061-4072
+  title: >-
+    Phylogenetic endemism: A new approach for identifying geographical
+    concentrations of evolutionary history
+  type: article-journal
+  volume: '18'
+
+- id: Smith2012
+  author:
+    - family: Smith
+      given: Stephen A
+    - family: O'Meara
+      given: Brian C.
+  citation-key: Smith2012
+  container-title: Bioinformatics
+  DOI: 10.1093/bioinformatics/bts492
+  ISSN: '13674803'
+  issue: '20'
+  issued:
+    - year: 2012
+  page: 2689-2690
+  PMID: '22908216'
+  title: >-
+    treePL: divergence time estimation using penalized likelihood for large
+    phylogenies
+  type: article-journal
+  volume: '28'
+
+- id: Tamura2012
+  accessed:
+    - year: 2022
+      month: 10
+      day: 6
+  author:
+    - family: Tamura
+      given: Koichiro
+    - family: Battistuzzi
+      given: Fabia Ursula
+    - family: Billing-Ross
+      given: Paul
+    - family: Murillo
+      given: Oscar
+    - family: Filipski
+      given: Alan
+    - family: Kumar
+      given: Sudhir
+  citation-key: Tamura2012
+  container-title: Proceedings of the National Academy of Sciences
+  container-title-short: Proc. Natl. Acad. Sci. U.S.A.
+  DOI: 10.1073/pnas.1213199109
+  ISSN: 0027-8424, 1091-6490
+  issue: '47'
+  issued:
+    - year: 2012
+      month: 11
+      day: 20
+  language: en
+  page: 19333-19338
+  source: DOI.org (Crossref)
+  title: Estimating divergence times in large molecular phylogenies
+  type: article-journal
+  URL: https://pnas.org/doi/full/10.1073/pnas.1213199109
+  volume: '109'
+
+- id: Testo2016a
+  author:
+    - family: Testo
+      given: Weston
+    - family: Sundue
+      given: Michael
+  citation-key: Testo2016a
+  container-title: Molecular Phylogenetics and Evolution
+  DOI: 10.1016/j.ympev.2016.09.003
+  ISSN: '10959513'
+  issued:
+    - year: 2016
+  page: 200-211
+  PMID: '27621129'
+  title: A 4000-species dataset provides new insight into the evolution of ferns
+  type: article-journal
+  volume: '105'
+...
