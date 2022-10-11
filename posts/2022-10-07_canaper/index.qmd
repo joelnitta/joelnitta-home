@@ -17,6 +17,8 @@ lang: en
 
 ## Introducing `canaper`
 
+(このブログポストを[日本語](https://www.ja.joelnitta.com/posts/2022-10-07_canaper/)で読む)
+
 I am happy to announce that [`canaper`](https://github.com/ropensci/canaper) v1.0.0 is now available on [CRAN](https://cran.r-project.org/web/packages/canaper/index.html)!
 Although I have authored [several R packages](https://www.joelnitta.com/software.html) and made them available via [GitHub](https://github.com/joelnitta/#r-packages-), this is my first original package to be on CRAN.
 
