@@ -17,7 +17,7 @@ lang: en
 
 ## Introducing `canaper`
 
-(このブログポストを[日本語](https://www.ja.joelnitta.com/posts/2022-10-07_canaper/)で読む)
+(Read this blogpost in [Japanese](https://www.ja.joelnitta.com/posts/2022-10-07_canaper/))
 
 I am happy to announce that [`canaper`](https://github.com/ropensci/canaper) v1.0.0 is now available on [CRAN](https://cran.r-project.org/web/packages/canaper/index.html)!
 Although I have authored [several R packages](https://www.joelnitta.com/software.html) and made them available via [GitHub](https://github.com/joelnitta/#r-packages-), this is my first original package to be on CRAN.
@@ -26,7 +26,7 @@ What is `canaper` you ask?
 
 > `canaper` provides functions to analyze the spatial distribution of
 biodiversity, in particular categorical analysis of neo- and paleo-endemism
-(CANAPE) as described in Mishler et al (2014) <doi:10.1038/ncomms5473>.
+(CANAPE) as described in Mishler et al (2014) [doi:10.1038/ncomms5473](https://doi.org/10.1038/ncomms5473).
 `canaper` conducts statistical tests to determine the types of endemism that
 occur in a study area while accounting for the evolutionary relationships of
 species.

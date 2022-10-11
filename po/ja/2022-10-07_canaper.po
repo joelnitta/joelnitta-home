@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-10-11 06:26+0000\n"
+"POT-Creation-Date: 2022-10-11 06:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,7 +83,16 @@ msgid "Introducing `canaper`"
 msgstr "`canaper`への紹介"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:22
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:21
+msgid ""
+"(Read this blogpost in [Japanese](https://www.ja.joelnitta.com/"
+"posts/2022-10-07_canaper/))"
+msgstr ""
+"(Read this blogpost in [English](https://www.joelnitta.com/"
+"posts/2022-10-07_canaper/))"
+
+#. type: Plain text
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:24
 msgid ""
 "I am happy to announce that [`canaper`](https://github.com/ropensci/canaper) "
 "v1.0.0 is now available on [CRAN](https://cran.r-project.org/web/packages/"
@@ -98,17 +107,16 @@ msgstr ""
 "CRANに登録されるのが初めてです。"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:24
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:26
 msgid "What is `canaper` you ask?"
 msgstr "そもそも、`canaper`って一体何だろう？"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:31
-#, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:33
 msgid ""
 "> `canaper` provides functions to analyze the spatial distribution of\n"
 "biodiversity, in particular categorical analysis of neo- and paleo-endemism\n"
-"(CANAPE) as described in Mishler et al (2014) <doi:10.1038/ncomms5473>.\n"
+"(CANAPE) as described in Mishler et al (2014) [doi:10.1038/ncomms5473](https://doi.org/10.1038/ncomms5473).\n"
 "`canaper` conducts statistical tests to determine the types of endemism that\n"
 "occur in a study area while accounting for the evolutionary relationships of\n"
 "species.\n"
@@ -117,13 +125,13 @@ msgstr ""
 "\n"
 "> `canaper` provides functions to analyze the spatial distribution of\n"
 "biodiversity, in particular categorical analysis of neo- and paleo-endemism\n"
-"(CANAPE) as described in Mishler et al (2014) <doi:10.1038/ncomms5473>.\n"
+"(CANAPE) as described in Mishler et al (2014) [doi:10.1038/ncomms5473](https://doi.org/10.1038/ncomms5473).\n"
 "`canaper` conducts statistical tests to determine the types of endemism that\n"
 "occur in a study area while accounting for the evolutionary relationships of\n"
 "species.\n"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:33
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:35
 msgid ""
 "(from the package [DESCRIPTION](https://github.com/ropensci/canaper/blob/"
 "main/DESCRIPTION))."
@@ -134,18 +142,18 @@ msgstr ""
 "（2014）<doi:10.1038/ncomms5473> が開発した解析を行います。"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:35
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:37
 msgid "If that interests you, please read on!"
 msgstr "もしも上の話を読んで「面白い！」と思ったら、是非続きを読んでください。"
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:36
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:38
 #, no-wrap
 msgid "Phylogenetic endemism and CANAPE"
 msgstr "系統的固有性とCANAPE"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:43
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:45
 msgid ""
 "[Biodiversity](https://en.wikipedia.org/wiki/Biodiversity) is often measured "
 "by [species richness](https://en.wikipedia.org/wiki/Species_richness), or "
@@ -171,7 +179,7 @@ msgstr ""
 "測る方法です。"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:48
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:50
 msgid ""
 "An advantage of PE is that it provides insight into the **evolutionary "
 "processes generating biodiversity**.  For example, areas with high PE and "
@@ -191,18 +199,18 @@ msgstr ""
 "た。"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:50
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:52
 msgid "The goal of `canaper` is to conduct CANAPE in R."
 msgstr "`canaper`の目的はRでCANAPEを行うことです"
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:51
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:53
 #, no-wrap
 msgid "Example: Australian *Acacia*"
 msgstr "実例：オーストラリアのアカシア"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:54
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:56
 msgid ""
 "![*Acacia pycnantha*, photo by [Bidgee](https://commons.wikimedia.org/wiki/"
 "User:Bidgee)](Golden-wattle.jpg)"
@@ -211,7 +219,7 @@ msgstr ""
 "Bidgee)](Golden-wattle.jpg)"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:57
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:59
 msgid ""
 "`canaper` comes with the same dataset that was analyzed in the original "
 "CANAPE paper, a community (species $\\times$ sites) matrix and phylogenetic "
@@ -225,10 +233,10 @@ msgstr ""
 "多い属です。１０００種近くあります。] のデータです。系統樹とコミュニティマト"
 "リックス（群集⾏列）からなっています。このデータセットを用いて簡単なデモを行"
 "います^[なお、本デモに使う解析設定は都合上使っているだけで、本格的な解析には"
-"おすすめしません]。"
+"おすすめしません。]。"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:59
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:61
 msgid ""
 "I won't go into the details here, but you can [read more about this example]"
 "(https://docs.ropensci.org/canaper/articles/canape.html) on the [`canaper` "
@@ -239,7 +247,7 @@ msgstr ""
 "(https://docs.ropensci.org/canaper/index.html)をご覧ください。"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:61
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:63
 msgid ""
 "The entire CANAPE workflow can be run with just two commands, "
 "[`cpr_rand_test()`](https://docs.ropensci.org/canaper/reference/"
@@ -252,7 +260,7 @@ msgstr ""
 "cpr_classify_endem.html)。"
 
 #. type: Fenced code block ({r})
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:62
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:64
 #, no-wrap
 msgid ""
 "#| label: acacia-demo\n"
@@ -298,12 +306,12 @@ msgstr ""
 "acacia_canape <- cpr_classify_endem(acacia_rand_res)\n"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:86
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:88
 msgid "Let's have a look at some of the output."
 msgstr "では、アウトプットをみてみましょう。"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:88
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:90
 msgid ""
 "[`cpr_rand_test()`](https://docs.ropensci.org/canaper/reference/"
 "cpr_rand_test.html) returns a bunch (54 to be exact!) of metrics about each "
@@ -314,7 +322,7 @@ msgstr ""
 "様々な（PEを含めた）指標です。"
 
 #. type: Fenced code block ({r})
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:89
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:91
 #, no-wrap
 msgid ""
 "#| label: acacia-rand-res\n"
@@ -322,7 +330,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:96
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:98
 msgid ""
 "[`cpr_classify_endem()`](https://docs.ropensci.org/canaper/reference/"
 "cpr_classify_endem.html) appends another column, `endem_type`, that "
@@ -334,7 +342,7 @@ msgstr ""
 "種類です。それぞれの種類が何回観察されたのか、数えてみましょう："
 
 #. type: Fenced code block ({r})
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:97
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:99
 #, no-wrap
 msgid ""
 "#| label: acacia-endem-res\n"
@@ -342,12 +350,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:103
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:105
 msgid "This is what a map of those various endemism types looks like:"
 msgstr "そして、今回計算した固有性の種類を地図にするとこうなります："
 
 #. type: Fenced code block ({r})
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:104
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:106
 #, no-wrap
 msgid ""
 "#| label: acacia-plot\n"
@@ -403,13 +411,13 @@ msgstr ""
 "  theme(legend.position = \"bottom\", legend.title = element_blank())\n"
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:132
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:134
 #, no-wrap
 msgid "rOpenSci"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:136
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:138
 msgid ""
 "Another first for me was submitting my package to [rOpenSci](https://"
 "ropensci.org/), an organization that [promotes and supports research "
@@ -422,7 +430,7 @@ msgstr ""
 "し自分の研究用のパッケージを公開しようと考えているなら、とてもおすすめです。"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:139
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:141
 msgid ""
 "First, rOpenSci provides [extensive documentation](https://devguide.ropensci."
 "org/) for authoring scientific R packages as well as [automated checks]"
@@ -434,7 +442,7 @@ msgstr ""
 "でも自分のコードの腕がかなり上がりました。"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:141
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:143
 msgid ""
 "Second, packages submitted to rOpenSci undergo thorough and open [code "
 "review](https://devguide.ropensci.org/softwarereviewintro.html), which lead "
@@ -452,7 +460,7 @@ msgstr ""
 "Hocking](https://github.com/tdhock)に感謝しています！]。"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:143
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:145
 msgid ""
 "Finally, the [rOpenSci community](https://ropensci.org/community/) is highly "
 "active and welcoming, with [community calls](https://ropensci.org/"
@@ -466,18 +474,18 @@ msgstr ""
 "ネルがあります。"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:145
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:147
 msgid "So please check it out, and a big **thank-you** to rOpenSci!"
 msgstr "ご興味のある方は是非試してくださいね！そして、rOpenSciに感謝します!"
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:146
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:148
 #, no-wrap
 msgid "More information"
 msgstr "参考情報"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:149
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:151
 msgid ""
 "For more information about `canaper`, please see the [GitHub repo](https://"
 "github.com/ropensci/canaper), [package website](https://docs.ropensci.org/"
@@ -488,7 +496,7 @@ msgstr ""
 "および[プレプリント](https://doi.org/10.1101/2022.10.06.511072)をご覧下さい。"
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:150
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:152
 #, no-wrap
 msgid "References"
 msgstr "参考文献"
