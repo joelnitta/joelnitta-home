@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-10-07 08:25+0000\n"
+"POT-Creation-Date: 2022-10-11 04:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,13 +25,13 @@ msgstr ""
 #. type: YAML Front Matter: categories
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
-msgid "r"
+msgid "R"
 msgstr ""
 
 #. type: YAML Front Matter: categories
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
-msgid "spatial phylogenetics"
+msgid "Spatial phylogenetics"
 msgstr ""
 
 #. type: YAML Front Matter: citation url
@@ -55,7 +55,7 @@ msgstr "Rパッケージcanaperの紹介"
 #. type: YAML Front Matter: image
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
-msgid "https://github.com/ropensci/canaper/raw/main/man/figures/logo.png"
+msgid "featured.png"
 msgstr ""
 
 #. type: YAML Front Matter: knitr opts_chunk cache
@@ -182,12 +182,13 @@ msgid ""
 "@Mishler2014 is called CANAPE (\"**C**ategorical **A**nalysis of **N**eo- "
 "and **P**aleo-**E**ndemism\")."
 msgstr ""
-"PEを使うことによって、**生物多様性を生み出す進化的なプロセス**を垣間見ることができる。"
-"例えば、PEの高い、短い枝が密集している地域は最近の種分化（放散）によってできた可能性があり、"
-"このような地域を「neo-endemic」と呼びます。一方で、PEの高い、長い枝が密集している地域は"
-"かつて広く分布していた系統が多く絶滅したことによってできた可能性が高く、このような地域を"
-"「paleo-endemic」と呼びます。このような地域の区別をするために、@Mishler2014がCANAPEと"
-"という方法を開発しました。"
+"PEを使うことによって、**生物多様性を生み出す進化的なプロセス**を垣間見ること"
+"ができる。例えば、PEの高い、短い枝が密集している地域は最近の種分化（放散）に"
+"よってできた可能性があり、このような地域を「neo-endemic」と呼びます。一方で、"
+"PEの高い、長い枝が密集している地域はかつて広く分布していた系統が多く絶滅した"
+"ことによってできた可能性が高く、このような地域を「paleo-endemic」と呼びます。"
+"このような地域の区別をするために、@Mishler2014 がCANAPEとという方法を開発しま"
+"した。"
 
 #. type: Plain text
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:50
@@ -203,9 +204,11 @@ msgstr "実例：オーストラリアのアカシア"
 #. type: Plain text
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:54
 msgid ""
-"![*Acacia pycnantha*, 写真 by [Bidgee](https://commons.wikimedia.org/wiki/"
+"![*Acacia pycnantha*, photo by [Bidgee](https://commons.wikimedia.org/wiki/"
 "User:Bidgee)](Golden-wattle.jpg)"
 msgstr ""
+"![*Acacia pycnantha*、写真[Bidgee](https://commons.wikimedia.org/wiki/"
+"User:Bidgee)](Golden-wattle.jpg)"
 
 #. type: Plain text
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:57
@@ -217,10 +220,12 @@ msgid ""
 "this for a quick demo^[The settings used here are for demonstration purposes "
 "only, and not suitable for a thorough analysis of this dataset]."
 msgstr ""
-"`canaper`には元々のCANAPEの論文で解析されたデータセットが備えています。"
-"オーストラリア産のアカシア^[アカシアはオーストラリアの被子植物の中で最も種が多い属です。１０００種近くあります。]のデータです。"
-"系統樹とコミュニティマトリックス（群集⾏列）からなっています。"
-"このデータセットを用いて簡単なデモを行います^[なお、本デモに使う解析設定は都合上使っているだけで、本格的な解析にはおすすめしません]。"
+"`canaper`には元々のCANAPEの論文で解析されたデータセットが備えています。オース"
+"トラリア産のアカシア^[アカシアはオーストラリアの被子植物の中で最も種が多い属"
+"です。１０００種近くあります。] のデータです。系統樹とコミュニティマトリックス"
+"（群集⾏列）からなっています。このデータセットを用いて簡単なデモを行います"
+"^[なお、本デモに使う解析設定は都合上使っているだけで、本格的な解析にはおすす"
+"めしません]。"
 
 #. type: Plain text
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:59
@@ -229,7 +234,9 @@ msgid ""
 "(https://docs.ropensci.org/canaper/articles/canape.html) on the [`canaper` "
 "website](https://docs.ropensci.org/canaper/index.html)."
 msgstr ""
-"ここで詳細には入りませんが、[この例](https://docs.ropensci.org/canaper/articles/canape.html)についてもっと知りたければ、[`canaper`のウエブサイト](https://docs.ropensci.org/canaper/index.html)をご覧ください。"
+"ここで詳細には入りませんが、[この例](https://docs.ropensci.org/canaper/"
+"articles/canape.html)についてもっと知りたければ、[`canaper`のウエブサイト]"
+"(https://docs.ropensci.org/canaper/index.html)をご覧ください。"
 
 #. type: Plain text
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:61
@@ -239,9 +246,10 @@ msgid ""
 "cpr_rand_test.html) and [`cpr_classify_endem()`](https://docs.ropensci.org/"
 "canaper/reference/cpr_classify_endem.html):"
 msgstr ""
-"CANAPE解析の全部を二つのコマンドだけでできます："
-"[`cpr_rand_test()`](https://docs.ropensci.org/canaper/reference/cpr_rand_test.html)"
-"と [`cpr_classify_endem()`](https://docs.ropensci.org/canaper/reference/cpr_classify_endem.html)。"
+"CANAPE解析の全部を二つのコマンドだけでできます：[`cpr_rand_test()`](https://"
+"docs.ropensci.org/canaper/reference/cpr_rand_test.html)と "
+"[`cpr_classify_endem()`](https://docs.ropensci.org/canaper/reference/"
+"cpr_classify_endem.html)。"
 
 #. type: Fenced code block ({r})
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:62
@@ -301,7 +309,9 @@ msgid ""
 "cpr_rand_test.html) returns a bunch (54 to be exact!) of metrics about each "
 "site in the community matrix, including PE:"
 msgstr ""
-"[`cpr_rand_test`](https://docs.ropensci.org/canaper/reference/cpr_rand_test.html)がたくさん（全部で５４）の列を返します。コミュニティの各地点について、様々な（PEを含めた）指標です。"
+"[`cpr_rand_test`](https://docs.ropensci.org/canaper/reference/cpr_rand_test."
+"html)がたくさん（全部で５４）の列を返します。コミュニティの各地点について、"
+"様々な（PEを含めた）指標です。"
 
 #. type: Fenced code block ({r})
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:89
@@ -319,9 +329,9 @@ msgid ""
 "describes the various endemism types.  Let's count how many of each type was "
 "observed:"
 msgstr ""
-"[`cpr_classify_endem()`](https://docs.ropensci.org/canaper/reference/cpr_classify_endem.html)がもう一つの列をデータにくっ付けます。"
-"新しい列は固有性の種類です。"
-"それぞれの種類が何か観察されたのか、数えてみましょう："
+"[`cpr_classify_endem()`](https://docs.ropensci.org/canaper/reference/"
+"cpr_classify_endem.html)がもう一つの列をデータにくっ付けます。新しい列は固有"
+"性の種類です。それぞれの種類が何か観察されたのか、数えてみましょう："
 
 #. type: Fenced code block ({r})
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:97
@@ -384,7 +394,7 @@ msgstr ""
 "\n"
 "ggplot(acacia_canape, aes(x = long, y = lat, fill = endem_type)) +\n"
 "  geom_tile() +\n"
-"  # cpr_endem_cols_4 is a CVD-friendly color palette in canaper\n"
+"  # cpr_endem_cols_4 はcanaperに入っているカラーユニバーサルデザインのパレット\n"
 "  scale_fill_manual(values = cpr_endem_cols_4) +\n"
 "  coord_fixed() +\n"
 "  guides(\n"
@@ -407,9 +417,9 @@ msgid ""
 "rOpenSci highly enough** for anyone interested in publishing their own R "
 "package for research."
 msgstr ""
-"もう一つ今回で初めてだったのが[ROpenSci](https://ropensci.org/)にパッケージを投稿することでした。"
-"rOpenSciはRで書かれた研究用のソフトを支援する団体です。"
-"もし自分の研究用のパッケージを公開しようと考えているなら、とてもおすすめです。"
+"もう一つ今回で初めてだったのが[ROpenSci](https://ropensci.org/)にパッケージを"
+"投稿することでした。rOpenSciはRで書かれた研究用のソフトを支援する団体です。も"
+"し自分の研究用のパッケージを公開しようと考えているなら、とてもおすすめです。"
 
 #. type: Plain text
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:139
@@ -419,13 +429,12 @@ msgid ""
 "(https://docs.ropensci.org/pkgcheck/).  Just going through this process "
 "alone significantly improved my code."
 msgstr ""
-"なぜかと言いますと、まずはRパケージの書き方について非常に丁寧な説明書を提供しているからです。"
-"また、パッケージの自動的なチェックを行うパッケージも。"
-"これを使うだけでも自分のコードの腕がかなり上がりました。"
+"なぜかと言いますと、まずはRパケージの書き方について非常に丁寧な説明書を提供し"
+"ているからです。また、パッケージの自動的なチェックを行うパッケージも。これを"
+"使うだけでも自分のコードの腕がかなり上がりました。"
 
 #. type: Plain text
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:141
-#, no-wrap
 msgid ""
 "Second, packages submitted to rOpenSci undergo thorough and open [code "
 "review](https://devguide.ropensci.org/softwarereviewintro.html), which lead "
@@ -434,28 +443,34 @@ msgid ""
 "[Klaus Schliep](https://github.com/KlausVigo) and [Luis Osorio](https://"
 "github.com/luismurao), and editor [Toby Hocking](https://github.com/tdhock)]."
 msgstr ""
-"次に、rOpenSciに投稿されたパッケージは徹底的な[コードレビュー]((https://devguide.ropensci.org/softwarereviewintro.html))（査読）を受けることになっています。"
-"こうすることによって、自分だけではなかなか気づかなかったことを教えていただき、さらに[コードの改善]((https://github.com/ropensci/software-review/issues/475)に"
-"つながりました^[査読者の[Klaus Schliep](https://github.com/KlausVigo)と[Luis Osorio]](https://github.com/luismurao)、"
-"そして編集者の[Toby Hocking](https://github.com/tdhock)に感謝しています！]。"
+"次に、rOpenSciに投稿されたパッケージは徹底的な[コードレビュー](https://"
+"devguide.ropensci.org/softwarereviewintro.html)（査読）を受けることになって"
+"います。こうすることによって、自分だけではなかなか気づかなかったことを教えて"
+"いただき、さらに[コードの改善](https://github.com/ropensci/software-review/"
+"issues/475)につながりました^[査読者の[Klaus Schliep](https://github.com/"
+"KlausVigo)と[Luis Osorio](https://github.com/luismurao)、そして編集者の"
+"[Toby Hocking](https://github.com/tdhock)に感謝しています！]。"
 
 #. type: Plain text
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:143
-#, no-wrap
 msgid ""
 "Finally, the [rOpenSci community](https://ropensci.org/community/) is highly "
 "active and welcoming, with [community calls](https://ropensci.org/"
 "commcalls/), [co-working sessions](https://ropensci.org/events/), and a "
 "lively Slack workspace."
 msgstr ""
-"でも、何と言っても、やはりrOpenSciのコミュニティが素晴らしいです。とてもアクティブでウェルカムなコミュニティです。"
-"活動としては、[Community Call](https://ropensci.org/commcalls/)（誰でも参加できるビデオコール）、"
-"[バーチャルコーワークスペース](https://ropensci.org/events/)、やSlackのチャットチャンネルがあります。"
+"でも、何と言っても、やはりrOpenSciのコミュニティが素晴らしいです。とてもアク"
+"ティブでウェルカムなコミュニティです。活動としては、[Community Call](https://"
+"ropensci.org/commcalls/)（誰でも参加できるビデオコール）、[バーチャルコーワー"
+"クスペース](https://ropensci.org/events/)、やSlackのチャットチャンネルがあり"
+"ます。"
 
 #. type: Plain text
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:145
 msgid "So please check it out, and a big **thank-you** to rOpenSci!"
-msgstr "ご興味のある方は是非試してくださいね！そして、rOpenSciにありがとうございます！"
+msgstr ""
+"ご興味のある方は是非試してくださいね！そして、rOpenSciにありがとうございま"
+"す！"
 
 #. type: Title ##
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:146
@@ -465,13 +480,14 @@ msgstr "参考情報"
 
 #. type: Plain text
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:149
-#, no-wrap
 msgid ""
 "For more information about `canaper`, please see the [GitHub repo](https://"
-"github.com/ropensci/canaper) and [package website](https://docs.ropensci.org/"
-"canaper/)."
+"github.com/ropensci/canaper), [package website](https://docs.ropensci.org/"
+"canaper/), and [preprint](https://doi.org/10.1101/2022.10.06.511072)."
 msgstr ""
-"`canaper`についてもっと知りたい方は[GitHubのサイト](https://github.com/ropensci/canaper)、および[パッケージのサイト](https://docs.ropensci.org/canaper)をご覧下さい。"
+"`canaper`についてもっと知りたい方は[GitHubのサイト](https://github.com/"
+"ropensci/canaper)、[パッケージのサイト](https://docs.ropensci.org/"
+"canaper)、および[プレプリント](https://doi.org/10.1101/2022.10.06.511072)をご覧下さい。"
 
 #. type: Title ##
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:150
