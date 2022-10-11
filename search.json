@@ -189,11 +189,46 @@
     "text": "Conclusion\nI am really excited about using targets for reproducibly managing bioinformatics workflows from R. I hope this helps others who may want to do the same!"
   },
   {
+    "objectID": "posts/2022-10-07_canaper/index.html",
+    "href": "posts/2022-10-07_canaper/index.html",
+    "title": "canaperがCRANに登録されました",
+    "section": "",
+    "text": "(Read this blogpost in English)\ncanaper v1.0.0がCRANに登録されました！今までいくつかのRパッケージを書いてGitHubで公開したことがありますが、自分のパッケージがCRANに登録されるのが初めてです。\nそもそも、canaperって一体何だろう？\nパッケージのDESCRIPTIONにはこのような文章があります：\n\ncanaper provides functions to analyze the spatial distribution of biodiversity, in particular categorical analysis of neo- and paleo-endemism (CANAPE) as described in Mishler et al (2014) doi:10.1038/ncomms5473. canaper conducts statistical tests to determine the types of endemism that occur in a study area while accounting for the evolutionary relationships of species.\n\nつまり、canaperは生物多様性の地理的分布を解析する関数を提供します。特に、生物の進化的な関係を考慮しながら、ある地域における固有性の種類を統計的に検証する、categorical analysis of neo- and paleo-endemism（CANAPE）というMishler等（2014）doi:10.1038/ncomms5473 が開発した解析を行います。\nもしも上の話を読んで「面白い！」と思ったら、是非続きを読んでください。"
+  },
+  {
+    "objectID": "posts/2022-10-07_canaper/index.html#系統的固有性とcanape",
+    "href": "posts/2022-10-07_canaper/index.html#系統的固有性とcanape",
+    "title": "canaperがCRANに登録されました",
+    "section": "系統的固有性とCANAPE",
+    "text": "系統的固有性とCANAPE\n生物多様性は種数、つまり、ある地域における種の数で測られることがよくあります。それと同じように、固有性はある地域にしか生息しない種の数で測ることがよくあります。しかし、このような、種名だけを使うアプローチは種の進化的な歴史を考慮しません。最近、分子系統樹の増加によって、種の進化的な歴史を考慮した生物多様性を測定する方法がいくつか開発されました。その一つは系統的固有性(Phylogenetic endemism, PE; Rosauer ほか 2009)です。PEは種ではなく、系統樹の枝によって固有性を測る方法です。\nPEを使うことによって、生物多様性を生み出す進化的なプロセスを垣間見ることができる。例えば、PEの高い、短い枝が密集している地域は最近の種分化（放散）によってできた可能性があり、このような地域を「neo-endemic」と呼びます。一方で、PEの高い、長い枝が密集している地域はかつて広く分布していた系統が多く絶滅したことによってできた可能性が高く、このような地域を「paleo-endemic」と呼びます。このような地域の区別をするために、Mishler ほか (2014) がCANAPEという方法を開発しました。\ncanaperの目的はRでCANAPEを行うことです。"
+  },
+  {
+    "objectID": "posts/2022-10-07_canaper/index.html#実例オーストラリアのアカシア",
+    "href": "posts/2022-10-07_canaper/index.html#実例オーストラリアのアカシア",
+    "title": "canaperがCRANに登録されました",
+    "section": "実例：オーストラリアのアカシア",
+    "text": "実例：オーストラリアのアカシア\n\n\n\nAcacia pycnantha、写真Bidgee\n\n\ncanaperには元々のCANAPEの論文で解析されたデータセットが備えられています。オーストラリア産のアカシア1 のデータです。系統樹とコミュニティマトリックス（群集⾏列）からなっています。このデータセットを用いて簡単なデモを行います2。\nここで詳細には入りませんが、この例についてもっと知りたければ、canaperのウェブサイトをご覧ください。\nCANAPE解析の全部を二つのコマンドだけでできます：cpr_rand_test()と cpr_classify_endem()。\n\nlibrary(canaper)\nlibrary(tidyverse)\n\n# 再現のためにシードを設定する\nset.seed(12345)\n\n# 1. ランダム化比解析を行う\nacacia_rand_res <- cpr_rand_test(\n  acacia$comm, acacia$phy,\n  null_model = \"curveball\",\n  n_reps = 99, n_iterations = 10000,\n  tbl_out = TRUE\n)\n\n# 2. 固有性を分類化する\nacacia_canape <- cpr_classify_endem(acacia_rand_res)\n\nでは、アウトプットをみてみましょう。\ncpr_rand_testがたくさん（全部で５４）の列を返します。コミュニティの各地点について、様々な（PEを含めた）指標です。\n\nacacia_rand_res\n\n# A tibble: 3,037 × 55\n   site    pd_obs pd_rand_mean pd_rand_sd pd_obs_z pd_obs_c_upper pd_obs_c_lower\n   <chr>    <dbl>        <dbl>      <dbl>    <dbl>          <dbl>          <dbl>\n 1 -1025… 0.0145        0.0227    0.00506  -1.62                1             98\n 2 -1025… 0.0382        0.0497    0.00745  -1.54                8             91\n 3 -1025… 0.0378        0.0369    0.00635   0.138              55             44\n 4 -1025… 0.0570        0.0613    0.00829  -0.517              33             66\n 5 -1025… 0.0409        0.0419    0.00614  -0.172              41             58\n 6 -1025… 0.00998       0.0101    0.00193  -0.0429             49             48\n 7 -1025… 0.0187        0.0225    0.00393  -0.958              19             80\n 8 -1025… 0.0434        0.0536    0.00902  -1.14               15             84\n 9 -1025… 0.0111        0.0101    0.00197   0.495              81             18\n10 -1025… 0.0903        0.0876    0.0112    0.240              61             38\n# … with 3,027 more rows, and 48 more variables: pd_obs_q <dbl>,\n#   pd_obs_p_upper <dbl>, pd_obs_p_lower <dbl>, pd_alt_obs <dbl>,\n#   pd_alt_rand_mean <dbl>, pd_alt_rand_sd <dbl>, pd_alt_obs_z <dbl>,\n#   pd_alt_obs_c_upper <dbl>, pd_alt_obs_c_lower <dbl>, pd_alt_obs_q <dbl>,\n#   pd_alt_obs_p_upper <dbl>, pd_alt_obs_p_lower <dbl>, rpd_obs <dbl>,\n#   rpd_rand_mean <dbl>, rpd_rand_sd <dbl>, rpd_obs_z <dbl>,\n#   rpd_obs_c_upper <dbl>, rpd_obs_c_lower <dbl>, rpd_obs_q <dbl>, …\n\n\ncpr_classify_endem()がもう一つの列をデータに付けます。新しい列は固有性の種類です。それぞれの種類が何回観察されたのか、数えてみましょう：\n\ncount(acacia_canape, endem_type)\n\n# A tibble: 5 × 2\n  endem_type          n\n  <chr>           <int>\n1 mixed             176\n2 neo                 5\n3 not significant  2827\n4 paleo              12\n5 super              17\n\n\nそして、今回計算した固有性の種類を地図にするとこうなります：\n\n\nコード\n# まず、図を作るためにデータをちょっといじる\n# （経緯度の列を加える）\nacacia_canape <- acacia_canape |>\n  separate(site, c(\"long\", \"lat\"), sep = \":\") |>\n  mutate(across(c(long, lat), parse_number))\n\n# 図のテーマをいじる\ntheme_update(\n  panel.background = element_rect(fill = \"white\", color = \"white\"),\n  panel.grid.major = element_line(color = \"grey60\"),\n  panel.grid.minor = element_blank()\n  )\n\nggplot(acacia_canape, aes(x = long, y = lat, fill = endem_type)) +\n  geom_tile() +\n  # cpr_endem_cols_4 はcanaperに入っているカラーユニバーサルデザインのパレット\n  scale_fill_manual(values = cpr_endem_cols_4) +\n  coord_fixed() +\n  guides(\n    fill = guide_legend(title.position = \"top\", label.position = \"bottom\")\n  ) +\n  theme(legend.position = \"bottom\", legend.title = element_blank())"
+  },
+  {
+    "objectID": "posts/2022-10-07_canaper/index.html#ropensci",
+    "href": "posts/2022-10-07_canaper/index.html#ropensci",
+    "title": "canaperがCRANに登録されました",
+    "section": "rOpenSci",
+    "text": "rOpenSci\nもう一つ今回で初めてだったのがROpenSciにパッケージを投稿することでした。rOpenSciはRで書かれた研究用のソフトを支援する団体です。もし自分の研究用のパッケージを公開しようと考えているなら、とてもおすすめです。\nというのは、まずはRパケージの書き方について非常に丁寧な説明書を提供しているからです。また、パッケージの自動的なチェックを行うパッケージも。これを使うだけでも自分のコードの腕がかなり上がりました。\n次に、rOpenSciに投稿されたパッケージは徹底的なコードレビュー（査読）を受けることになっています。こうすることによって、自分だけではなかなか気づかなかったことを教えていただき、さらにコードの改善につながりました3。\nしかし、何と言っても、やはりrOpenSciのコミュニティが素晴らしいです。とてもアクティブで広く開かれたコミュニティです。活動としては、Community Call（誰でも参加できるビデオコール）、バーチャルコーワークスペース、やSlackのチャットチャンネルがあります。\nご興味のある方は是非試してくださいね！そして、rOpenSciに感謝します!"
+  },
+  {
+    "objectID": "posts/2022-10-07_canaper/index.html#参考情報",
+    "href": "posts/2022-10-07_canaper/index.html#参考情報",
+    "title": "canaperがCRANに登録されました",
+    "section": "参考情報",
+    "text": "参考情報\ncanaperについてもっと知りたい方はGitHubのサイト、パッケージのサイト、およびプレプリントをご覧下さい。"
+  },
+  {
     "objectID": "blog.html",
     "href": "blog.html",
     "title": "ブログ",
     "section": "",
-    "text": "blogging\n\n\ndistill\n\n\n\n\nHow to use the giscus commenting system on a Distill blog\n\n\n\n\n\n\n2021/11/24\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nworkflow\n\n\nreproducibility\n\n\n\n\nHow to combine Conda, Docker, and R to run modular, reproducible bioinformatics pipelines\n\n\n\n\n\n\n2021/11/16\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nr\n\n\nplotting\n\n\n\n\nHow to change the phytools default color scheme when visualizing the results of ancestral character state estimation\n\n\n\n\n\n\n2021/06/02\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ndocker\n\n\n\n\nKeep it secret. Keep it safe.\n\n\n\n\n\n\n2019/02/16\n\n\nJoel Nitta\n\n\n\n\n\n\n一致なし"
+    "text": "R\n\n\nSpatial phylogenetics\n\n\n\n\nRパッケージcanaperの紹介\n\n\n\n\n\n\n2022/10/07\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nblogging\n\n\ndistill\n\n\n\n\nHow to use the giscus commenting system on a Distill blog\n\n\n\n\n\n\n2021/11/24\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nworkflow\n\n\nreproducibility\n\n\n\n\nHow to combine Conda, Docker, and R to run modular, reproducible bioinformatics pipelines\n\n\n\n\n\n\n2021/11/16\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nr\n\n\nplotting\n\n\n\n\nHow to change the phytools default color scheme when visualizing the results of ancestral character state estimation\n\n\n\n\n\n\n2021/06/02\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ndocker\n\n\n\n\nKeep it secret. Keep it safe.\n\n\n\n\n\n\n2019/02/16\n\n\nJoel Nitta\n\n\n\n\n\n\n一致なし"
   },
   {
     "objectID": "publications.html",
