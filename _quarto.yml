@@ -2,22 +2,22 @@ project:
   type: website
 
 website:
-  title: "Joel Nitta"
+  title: "ニッタ ジョエル"
   navbar:
     background: primary
     right:
       - href: index.qmd
-        text: Home
+        text: ホーム
       - href: publications.qmd
-        text: Publications
+        text: 論文
       - href: software.qmd
-        text: Software
+        text: ソフトウェア
       - href: blog.qmd
-        text: Blog
+        text: ブログ
       - href: content/pdf/Nitta_CV.pdf
         text: "CV"
-      - href: https://www.ja.joelnitta.com
-        text: "日本語"
+      - href: https://www.joelnitta.com
+        text: "英語"
 
 format:
   html:

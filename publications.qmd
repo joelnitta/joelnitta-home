@@ -1,13 +1,13 @@
 ---
-title: "Publications"
-lang: en
-date: "`r Sys.Date()`"
-output: distill::distill_article
-editor_options: 
+comments: false
+date: '`r Sys.Date()`'
+editor_options:
   chunk_output_type: console
 execute:
   echo: false
-comments: false
+lang: ja
+output: distill::distill_article
+title: 論文
 ---
 
 ```{r}
@@ -90,9 +90,9 @@ oldopts <- BibOptions(
 `r icon_link("google-scholar", "Google Scholar", "https://scholar.google.com/citations?hl=en&user=FtzrMYwAAAAJ")`  
 
 <!-- Manually add forthcoming pubs !-->
-<!-- ## Forthcoming
+<!-- ## 近刊
 
-**Nitta, J. H.**, E. Schuettpelz, S. Ramírez-Barahona, and W. Iwasaki. "An open and continuously updated Fern Tree of Life (FTOL)". Submitted.
+**Nitta, J. H.**, E. Schuettpelz, S. RamÃ­rez-Barahona, and W. Iwasaki. "An open and continuously updated Fern Tree of Life (FTOL)". Submitted.
 
 `r icon_link(text = "Preprint", url = "https://doi.org/10.1101/2022.03.31.486640")`
 `r icon_link(icon = "github", text = "Code", url = "https://github.com/fernphy/ftol")` !-->
