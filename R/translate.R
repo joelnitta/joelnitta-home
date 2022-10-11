@@ -6,15 +6,24 @@ library(dovetail)
 library(quarto)
 library(gert)
 
+# Start on `main`
+git_branch_checkout("main")
+
+# Make sure git status is clean
+assertthat::assert_that(
+  nrow(git_status()) == 0,
+  msg = "git status not clean"
+)
+
 # Make backup of old `ja-source` branch (equivalent of `main`, but in JA)
-# - delete any existing backup
+# - first delete any existing backup
 if (git_branch_exists("ja-source-bak")) {
   git_branch_delete("ja-source-bak")
 }
 git_branch_checkout("ja-source")
 git_branch_create("ja-source-bak")
 
-# Start on `main`
+# Switch back to main
 git_branch_checkout("main")
 
 # Create / update PO files
