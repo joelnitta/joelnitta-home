@@ -1,22 +1,19 @@
 # Helper function to create a locale/lang directory populated with
 # files needed for translation
-site_create_locale <- function(lang) {
+site_create_locale <- function(lang = "ja") {
 
   # Create locale/{lang} folder if it does not yet exist
   locale_lang <- glue::glue("locale/{lang}")
   if (!fs::dir_exists(locale_lang)) fs::dir_create(locale_lang)
 
-  fs::dir_ls
-  lang <- "ja"
-
   # Copy all files needed for building webpage with quarto to locale/{lang}
   file_tibble <-
-    fs::dir_ls(type = "file") %>%
+    fs::dir_ls(type = "file", all = TRUE) %>%
       tibble::tibble(file = .) %>%
       dplyr::filter(
         stringr::str_detect(
           file,
-          "^_site|po|R|renv|.Rprofile|renv.lock|locale",
+          "\\.DS_Store|\\.Rhistory|\\.Renviron|renv\\.lock",
           negate = TRUE
         )
       ) %>%
@@ -28,7 +25,7 @@ site_create_locale <- function(lang) {
         dplyr::filter(
           stringr::str_detect(
             dir,
-            "^_site|po|R|renv|.Rprofile|renv.lock|locale",
+            "^_site|^po$|renv|locale",
             negate = TRUE
           )
         ) %>%
