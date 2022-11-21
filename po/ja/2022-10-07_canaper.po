@@ -201,7 +201,7 @@ msgstr ""
 #. type: Plain text
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:52
 msgid "The goal of `canaper` is to conduct CANAPE in R."
-msgstr "`canaper`の目的はRでCANAPEを行うことです"
+msgstr "`canaper`の目的はRでCANAPEを行うことです。"
 
 #. type: Title ##
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:53

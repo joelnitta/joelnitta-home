@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-10-04 06:50+0000\n"
+"POT-Creation-Date: 2022-11-21 05:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -145,70 +145,71 @@ msgid "`r icon_link(\"google-scholar\", \"Google Scholar\", \"https://scholar.go
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:94
-#, no-wrap
-msgid ""
-"<!-- Manually add forthcoming pubs !-->\n"
-"<!-- ## Forthcoming\n"
-msgstr ""
-"<!-- Manually add forthcoming pubs !-->\n"
-"<!-- ## 近刊\n"
-
-#. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:96
-#, no-wrap
-msgid "**Nitta, J. H.**, E. Schuettpelz, S. RamÃ­rez-Barahona, and W. Iwasaki. \"An open and continuously updated Fern Tree of Life (FTOL)\". Submitted.\n"
-msgstr ""
-
-#. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:99
-#, no-wrap
-msgid ""
-"`r icon_link(text = \"Preprint\", url = \"https://doi.org/10.1101/2022.03.31.486640\")`\n"
-"`r icon_link(icon = \"github\", text = \"Code\", url = \"https://github.com/fernphy/ftol\")` !-->\n"
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:93
+msgid "<!-- Manually add forthcoming pubs !-->\n"
 msgstr ""
 
 #. type: Title ##
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:94
+#, no-wrap
+msgid "Forthcoming"
+msgstr "近刊"
+
+#. type: Plain text
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:97
+#, no-wrap
+msgid "**Nitta, J. H.**, S. W. Laffan, B. D. Mishler, and W. Iwasaki. \"canaper: Categorical analysis of neo- and paleo-endemism in R\". Submitted.\n"
+msgstr ""
+
+#. type: Plain text
 #: /409952fb95fbb825992593fca10961ea_1/publications.qmd:100
+msgid ""
+"`r icon_link(text = \"Preprint\", url = \"https://www.biorxiv.org/"
+"content/10.1101/2022.10.06.511072v1\")` `r icon_link(icon = \"github\", text "
+"= \"Code\", url = \"https://github.com/ropensci/canaper\")`"
+msgstr ""
+
+#. type: Title ##
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:101
 #, no-wrap
 msgid "2022"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:103
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:104
 msgid "`r print_ref(\"Nitta2022b\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:105
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:106
 msgid "`r print_ref(\"Nitta2022a\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:107
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:108
 msgid "`r print_ref(\"Nitta2022\")`"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:108
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:109
 #, no-wrap
 msgid "2021"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:111
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:112
 msgid "`r print_ref(\"Nitta2021\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:113
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:165
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:114
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:166
 #, no-wrap
 msgid "<aside>\n"
 msgstr ""
 
 #. type: Fenced code block ({r})
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:113
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:114
 #, no-wrap
 msgid ""
 "#| label: Nitta2021-cover\n"
@@ -217,132 +218,132 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:119
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:171
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:120
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:172
 #, no-wrap
 msgid "</aside>\n"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:120
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:121
 #, no-wrap
 msgid "2020"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:123
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:124
 msgid "`r print_ref(\"Nitta2020b\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:125
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:126
 msgid "`r print_ref(\"Nitta2020\")`"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:126
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:127
 #, no-wrap
 msgid "2019"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:129
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:130
 msgid "`r print_ref(\"Ebihara2019b\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:131
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:132
 msgid "`r print_ref(\"Ebihara2019a\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:133
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:134
 msgid "`r print_ref(\"Nitta2019\")`"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:134
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:135
 #, no-wrap
 msgid "2018"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:137
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:138
 msgid "`r print_ref(\"Gilbert2018\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:139
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:140
 msgid "`r print_ref(\"Nitta2018\")`"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:140
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:141
 #, no-wrap
 msgid "2017"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:143
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:144
 msgid "`r print_ref(\"Nitta2017\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:145
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:146
 msgid "`r print_ref(\"Pinson2016a\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:147
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:148
 msgid "`r print_ref(\"Zhou2017\")`"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:148
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:149
 #, no-wrap
 msgid "2016"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:151
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:152
 msgid "`r print_ref(\"Pouteau2016\")`"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:152
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:153
 #, no-wrap
 msgid "2015"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:155
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:156
 msgid "`r print_ref(\"Chen2015\")`"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:156
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:157
 #, no-wrap
 msgid "2013"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:159
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:160
 msgid "`r print_ref(\"Ebihara2013\")`"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:160
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:161
 #, no-wrap
 msgid "2011"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:163
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:164
 msgid "`r print_ref(\"Nitta2011\")`"
 msgstr ""
 
 #. type: Fenced code block ({r})
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:165
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:166
 #, no-wrap
 msgid ""
 "#| label: nitta2011-cover\n"
@@ -351,54 +352,54 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:173
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:174
 msgid "`r print_ref(\"Nitta2011b\")`"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:174
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:175
 #, no-wrap
 msgid "2010"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:177
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:178
 msgid "`r print_ref(\"Ebihara2010\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:179
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:180
 msgid "`r print_ref(\"Ebihara2010a\")`"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:180
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:181
 #, no-wrap
 msgid "2009"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:183
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:184
 msgid "`r print_ref(\"Ebihara2009b\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:185
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:186
 msgid "`r print_ref(\"Nitta2009\")`"
 msgstr ""
 
 #. type: Title ##
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:186
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:187
 #, no-wrap
 msgid "2008"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:189
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:190
 msgid "`r print_ref(\"Nitta2008\")`"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:190
+#: /409952fb95fbb825992593fca10961ea_1/publications.qmd:191
 msgid "`r print_ref(\"Nitta2008a\")`"
 msgstr ""
