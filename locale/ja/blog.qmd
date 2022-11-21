@@ -1,0 +1,10 @@
+---
+comments: false
+lang: ja
+listing:
+  categories: true
+  contents: posts
+  sort: 'date desc'
+  type: default
+title: ブログ
+---

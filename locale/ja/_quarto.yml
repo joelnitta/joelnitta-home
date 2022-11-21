@@ -1,0 +1,40 @@
+project:
+  type: website
+
+website:
+  title: "ニッタ ジョエル"
+  navbar:
+    background: primary
+    right:
+      - href: index.qmd
+        text: ホーム
+      - href: publications.qmd
+        text: 論文
+      - href: software.qmd
+        text: ソフトウェア
+      - href: blog.qmd
+        text: ブログ
+      - href: content/pdf/Nitta_CV.pdf
+        text: "CV"
+      - href: https://www.joelnitta.com
+        text: "英語"
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: superhero
+    css: jnitta_theme.css
+    toc: true
+    comments:
+      giscus:
+        repo: joelnitta/joelnitta-home
+        repo-id: R_kgDOGZGr3w
+        category: Comments
+        category-id: DIC_kwDOGZGr384B_-52
+        mapping: pathname
+        reactions-enabled: false
+        input-position: top
+        theme: light
+        language: en
+    include-in-header: header.html
