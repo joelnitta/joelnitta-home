@@ -6,8 +6,9 @@ about:
   image: "content/images/joel.png"
   image-width: "200px;"
   links:
-    - icon: twitter
-      href: https://twitter.com/joel_nitta
+    - icon: mastodon
+      href: https://fosstodon.org/@joelnitta
+      rel: me
     - icon: github
       href: https://github.com/joelnitta
     - text: RM
