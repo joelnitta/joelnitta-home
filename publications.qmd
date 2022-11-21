@@ -90,12 +90,13 @@ oldopts <- BibOptions(
 `r icon_link("google-scholar", "Google Scholar", "https://scholar.google.com/citations?hl=en&user=FtzrMYwAAAAJ")`  
 
 <!-- Manually add forthcoming pubs !-->
-<!-- ## Forthcoming
 
-**Nitta, J. H.**, E. Schuettpelz, S. Ramírez-Barahona, and W. Iwasaki. "An open and continuously updated Fern Tree of Life (FTOL)". Submitted.
+## Forthcoming
 
-`r icon_link(text = "Preprint", url = "https://doi.org/10.1101/2022.03.31.486640")`
-`r icon_link(icon = "github", text = "Code", url = "https://github.com/fernphy/ftol")` !-->
+**Nitta, J. H.**, S. W. Laffan, B. D. Mishler, and W. Iwasaki. "canaper: Categorical analysis of neo- and paleo-endemism in R". Submitted.
+
+`r icon_link(text = "Preprint", url = "https://www.biorxiv.org/content/10.1101/2022.10.06.511072v1")`
+`r icon_link(icon = "github", text = "Code", url = "https://github.com/ropensci/canaper")`
 
 ## 2022
 
