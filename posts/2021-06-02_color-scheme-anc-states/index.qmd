@@ -36,8 +36,7 @@ I have to say I'm not a fan of the default color scheme, which is a rainbow pale
 For example, let's [borrow some example code](http://www.phytools.org/eqg2015/asr.html) and look at the default plot:
 
 ```{r}
-#| label: fig-plot-contmap-default
-#| fig.cap: Default rainbow color scheme. Pretty, but confusing.
+#| label: start
 
 # code modified slightly from http://www.phytools.org/eqg2015/asr.html
 
@@ -47,9 +46,42 @@ library(ggtree)
 library(tidyverse)
 library(scico)
 library(viridisLite)
+```
+
+```{r}
+#| label: fig-plot-contmap-default-show
+#| eval: false
+#| echo: true
+#| fig.cap: Default rainbow color scheme. Pretty, but confusing.
 
 ## Load anole tree
 anole.tree <- read.tree("http://www.phytools.org/eqg2015/data/anole.tre")
+
+## Load anole trait data, extract snout-vent-length (svl) as named vector
+svl <- read_csv("http://www.phytools.org/eqg2015/data/svl.csv") %>%
+  mutate(svl = set_names(svl, species)) %>%
+  pull(svl)
+
+# Plot with default color scheme
+contmap_obj <- contMap(anole.tree, svl, plot = FALSE)
+
+plot(
+  contmap_obj, 
+  type="fan", 
+  legend = 0.7*max(nodeHeights(anole.tree)),
+  fsize = c(0.5, 0.7))
+```
+
+```{r}
+#| label: fig-plot-contmap-default-hide
+#| eval: true
+#| echo: false
+#| fig.cap: Default rainbow color scheme. Pretty, but confusing.
+
+tempfile <- tempfile()
+download.file("http://www.phytools.org/eqg2015/data/anole.tre", tempfile)
+anole.tree <- read.tree(tempfile)
+unlink(tempfile)
 
 ## Load anole trait data, extract snout-vent-length (svl) as named vector
 svl <- read_csv("http://www.phytools.org/eqg2015/data/svl.csv") %>%
