@@ -1,9 +1,12 @@
 on:
-  workflow_dispatch:
   push:
-    branches: main
+    branches: ja-source
+  pull_request:
+    branches: ja-source
+  # to be able to trigger a manual build
+  workflow_dispatch:
 
-name: Quarto Publish EN
+name: Quarto publish JA
 
 jobs:
   build-deploy:
@@ -34,9 +37,15 @@ jobs:
         with:
           cache-version: 1
 
-      - name: Render and Publish EN
-        uses: quarto-dev/quarto-actions/publish@v2
+      - name: Render Quarto Project
+        uses: quarto-dev/quarto-actions/render@v2
+
+      - name: Deploy 🚀
+        # don't deploy on PR
+        if: github.event_name != 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          target: gh-pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # The branch the action should deploy to.
+          branch: ja
+          # The folder the action should deploy. Adapt if you changed in Quarto config
+          folder: _site
