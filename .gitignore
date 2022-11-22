@@ -7,6 +7,7 @@ _site-ja
 working
 *_cache
 locale
+_locale
 
 /.quarto/
 posts/*/renv/
