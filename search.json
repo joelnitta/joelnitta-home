@@ -1,33 +1,5 @@
 [
   {
-    "objectID": "software.html",
-    "href": "software.html",
-    "title": "ソフトウェア",
-    "section": "",
-    "text": "系統的固有性を測るRパッケージ\n Code  Website"
-  },
-  {
-    "objectID": "software.html#taxastand",
-    "href": "software.html#taxastand",
-    "title": "ソフトウェア",
-    "section": "taxastand ",
-    "text": "taxastand \n学名を統一するRパッケージ\n Code  Website"
-  },
-  {
-    "objectID": "software.html#dwctaxon",
-    "href": "software.html#dwctaxon",
-    "title": "ソフトウェア",
-    "section": "dwctaxon ",
-    "text": "dwctaxon \nダーウィンコア形式に従った学名の整理をするRパッケージ\n Code  Website"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "ニッタ ジョエル",
-    "section": "",
-    "text": "初めまして、東京大学大学院理学系研究科・岩崎研究室の特任助教のニッタ ジョエルです。私はシダ植物の進化と生態学を研究しています。\nシダ植物は非常にユニークなライフサイクルを持つ、とても面白い研究対象です。普段目にしている植物は「胞子体」（二倍体）ですが、もう一つ、極めて小さな（通常は１センチ以下）「配偶体」（一倍体）というライフステージもあり、両方とも独立に生息しています。この特徴は他の陸上植物と根本的に異なり、シダ植物の進化にとって非常に大きな意味を持っています。私は特にシダ植物のライフサイクルがその群集形成のプロセスや生態学などに与える影響について研究しています。\nそして、再現性可能な解析やコード、特にに興味があります。この話については、ブログを見てみてください。\n\n\n\n\nハーバード大学 | 進化生物学研究科博士課程　修了 | 2016年\n東京大学 | 生物科学専攻修士課程　修了 | 2010年\nカリフォルニア大学バークレー校 | 総合生物学・日本語専攻　卒業 | 2007年\n\n\n\n\n\n東京大学大学院理学系研究科岩崎研究室 | 特任助教 | 2020年4月 - 現在\nスミソニアン国立自然史博物館 | 特別研究員 | 2019年1月 - 2020年3月\n国立科学博物館植物研究部 | 外国人特別研究員 | 2016年11月 - 2018年12月"
-  },
-  {
     "objectID": "posts/2021-06-02_color-scheme-anc-states/index.html#about-contmap",
     "href": "posts/2021-06-02_color-scheme-anc-states/index.html#about-contmap",
     "title": "Selecting color schemes for mapping ancestral states",
@@ -39,28 +11,105 @@
     "href": "posts/2021-06-02_color-scheme-anc-states/index.html#default-colors",
     "title": "Selecting color schemes for mapping ancestral states",
     "section": "Default colors",
-    "text": "Default colors\nI have to say I’m not a fan of the default color scheme, which is a rainbow palette going from red through yellow and green to blue.\nFor example, let’s borrow some example code and look at the default plot:\n\n# code modified slightly from http://www.phytools.org/eqg2015/asr.html\n\n## Load needed packages for this blogpost\nlibrary(phytools)\nlibrary(ggtree)\nlibrary(tidyverse)\nlibrary(scico)\nlibrary(viridisLite)\n\n## Load anole tree\nanole.tree <- read.tree(\"http://www.phytools.org/eqg2015/data/anole.tre\")\n\n## Load anole trait data, extract snout-vent-length (svl) as named vector\nsvl <- read_csv(\"http://www.phytools.org/eqg2015/data/svl.csv\") %>%\n  mutate(svl = set_names(svl, species)) %>%\n  pull(svl)\n\n# Plot with default color scheme\ncontmap_obj <- contMap(anole.tree, svl, plot = FALSE)\n\nplot(\n  contmap_obj, \n  type=\"fan\", \n  legend = 0.7*max(nodeHeights(anole.tree)),\n  fsize = c(0.5, 0.7))\n\n\n\n\nFigure 1: Default rainbow color scheme. Pretty, but confusing.\n\n\n\n\nAlthough this does provide a wide range of colors, it’s not obvious why one color is greater or less than the others. In particular it’s hard to discern the order of intermediate values (yellow, green, light blue). Indeed, there has been much written on why the rainbow palette is generally not a good way to visualize continuous data."
+    "text": "Default colors\nI have to say I’m not a fan of the default color scheme, which is a rainbow palette going from red through yellow and green to blue.\nFor example, let’s borrow some example code and look at the default plot:\n\n# code modified slightly from http://www.phytools.org/eqg2015/asr.html\n\n## Load needed packages for this blogpost\nlibrary(phytools)\nlibrary(ggtree)\nlibrary(tidyverse)\nlibrary(scico)\nlibrary(viridisLite)\n\n\n## Load anole tree\nanole.tree <- read.tree(\"http://www.phytools.org/eqg2015/data/anole.tre\")\n\n## Load anole trait data, extract snout-vent-length (svl) as named vector\nsvl <- read_csv(\"http://www.phytools.org/eqg2015/data/svl.csv\") %>%\n  mutate(svl = set_names(svl, species)) %>%\n  pull(svl)\n\n# Plot with default color scheme\ncontmap_obj <- contMap(anole.tree, svl, plot = FALSE)\n\nplot(\n  contmap_obj, \n  type=\"fan\", \n  legend = 0.7*max(nodeHeights(anole.tree)),\n  fsize = c(0.5, 0.7))\n\nAlthough this does provide a wide range of colors, it’s not obvious why one color is greater or less than the others. In particular it’s hard to discern the order of intermediate values (yellow, green, light blue). Indeed, there has been much written on why the rainbow palette is generally not a good way to visualize continuous data."
   },
   {
     "objectID": "posts/2021-06-02_color-scheme-anc-states/index.html#defining-a-new-color-palette",
     "href": "posts/2021-06-02_color-scheme-anc-states/index.html#defining-a-new-color-palette",
     "title": "Selecting color schemes for mapping ancestral states",
     "section": "Defining a new color palette",
-    "text": "Defining a new color palette\nphytools::setMap() can be used to specify another color palette. setMap() passes its second argument (a vector of color names or hexadecimals) to colorRampPalette(). colorRampPalette() is a bit unusual in that it’s a function that produces a function, in this case, one that generates a vector of colors interpolating between the original input values:\n\n# colorRampPalette() produces a function\nmy_color_func <- colorRampPalette(c(\"red\", \"yellow\"))\nclass(my_color_func)\n\n[1] \"function\"\n\n# The function generates n colors interpolating between\n# the colors originally passed to colorRampPalette()\nmy_colors <- my_color_func(n = 6)\nscales::show_col(my_colors)\n\n\n\n\nFigure 2: A red-to-yellow color ramp.\n\n\n\n\nSo, this works fine for generating custom color gradients. But designing accurate, color-blind friendly color palettes is not a simple task. Fortunately, there are several packages available with such carefully crafted palettes. Two of my favorite are viridis and scico. How can we use these with the plotting function in phytools?"
+    "text": "Defining a new color palette\nphytools::setMap() can be used to specify another color palette. setMap() passes its second argument (a vector of color names or hexadecimals) to colorRampPalette(). colorRampPalette() is a bit unusual in that it’s a function that produces a function, in this case, one that generates a vector of colors interpolating between the original input values:\n\n# colorRampPalette() produces a function\nmy_color_func <- colorRampPalette(c(\"red\", \"yellow\"))\nclass(my_color_func)\n\n[1] \"function\"\n\n# The function generates n colors interpolating between\n# the colors originally passed to colorRampPalette()\nmy_colors <- my_color_func(n = 6)\nscales::show_col(my_colors)\n\n\n\n\nFigure 1: A red-to-yellow color ramp.\n\n\n\n\nSo, this works fine for generating custom color gradients. But designing accurate, color-blind friendly color palettes is not a simple task. Fortunately, there are several packages available with such carefully crafted palettes. Two of my favorite are viridis and scico. How can we use these with the plotting function in phytools?"
   },
   {
     "objectID": "posts/2021-06-02_color-scheme-anc-states/index.html#using-viridis-or-scico-palettes",
     "href": "posts/2021-06-02_color-scheme-anc-states/index.html#using-viridis-or-scico-palettes",
     "title": "Selecting color schemes for mapping ancestral states",
     "section": "Using viridis or scico palettes",
-    "text": "Using viridis or scico palettes\nWell, it turns out that as long as we specify the same number of colors, we can replicate the viridis color palette with colorRampPalette(). The only difference is the alpha, or transparency level, indicated at the end of each hexidecimal with two letters (here “FF”). There is no reason to use transparency here anyways, so that doesn’t matter.\n\n# viridis color palette with 6 colors\nviridis(6)\n\n[1] \"#440154FF\" \"#414487FF\" \"#2A788EFF\" \"#22A884FF\" \"#7AD151FF\" \"#FDE725FF\"\n\n# colorRampPalette() replicating viridis color palette\ncolorRampPalette(viridis(6))(6)\n\n[1] \"#440154\" \"#414487\" \"#2A788E\" \"#22A884\" \"#7AD151\" \"#FDE725\"\n\n\nSo here is the viridis version of the phytools plot:\n\n# Count the number of unique character states in the observed data:\nn_cols <- n_distinct(svl)\n\n# Change the color palette\ncontmap_obj_viridis <- setMap(contmap_obj, viridis(n_cols))\n\n# Plot the mapped characters with the new colors\nplot(\n  contmap_obj_viridis, \n  type=\"fan\", \n  legend = 0.7*max(nodeHeights(anole.tree)),\n  fsize = c(0.5, 0.7))\n\n\n\n\nFigure 3: Viridis colors. Better.\n\n\n\n\nAnd here is another one, this time using a palette from scico:\n\n# Change the color palette\ncontmap_obj_scico <- setMap(contmap_obj, scico(n_cols, palette = \"bilbao\"))\n\n# Plot the mapped characters with the new colors\nplot(\n  contmap_obj_scico, \n  type=\"fan\", \n  legend = 0.7*max(nodeHeights(anole.tree)),\n  fsize = c(0.5, 0.7))\n\n\n\n\nFigure 4: Scico colors. My personal favorite.\n\n\n\n\nI personally find this one even easier to interpret than viridis. It’s very clear which values are low and high."
+    "text": "Using viridis or scico palettes\nWell, it turns out that as long as we specify the same number of colors, we can replicate the viridis color palette with colorRampPalette(). The only difference is the alpha, or transparency level, indicated at the end of each hexidecimal with two letters (here “FF”). There is no reason to use transparency here anyways, so that doesn’t matter.\n\n# viridis color palette with 6 colors\nviridis(6)\n\n[1] \"#440154FF\" \"#414487FF\" \"#2A788EFF\" \"#22A884FF\" \"#7AD151FF\" \"#FDE725FF\"\n\n# colorRampPalette() replicating viridis color palette\ncolorRampPalette(viridis(6))(6)\n\n[1] \"#440154\" \"#414487\" \"#2A788E\" \"#22A884\" \"#7AD151\" \"#FDE725\"\n\n\nSo here is the viridis version of the phytools plot:\n\n# Count the number of unique character states in the observed data:\nn_cols <- n_distinct(svl)\n\n# Change the color palette\ncontmap_obj_viridis <- setMap(contmap_obj, viridis(n_cols))\n\n# Plot the mapped characters with the new colors\nplot(\n  contmap_obj_viridis, \n  type=\"fan\", \n  legend = 0.7*max(nodeHeights(anole.tree)),\n  fsize = c(0.5, 0.7))\n\n\n\n\nFigure 2: Viridis colors. Better.\n\n\n\n\nAnd here is another one, this time using a palette from scico:\n\n# Change the color palette\ncontmap_obj_scico <- setMap(contmap_obj, scico(n_cols, palette = \"bilbao\"))\n\n# Plot the mapped characters with the new colors\nplot(\n  contmap_obj_scico, \n  type=\"fan\", \n  legend = 0.7*max(nodeHeights(anole.tree)),\n  fsize = c(0.5, 0.7))\n\n\n\n\nFigure 3: Scico colors. My personal favorite.\n\n\n\n\nI personally find this one even easier to interpret than viridis. It’s very clear which values are low and high."
   },
   {
     "objectID": "posts/2021-06-02_color-scheme-anc-states/index.html#ggtree",
     "href": "posts/2021-06-02_color-scheme-anc-states/index.html#ggtree",
     "title": "Selecting color schemes for mapping ancestral states",
     "section": "ggtree",
-    "text": "ggtree\nJust for completeness, here is code to replicate the plot in ggtree.\n\n# Modified from https://yulab-smu.top/treedata-book/chapter4.html#color-tree\n\n# Fit an ancestral state character reconstruction\nfit <- phytools::fastAnc(anole.tree, svl, vars = TRUE, CI = TRUE)\n\n# Make a dataframe with trait values at the tips\ntd <- data.frame(\n  node = nodeid(anole.tree, names(svl)),\n  trait = svl)\n\n# Make a dataframe with estimated trait values at the nodes\nnd <- data.frame(node = names(fit$ace), trait = fit$ace)\n\n# Combine these with the tree data for plotting with ggtree\nd <- rbind(td, nd)\nd$node <- as.numeric(d$node)\ntree <- full_join(anole.tree, d, by = 'node')\n\nggtree(\n  tree, \n  aes(color = trait), \n  layout = 'circular', \n  ladderize = FALSE, continuous = \"color\", size = 1) +\n  # >>> The important part! <<<\n  # Choose your favorite scale_color_* function here: \n  scale_color_scico(palette = \"bilbao\") + \n  geom_tiplab(hjust = -.1, size = 2, color = \"black\") + \n  xlim(0, 1.2) + \n  theme(\n    legend.position = c(0, .82),\n    legend.text = element_text(size = 8),\n    legend.title = element_text(size = 8)\n  ) \n\n\n\n\nFigure 5: Scico colors with ggtree.\n\n\n\n\nThat’s it!"
+    "text": "ggtree\nJust for completeness, here is code to replicate the plot in ggtree.\n\n# Modified from https://yulab-smu.top/treedata-book/chapter4.html#color-tree\n\n# Fit an ancestral state character reconstruction\nfit <- phytools::fastAnc(anole.tree, svl, vars = TRUE, CI = TRUE)\n\n# Make a dataframe with trait values at the tips\ntd <- data.frame(\n  node = nodeid(anole.tree, names(svl)),\n  trait = svl)\n\n# Make a dataframe with estimated trait values at the nodes\nnd <- data.frame(node = names(fit$ace), trait = fit$ace)\n\n# Combine these with the tree data for plotting with ggtree\nd <- rbind(td, nd)\nd$node <- as.numeric(d$node)\ntree <- full_join(anole.tree, d, by = 'node')\n\nggtree(\n  tree, \n  aes(color = trait), \n  layout = 'circular', \n  ladderize = FALSE, continuous = \"color\", size = 1) +\n  # >>> The important part! <<<\n  # Choose your favorite scale_color_* function here: \n  scale_color_scico(palette = \"bilbao\") + \n  geom_tiplab(hjust = -.1, size = 2, color = \"black\") + \n  xlim(0, 1.2) + \n  theme(\n    legend.position = c(0, .82),\n    legend.text = element_text(size = 8),\n    legend.title = element_text(size = 8)\n  ) \n\n\n\n\nFigure 4: Scico colors with ggtree.\n\n\n\n\nThat’s it!"
+  },
+  {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#tldr",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#tldr",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "tl;dr",
+    "text": "tl;dr\n\nThe targets R package is great for managing bioinformatics workflows\nrenv, Conda, and Docker can be combined so that all steps are modular and reproducible\nDemo available at https://github.com/joelnitta/targets_bioinfo_example\n\n\n\n\nFigure 1: Image by T K on unsplash.\n\n\nBioinformatics projects tend to have a similar pattern: they all start with raw data, then pass the data through various programs until arriving at the final result. These “pipelines” can become very long and complicated, so there are many platforms that automate this process either relying on code (e.g., nextflow, CWL) or graphical interfaces (e.g., galaxy). Python’s snakemake is also commonly used for this purpose. That got me thinking—can we do this in R?"
+  },
+  {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#what-im-looking-for-in-a-pipeline-manager",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#what-im-looking-for-in-a-pipeline-manager",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "What I’m looking for in a pipeline manager",
+    "text": "What I’m looking for in a pipeline manager\nThese are some qualities that I want to see in a pipeline manager.\n\nAutomated: I should be able to run one central script that will orchestrate the whole pipeline, rather than manually keeping track of which step depends on which and when each needs to be run.\nEfficient: The pipeline manager should keep track of what is out of date and only re-run those parts, rather than re-run the whole pipeline each time.\nReproducible: Software packages should be isolated and version controlled so that the same input results in the same output on any machine."
+  },
+  {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#enter-targets",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#enter-targets",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "Enter targets",
+    "text": "Enter targets\nThe targets R package pretty much fits the bill perfectly for Points 1 and 2. targets completely automates the workflow, so that the user doesn’t have to manually run steps, and guarantees that the output is up-to-date (if the workflow is designed correctly). Furthermore, it has capabilities for easily looping and running processes in parallel, so it scales quite well to large analyses. I won’t go into too many details of how to use targets here, since it has an excellent user manual."
+  },
+  {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#targets-meets-docker",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#targets-meets-docker",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "targets meets Docker",
+    "text": "targets meets Docker\nHowever, targets by itself isn’t quite enough to meet all of my bioinformatics needs. What about Point 3—how can we make targets workflows reproducible?\nMost bioinformatics tools are open-source software packages that have a command-line interface (CLI). Furthermore, these days, most well-established bioinformatics tools have Docker images1 available to run them. Good sources to find Docker images for bioinformatics software are Bioconda or Biocontainers2. Docker frees us from manual installations and dependency hell, as well as vastly improving reproducibility, since all the software versions are fixed within the container.\nSo I will run most of the steps of the pipeline in available Docker containers."
+  },
+  {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#avoiding-docker-in-docker",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#avoiding-docker-in-docker",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "Avoiding Docker-in-Docker",
+    "text": "Avoiding Docker-in-Docker\n\n\n\nFigure 2: Image by Giordano Rossoni on unsplash.\n\n\nHowever, I then encounter a problem: what about the environment to run R, targets, and launch the Docker containers? That environment should be version-controlled and reproducible too. Normally my solution to create such an environment is Docker, but it’s generally a bad idea to try and run docker from within docker3\nThe solution I reached is to use two more environment managers: Conda4 and renv. I use Conda for running R, and renv for managing R packages."
+  },
+  {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#first-things-first-set-up-the-project",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#first-things-first-set-up-the-project",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "First things first: Set up the project",
+    "text": "First things first: Set up the project\nI need to explain one thing before continuing: for this example, I’m following the practice of using a “project” for the analysis. This simply means all of the files needed for the analysis are put in a single folder (with subfolders as necessary), and that folder is used as the “home base” for the project. So if I type some command at the command line prompt, it is assumed that the project folder is the current working directory. The two main tools I use to maintain the pipeline, renv and targets, both rely on this concept.\nFrom the command line, that just looks like:\n\nmkdir targets_bioinfo_example\ncd targets_bioinfo_example\n\nNext, let’s download some files that I will use in the subsequent steps (don’t worry about what these do yet; I will explain each one below):\n\n\n# environment.yml\ncurl https://raw.githubusercontent.com/joelnitta/targets_bioinfo_example/main/environment.yml > environment.yml\n# renv.lock\ncurl https://raw.githubusercontent.com/joelnitta/targets_bioinfo_example/main/renv.lock > renv.lock\n# _targets.R\ncurl https://raw.githubusercontent.com/joelnitta/joelnitta-home/main/posts/2021-11-16_r-bioinfo-flow/_targets.R > _targets.R\n\nFrom here on, I assume we are running everything a folder called targets_bioinfo_example containing the files environment.yml, renv.lock, and _targets.R.\nAlso, although I’ve mentioned several pieces of software so far, there are only two required for this workflow: Conda and Docker. Make sure those are both installed before continuing."
+  },
+  {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#running-r-with-conda",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#running-r-with-conda",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "Running R with Conda",
+    "text": "Running R with Conda\nConda environments can be specified using a yml file, often named environment.yml.\nThis is the environment.yml file for this project:\nname: bioinfo-example-env\nchannels:\n  - conda-forge\n  - bioconda\n  - defaults\ndependencies:\n  - r-renv=0.14.*\nIt’s quite short: all it does is install renv and its dependencies (which includes R). Here I’ve specified the most recent major version5 of renv, which will come with R v4.1.1.\nWe can recreate the Conda environment from environment.yml (you should have downloaded it above) with:\n\n\nconda env create -f environment.yml\n\n\n\nCollecting package metadata (repodata.json): ...working... done\nSolving environment: ...working... done\nPreparing transaction: ...working... done\nVerifying transaction: ...working... done\nExecuting transaction: ...working... done\n\n\n==> WARNING: A newer version of conda exists. <==\n  current version: 4.13.0\n  latest version: 22.9.0\n\nPlease update conda by running\n\n    $ conda update -n base -c defaults conda\n\n\n#\n# To activate this environment, use\n#\n#     $ conda activate bioinfo-example-env\n#\n# To deactivate an active environment, use\n#\n#     $ conda deactivate\n\n\nAs the output says near the bottom, run conda activate bioinfo-example-env to enter this environment, then from there you can use R as usual with R.\nOn my computer, this looks like:\n(base) Joels-iMac:targets_bioinfo_example joelnitta$ conda activate bioinfo-example-env\n(bioinfo-example-env) Joels-iMac:targets_bioinfo_example joelnitta$ R\n\nR version 4.1.1 (2021-08-10) -- \"Kick Things\"\nCopyright (C) 2021 The R Foundation for Statistical Computing\nPlatform: x86_64-apple-darwin13.4.0 (64-bit)\n\nR is free software and comes with ABSOLUTELY NO WARRANTY.\nYou are welcome to redistribute it under certain conditions.\nType 'license()' or 'licence()' for distribution details.\n\n  Natural language support but running in an English locale\n\nR is a collaborative project with many contributors.\nType 'contributors()' for more information and\n'citation()' on how to cite R or R packages in publications.\n\nType 'demo()' for some demos, 'help()' for on-line help, or\n'help.start()' for an HTML browser interface to help.\nType 'q()' to quit R.\n\n> \nNotice the change from (base) to (bioinfo-example-env), indicating that we are now inside the Conda environment.\nNow we have a fixed version of R, with a fixed version of renv."
+  },
+  {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#maintain-r-packages-with-renv",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#maintain-r-packages-with-renv",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "Maintain R packages with renv",
+    "text": "Maintain R packages with renv\nThe next step is to use renv to install and track R package versions. renv does this with a “lock file”, which is essentially a specification of every package needed to run the code, its version, and where it comes from.\nThis is what the entry in the renv.lock file for this project for the package Matrix looks like:\n\"Matrix\": {\n      \"Package\": \"Matrix\",\n      \"Version\": \"1.3-4\",\n      \"Source\": \"Repository\",\n      \"Repository\": \"CRAN\",\n      \"Hash\": \"4ed05e9c9726267e4a5872e09c04587c\"\n    }\nAssuming renv.lock is present in the working directory (you should have downloaded it above), we can install all packages needed for this example by running the following in R within the Conda environment:\n\nrenv::activate() # Turn on renv\nrenv::restore() # Install packages\n\nYou should see something like this6:\nThe following package(s) will be updated:\n\n# CRAN ===============================\n- Matrix          [* -> 1.3-4]\n- R6              [* -> 2.5.1]\n- Rcpp            [* -> 1.0.7]\n- RcppArmadillo   [* -> 0.10.6.0.0]\n- RcppParallel    [* -> 5.1.4]\n- assertthat      [* -> 0.2.1]\n- babelwhale      [* -> 1.0.3]\n- callr           [* -> 3.7.0]\n\n...\nIf you look at the contents of the project directory, you will also notice a new folder called renv that contains all of the R packages we just installed."
+  },
+  {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#putting-it-all-together",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#putting-it-all-together",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "Putting it all together",
+    "text": "Putting it all together\nOK, now we can run R and Docker from a reproducible environment. What is the best way to run Docker from R? There are some functions in base R for running external commands (system(), system2()) as well as the excellent processx package. Here, though I will use the babelwhale package, which provides some nice wrappers to run Docker (or Singularity)7.\nHere is an example _targets.R file using babelwhale to run Docker. This workflow downloads a pair of fasta files, then trims low-quality bases using the fastp program8:\n\nlibrary(targets)\nlibrary(tarchetypes)\nlibrary(babelwhale)\n\n# Set babelwhale backend for running containers\n# (here, we are using Docker, not Singularity)\nset_default_config(create_docker_config())\n\n# Define workflow\nlist(\n    # Download example fastq files\n    tar_file(\n        read_1, { \n            download.file(\n                url = \"https://raw.githubusercontent.com/OpenGene/fastp/master/testdata/R1.fq\",\n                destfile = \"R1.fq\")\n            \"R1.fq\"\n        }\n    ),\n    tar_file(\n        read_2, { \n            download.file(\n                url = \"https://raw.githubusercontent.com/OpenGene/fastp/master/testdata/R2.fq\",\n                destfile = \"R2.fq\")\n            \"R2.fq\"\n        }\n    ),\n    # Clean the fastq file with fastp\n    tar_file(\n        fastp_out, {\n            babelwhale::run(\n                # Name of docker image, with tag specifying version\n                \"quay.io/biocontainers/fastp:0.23.1--h79da9fb_0\",\n                # Command to run\n                command = \"fastp\",\n                # Arguments to the command\n                args = c(\n                    # fastq input files\n                    \"-i\", paste0(\"/wd/\", read_1), \n                    \"-I\", paste0(\"/wd/\", read_2), \n                    # fastq output files\n                    \"-o\", \"/wd/R1_trim.fq\",\n                  \"-O\", \"/wd/R2_trim.fq\",\n                    # trim report file\n                    \"-h\", \"/wd/trim_report.html\"),\n                # Volume mounting specification\n                # this uses getwd(), but here::here() is also a good method\n                volumes = paste0(getwd(), \":/wd/\")\n            )\n            c(\"R1_trim.fq\", \"R2_trim.fq\", \"trim_report.html\")\n        }\n    )\n)\n\nIn order to run this targets workflow, the above code must be saved as _targets.R in the project root directory (you should have downloaded it above).\nFinally, everything is in place! All we need to do now is run targets::tar_make(), sit back, and enjoy the show:\n\ntargets::tar_make()\n\nWarning messages:\n1: In eval(quote({ : ignoring recursive attempt to run renv autoloader\n2: could not load renv from project \"~/repos/joelnitta-home/posts/2021-11-16_r-bioinfo-flow\"; reloading previously-loaded renv \n• start target read_1\ntrying URL 'https://raw.githubusercontent.com/OpenGene/fastp/master/testdata/R1.fq'\nContent type 'text/plain; charset=utf-8' length 3041 bytes\n==================================================\ndownloaded 3041 bytes\n\n• built target read_1\n• start target read_2\ntrying URL 'https://raw.githubusercontent.com/OpenGene/fastp/master/testdata/R2.fq'\nContent type 'text/plain; charset=utf-8' length 3343 bytes\n==================================================\ndownloaded 3343 bytes\n\n• built target read_2\n• start target fastp_out\n• built target fastp_out\n• end pipeline\n\n\nYou should be able to confirm that the read files were downloaded, cleaned, and a report generated in your working directory. Also, notice there is a new folder called _targets. This contains the metadata that targets uses to track each step of the pipeline (generally it should not be modified by hand; the same goes for the renv folder)."
+  },
+  {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#next-steps",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#next-steps",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "Next steps",
+    "text": "Next steps\n\n\n\nFigure 3: Image by JOHN TOWNER on unsplash\n\n\nThe example workflow just consists of a couple of steps, but I hope you can see how they are chained together: fastp_out depends on read_1 and read_2. We could add a third step that uses fastp_out for something else, and so forth.\nWe can also see this by visualizing the pipeline:\n\ntargets::tar_visnetwork()\n\nWarning messages:\n1: In eval(quote({ : ignoring recursive attempt to run renv autoloader\n2: could not load renv from project \"~/repos/joelnitta-home/posts/2021-11-16_r-bioinfo-flow\"; reloading previously-loaded renv \n\n\n\n\n\n\nTo keep things simple for this post, I have written the workflow as a single R script, but that’s not really the ideal way to do it. You can see that the syntax is rather verbose, and such a script would rapidly become very long. The best practice for targets workflows is to write the targets plan and the functions that build each target separately, as _targets.R and functions.R, respectively.\nBy splitting the plan from the functions this way, our _targets.R file becomes much shorter and more readable:\n\nlibrary(targets)\nlibrary(tarchetypes)\nlibrary(babelwhale)\n\n# Set babelwhale backend for running containers\nset_default_config(create_docker_config())\n\n# Load functions\nsource(\"R/functions.R\")\n\ntar_plan(\n    # Download example fastq files\n    tar_file(read_1, download_read(\"R1.fq\")),\n    tar_file(read_2, download_read(\"R2.fq\")),\n    # Clean the fastq files with fastp\n    tar_file(\n        fastp_out, \n        fastp(read_1, read_2, \"R1_trim.fq\", \"R2_trim.fq\", \"trim_report.html\"\n        )\n    )\n)\n\nYou can see how it provides a high-level overview of each step in the workflow, without getting bogged down in the details. And the best part is, you don’t have to install fastp (or any other software used for a particular step)! Docker takes care of that for you.\nFurthermore, thanks to targets, if one part of the workflow changes and we run tar_make() again, only the part that changed will be run. Try it by deleting R1.fq, then run tar_make() again and see what happens.\nI have made this plan and the accompanying functions.R file available at this repo: https://github.com/joelnitta/targets_bioinfo_example. Please check it out!"
+  },
+  {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#conclusion",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#conclusion",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "Conclusion",
+    "text": "Conclusion\nI am really excited about using targets for reproducibly managing bioinformatics workflows from R. I hope this helps others who may want to do the same!"
   },
   {
     "objectID": "posts/2021-11-24_using-giscus/index.html",
@@ -112,83 +161,6 @@
     "text": "Installing a private R package\nTo install a package from my private GitHub repo, I created an additional simple R script, called install_git_packages.R:\n# install_git_packages.R\nsecret <- commandArgs(trailing = TRUE)\ndevtools::install_github(\"joelnitta/my-private-package\", auth_token = secret)\ncommandArgs(trailing = TRUE) will return whatever command line arguments were passed to Rscript after the name of the script, as a character vector.\nWe will call this script from the Dockerfile and pass the secret to it.\nHere is the Dockerfile to do that. (Note that although we copy the install_git_packages.R script into the image, we are passing it the secret variable that is only present during the build, so this should not remain afterwards.)\n# syntax = docker/dockerfile:1.0-experimental\nFROM rocker/tidyverse:3.5.1\n\nENV DEBIAN_FRONTEND noninteractive\n\nCOPY install_git_packages.R .\n\nRUN apt-get update\n\nRUN --mount=type=secret,id=mysecret \\\nRscript install_git_packages.R `cat /run/secrets/mysecret`\nLet’s build the image and tag it:\nDOCKER_BUILDKIT=1 docker build --progress=plain --no-cache \\\n--secret id=mysecret,src=my_secret_stash . -t my_special_image\nThat’s it!"
   },
   {
-    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#tldr",
-    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#tldr",
-    "title": "Managing bioinformatics pipelines with R",
-    "section": "tl;dr",
-    "text": "tl;dr\n\nThe targets R package is great for managing bioinformatics workflows\nrenv, Conda, and Docker can be combined so that all steps are modular and reproducible\nDemo available at https://github.com/joelnitta/targets_bioinfo_example\n\n\n\n\nFigure 1: Image by T K on unsplash.\n\n\nBioinformatics projects tend to have a similar pattern: they all start with raw data, then pass the data through various programs until arriving at the final result. These “pipelines” can become very long and complicated, so there are many platforms that automate this process either relying on code (e.g., nextflow, CWL) or graphical interfaces (e.g., galaxy). Python’s snakemake is also commonly used for this purpose. That got me thinking—can we do this in R?"
-  },
-  {
-    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#what-im-looking-for-in-a-pipeline-manager",
-    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#what-im-looking-for-in-a-pipeline-manager",
-    "title": "Managing bioinformatics pipelines with R",
-    "section": "What I’m looking for in a pipeline manager",
-    "text": "What I’m looking for in a pipeline manager\nThese are some qualities that I want to see in a pipeline manager.\n\nAutomated: I should be able to run one central script that will orchestrate the whole pipeline, rather than manually keeping track of which step depends on which and when each needs to be run.\nEfficient: The pipeline manager should keep track of what is out of date and only re-run those parts, rather than re-run the whole pipeline each time.\nReproducible: Software packages should be isolated and version controlled so that the same input results in the same output on any machine."
-  },
-  {
-    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#enter-targets",
-    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#enter-targets",
-    "title": "Managing bioinformatics pipelines with R",
-    "section": "Enter targets",
-    "text": "Enter targets\nThe targets R package pretty much fits the bill perfectly for Points 1 and 2. targets completely automates the workflow, so that the user doesn’t have to manually run steps, and guarantees that the output is up-to-date (if the workflow is designed correctly). Furthermore, it has capabilities for easily looping and running processes in parallel, so it scales quite well to large analyses. I won’t go into too many details of how to use targets here, since it has an excellent user manual."
-  },
-  {
-    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#targets-meets-docker",
-    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#targets-meets-docker",
-    "title": "Managing bioinformatics pipelines with R",
-    "section": "targets meets Docker",
-    "text": "targets meets Docker\nHowever, targets by itself isn’t quite enough to meet all of my bioinformatics needs. What about Point 3—how can we make targets workflows reproducible?\nMost bioinformatics tools are open-source software packages that have a command-line interface (CLI). Furthermore, these days, most well-established bioinformatics tools have Docker images1 available to run them. Good sources to find Docker images for bioinformatics software are Bioconda or Biocontainers2. Docker frees us from manual installations and dependency hell, as well as vastly improving reproducibility, since all the software versions are fixed within the container.\nSo I will run most of the steps of the pipeline in available Docker containers."
-  },
-  {
-    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#avoiding-docker-in-docker",
-    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#avoiding-docker-in-docker",
-    "title": "Managing bioinformatics pipelines with R",
-    "section": "Avoiding Docker-in-Docker",
-    "text": "Avoiding Docker-in-Docker\n\n\n\nFigure 2: Image by Giordano Rossoni on unsplash.\n\n\nHowever, I then encounter a problem: what about the environment to run R, targets, and launch the Docker containers? That environment should be version-controlled and reproducible too. Normally my solution to create such an environment is Docker, but it’s generally a bad idea to try and run docker from within docker3\nThe solution I reached is to use two more environment managers: Conda4 and renv. I use Conda for running R, and renv for managing R packages."
-  },
-  {
-    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#first-things-first-set-up-the-project",
-    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#first-things-first-set-up-the-project",
-    "title": "Managing bioinformatics pipelines with R",
-    "section": "First things first: Set up the project",
-    "text": "First things first: Set up the project\nI need to explain one thing before continuing: for this example, I’m following the practice of using a “project” for the analysis. This simply means all of the files needed for the analysis are put in a single folder (with subfolders as necessary), and that folder is used as the “home base” for the project. So if I type some command at the command line prompt, it is assumed that the project folder is the current working directory. The two main tools I use to maintain the pipeline, renv and targets, both rely on this concept.\nFrom the command line, that just looks like:\n\nmkdir targets_bioinfo_example\ncd targets_bioinfo_example\n\nNext, let’s download some files that I will use in the subsequent steps (don’t worry about what these do yet; I will explain each one below):\n\n\n# environment.yml\ncurl https://raw.githubusercontent.com/joelnitta/targets_bioinfo_example/main/environment.yml > environment.yml\n# renv.lock\ncurl https://raw.githubusercontent.com/joelnitta/targets_bioinfo_example/main/renv.lock > renv.lock\n# _targets.R\ncurl https://raw.githubusercontent.com/joelnitta/joelnitta-home/main/_posts/2021-11-16_r-bioinfo-flow/_targets.R > _targets.R\n\nFrom here on, I assume we are running everything a folder called targets_bioinfo_example containing the files environment.yml, renv.lock, and _targets.R.\nAlso, although I’ve mentioned several pieces of software so far, there are only two required for this workflow: Conda and Docker. Make sure those are both installed before continuing."
-  },
-  {
-    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#running-r-with-conda",
-    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#running-r-with-conda",
-    "title": "Managing bioinformatics pipelines with R",
-    "section": "Running R with Conda",
-    "text": "Running R with Conda\nConda environments can be specified using a yml file, often named environment.yml.\nThis is the environment.yml file for this project:\nname: bioinfo-example-env\nchannels:\n  - conda-forge\n  - bioconda\n  - defaults\ndependencies:\n  - r-renv=0.14.*\nIt’s quite short: all it does is install renv and its dependencies (which includes R). Here I’ve specified the most recent major version5 of renv, which will come with R v4.1.1.\nWe can recreate the Conda environment from environment.yml (you should have downloaded it above) with:\n\n\nconda env create -f environment.yml\n\n\n\nCollecting package metadata (repodata.json): ...working... done\nSolving environment: ...working... done\nPreparing transaction: ...working... done\nVerifying transaction: ...working... done\nExecuting transaction: ...working... done\n#\n# To activate this environment, use\n#\n#     $ conda activate bioinfo-example-env\n#\n# To deactivate an active environment, use\n#\n#     $ conda deactivate\n\n\nAs the output says near the bottom, run conda activate bioinfo-example-env to enter this environment, then from there you can use R as usual with R.\nOn my computer, this looks like:\n(base) Joels-iMac:targets_bioinfo_example joelnitta$ conda activate bioinfo-example-env\n(bioinfo-example-env) Joels-iMac:targets_bioinfo_example joelnitta$ R\n\nR version 4.1.1 (2021-08-10) -- \"Kick Things\"\nCopyright (C) 2021 The R Foundation for Statistical Computing\nPlatform: x86_64-apple-darwin13.4.0 (64-bit)\n\nR is free software and comes with ABSOLUTELY NO WARRANTY.\nYou are welcome to redistribute it under certain conditions.\nType 'license()' or 'licence()' for distribution details.\n\n  Natural language support but running in an English locale\n\nR is a collaborative project with many contributors.\nType 'contributors()' for more information and\n'citation()' on how to cite R or R packages in publications.\n\nType 'demo()' for some demos, 'help()' for on-line help, or\n'help.start()' for an HTML browser interface to help.\nType 'q()' to quit R.\n\n> \nNotice the change from (base) to (bioinfo-example-env), indicating that we are now inside the Conda environment.\nNow we have a fixed version of R, with a fixed version of renv."
-  },
-  {
-    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#maintain-r-packages-with-renv",
-    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#maintain-r-packages-with-renv",
-    "title": "Managing bioinformatics pipelines with R",
-    "section": "Maintain R packages with renv",
-    "text": "Maintain R packages with renv\nThe next step is to use renv to install and track R package versions. renv does this with a “lock file”, which is essentially a specification of every package needed to run the code, its version, and where it comes from.\nThis is what the entry in the renv.lock file for this project for the package Matrix looks like:\n\"Matrix\": {\n      \"Package\": \"Matrix\",\n      \"Version\": \"1.3-4\",\n      \"Source\": \"Repository\",\n      \"Repository\": \"CRAN\",\n      \"Hash\": \"4ed05e9c9726267e4a5872e09c04587c\"\n    }\nAssuming renv.lock is present in the working directory (you should have downloaded it above), we can install all packages needed for this example by running the following in R within the Conda environment:\n\nrenv::activate() # Turn on renv\nrenv::restore() # Install packages\n\nYou should see something like this6:\nThe following package(s) will be updated:\n\n# CRAN ===============================\n- Matrix          [* -> 1.3-4]\n- R6              [* -> 2.5.1]\n- Rcpp            [* -> 1.0.7]\n- RcppArmadillo   [* -> 0.10.6.0.0]\n- RcppParallel    [* -> 5.1.4]\n- assertthat      [* -> 0.2.1]\n- babelwhale      [* -> 1.0.3]\n- callr           [* -> 3.7.0]\n\n...\nIf you look at the contents of the project directory, you will also notice a new folder called renv that contains all of the R packages we just installed."
-  },
-  {
-    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#putting-it-all-together",
-    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#putting-it-all-together",
-    "title": "Managing bioinformatics pipelines with R",
-    "section": "Putting it all together",
-    "text": "Putting it all together\nOK, now we can run R and Docker from a reproducible environment. What is the best way to run Docker from R? There are some functions in base R for running external commands (system(), system2()) as well as the excellent processx package. Here, though I will use the babelwhale package, which provides some nice wrappers to run Docker (or Singularity)7.\nHere is an example _targets.R file using babelwhale to run Docker. This workflow downloads a pair of fasta files, then trims low-quality bases using the fastp program8:\n\nlibrary(targets)\nlibrary(tarchetypes)\nlibrary(babelwhale)\n\n# Set babelwhale backend for running containers\n# (here, we are using Docker, not Singularity)\nset_default_config(create_docker_config())\n\n# Define workflow\nlist(\n    # Download example fastq files\n    tar_file(\n        read_1, { \n            download.file(\n                url = \"https://raw.githubusercontent.com/OpenGene/fastp/master/testdata/R1.fq\",\n                destfile = \"R1.fq\")\n            \"R1.fq\"\n        }\n    ),\n    tar_file(\n        read_2, { \n            download.file(\n                url = \"https://raw.githubusercontent.com/OpenGene/fastp/master/testdata/R2.fq\",\n                destfile = \"R2.fq\")\n            \"R2.fq\"\n        }\n    ),\n    # Clean the fastq file with fastp\n    tar_file(\n        fastp_out, {\n            babelwhale::run(\n                # Name of docker image, with tag specifying version\n                \"quay.io/biocontainers/fastp:0.23.1--h79da9fb_0\",\n                # Command to run\n                command = \"fastp\",\n                # Arguments to the command\n                args = c(\n                    # fastq input files\n                    \"-i\", paste0(\"/wd/\", read_1), \n                    \"-I\", paste0(\"/wd/\", read_2), \n                    # fastq output files\n                    \"-o\", \"/wd/R1_trim.fq\",\n                  \"-O\", \"/wd/R2_trim.fq\",\n                    # trim report file\n                    \"-h\", \"/wd/trim_report.html\"),\n                # Volume mounting specification\n                # this uses getwd(), but here::here() is also a good method\n                volumes = paste0(getwd(), \":/wd/\")\n            )\n            c(\"R1_trim.fq\", \"R2_trim.fq\", \"trim_report.html\")\n        }\n    )\n)\n\nIn order to run this targets workflow, the above code must be saved as _targets.R in the project root directory (you should have downloaded it above).\nFinally, everything is in place! All we need to do now is run targets::tar_make(), sit back, and enjoy the show:\n\ntargets::tar_make()\n\n• start target read_1\ntrying URL 'https://raw.githubusercontent.com/OpenGene/fastp/master/testdata/R1.fq'\nContent type 'text/plain; charset=utf-8' length 3041 bytes\n==================================================\ndownloaded 3041 bytes\n\n• built target read_1\n• start target read_2\ntrying URL 'https://raw.githubusercontent.com/OpenGene/fastp/master/testdata/R2.fq'\nContent type 'text/plain; charset=utf-8' length 3343 bytes\n==================================================\ndownloaded 3343 bytes\n\n• built target read_2\n• start target fastp_out\n• built target fastp_out\n• end pipeline\n\n\nYou should be able to confirm that the read files were downloaded, cleaned, and a report generated in your working directory. Also, notice there is a new folder called _targets. This contains the metadata that targets uses to track each step of the pipeline (generally it should not be modified by hand; the same goes for the renv folder)."
-  },
-  {
-    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#next-steps",
-    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#next-steps",
-    "title": "Managing bioinformatics pipelines with R",
-    "section": "Next steps",
-    "text": "Next steps\n\n\n\nFigure 3: Image by JOHN TOWNER on unsplash\n\n\nThe example workflow just consists of a couple of steps, but I hope you can see how they are chained together: fastp_out depends on read_1 and read_2. We could add a third step that uses fastp_out for something else, and so forth.\nWe can also see this by visualizing the pipeline:\n\ntargets::tar_visnetwork()\n\n\n\n\n\nTo keep things simple for this post, I have written the workflow as a single R script, but that’s not really the ideal way to do it. You can see that the syntax is rather verbose, and such a script would rapidly become very long. The best practice for targets workflows is to write the targets plan and the functions that build each target separately, as _targets.R and functions.R, respectively.\nBy splitting the plan from the functions this way, our _targets.R file becomes much shorter and more readable:\n\nlibrary(targets)\nlibrary(tarchetypes)\nlibrary(babelwhale)\n\n# Set babelwhale backend for running containers\nset_default_config(create_docker_config())\n\n# Load functions\nsource(\"R/functions.R\")\n\ntar_plan(\n    # Download example fastq files\n    tar_file(read_1, download_read(\"R1.fq\")),\n    tar_file(read_2, download_read(\"R2.fq\")),\n    # Clean the fastq files with fastp\n    tar_file(\n        fastp_out, \n        fastp(read_1, read_2, \"R1_trim.fq\", \"R2_trim.fq\", \"trim_report.html\"\n        )\n    )\n)\n\nYou can see how it provides a high-level overview of each step in the workflow, without getting bogged down in the details. And the best part is, you don’t have to install fastp (or any other software used for a particular step)! Docker takes care of that for you.\nFurthermore, thanks to targets, if one part of the workflow changes and we run tar_make() again, only the part that changed will be run. Try it by deleting R1.fq, then run tar_make() again and see what happens.\nI have made this plan and the accompanying functions.R file available at this repo: https://github.com/joelnitta/targets_bioinfo_example. Please check it out!"
-  },
-  {
-    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#conclusion",
-    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#conclusion",
-    "title": "Managing bioinformatics pipelines with R",
-    "section": "Conclusion",
-    "text": "Conclusion\nI am really excited about using targets for reproducibly managing bioinformatics workflows from R. I hope this helps others who may want to do the same!"
-  },
-  {
     "objectID": "posts/2022-10-07_canaper/index.html",
     "href": "posts/2022-10-07_canaper/index.html",
     "title": "canaperがCRANに登録されました",
@@ -224,11 +196,39 @@
     "text": "参考情報\ncanaperについてもっと知りたい方はGitHubのサイト、パッケージのサイト、およびプレプリントをご覧下さい。"
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ニッタ ジョエル",
+    "section": "",
+    "text": "初めまして、東京大学大学院理学系研究科・岩崎研究室の特任助教のニッタ ジョエルです。私はシダ植物の進化と生態学を研究しています。\nシダ植物は非常にユニークなライフサイクルを持つ、とても面白い研究対象です。普段目にしている植物は「胞子体」（二倍体）ですが、もう一つ、極めて小さな（通常は１センチ以下）「配偶体」（一倍体）というライフステージもあり、両方とも独立に生息しています。この特徴は他の陸上植物と根本的に異なり、シダ植物の進化にとって非常に大きな意味を持っています。私は特にシダ植物のライフサイクルがその群集形成のプロセスや生態学などに与える影響について研究しています。\nそして、再現性可能な解析やコード、特にに興味があります。この話については、ブログを見てみてください。\n\n\n\n\nハーバード大学 | 進化生物学研究科博士課程　修了 | 2016年\n東京大学 | 生物科学専攻修士課程　修了 | 2010年\nカリフォルニア大学バークレー校 | 総合生物学・日本語専攻　卒業 | 2007年\n\n\n\n\n\n東京大学大学院理学系研究科岩崎研究室 | 特任助教 | 2020年4月 - 現在\nスミソニアン国立自然史博物館 | 特別研究員 | 2019年1月 - 2020年3月\n国立科学博物館植物研究部 | 外国人特別研究員 | 2016年11月 - 2018年12月"
+  },
+  {
     "objectID": "blog.html",
     "href": "blog.html",
     "title": "ブログ",
     "section": "",
-    "text": "R\n\n\nSpatial phylogenetics\n\n\n\n\nRパッケージcanaperの紹介\n\n\n\n\n\n\n2022/10/07\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nblogging\n\n\ndistill\n\n\n\n\nHow to use the giscus commenting system on a Distill blog\n\n\n\n\n\n\n2021/11/24\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nworkflow\n\n\nreproducibility\n\n\n\n\nHow to combine Conda, Docker, and R to run modular, reproducible bioinformatics pipelines\n\n\n\n\n\n\n2021/11/16\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nr\n\n\nplotting\n\n\n\n\nHow to change the phytools default color scheme when visualizing the results of ancestral character state estimation\n\n\n\n\n\n\n2021/06/02\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ndocker\n\n\n\n\nKeep it secret. Keep it safe.\n\n\n\n\n\n\n2019/02/16\n\n\nJoel Nitta\n\n\n\n\n\n\n一致なし"
+    "text": "canaperがCRANに登録されました\n\n\n\n\n\n\n\nR\n\n\nSpatial phylogenetics\n\n\n\n\nRパッケージcanaperの紹介\n\n\n\n\n\n\n2022/10/07\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\nEnable giscus in Distill\n\n\n\n\n\n\n\nblogging\n\n\ndistill\n\n\n\n\nHow to use the giscus commenting system on a Distill blog\n\n\n\n\n\n\n2021/11/24\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\nManaging bioinformatics pipelines with R\n\n\n\n\n\n\n\nworkflow\n\n\nreproducibility\n\n\n\n\nHow to combine Conda, Docker, and R to run modular, reproducible bioinformatics pipelines\n\n\n\n\n\n\n2021/11/16\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\nSelecting color schemes for mapping ancestral states\n\n\n\n\n\n\n\nr\n\n\nplotting\n\n\n\n\nHow to change the phytools default color scheme when visualizing the results of ancestral character state estimation\n\n\n\n\n\n\n2021/06/02\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\nBuilding R docker images with secrets\n\n\n\n\n\n\n\ndocker\n\n\n\n\nKeep it secret. Keep it safe.\n\n\n\n\n\n\n2019/02/16\n\n\nJoel Nitta\n\n\n\n\n\n\n一致なし"
+  },
+  {
+    "objectID": "software.html",
+    "href": "software.html",
+    "title": "ソフトウェア",
+    "section": "",
+    "text": "系統的固有性を測るRパッケージ\n Code  Website"
+  },
+  {
+    "objectID": "software.html#taxastand",
+    "href": "software.html#taxastand",
+    "title": "ソフトウェア",
+    "section": "taxastand ",
+    "text": "taxastand \n学名を統一するRパッケージ\n Code  Website"
+  },
+  {
+    "objectID": "software.html#dwctaxon",
+    "href": "software.html#dwctaxon",
+    "title": "ソフトウェア",
+    "section": "dwctaxon ",
+    "text": "dwctaxon \nダーウィンコア形式に従った学名の整理をするRパッケージ\n Code  Website"
   },
   {
     "objectID": "publications.html",
@@ -236,6 +236,13 @@
     "title": "論文",
     "section": "",
     "text": "Google Scholar"
+  },
+  {
+    "objectID": "publications.html#近刊",
+    "href": "publications.html#近刊",
+    "title": "論文",
+    "section": "近刊",
+    "text": "近刊\nNitta, J. H., S. W. Laffan, B. D. Mishler, and W. Iwasaki. “canaper: Categorical analysis of neo- and paleo-endemism in R”. Submitted.\nPreprint  Code"
   },
   {
     "objectID": "publications.html#section",
