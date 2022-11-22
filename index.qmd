@@ -4,8 +4,9 @@ about:
   image-width: 200px;
   links:
     - 
-      href: https://twitter.com/joel_nitta
-      icon: twitter
+      href: https://fosstodon.org/@joelnitta
+      icon: mastodon
+      rel: me
     - 
       href: https://github.com/joelnitta
       icon: github

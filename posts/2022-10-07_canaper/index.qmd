@@ -43,7 +43,8 @@ paleo-endemism（CANAPE）というMishler等（2014）<doi:10.1038/ncomms5473>
 
 ## 系統的固有性とCANAPE
 
-[生物多様性](https://ja.wikipedia.org/wiki/%E7%94%9F%E7%89%A9%E5%A4%9A%E6%A7%98%E6%80%A7)は種数、つまり、ある地域における種の数で測られることがよくあります。それと同じように、固有性はある地域にしか生息しない種の数で測ることがよくあります。しかし、このような、種名だけを使うアプローチは種の進化的な歴史を考慮しません。最近、[分子系統樹](https://ja.wikipedia.org/wiki/%E7%B3%BB%E7%B5%B1%E6%A8%B9)の増加によって、種の進化的な歴史を考慮した生物多様性を測定する方法がいくつか開発されました。その一つは系統的固有性[Phylogenetic endemism, PE\; @Rosauer2009]です。PEは種ではなく、系統樹の枝によって固有性を測る方法です。
+[生物多様性](https://ja.wikipedia.org/wiki/%E7%94%9F%E7%89%A9%E5%A4%9A%E6%A7%98%E6%80%A7)は種数、つまり、ある地域における種の数で測られることがよくあります。それと同じように、固有性はある地域にしか生息しない種の数で測ることがよくあります。しかし、このような、種名だけを使うアプローチは種の進化的な歴史を考慮しません。最近、[分子系統樹](https://ja.wikipedia.org/wiki/%E7%B3%BB%E7%B5%B1%E6%A8%B9)の増加によって、種の進化的な歴史を考慮した生物多様性を測定する方法がいくつか開発されました。その一つは系統的固有性[Phylogenetic
+endemism, PE\; @Rosauer2009]です。PEは種ではなく、系統樹の枝によって固有性を測る方法です。
 
 PEを使うことによって、**生物多様性を生み出す進化的なプロセス**を垣間見ることができる。例えば、PEの高い、短い枝が密集している地域は最近の種分化（放散）によってできた可能性があり、このような地域を「neo-endemic」と呼びます。一方で、PEの高い、長い枝が密集している地域はかつて広く分布していた系統が多く絶滅したことによってできた可能性が高く、このような地域を「paleo-endemic」と呼びます。このような地域の区別をするために、@Mishler2014
 がCANAPEという方法を開発しました。
@@ -52,7 +53,8 @@ PEを使うことによって、**生物多様性を生み出す進化的なプ�
 
 ## 実例：オーストラリアのアカシア
 
-![*Acacia pycnantha*、写真[Bidgee](https://commons.wikimedia.org/wiki/User:Bidgee)](Golden-wattle.jpg)
+![*Acacia
+pycnantha*、写真[Bidgee](https://commons.wikimedia.org/wiki/User:Bidgee)](Golden-wattle.jpg)
 
 `canaper`には元々のCANAPEの論文で解析されたデータセットが備えられています。オーストラリア産のアカシア^[アカシアはオーストラリアの被子植物の中で最も種が多い属です。１０００種近くあります。]
 のデータです。系統樹とコミュニティマトリックス（群集⾏列）からなっています。このデータセットを用いて簡単なデモを行います^[なお、本デモに使う解析設定は都合上使っているだけで、本格的な解析にはおすすめしません。]。
@@ -137,9 +139,13 @@ ggplot(acacia_canape, aes(x = long, y = lat, fill = endem_type)) +
 
 というのは、まずはRパケージの書き方について非常に丁寧な説明書を提供しているからです。また、パッケージの自動的なチェックを行うパッケージも。これを使うだけでも自分のコードの腕がかなり上がりました。
 
-次に、rOpenSciに投稿されたパッケージは徹底的な[コードレビュー](https://devguide.ropensci.org/softwarereviewintro.html)（査読）を受けることになっています。こうすることによって、自分だけではなかなか気づかなかったことを教えていただき、さらに[コードの改善](https://github.com/ropensci/software-review/issues/475)につながりました^[査読者の[Klaus Schliep](https://github.com/KlausVigo)と[Luis Osorio](https://github.com/luismurao)、そして編集者の[Toby Hocking](https://github.com/tdhock)に感謝しています！]。
+次に、rOpenSciに投稿されたパッケージは徹底的な[コードレビュー](https://devguide.ropensci.org/softwarereviewintro.html)（査読）を受けることになっています。こうすることによって、自分だけではなかなか気づかなかったことを教えていただき、さらに[コードの改善](https://github.com/ropensci/software-review/issues/475)につながりました^[査読者の[Klaus
+Schliep](https://github.com/KlausVigo)と[Luis
+Osorio](https://github.com/luismurao)、そして編集者の[Toby
+Hocking](https://github.com/tdhock)に感謝しています！]。
 
-しかし、何と言っても、やはりrOpenSciのコミュニティが素晴らしいです。とてもアクティブで広く開かれたコミュニティです。活動としては、[Community Call](https://ropensci.org/commcalls/)（誰でも参加できるビデオコール）、[バーチャルコーワークスペース](https://ropensci.org/events/)、やSlackのチャットチャンネルがあります。
+しかし、何と言っても、やはりrOpenSciのコミュニティが素晴らしいです。とてもアクティブで広く開かれたコミュニティです。活動としては、[Community
+Call](https://ropensci.org/commcalls/)（誰でも参加できるビデオコール）、[バーチャルコーワークスペース](https://ropensci.org/events/)、やSlackのチャットチャンネルがあります。
 
 ご興味のある方は是非試してくださいね！そして、rOpenSciに感謝します!
 

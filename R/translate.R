@@ -6,6 +6,12 @@ library(dovetail)
 library(quarto)
 library(gert)
 
+source("R/functions.R")
+
+# Create subdirectory populated with files to translate to JA
+# (will over-write any existing translation)
+site_create_locale("ja")
+
 # Start on `main`
 git_branch_checkout("main")
 
@@ -17,11 +23,11 @@ assertthat::assert_that(
 
 # Make backup of old `ja-source` branch (equivalent of `main`, but in JA)
 # - first delete any existing backup
-if (git_branch_exists("ja-source-bak")) {
-  git_branch_delete("ja-source-bak")
-}
-git_branch_checkout("ja-source")
-git_branch_create("ja-source-bak")
+# if (git_branch_exists("ja-source-bak")) {
+#   git_branch_delete("ja-source-bak")
+# }
+# git_branch_checkout("ja-source")
+# git_branch_create("ja-source-bak")
 
 # Switch back to main
 git_branch_checkout("main")
@@ -38,27 +44,49 @@ md2po(md_in = "posts/2022-10-07_canaper/index.qmd",
 # (edit PO files)
 
 # Cut off a new, temporary branch from `main`
-if (git_branch_exists("ja-source-temp")) {
-  git_branch_delete("ja-source-temp")
-}
-git_branch_create("ja-source-temp")
+# if (git_branch_exists("ja-source-temp")) {
+#   git_branch_delete("ja-source-temp")
+# }
+# git_branch_create("ja-source-temp")
 
-# Translate files **in place**
-po2md(md_in = "_quarto.yml", po = "po/ja/_quarto.po", md_out = "_quarto.yml")
-po2md(md_in = "index.qmd", po = "po/ja/index.po", md_out = "index.qmd")
-po2md(md_in = "software.qmd", po = "po/ja/software.po", md_out = "software.qmd")
-po2md(md_in = "blog.qmd", po = "po/ja/blog.po", md_out = "blog.qmd")
-po2md(md_in = "publications.qmd", po = "po/ja/publications.po", md_out = "publications.qmd") # nolint
-po2md(md_in = "posts/2022-10-07_canaper/index.qmd",
+# Translate files
+po2md(
+  md_in = "_quarto.yml",
+  po = "po/ja/_quarto.po",
+  md_out = "locale/ja/_quarto.yml"
+)
+po2md(
+  md_in = "index.qmd",
+  po = "po/ja/index.po",
+  md_out = "locale/ja/index.qmd"
+)
+po2md(
+  md_in = "software.qmd",
+  po = "po/ja/software.po",
+  md_out = "locale/ja/software.qmd"
+)
+po2md(
+  md_in = "blog.qmd",
+  po = "po/ja/blog.po",
+  md_out = "locale/ja/blog.qmd"
+)
+po2md(
+  md_in = "publications.qmd",
+  po = "po/ja/publications.po",
+  md_out = "locale/ja/publications.qmd"
+) # nolint
+po2md(
+  md_in = "posts/2022-10-07_canaper/index.qmd",
   po = "po/ja/2022-10-07_canaper.po",
-  md_out = "posts/2022-10-07_canaper/index.qmd")
+  md_out = "locale/ja/posts/2022-10-07_canaper/index.qmd"
+)
 
 # Render any blog posts that have been translated
-quarto_render("posts/2022-10-07_canaper/index.qmd")
+quarto_render("locale/ja/posts/2022-10-07_canaper/index.qmd")
 
 # Render translated webpage for local viewing
 # and make any manual tweaks needed to translated docs
-quarto_preview()
+quarto_preview("locale/ja")
 quarto_preview_stop()
 
 # After verifying that site looks good, commit changes

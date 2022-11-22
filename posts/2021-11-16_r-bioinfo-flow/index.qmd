@@ -98,7 +98,7 @@ curl https://raw.githubusercontent.com/joelnitta/targets_bioinfo_example/main/en
 # renv.lock
 curl https://raw.githubusercontent.com/joelnitta/targets_bioinfo_example/main/renv.lock > renv.lock
 # _targets.R
-curl https://raw.githubusercontent.com/joelnitta/joelnitta-home/main/_posts/2021-11-16_r-bioinfo-flow/_targets.R > _targets.R
+curl https://raw.githubusercontent.com/joelnitta/joelnitta-home/main/posts/2021-11-16_r-bioinfo-flow/_targets.R > _targets.R
 ```
 
 ```{bash}
@@ -109,7 +109,7 @@ curl https://raw.githubusercontent.com/joelnitta/joelnitta-home/main/_posts/2021
 # environment.yml
 curl https://raw.githubusercontent.com/joelnitta/targets_bioinfo_example/main/environment.yml > environment.yml
 # _targets.R
-curl https://raw.githubusercontent.com/joelnitta/joelnitta-home/main/_posts/2021-11-16_r-bioinfo-flow/_targets.R > _targets.R
+curl https://raw.githubusercontent.com/joelnitta/joelnitta-home/main/posts/2021-11-16_r-bioinfo-flow/_targets.R > _targets.R
 ```
 
 From here on, I assume we are running everything a folder called `targets_bioinfo_example` containing the files `environment.yml`, `renv.lock`, and `_targets.R`.
