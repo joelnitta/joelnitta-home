@@ -1,7 +1,0 @@
-name: bioinfo-example-env
-channels:
-  - conda-forge
-  - bioconda
-  - defaults
-dependencies:
-  - r-renv=0.14.*
