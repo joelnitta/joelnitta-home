@@ -1,0 +1,261 @@
+---
+title: "Multilingual Quarto websites with PO files"
+description: Using PO files and GitHub Actions to create a multilingual Quarto website
+date: 2022-11-22
+citation:
+  url: https://www.joelnitta.com/posts/translation/
+categories:
+  - Quarto
+  - translation
+knitr:
+  opts_chunk: 
+      cache: true
+lang: en
+---
+
+### Multilingual Quarto websites with PO files
+
+Quarto has [nice support](https://quarto.org/docs/authoring/language.html) for specifying the language of various parts of the website text that it generates (e.g., text in the header and footer, etc.).
+However, it currently lacks support for switching between multiple languages within a single website, as can be seen from the discussion in [this issue}](https://github.com/quarto-dev/quarto-cli/issues/275).
+Maintaining parallel versions of a website in different languages is not a simple task, which explains the variety of approaches people have taken.
+
+Here is a summary my current approach.
+You can browse the source code of my webpage for details: https://github.com/joelnitta/joelnitta-home/
+
+Please note I do not think this is optimal, and hope to improve it going forward!
+My main reason for writing this blog post to make a record for myself of my current setup and to get feedback.
+Please post in the comments if you have ideas!
+
+## PO files
+
+I use PO files for my translation.
+PO files have been around for a long time, and were initially used in conjunction with the [gettext](https://www.gnu.org/software/gettext/) program to translate messages in the user interface of linux programs.
+
+Why use PO files?
+
+The main benefit is that PO files allow us to break translated strings down line by line.
+This way, if there is a change to document in the original language, we know exactly where it occurred and only have to update the translation for that part.
+
+Here is an example of a few lines of PO file from my website:
+
+```
+#. type: YAML Front Matter: description
+#: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
+#, no-wrap
+msgid "Announcing the canaper R package!"
+msgstr "Rパッケージcanaperの紹介"
+```
+
+Without going in to too many details, you can see the original string is in the line starting with `msgid` and the translated string is in the line starting with `msgstr`.
+Can you see how this would allow us to track changes line by line?
+
+This isn't so important if your content is never going to change; in that case, you could just write a separate translated document and be done with it.
+But websites typically are getting updated on a regular basis, so we want a system that will work well in that context.
+
+## Folder setup
+
+This is a very simplified version of what my Quarto project setup looks like:
+
+```
+.gitignore
+_site/
+_po/
+|  |
+|  \--ja/
+|       |
+|       \-- index.po
+_locale/
+|  |
+|  \--ja/
+|       |
+|       | _site/
+|       |
+|       \-- index.qmd
+|       ...        
+index.qmd
+...
+```
+
+There are of course various other `qmd` files in addition to `index.qmd` that comprise the website.
+The main website in the original language is generated using `quarto render`, which outputs to `_site/` as usual.
+
+The important thing to notice is some folders you don't typically see in a Quarto project: `_po/` and `_locale/`.
+`_po/` contains the PO files to translate the files in the original language (here, English) to the target language (here, Japanese).
+I have [a script](https://github.com/joelnitta/joelnitta-home/blob/a69255850e63cdcd319eb0ff0eee917d4696ce40/R/translate.R) that generates the initial PO files without any strings in the target language yet.
+I then translate those myself and save them in the PO file.
+Next, [my script](https://github.com/joelnitta/joelnitta-home/blob/a69255850e63cdcd319eb0ff0eee917d4696ce40/R/translate.R) uses the English file (e.g., `index.qmd`) and the PO file [to generate the Japanese version](https://github.com/joelnitta/joelnitta-home/blob/a69255850e63cdcd319eb0ff0eee917d4696ce40/R/translate.R#L32-L62) of `index.qmd`.
+The translation is saved in the `_locale/ja` subfolder.
+I don't have any other languages yet, but if I did, they would each get their own subfolders in `_po/` and `_locale/`.
+
+So in essence, each language folder in `_locale/` is a replicate of the website in that language.
+
+I can then render the Japanese version of the site by running `quarto render locale/ja`, which will build the site to `_locale/ja/_site`.
+Since `_locale` starts with an underscore, contents of that folder are ignored by the main Quarto build in `./_site`.
+
+## Branch setup
+
+So far so good. But how can we deploy this scheme?
+
+I considered two options: tracking the `_locale/` folder in `main` and building the translation from it, or copying the contents of the `_locale/lang` subfolder (the translated website) to the root of a **different branch** then building from that branch.
+In the end, I went with the second option.
+As I said, I am not convinced this is optimal, but it works.
+
+My main reason for choosing this option is that I could figure out a way to make it work with GitHub (GH) actions.
+GH actions can perform routine tasks for us like rendering the site and help us avoid committing "artifacts" that are not integral to the actual code underlying the site.
+
+To enact this two-branch approach, I first add `_locale/` to my `.gitignore`.
+Conceptually this makes sense because the files in `_locale/` are all generated **by code** (the PO files); they are outputs, not source code.
+
+Next, I checkout a new branch that I call `ja-source`.
+Since `_locale/` is being git-ignored, it doesn't go away when we checkout `ja-source`.
+I then recursively copy all files in `_locale/ja` to the project root [using `rsync`](https://github.com/joelnitta/joelnitta-home/blob/a69255850e63cdcd319eb0ff0eee917d4696ce40/R/translate.R#L78-L84).
+Now the contents of `ja-source` have all been converted to Japanese, so we can commit the changes and switch back to `main`.
+
+## GitHub Actions workflow
+
+The last part is launching the site using GitHub actions.
+
+I have two yaml workflows, `publish_site_en.yaml` and `publish_site_ja.yaml`, the former is only saved to `.github/workflows` in the `main` branch and the latter only in the `ja-source` branch.
+
+`publish_site_en.yaml` basically looks like the yaml provided by Quarto:
+
+```
+on:
+  workflow_dispatch:
+  push:
+    branches: main
+
+name: Quarto Publish EN
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: pre-release
+
+      # install libcurl, needed for curl R package
+      - name: Install cURL Headers
+        run: |
+          sudo apt-get install libcurl4-openssl-dev
+
+      - name: Install R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.2.0'
+
+      - name: Install R Dependencies
+        uses: r-lib/actions/setup-renv@v2
+        with:
+          cache-version: 1
+
+      - name: Render and Publish EN
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+But `publish_ja.yaml` is a bit different:
+
+```
+on:
+  push:
+    branches: ja-source
+  pull_request:
+    branches: ja-source
+  # to be able to trigger a manual build
+  workflow_dispatch:
+
+name: Quarto publish JA
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: pre-release
+
+      # install libcurl, needed for curl R package
+      - name: Install cURL Headers
+        run: |
+          sudo apt-get install libcurl4-openssl-dev
+
+      - name: Install R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.2.0'
+
+      - name: Install R Dependencies
+        uses: r-lib/actions/setup-renv@v2
+        with:
+          cache-version: 1
+
+      - name: Render Quarto Project
+        uses: quarto-dev/quarto-actions/render@v2
+
+      - name: Deploy 🚀
+        # don't deploy on PR
+        if: github.event_name != 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          # The branch the action should deploy to.
+          branch: ja
+          # The folder the action should deploy. Adapt if you changed in Quarto config
+          folder: _site
+```
+
+First, notice the `on:` directive tells it only to run on pushes to `ja-source`, not `main`.
+
+From there it the same until the `deploy` step.
+
+Here, instead of using the standard Quarto action `quarto-dev/quarto-actions/publish`, we use a more generic action, `JamesIves/github-pages-deploy-action`.
+This action includes the option to specify a particular branch **besides gh-pages** for deployment.
+I deploy the rendered site to the `ja` branch (now the choice of `ja-source` for the source code in Japanese makes sense yes?)
+
+And now we have simultaneous deployment of different languages in different branches.
+
+## Netlify
+
+The last part is to make all of this work with my custom domain name, `www.joelnitta.com`.
+
+I am not going to go into so many details here, because I imagine people's approaches to hosting may be more varied.
+
+I use Netlify for managing my domain, and pay for the domain name with GoDaddy.
+Within Netlify, I have two websites^[It looks like you could also have a single website with a subdomain building from a specific branch. AFAICT either way should work.].
+One has a primary domain of `www.joelnitta.com` (English) and the other has a primary domain of `www.ja.joelnitta.com` (Japanese).
+
+Both websites are configured to deploy from `https://github.com/joelnitta/joelnitta-home`, but the English version deploys from `gh-pages` and the Japanese version deploys from `ja`.
+
+I have a simple button to link between languages on the right hand side of my header.
+
+That's pretty much it.
+
+## Couldn't this be even more streamlined?
+
+So one question you may have is "Why even bother with manually committing to `ja-source`? Couldn't we automate that with GH Actions too?"
+
+My answer is in theory "Yes" and I would like to!
+But unfortunately, [my script](https://github.com/joelnitta/joelnitta-home/blob/a69255850e63cdcd319eb0ff0eee917d4696ce40/R/translate.R) for generating the translated files from the PO files is not perfect; the output ends up with some misplaced line breaks that I need to manually correct.
+
+Another wrinkle is that since we are translating at the level of the **source code** (Qmd files), each translated document needs to be rendered to HTML.
+This isn't a big deal if you don't have computations, but if computations take some time, you may not want to render everything from scratch each time.
+
+If I can get the `en + PO -> ja` step completely automated, then it should be possible to only have the `_po/` folder in addition to the normal Quarto setup in `main`, then run everything with GH Actions.
+
+Someday it will happen, I hope!
