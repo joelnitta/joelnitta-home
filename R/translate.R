@@ -19,45 +19,45 @@ system(glue::glue(
   ./ ./_locale/ja/"))
 
 # Create / update PO files
-md2po(md_in = "_quarto.yml", po = "_po/ja/_quarto.po")
-md2po(md_in = "index.qmd", po = "_po/ja/index.po")
-md2po(md_in = "software.qmd", po = "_po/ja/software.po")
-md2po(md_in = "blog.qmd", po = "_po/ja/blog.po")
-md2po(md_in = "publications.qmd", po = "_po/ja/publications.po")
+md2po(md_in = "_quarto.yml", po = "__po/ja/_quarto.po")
+md2po(md_in = "index.qmd", po = "__po/ja/index.po")
+md2po(md_in = "software.qmd", po = "__po/ja/software.po")
+md2po(md_in = "blog.qmd", po = "__po/ja/blog.po")
+md2po(md_in = "publications.qmd", po = "__po/ja/publications.po")
 md2po(md_in = "posts/2022-10-07_canaper/index.qmd",
-  po = "_po/ja/2022-10-07_canaper.po")
+  po = "__po/ja/2022-10-07_canaper.po")
 
 # (edit PO files to use for translation)
 
 # Translate source files
 po2md(
   md_in = "_quarto.yml",
-  po = "_po/ja/_quarto.po",
+  po = "__po/ja/_quarto.po",
   md_out = "_locale/ja/_quarto.yml"
 )
 po2md(
   md_in = "index.qmd",
-  po = "_po/ja/index.po",
+  po = "__po/ja/index.po",
   md_out = "_locale/ja/index.qmd"
 )
 po2md(
   md_in = "software.qmd",
-  po = "_po/ja/software.po",
+  po = "__po/ja/software.po",
   md_out = "_locale/ja/software.qmd"
 )
 po2md(
   md_in = "blog.qmd",
-  po = "_po/ja/blog.po",
+  po = "__po/ja/blog.po",
   md_out = "_locale/ja/blog.qmd"
 )
 po2md(
   md_in = "publications.qmd",
-  po = "_po/ja/publications.po",
+  po = "__po/ja/publications.po",
   md_out = "_locale/ja/publications.qmd"
 )
 po2md(
   md_in = "posts/2022-10-07_canaper/index.qmd",
-  po = "_po/ja/2022-10-07_canaper.po",
+  po = "__po/ja/2022-10-07_canaper.po",
   md_out = "_locale/ja/posts/2022-10-07_canaper/index.qmd"
 )
 
