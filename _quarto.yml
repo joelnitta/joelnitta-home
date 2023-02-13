@@ -14,6 +14,8 @@ website:
         text: Software
       - href: blog.qmd
         text: Blog
+      - href: talks.qmd
+        text: Talks
       - href: content/pdf/Nitta_CV.pdf
         text: "CV"
       - href: https://www.ja.joelnitta.com

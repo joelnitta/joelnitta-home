@@ -1,0 +1,20 @@
+---
+title: "Resolving Species Names Rapidly and Accurately with taxastand (Botany 2022 poster)"
+image: "2022-07-24_botany_taxastand.png"
+lang: en
+date: 2022-07-24
+execute:
+  echo: false
+comments: false
+toc: false
+categories:
+  - R
+  - conference presentation
+---
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/OFTgvgKmOmI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+### Resources
+
+- [Slides](https://joelnitta.github.io/botany_2022_taxastand/)
+- [taxastand](https://joelnitta.github.io/taxastand/)

@@ -1,0 +1,22 @@
+---
+title: "canaper: Categorical analysis of neo- and paleo-endemism in R (Botany 2021 Poster)"
+image: "2021-07-19_botany.png"
+lang: en
+date: 2021-07-19
+execute:
+  echo: false
+comments: false
+toc: false
+categories:
+  - R
+  - biodiversity
+  - conference presentation
+---
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/LXn_ziEli_Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+### Resources
+
+- [GitHub](https://github.com/ropensci/canaper)
+- [Abstract](https://2021.botanyconference.org/engine/search/index.php?func=detail&aid=1117)
+- [PDF](https://github.com/joelnitta/botany_poster_2021/raw/main/canaper.pdf)

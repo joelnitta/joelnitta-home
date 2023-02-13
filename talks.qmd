@@ -1,0 +1,13 @@
+---
+title: "Recorded Talks"
+comments: false
+lang: en
+date: "`r Sys.Date()`"
+listing:
+  contents: talks
+  type: default
+  categories: true
+  sort:
+    - "date desc"
+    - "title desc"
+---

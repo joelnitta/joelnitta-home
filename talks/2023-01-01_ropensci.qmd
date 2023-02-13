@@ -1,0 +1,23 @@
+---
+title: "Managing bioinformatics pipelines with R (rOpenSci community call)"
+image: "2023-01-01_ropensci.png"
+lang: en
+date: 2023-01-01
+execute:
+  echo: false
+comments: false
+toc: false
+categories:
+  - R
+  - targets
+  - tutorial
+---
+
+<iframe title="vimeo-player" src="https://player.vimeo.com/video/795053980?h=013850484e#t=22m00s" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
+### Resources
+
+- [rOpenSci community call](https://ropensci.org/commcalls/jan2023-targets/)
+- [Slides](https://joelnitta.github.io/comm-call-bioinfo-targets/)
+- [Example code](https://github.com/joelnitta/targets_vcf_example)
+- [Blog post](https://github.com/joelnitta/targets_vcf_example)

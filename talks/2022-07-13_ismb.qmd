@@ -1,0 +1,19 @@
+---
+title: "An Open and Continuously Updated Fern Tree of Life (ISMB EvolCompGen Poster)"
+image: "2022-07-13_ismb.png"
+lang: en
+date: 2022-07-13
+execute:
+  echo: false
+comments: false
+toc: false
+categories:
+  - ferns
+  - conference presentation
+---
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/tO_-2KMaJuQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+### Resources
+
+- [Paper](https://doi.org/10.3389/fpls.2022.909768)
