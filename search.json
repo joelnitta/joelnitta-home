@@ -1,45 +1,164 @@
 [
   {
-    "objectID": "posts/2021-06-02_color-scheme-anc-states/index.html#about-contmap",
-    "href": "posts/2021-06-02_color-scheme-anc-states/index.html#about-contmap",
-    "title": "Selecting color schemes for mapping ancestral states",
-    "section": "About contMap()",
-    "text": "About contMap()\nThe phytools package provides (among many other things) the contMap() function for estimating ancestral character states and visualizing their changes along the branches of a phylogenetic tree. It can either produce the plot directly (default), or be saved as an object with the plot = FALSE argument, to be further manipulated and plotted later with plot()."
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "ブログ",
+    "section": "",
+    "text": "Making a fern family tree\n\n\n\n\n\n\n\nR\n\n\nferns\n\n\n\n\nHow to make a family-level phylogenetic tree of ferns (or anything else)\n\n\n\n\n\n\n2023/02/21\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\ncanaperがCRANに登録されました\n\n\n\n\n\n\n\nR\n\n\nSpatial phylogenetics\n\n\n\n\nRパッケージcanaperの紹介\n\n\n\n\n\n\n2022/10/07\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\nEnable giscus in Distill\n\n\n\n\n\n\n\nblogging\n\n\ndistill\n\n\n\n\nHow to use the giscus commenting system on a Distill blog\n\n\n\n\n\n\n2021/11/24\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\nManaging bioinformatics pipelines with R\n\n\n\n\n\n\n\nworkflow\n\n\nreproducibility\n\n\n\n\nHow to combine Conda, Docker, and R to run modular, reproducible bioinformatics pipelines\n\n\n\n\n\n\n2021/11/16\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\nSelecting color schemes for mapping ancestral states\n\n\n\n\n\n\n\nr\n\n\nplotting\n\n\n\n\nHow to change the phytools default color scheme when visualizing the results of ancestral character state estimation\n\n\n\n\n\n\n2021/06/02\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\nBuilding R docker images with secrets\n\n\n\n\n\n\n\ndocker\n\n\n\n\nKeep it secret. Keep it safe.\n\n\n\n\n\n\n2019/02/16\n\n\nJoel Nitta\n\n\n\n\n\n\n一致なし"
   },
   {
-    "objectID": "posts/2021-06-02_color-scheme-anc-states/index.html#default-colors",
-    "href": "posts/2021-06-02_color-scheme-anc-states/index.html#default-colors",
-    "title": "Selecting color schemes for mapping ancestral states",
-    "section": "Default colors",
-    "text": "Default colors\nI have to say I’m not a fan of the default color scheme, which is a rainbow palette going from red through yellow and green to blue.\nFor example, let’s borrow some example code and look at the default plot:\n\n# code modified slightly from http://www.phytools.org/eqg2015/asr.html\n\n## Load needed packages for this blogpost\nlibrary(phytools)\nlibrary(ggtree)\nlibrary(tidyverse)\nlibrary(scico)\nlibrary(viridisLite)\n\n\n## Load anole tree\nanole.tree <- read.tree(\"http://www.phytools.org/eqg2015/data/anole.tre\")\n\n## Load anole trait data, extract snout-vent-length (svl) as named vector\nsvl <- read_csv(\"http://www.phytools.org/eqg2015/data/svl.csv\") %>%\n  mutate(svl = set_names(svl, species)) %>%\n  pull(svl)\n\n# Plot with default color scheme\ncontmap_obj <- contMap(anole.tree, svl, plot = FALSE)\n\nplot(\n  contmap_obj, \n  type=\"fan\", \n  legend = 0.7*max(nodeHeights(anole.tree)),\n  fsize = c(0.5, 0.7))\n\nAlthough this does provide a wide range of colors, it’s not obvious why one color is greater or less than the others. In particular it’s hard to discern the order of intermediate values (yellow, green, light blue). Indeed, there has been much written on why the rainbow palette is generally not a good way to visualize continuous data."
+    "objectID": "talks.html",
+    "href": "talks.html",
+    "title": "オンライン発表",
+    "section": "",
+    "text": "【研究者に聞いてみた】シダ植物の多様性：進化生態学的なアプローチ\n\n\n\n\n\n\n\nferns\n\n\n\n\n\n\n\n\n\n\n\n2023/01/23\n\n\n\n\n\n\n  \n\n\n\n\nManaging bioinformatics pipelines with R (rOpenSci community call)\n\n\n\n\n\n\n\nR\n\n\ntargets\n\n\ntutorial\n\n\n\n\n\n\n\n\n\n\n\n2023/01/01\n\n\n\n\n\n\n  \n\n\n\n\ntaxastand and dwctaxon: A pair of R packages for standardizing species names in Darwin Core format (BioDigiCon 2022 talk)\n\n\n\n\n\n\n\nR\n\n\nbiodiversity\n\n\nconference presentation\n\n\n\n\n\n\n\n\n\n\n\n2022/09/27\n\n\n\n\n\n\n  \n\n\n\n\nDNA Barcoding of Fern Gametophytes: Past, Present, and Future (XVI Indian Fern Symposium Talk)\n\n\n\n\n\n\n\nferns\n\n\nconference presentation\n\n\ninvited\n\n\n\n\n\n\n\n\n\n\n\n2022/09/27\n\n\n\n\n\n\n  \n\n\n\n\nTranslation at The Carpentries: Technology Past, Present, and Future (CarpentryCon 2022 talk)\n\n\n\n\n\n\n\ncarpentries\n\n\ntranslation\n\n\n\n\n\n\n\n\n\n\n\n2022/08/10\n\n\n\n\n\n\n  \n\n\n\n\nResolving Species Names Rapidly and Accurately with taxastand (Botany 2022 poster)\n\n\n\n\n\n\n\nR\n\n\nconference presentation\n\n\n\n\n\n\n\n\n\n\n\n2022/07/24\n\n\n\n\n\n\n  \n\n\n\n\nAn Open and Continuously Updated Fern Tree of Life (Botany 2022 talk)\n\n\n\n\n\n\n\nferns\n\n\nconference presentation\n\n\n\n\n\n\n\n\n\n\n\n2022/07/24\n\n\n\n\n\n\n  \n\n\n\n\nAn Open and Continuously Updated Fern Tree of Life (ISMB EvolCompGen Poster)\n\n\n\n\n\n\n\nferns\n\n\nconference presentation\n\n\n\n\n\n\n\n\n\n\n\n2022/07/13\n\n\n\n\n\n\n  \n\n\n\n\nModular, reproducible bioinformatics workflows with the targets R package (ISCBacademy Tutorial)\n\n\n\n\n\n\n\nR\n\n\ntargets\n\n\ntutorial\n\n\n\n\n\n\n\n\n\n\n\n2022/06/30\n\n\n\n\n\n\n  \n\n\n\n\nHow to use {targets} for effective workflows in R (BioC Asia meetup)\n\n\n\n\n\n\n\nR\n\n\ntargets\n\n\ntutorial\n\n\n\n\n\n\n\n\n\n\n\n2022/05/07\n\n\n\n\n\n\n  \n\n\n\n\nデータ解析ワークフローを無駄なく、再現可能にするRパッケージ｢targets｣の紹介\n\n\n\n\n\n\n\nR\n\n\ntargets\n\n\ntutorial\n\n\n\n\n\n\n\n\n\n\n\n2022/01/12\n\n\n\n\n\n\n  \n\n\n\n\ncanaper: Categorical analysis of neo- and paleo-endemism in R (Botany 2021 Poster)\n\n\n\n\n\n\n\nR\n\n\nbiodiversity\n\n\nconference presentation\n\n\n\n\n\n\n\n\n\n\n\n2021/07/19\n\n\n\n\n\n\n  \n\n\n\n\nExploring Dimensions of Biodiversity in Japanese Ferns (Botany 2020 talk)\n\n\n\n\n\n\n\nferns\n\n\nbiodiversity\n\n\nconference presentation\n\n\n\n\n\n\n\n\n\n\n\n2020/07/27\n\n\n\n\n\n\n一致なし"
   },
   {
-    "objectID": "posts/2021-06-02_color-scheme-anc-states/index.html#defining-a-new-color-palette",
-    "href": "posts/2021-06-02_color-scheme-anc-states/index.html#defining-a-new-color-palette",
-    "title": "Selecting color schemes for mapping ancestral states",
-    "section": "Defining a new color palette",
-    "text": "Defining a new color palette\nphytools::setMap() can be used to specify another color palette. setMap() passes its second argument (a vector of color names or hexadecimals) to colorRampPalette(). colorRampPalette() is a bit unusual in that it’s a function that produces a function, in this case, one that generates a vector of colors interpolating between the original input values:\n\n# colorRampPalette() produces a function\nmy_color_func <- colorRampPalette(c(\"red\", \"yellow\"))\nclass(my_color_func)\n\n[1] \"function\"\n\n# The function generates n colors interpolating between\n# the colors originally passed to colorRampPalette()\nmy_colors <- my_color_func(n = 6)\nscales::show_col(my_colors)\n\n\n\n\nFigure 1: A red-to-yellow color ramp.\n\n\n\n\nSo, this works fine for generating custom color gradients. But designing accurate, color-blind friendly color palettes is not a simple task. Fortunately, there are several packages available with such carefully crafted palettes. Two of my favorite are viridis and scico. How can we use these with the plotting function in phytools?"
+    "objectID": "talks/2023-01-21_yurufuwa.html",
+    "href": "talks/2023-01-21_yurufuwa.html",
+    "title": "【研究者に聞いてみた】シダ植物の多様性：進化生態学的なアプローチ",
+    "section": "",
+    "text": "Resources\n\nYurufuwa Biology"
   },
   {
-    "objectID": "posts/2021-06-02_color-scheme-anc-states/index.html#using-viridis-or-scico-palettes",
-    "href": "posts/2021-06-02_color-scheme-anc-states/index.html#using-viridis-or-scico-palettes",
-    "title": "Selecting color schemes for mapping ancestral states",
-    "section": "Using viridis or scico palettes",
-    "text": "Using viridis or scico palettes\nWell, it turns out that as long as we specify the same number of colors, we can replicate the viridis color palette with colorRampPalette(). The only difference is the alpha, or transparency level, indicated at the end of each hexidecimal with two letters (here “FF”). There is no reason to use transparency here anyways, so that doesn’t matter.\n\n# viridis color palette with 6 colors\nviridis(6)\n\n[1] \"#440154FF\" \"#414487FF\" \"#2A788EFF\" \"#22A884FF\" \"#7AD151FF\" \"#FDE725FF\"\n\n# colorRampPalette() replicating viridis color palette\ncolorRampPalette(viridis(6))(6)\n\n[1] \"#440154\" \"#414487\" \"#2A788E\" \"#22A884\" \"#7AD151\" \"#FDE725\"\n\n\nSo here is the viridis version of the phytools plot:\n\n# Count the number of unique character states in the observed data:\nn_cols <- n_distinct(svl)\n\n# Change the color palette\ncontmap_obj_viridis <- setMap(contmap_obj, viridis(n_cols))\n\n# Plot the mapped characters with the new colors\nplot(\n  contmap_obj_viridis, \n  type=\"fan\", \n  legend = 0.7*max(nodeHeights(anole.tree)),\n  fsize = c(0.5, 0.7))\n\n\n\n\nFigure 2: Viridis colors. Better.\n\n\n\n\nAnd here is another one, this time using a palette from scico:\n\n# Change the color palette\ncontmap_obj_scico <- setMap(contmap_obj, scico(n_cols, palette = \"bilbao\"))\n\n# Plot the mapped characters with the new colors\nplot(\n  contmap_obj_scico, \n  type=\"fan\", \n  legend = 0.7*max(nodeHeights(anole.tree)),\n  fsize = c(0.5, 0.7))\n\n\n\n\nFigure 3: Scico colors. My personal favorite.\n\n\n\n\nI personally find this one even easier to interpret than viridis. It’s very clear which values are low and high."
+    "objectID": "talks/2020-07-27_botany.html",
+    "href": "talks/2020-07-27_botany.html",
+    "title": "Exploring Dimensions of Biodiversity in Japanese Ferns (Botany 2020 talk)",
+    "section": "",
+    "text": "Resources\n\nAbstract\nSlides\nPaper"
   },
   {
-    "objectID": "posts/2021-06-02_color-scheme-anc-states/index.html#ggtree",
-    "href": "posts/2021-06-02_color-scheme-anc-states/index.html#ggtree",
-    "title": "Selecting color schemes for mapping ancestral states",
-    "section": "ggtree",
-    "text": "ggtree\nJust for completeness, here is code to replicate the plot in ggtree.\n\n# Modified from https://yulab-smu.top/treedata-book/chapter4.html#color-tree\n\n# Fit an ancestral state character reconstruction\nfit <- phytools::fastAnc(anole.tree, svl, vars = TRUE, CI = TRUE)\n\n# Make a dataframe with trait values at the tips\ntd <- data.frame(\n  node = nodeid(anole.tree, names(svl)),\n  trait = svl)\n\n# Make a dataframe with estimated trait values at the nodes\nnd <- data.frame(node = names(fit$ace), trait = fit$ace)\n\n# Combine these with the tree data for plotting with ggtree\nd <- rbind(td, nd)\nd$node <- as.numeric(d$node)\ntree <- full_join(anole.tree, d, by = 'node')\n\nggtree(\n  tree, \n  aes(color = trait), \n  layout = 'circular', \n  ladderize = FALSE, continuous = \"color\", size = 1) +\n  # >>> The important part! <<<\n  # Choose your favorite scale_color_* function here: \n  scale_color_scico(palette = \"bilbao\") + \n  geom_tiplab(hjust = -.1, size = 2, color = \"black\") + \n  xlim(0, 1.2) + \n  theme(\n    legend.position = c(0, .82),\n    legend.text = element_text(size = 8),\n    legend.title = element_text(size = 8)\n  ) \n\n\n\n\nFigure 4: Scico colors with ggtree.\n\n\n\n\nThat’s it!"
+    "objectID": "talks/2022-09-27_biodigi.html",
+    "href": "talks/2022-09-27_biodigi.html",
+    "title": "taxastand and dwctaxon: A pair of R packages for standardizing species names in Darwin Core format (BioDigiCon 2022 talk)",
+    "section": "",
+    "text": "Resources\n\nSlides\ndwctaxon\ntaxastand"
+  },
+  {
+    "objectID": "talks/2021-07-19_botany.html",
+    "href": "talks/2021-07-19_botany.html",
+    "title": "canaper: Categorical analysis of neo- and paleo-endemism in R (Botany 2021 Poster)",
+    "section": "",
+    "text": "Resources\n\nGitHub\nAbstract\nPDF"
+  },
+  {
+    "objectID": "talks/2022-03-17_india.html",
+    "href": "talks/2022-03-17_india.html",
+    "title": "DNA Barcoding of Fern Gametophytes: Past, Present, and Future (XVI Indian Fern Symposium Talk)",
+    "section": "",
+    "text": "Resources\n\nSlides\nPaper"
+  },
+  {
+    "objectID": "talks/2022-07-24_botany_taxastand.html",
+    "href": "talks/2022-07-24_botany_taxastand.html",
+    "title": "Resolving Species Names Rapidly and Accurately with taxastand (Botany 2022 poster)",
+    "section": "",
+    "text": "Resources\n\nSlides\ntaxastand"
+  },
+  {
+    "objectID": "talks/2023-01-01_ropensci.html",
+    "href": "talks/2023-01-01_ropensci.html",
+    "title": "Managing bioinformatics pipelines with R (rOpenSci community call)",
+    "section": "",
+    "text": "Resources\n\nrOpenSci community call\nSlides\nExample code\nBlog post"
+  },
+  {
+    "objectID": "talks/2022-01-12_biohack.html",
+    "href": "talks/2022-01-12_biohack.html",
+    "title": "データ解析ワークフローを無駄なく、再現可能にするRパッケージ｢targets｣の紹介",
+    "section": "",
+    "text": "Resources\n\nSlides\nExample code"
+  },
+  {
+    "objectID": "talks/2022-07-13_ismb.html",
+    "href": "talks/2022-07-13_ismb.html",
+    "title": "An Open and Continuously Updated Fern Tree of Life (ISMB EvolCompGen Poster)",
+    "section": "",
+    "text": "Resources\n\nPaper"
+  },
+  {
+    "objectID": "talks/2022-07-24_botany_ftol.html",
+    "href": "talks/2022-07-24_botany_ftol.html",
+    "title": "An Open and Continuously Updated Fern Tree of Life (Botany 2022 talk)",
+    "section": "",
+    "text": "Resources\n\nSlides\nPaper"
+  },
+  {
+    "objectID": "talks/2022-05-07_biocasia.html",
+    "href": "talks/2022-05-07_biocasia.html",
+    "title": "How to use {targets} for effective workflows in R (BioC Asia meetup)",
+    "section": "",
+    "text": "Resources\n\nWorkshop repo\nSlides\nExample code"
+  },
+  {
+    "objectID": "talks/2022-08-10_carptrans.html",
+    "href": "talks/2022-08-10_carptrans.html",
+    "title": "Translation at The Carpentries: Technology Past, Present, and Future (CarpentryCon 2022 talk)",
+    "section": "",
+    "text": "Resources\n\nSlides"
+  },
+  {
+    "objectID": "talks/2022-06-30_iscbacad.html",
+    "href": "talks/2022-06-30_iscbacad.html",
+    "title": "Modular, reproducible bioinformatics workflows with the targets R package (ISCBacademy Tutorial)",
+    "section": "",
+    "text": "Resources\n\nWorkshop repo\nSlides\nExample code"
+  },
+  {
+    "objectID": "posts/2019-02-16_building-r-docker-images-with-secrets/index.html",
+    "href": "posts/2019-02-16_building-r-docker-images-with-secrets/index.html",
+    "title": "Building R docker images with secrets",
+    "section": "",
+    "text": "Top secret\nDocker is an incredibly useful tool for running reproducible analysis workflows. For useRs, the rocker collection of images is very convenient for creating version-controlled R environments. This is pretty straightforward if you are using packages on CRAN, or publicly available packages on GitHub. But what if we want to use private packages on GitHub, or need for any other reason to enter authentication credentials during the build?\nThere are various ways to copy data into the image during the build, but when handling secrets that we don’t want hanging around after it’s finished, caution is needed. Approaches such as using COPY or ARGS will leave traces in the build. Staged builds are more secure, but tricky. Fortunately, as of v. 18.09, Docker is now providing official support for handling secrets."
+  },
+  {
+    "objectID": "posts/2019-02-16_building-r-docker-images-with-secrets/index.html#a-simple-example",
+    "href": "posts/2019-02-16_building-r-docker-images-with-secrets/index.html#a-simple-example",
+    "title": "Building R docker images with secrets",
+    "section": "A simple example",
+    "text": "A simple example\nHere is how to use the new Docker features to securely pass a secret during a build 1.\nThere are few non-default settings that need to be specified for this. First of all, prior to the docker build command, you need to specify that you want to use the new BuildKit backend with DOCKER_BUILDKIT=1. So the command starts DOCKER_BUILDKIT=1 docker build ...\nNext, we must add a syntax directive to the top line of the Dockerfile. For example, for a Dockerfile based on rocker/tidyverse:\n# syntax=docker/dockerfile:1.0.0-experimental\nFROM rocker/tidyverse\nSave your secrets in a text file. Let’s call it my_secret_stash2. If you are using it to store your GitHub PAT, it would just be one line with the PAT. Here, let’s put in some random word:\necho \"FABULOUS\" &gt; my_secret_stash\nThis is all we need to use secrets during the build. Here is an example Dockerfile similar to the one in the Docker documentation.\n# syntax = docker/dockerfile:1.0-experimental\nFROM alpine\n\nRUN --mount=type=secret,id=mysecret cat /run/secrets/mysecret\nTo see how it works, save this as Dockerfile, then from the same directory containing Dockerfile and my_secret_stash, build the image:\nDOCKER_BUILDKIT=1 docker build --progress=plain --no-cache \\\n--secret id=mysecret,src=my_secret_stash .\nI’ve truncated the output, but you should see something like this (the exact build step number may vary).\n\n#7 [2/2] RUN --mount=type=secret,id=mysecret cat /run/secrets/mysecret\n#7       digest: sha256:75601a522ebe80ada66dedd9dd86772ca932d30d7e1b11bba94c04aa55c237de\n#7         name: \"[2/2] RUN --mount=type=secret,id=mysecret cat /run/secrets/mysecret\"\n#7      started: 2019-02-18 20:51:20.1092144 +0000 UTC\n#7 0.668 FABULOUS\n#7    completed: 2019-02-18 20:51:21.0927656 +0000 UTC\n#7     duration: 983.5512ms\n\nCan you spot our secret? It’s showing up from the cat command. However, it will not remain in the image."
+  },
+  {
+    "objectID": "posts/2019-02-16_building-r-docker-images-with-secrets/index.html#installing-a-private-r-package",
+    "href": "posts/2019-02-16_building-r-docker-images-with-secrets/index.html#installing-a-private-r-package",
+    "title": "Building R docker images with secrets",
+    "section": "Installing a private R package",
+    "text": "Installing a private R package\nTo install a package from my private GitHub repo, I created an additional simple R script, called install_git_packages.R:\n# install_git_packages.R\nsecret &lt;- commandArgs(trailing = TRUE)\ndevtools::install_github(\"joelnitta/my-private-package\", auth_token = secret)\ncommandArgs(trailing = TRUE) will return whatever command line arguments were passed to Rscript after the name of the script, as a character vector.\nWe will call this script from the Dockerfile and pass the secret to it.\nHere is the Dockerfile to do that. (Note that although we copy the install_git_packages.R script into the image, we are passing it the secret variable that is only present during the build, so this should not remain afterwards.)\n# syntax = docker/dockerfile:1.0-experimental\nFROM rocker/tidyverse:3.5.1\n\nENV DEBIAN_FRONTEND noninteractive\n\nCOPY install_git_packages.R .\n\nRUN apt-get update\n\nRUN --mount=type=secret,id=mysecret \\\nRscript install_git_packages.R `cat /run/secrets/mysecret`\nLet’s build the image and tag it:\nDOCKER_BUILDKIT=1 docker build --progress=plain --no-cache \\\n--secret id=mysecret,src=my_secret_stash . -t my_special_image\nThat’s it!"
+  },
+  {
+    "objectID": "posts/2019-02-16_building-r-docker-images-with-secrets/index.html#footnotes",
+    "href": "posts/2019-02-16_building-r-docker-images-with-secrets/index.html#footnotes",
+    "title": "Building R docker images with secrets",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nNo guarantees!! This is just my understanding from reading the docker documentation and other blogs↩︎\nOf course, be sure to add the file containing the secret to .gitignore!↩︎"
+  },
+  {
+    "objectID": "posts/2023-02-21_fern-family-tree/index.html",
+    "href": "posts/2023-02-21_fern-family-tree/index.html",
+    "title": "Making a fern family tree",
+    "section": "",
+    "text": "Recently I was asked by a researcher for a family-level phylogenetic tree of ferns. The Fern Tree of Life (FTOL) project that I maintain generates a maximally sampled global fern phylogeny, but it is at the species level. So how can we go from that to a family-level tree?\nBasically it involves the following steps:\nThe code to do all of this is provided below, and is also available at this repo: https://github.com/fernphy/ftol_family.\nA few packages used here bear extra mention. The MonoPhy package is great at doing exactly what the name would suggest: checking for monophyly. I am a huge fan of the assertr package for proactive assertion about data. In this case, the code would fail (issue an error) if the assumption of monophyletic/monotypic families did not hold. Finally, the ftolr package by yours truly provides the most recent fern tree and associated taxonomic data.\nOf course, this approach should work for any tree assuming the two requirements are met (the higher level taxa are all monophyletic or monotypic and the tree is ultrametric).\n# Load packages\nlibrary(tidyverse)\nlibrary(ftolr)\nlibrary(ape)\nlibrary(MonoPhy)\nlibrary(assertr)\n\n# Check FTOL version and cutoff date\nft_data_ver()\n\n[1] \"1.4.0\"\n\nft_data_ver(\"cutoff\")\n\n[1] \"2022-12-15\"\n\n# Load ultrametric fern tree, drop outgroup\nphy &lt;- ft_tree(branch_len = \"ultra\", rooted = TRUE, drop_og = TRUE)\n\n# Inspect:\nphy\n\n\nPhylogenetic tree with 5685 tips and 5684 internal nodes.\n\nTip labels:\n  Acrostichum_danaeifolium, Acrostichum_speciosum, Acrostichum_aureum, Ceratopteris_richardii, Ceratopteris_cornuta, Ceratopteris_pteridoides, ...\nNode labels:\n  100/100, 100, 100/100, 100/100, 100/100, 50/100, ...\n\nRooted; includes branch lengths.\n\n# Load fern taxonomy\ntaxonomy &lt;- ftol_taxonomy %&gt;%\n  # Subset to only species in tree\n  filter(species %in% phy$tip.label)\n\n# Inspect:\ntaxonomy\n\n# A tibble: 5,685 × 8\n   species      genus   subfamily  family   suborder order  major_clade outgroup\n   &lt;chr&gt;        &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;       &lt;lgl&gt;   \n 1 Acrostichum… Acrost… Parkerioi… Pterida… Pteridi… Polyp… Pteridineae FALSE   \n 2 Actiniopter… Actini… Pteridoid… Pterida… Pteridi… Polyp… Pteridineae FALSE   \n 3 Actiniopter… Actini… Pteridoid… Pterida… Pteridi… Polyp… Pteridineae FALSE   \n 4 Actiniopter… Actini… Pteridoid… Pterida… Pteridi… Polyp… Pteridineae FALSE   \n 5 Actiniopter… Actini… Pteridoid… Pterida… Pteridi… Polyp… Pteridineae FALSE   \n 6 Onychium_cr… Onychi… Pteridoid… Pterida… Pteridi… Polyp… Pteridineae FALSE   \n 7 Onychium_mo… Onychi… Pteridoid… Pterida… Pteridi… Polyp… Pteridineae FALSE   \n 8 Onychium_ja… Onychi… Pteridoid… Pterida… Pteridi… Polyp… Pteridineae FALSE   \n 9 Onychium_lu… Onychi… Pteridoid… Pterida… Pteridi… Polyp… Pteridineae FALSE   \n10 Onychium_pl… Onychi… Pteridoid… Pterida… Pteridi… Polyp… Pteridineae FALSE   \n# … with 5,675 more rows\n\n# Analyze monophyly of each family\nfamily_mono_test &lt;- AssessMonophyly(\n  phy,\n  as.data.frame(taxonomy[, c(\"species\", \"family\")])\n)\n\n# Check that all families are monophyletic or monotypic\nfamily_mono_summary &lt;-\n  family_mono_test$family$result %&gt;%\n  rownames_to_column(\"family\") %&gt;%\n  as_tibble() %&gt;%\n  assert(in_set(\"Yes\", \"Monotypic\"), Monophyly)\n\n# Inspect:\nfamily_mono_summary\n\n# A tibble: 48 × 9\n   family            Monophyly MRCA  `#Tips` `Delta-Tips` `#Intruders` Intruders\n   &lt;chr&gt;             &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;        &lt;chr&gt;    \n 1 Pteridaceae       Yes       5696  885     0            0            \"\"       \n 2 Polypodiaceae     Yes       6590  933     0            0            \"\"       \n 3 Davalliaceae      Yes       7522  42      0            0            \"\"       \n 4 Oleandraceae      Yes       7563  10      0            0            \"\"       \n 5 Tectariaceae      Yes       7572  138     0            0            \"\"       \n 6 Nephrolepidaceae  Yes       7709  19      0            0            \"\"       \n 7 Lomariopsidaceae  Yes       7727  44      0            0            \"\"       \n 8 Dryopteridaceae   Yes       7770  964     0            0            \"\"       \n 9 Didymochlaenaceae Yes       8733  9       0            0            \"\"       \n10 Hypodematiaceae   Yes       8741  26      0            0            \"\"       \n# … with 38 more rows, and 2 more variables: #Outliers &lt;chr&gt;, Outliers &lt;chr&gt;\n\n# Get one exemplar tip (species) per family\nrep_tips &lt;-\n  taxonomy %&gt;%\n  group_by(family) %&gt;%\n  slice(1) %&gt;%\n  ungroup()\n\n# Subset phylogeny to one tip per family\nphy_family &lt;- ape::keep.tip(phy, rep_tips$species)\n\n# Relabel with family names\nnew_tips &lt;-\ntibble(species = phy_family$tip.label) %&gt;%\n  left_join(rep_tips, by = \"species\") %&gt;%\n  pull(family)\n\nphy_family$tip.label &lt;- new_tips\n\n# Visualize tree\nplot(ladderize(phy_family), no.margin = TRUE)"
+  },
+  {
+    "objectID": "posts/2023-02-21_fern-family-tree/index.html#footnotes",
+    "href": "posts/2023-02-21_fern-family-tree/index.html#footnotes",
+    "title": "Making a fern family tree",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nAnother condition of this approach is that that the tree must be ultrametric (all tips at the same depth). If that is not true, then the choice of exemplar species would affect the branchlengths in the family-level tree.↩︎"
+  },
+  {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "",
+    "text": "The targets R package is great for managing bioinformatics workflows\nrenv, Conda, and Docker can be combined so that all steps are modular and reproducible\nDemo available at https://github.com/joelnitta/targets_bioinfo_example\n\n\n\n\nFigure 1: Image by T K on unsplash.\n\n\nBioinformatics projects tend to have a similar pattern: they all start with raw data, then pass the data through various programs until arriving at the final result. These “pipelines” can become very long and complicated, so there are many platforms that automate this process either relying on code (e.g., nextflow, CWL) or graphical interfaces (e.g., galaxy). Python’s snakemake is also commonly used for this purpose. That got me thinking—can we do this in R?"
   },
   {
     "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#tldr",
     "href": "posts/2021-11-16_r-bioinfo-flow/index.html#tldr",
     "title": "Managing bioinformatics pipelines with R",
-    "section": "tl;dr",
-    "text": "tl;dr\n\nThe targets R package is great for managing bioinformatics workflows\nrenv, Conda, and Docker can be combined so that all steps are modular and reproducible\nDemo available at https://github.com/joelnitta/targets_bioinfo_example\n\n\n\n\nFigure 1: Image by T K on unsplash.\n\n\nBioinformatics projects tend to have a similar pattern: they all start with raw data, then pass the data through various programs until arriving at the final result. These “pipelines” can become very long and complicated, so there are many platforms that automate this process either relying on code (e.g., nextflow, CWL) or graphical interfaces (e.g., galaxy). Python’s snakemake is also commonly used for this purpose. That got me thinking—can we do this in R?"
+    "section": "",
+    "text": "The targets R package is great for managing bioinformatics workflows\nrenv, Conda, and Docker can be combined so that all steps are modular and reproducible\nDemo available at https://github.com/joelnitta/targets_bioinfo_example\n\n\n\n\nFigure 1: Image by T K on unsplash.\n\n\nBioinformatics projects tend to have a similar pattern: they all start with raw data, then pass the data through various programs until arriving at the final result. These “pipelines” can become very long and complicated, so there are many platforms that automate this process either relying on code (e.g., nextflow, CWL) or graphical interfaces (e.g., galaxy). Python’s snakemake is also commonly used for this purpose. That got me thinking—can we do this in R?"
   },
   {
     "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#what-im-looking-for-in-a-pipeline-manager",
@@ -74,21 +193,21 @@
     "href": "posts/2021-11-16_r-bioinfo-flow/index.html#first-things-first-set-up-the-project",
     "title": "Managing bioinformatics pipelines with R",
     "section": "First things first: Set up the project",
-    "text": "First things first: Set up the project\nI need to explain one thing before continuing: for this example, I’m following the practice of using a “project” for the analysis. This simply means all of the files needed for the analysis are put in a single folder (with subfolders as necessary), and that folder is used as the “home base” for the project. So if I type some command at the command line prompt, it is assumed that the project folder is the current working directory. The two main tools I use to maintain the pipeline, renv and targets, both rely on this concept.\nFrom the command line, that just looks like:\n\nmkdir targets_bioinfo_example\ncd targets_bioinfo_example\n\nNext, let’s download some files that I will use in the subsequent steps (don’t worry about what these do yet; I will explain each one below):\n\n\n# environment.yml\ncurl https://raw.githubusercontent.com/joelnitta/targets_bioinfo_example/main/environment.yml > environment.yml\n# renv.lock\ncurl https://raw.githubusercontent.com/joelnitta/targets_bioinfo_example/main/renv.lock > renv.lock\n# _targets.R\ncurl https://raw.githubusercontent.com/joelnitta/joelnitta-home/main/posts/2021-11-16_r-bioinfo-flow/_targets.R > _targets.R\n\nFrom here on, I assume we are running everything a folder called targets_bioinfo_example containing the files environment.yml, renv.lock, and _targets.R.\nAlso, although I’ve mentioned several pieces of software so far, there are only two required for this workflow: Conda and Docker. Make sure those are both installed before continuing."
+    "text": "First things first: Set up the project\nI need to explain one thing before continuing: for this example, I’m following the practice of using a “project” for the analysis. This simply means all of the files needed for the analysis are put in a single folder (with subfolders as necessary), and that folder is used as the “home base” for the project. So if I type some command at the command line prompt, it is assumed that the project folder is the current working directory. The two main tools I use to maintain the pipeline, renv and targets, both rely on this concept.\nFrom the command line, that just looks like:\n\nmkdir targets_bioinfo_example\ncd targets_bioinfo_example\n\nNext, let’s download some files that I will use in the subsequent steps (don’t worry about what these do yet; I will explain each one below):\n\n\n# environment.yml\ncurl https://raw.githubusercontent.com/joelnitta/targets_bioinfo_example/main/environment.yml &gt; environment.yml\n# renv.lock\ncurl https://raw.githubusercontent.com/joelnitta/targets_bioinfo_example/main/renv.lock &gt; renv.lock\n# _targets.R\ncurl https://raw.githubusercontent.com/joelnitta/joelnitta-home/main/posts/2021-11-16_r-bioinfo-flow/_targets.R &gt; _targets.R\n\nFrom here on, I assume we are running everything a folder called targets_bioinfo_example containing the files environment.yml, renv.lock, and _targets.R.\nAlso, although I’ve mentioned several pieces of software so far, there are only two required for this workflow: Conda and Docker. Make sure those are both installed before continuing."
   },
   {
     "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#running-r-with-conda",
     "href": "posts/2021-11-16_r-bioinfo-flow/index.html#running-r-with-conda",
     "title": "Managing bioinformatics pipelines with R",
     "section": "Running R with Conda",
-    "text": "Running R with Conda\nConda environments can be specified using a yml file, often named environment.yml.\nThis is the environment.yml file for this project:\nname: bioinfo-example-env\nchannels:\n  - conda-forge\n  - bioconda\n  - defaults\ndependencies:\n  - r-renv=0.14.*\nIt’s quite short: all it does is install renv and its dependencies (which includes R). Here I’ve specified the most recent major version5 of renv, which will come with R v4.1.1.\nWe can recreate the Conda environment from environment.yml (you should have downloaded it above) with:\n\n\nconda env create -f environment.yml\n\n\n\nCollecting package metadata (repodata.json): ...working... done\nSolving environment: ...working... done\nPreparing transaction: ...working... done\nVerifying transaction: ...working... done\nExecuting transaction: ...working... done\n\n\n==> WARNING: A newer version of conda exists. <==\n  current version: 4.13.0\n  latest version: 22.9.0\n\nPlease update conda by running\n\n    $ conda update -n base -c defaults conda\n\n\n#\n# To activate this environment, use\n#\n#     $ conda activate bioinfo-example-env\n#\n# To deactivate an active environment, use\n#\n#     $ conda deactivate\n\n\nAs the output says near the bottom, run conda activate bioinfo-example-env to enter this environment, then from there you can use R as usual with R.\nOn my computer, this looks like:\n(base) Joels-iMac:targets_bioinfo_example joelnitta$ conda activate bioinfo-example-env\n(bioinfo-example-env) Joels-iMac:targets_bioinfo_example joelnitta$ R\n\nR version 4.1.1 (2021-08-10) -- \"Kick Things\"\nCopyright (C) 2021 The R Foundation for Statistical Computing\nPlatform: x86_64-apple-darwin13.4.0 (64-bit)\n\nR is free software and comes with ABSOLUTELY NO WARRANTY.\nYou are welcome to redistribute it under certain conditions.\nType 'license()' or 'licence()' for distribution details.\n\n  Natural language support but running in an English locale\n\nR is a collaborative project with many contributors.\nType 'contributors()' for more information and\n'citation()' on how to cite R or R packages in publications.\n\nType 'demo()' for some demos, 'help()' for on-line help, or\n'help.start()' for an HTML browser interface to help.\nType 'q()' to quit R.\n\n> \nNotice the change from (base) to (bioinfo-example-env), indicating that we are now inside the Conda environment.\nNow we have a fixed version of R, with a fixed version of renv."
+    "text": "Running R with Conda\nConda environments can be specified using a yml file, often named environment.yml.\nThis is the environment.yml file for this project:\nname: bioinfo-example-env\nchannels:\n  - conda-forge\n  - bioconda\n  - defaults\ndependencies:\n  - r-renv=0.14.*\nIt’s quite short: all it does is install renv and its dependencies (which includes R). Here I’ve specified the most recent major version5 of renv, which will come with R v4.1.1.\nWe can recreate the Conda environment from environment.yml (you should have downloaded it above) with:\n\n\nconda env create -f environment.yml\n\n\n\nCollecting package metadata (repodata.json): ...working... done\nSolving environment: ...working... done\nPreparing transaction: ...working... done\nVerifying transaction: ...working... done\nExecuting transaction: ...working... done\n\n\n==&gt; WARNING: A newer version of conda exists. &lt;==\n  current version: 4.13.0\n  latest version: 22.9.0\n\nPlease update conda by running\n\n    $ conda update -n base -c defaults conda\n\n\n#\n# To activate this environment, use\n#\n#     $ conda activate bioinfo-example-env\n#\n# To deactivate an active environment, use\n#\n#     $ conda deactivate\n\n\nAs the output says near the bottom, run conda activate bioinfo-example-env to enter this environment, then from there you can use R as usual with R.\nOn my computer, this looks like:\n(base) Joels-iMac:targets_bioinfo_example joelnitta$ conda activate bioinfo-example-env\n(bioinfo-example-env) Joels-iMac:targets_bioinfo_example joelnitta$ R\n\nR version 4.1.1 (2021-08-10) -- \"Kick Things\"\nCopyright (C) 2021 The R Foundation for Statistical Computing\nPlatform: x86_64-apple-darwin13.4.0 (64-bit)\n\nR is free software and comes with ABSOLUTELY NO WARRANTY.\nYou are welcome to redistribute it under certain conditions.\nType 'license()' or 'licence()' for distribution details.\n\n  Natural language support but running in an English locale\n\nR is a collaborative project with many contributors.\nType 'contributors()' for more information and\n'citation()' on how to cite R or R packages in publications.\n\nType 'demo()' for some demos, 'help()' for on-line help, or\n'help.start()' for an HTML browser interface to help.\nType 'q()' to quit R.\n\n&gt; \nNotice the change from (base) to (bioinfo-example-env), indicating that we are now inside the Conda environment.\nNow we have a fixed version of R, with a fixed version of renv."
   },
   {
     "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#maintain-r-packages-with-renv",
     "href": "posts/2021-11-16_r-bioinfo-flow/index.html#maintain-r-packages-with-renv",
     "title": "Managing bioinformatics pipelines with R",
     "section": "Maintain R packages with renv",
-    "text": "Maintain R packages with renv\nThe next step is to use renv to install and track R package versions. renv does this with a “lock file”, which is essentially a specification of every package needed to run the code, its version, and where it comes from.\nThis is what the entry in the renv.lock file for this project for the package Matrix looks like:\n\"Matrix\": {\n      \"Package\": \"Matrix\",\n      \"Version\": \"1.3-4\",\n      \"Source\": \"Repository\",\n      \"Repository\": \"CRAN\",\n      \"Hash\": \"4ed05e9c9726267e4a5872e09c04587c\"\n    }\nAssuming renv.lock is present in the working directory (you should have downloaded it above), we can install all packages needed for this example by running the following in R within the Conda environment:\n\nrenv::activate() # Turn on renv\nrenv::restore() # Install packages\n\nYou should see something like this6:\nThe following package(s) will be updated:\n\n# CRAN ===============================\n- Matrix          [* -> 1.3-4]\n- R6              [* -> 2.5.1]\n- Rcpp            [* -> 1.0.7]\n- RcppArmadillo   [* -> 0.10.6.0.0]\n- RcppParallel    [* -> 5.1.4]\n- assertthat      [* -> 0.2.1]\n- babelwhale      [* -> 1.0.3]\n- callr           [* -> 3.7.0]\n\n...\nIf you look at the contents of the project directory, you will also notice a new folder called renv that contains all of the R packages we just installed."
+    "text": "Maintain R packages with renv\nThe next step is to use renv to install and track R package versions. renv does this with a “lock file”, which is essentially a specification of every package needed to run the code, its version, and where it comes from.\nThis is what the entry in the renv.lock file for this project for the package Matrix looks like:\n\"Matrix\": {\n      \"Package\": \"Matrix\",\n      \"Version\": \"1.3-4\",\n      \"Source\": \"Repository\",\n      \"Repository\": \"CRAN\",\n      \"Hash\": \"4ed05e9c9726267e4a5872e09c04587c\"\n    }\nAssuming renv.lock is present in the working directory (you should have downloaded it above), we can install all packages needed for this example by running the following in R within the Conda environment:\n\nrenv::activate() # Turn on renv\nrenv::restore() # Install packages\n\nYou should see something like this6:\nThe following package(s) will be updated:\n\n# CRAN ===============================\n- Matrix          [* -&gt; 1.3-4]\n- R6              [* -&gt; 2.5.1]\n- Rcpp            [* -&gt; 1.0.7]\n- RcppArmadillo   [* -&gt; 0.10.6.0.0]\n- RcppParallel    [* -&gt; 5.1.4]\n- assertthat      [* -&gt; 0.2.1]\n- babelwhale      [* -&gt; 1.0.3]\n- callr           [* -&gt; 3.7.0]\n\n...\nIf you look at the contents of the project directory, you will also notice a new folder called renv that contains all of the R packages we just installed."
   },
   {
     "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#putting-it-all-together",
@@ -112,8 +231,71 @@
     "text": "Conclusion\nI am really excited about using targets for reproducibly managing bioinformatics workflows from R. I hope this helps others who may want to do the same!"
   },
   {
+    "objectID": "posts/2021-11-16_r-bioinfo-flow/index.html#footnotes",
+    "href": "posts/2021-11-16_r-bioinfo-flow/index.html#footnotes",
+    "title": "Managing bioinformatics pipelines with R",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nDocker images are basically completely self-contained computing environments, such that the software inside the image is exactly the same no matter where it is run. A major benefit of using a docker image is that you don’t have to install all of the various dependencies for a particular package: it all comes bundled in the image. And if the image has been tagged (versioned) correctly, you can specify the exact software version and know that the results won’t change in the future.↩︎\nBioconda creates a Docker image for each package, which is listed in Biocontainers and uploaded to Quay.io, so Bioconda and Biocontainers are largely overlapping. I find the Bioconda interface easier to use for finding images. You can also just try googling the name of the software you want to use plus “docker”. If there is no available image, you can build one yourself, but that’s outside the scope of this post.↩︎\nThink Inception.↩︎\nConda was originally developed for managing python and python packages, but it has expanded greatly and works as a general software package manager.↩︎\nThe asterisk in r-renv=0.14.* indicates to install the most recent version with the 0.14 version number.↩︎\nI’m not actually running this command and showing the output, since this post is already rendered using renv, and running renv within renv is also getting too Inception-y!↩︎\nI typically use Docker, but Singularity may be a good option if you want to run your workflow on a machine where you don’t have root privileges (such as on a cluster). Docker requires root privileges to install, but Singularity doesn’t (for that matter neither does Conda). I have not tested any of this with Singularity.↩︎\nI won’t go into the details of the targets syntax here, but I highly recommend this chapter in the targets manual for working with external files, which are very common in bioinformatics workflows.↩︎"
+  },
+  {
+    "objectID": "posts/2022-10-07_canaper/index.html",
+    "href": "posts/2022-10-07_canaper/index.html",
+    "title": "canaperがCRANに登録されました",
+    "section": "",
+    "text": "(Read this blogpost in English)\ncanaper v1.0.0がCRANに登録されました！今までいくつかのRパッケージを書いてGitHubで公開したことがありますが、自分のパッケージがCRANに登録されるのが初めてです。\nそもそも、canaperって一体何だろう？\nパッケージのDESCRIPTIONにはこのような文章があります：\n\ncanaper provides functions to analyze the spatial distribution of biodiversity, in particular categorical analysis of neo- and paleo-endemism (CANAPE) as described in Mishler et al (2014) doi:10.1038/ncomms5473. canaper conducts statistical tests to determine the types of endemism that occur in a study area while accounting for the evolutionary relationships of species.\n\nつまり、canaperは生物多様性の地理的分布を解析する関数を提供します。特に、生物の進化的な関係を考慮しながら、ある地域における固有性の種類を統計的に検証する、categorical analysis of neo- and paleo-endemism（CANAPE）というMishler等（2014）doi:10.1038/ncomms5473 が開発した解析を行います。\nもしも上の話を読んで「面白い！」と思ったら、是非続きを読んでください。"
+  },
+  {
+    "objectID": "posts/2022-10-07_canaper/index.html#canaperへの紹介",
+    "href": "posts/2022-10-07_canaper/index.html#canaperへの紹介",
+    "title": "canaperがCRANに登録されました",
+    "section": "",
+    "text": "(Read this blogpost in English)\ncanaper v1.0.0がCRANに登録されました！今までいくつかのRパッケージを書いてGitHubで公開したことがありますが、自分のパッケージがCRANに登録されるのが初めてです。\nそもそも、canaperって一体何だろう？\nパッケージのDESCRIPTIONにはこのような文章があります：\n\ncanaper provides functions to analyze the spatial distribution of biodiversity, in particular categorical analysis of neo- and paleo-endemism (CANAPE) as described in Mishler et al (2014) doi:10.1038/ncomms5473. canaper conducts statistical tests to determine the types of endemism that occur in a study area while accounting for the evolutionary relationships of species.\n\nつまり、canaperは生物多様性の地理的分布を解析する関数を提供します。特に、生物の進化的な関係を考慮しながら、ある地域における固有性の種類を統計的に検証する、categorical analysis of neo- and paleo-endemism（CANAPE）というMishler等（2014）doi:10.1038/ncomms5473 が開発した解析を行います。\nもしも上の話を読んで「面白い！」と思ったら、是非続きを読んでください。"
+  },
+  {
+    "objectID": "posts/2022-10-07_canaper/index.html#系統的固有性とcanape",
+    "href": "posts/2022-10-07_canaper/index.html#系統的固有性とcanape",
+    "title": "canaperがCRANに登録されました",
+    "section": "系統的固有性とCANAPE",
+    "text": "系統的固有性とCANAPE\n生物多様性は種数、つまり、ある地域における種の数で測られることがよくあります。それと同じように、固有性はある地域にしか生息しない種の数で測ることがよくあります。しかし、このような、種名だけを使うアプローチは種の進化的な歴史を考慮しません。最近、分子系統樹の増加によって、種の進化的な歴史を考慮した生物多様性を測定する方法がいくつか開発されました。その一つは系統的固有性(Phylogenetic endemism, PE; Rosauer ほか 2009)です。PEは種ではなく、系統樹の枝によって固有性を測る方法です。\nPEを使うことによって、生物多様性を生み出す進化的なプロセスを垣間見ることができる。例えば、PEの高い、短い枝が密集している地域は最近の種分化（放散）によってできた可能性があり、このような地域を「neo-endemic」と呼びます。一方で、PEの高い、長い枝が密集している地域はかつて広く分布していた系統が多く絶滅したことによってできた可能性が高く、このような地域を「paleo-endemic」と呼びます。このような地域の区別をするために、Mishler ほか (2014) がCANAPEという方法を開発しました。\ncanaperの目的はRでCANAPEを行うことです。"
+  },
+  {
+    "objectID": "posts/2022-10-07_canaper/index.html#実例オーストラリアのアカシア",
+    "href": "posts/2022-10-07_canaper/index.html#実例オーストラリアのアカシア",
+    "title": "canaperがCRANに登録されました",
+    "section": "実例：オーストラリアのアカシア",
+    "text": "実例：オーストラリアのアカシア\n\n\n\nAcacia pycnantha、写真Bidgee\n\n\ncanaperには元々のCANAPEの論文で解析されたデータセットが備えられています。オーストラリア産のアカシア1 のデータです。系統樹とコミュニティマトリックス（群集⾏列）からなっています。このデータセットを用いて簡単なデモを行います2。\nここで詳細には入りませんが、この例についてもっと知りたければ、canaperのウェブサイトをご覧ください。\nCANAPE解析の全部を二つのコマンドだけでできます：cpr_rand_test()と cpr_classify_endem()。\n\nlibrary(canaper)\nlibrary(tidyverse)\n\n# 再現のためにシードを設定する\nset.seed(12345)\n\n# 1. ランダム化比解析を行う\nacacia_rand_res &lt;- cpr_rand_test(\n  acacia$comm, acacia$phy,\n  null_model = \"curveball\",\n  n_reps = 99, n_iterations = 10000,\n  tbl_out = TRUE\n)\n\n# 2. 固有性を分類化する\nacacia_canape &lt;- cpr_classify_endem(acacia_rand_res)\n\nでは、アウトプットをみてみましょう。\ncpr_rand_testがたくさん（全部で５４）の列を返します。コミュニティの各地点について、様々な（PEを含めた）指標です。\n\nacacia_rand_res\n\n# A tibble: 3,037 × 55\n   site    pd_obs pd_rand_mean pd_rand_sd pd_obs_z pd_obs_c_upper pd_obs_c_lower\n   &lt;chr&gt;    &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;\n 1 -1025… 0.0145        0.0227    0.00506  -1.62                1             98\n 2 -1025… 0.0382        0.0497    0.00745  -1.54                8             91\n 3 -1025… 0.0378        0.0369    0.00635   0.138              55             44\n 4 -1025… 0.0570        0.0613    0.00829  -0.517              33             66\n 5 -1025… 0.0409        0.0419    0.00614  -0.172              41             58\n 6 -1025… 0.00998       0.0101    0.00193  -0.0429             49             48\n 7 -1025… 0.0187        0.0225    0.00393  -0.958              19             80\n 8 -1025… 0.0434        0.0536    0.00902  -1.14               15             84\n 9 -1025… 0.0111        0.0101    0.00197   0.495              81             18\n10 -1025… 0.0903        0.0876    0.0112    0.240              61             38\n# … with 3,027 more rows, and 48 more variables: pd_obs_q &lt;dbl&gt;,\n#   pd_obs_p_upper &lt;dbl&gt;, pd_obs_p_lower &lt;dbl&gt;, pd_alt_obs &lt;dbl&gt;,\n#   pd_alt_rand_mean &lt;dbl&gt;, pd_alt_rand_sd &lt;dbl&gt;, pd_alt_obs_z &lt;dbl&gt;,\n#   pd_alt_obs_c_upper &lt;dbl&gt;, pd_alt_obs_c_lower &lt;dbl&gt;, pd_alt_obs_q &lt;dbl&gt;,\n#   pd_alt_obs_p_upper &lt;dbl&gt;, pd_alt_obs_p_lower &lt;dbl&gt;, rpd_obs &lt;dbl&gt;,\n#   rpd_rand_mean &lt;dbl&gt;, rpd_rand_sd &lt;dbl&gt;, rpd_obs_z &lt;dbl&gt;,\n#   rpd_obs_c_upper &lt;dbl&gt;, rpd_obs_c_lower &lt;dbl&gt;, rpd_obs_q &lt;dbl&gt;, …\n\n\ncpr_classify_endem()がもう一つの列をデータに付けます。新しい列は固有性の種類です。それぞれの種類が何回観察されたのか、数えてみましょう：\n\ncount(acacia_canape, endem_type)\n\n# A tibble: 5 × 2\n  endem_type          n\n  &lt;chr&gt;           &lt;int&gt;\n1 mixed             176\n2 neo                 5\n3 not significant  2827\n4 paleo              12\n5 super              17\n\n\nそして、今回計算した固有性の種類を地図にするとこうなります：\n\n\nコード\n# まず、図を作るためにデータをちょっといじる\n# （経緯度の列を加える）\nacacia_canape &lt;- acacia_canape |&gt;\n  separate(site, c(\"long\", \"lat\"), sep = \":\") |&gt;\n  mutate(across(c(long, lat), parse_number))\n\n# 図のテーマをいじる\ntheme_update(\n  panel.background = element_rect(fill = \"white\", color = \"white\"),\n  panel.grid.major = element_line(color = \"grey60\"),\n  panel.grid.minor = element_blank()\n  )\n\nggplot(acacia_canape, aes(x = long, y = lat, fill = endem_type)) +\n  geom_tile() +\n  # cpr_endem_cols_4 はcanaperに入っているカラーユニバーサルデザインのパレット\n  scale_fill_manual(values = cpr_endem_cols_4) +\n  coord_fixed() +\n  guides(\n    fill = guide_legend(title.position = \"top\", label.position = \"bottom\")\n  ) +\n  theme(legend.position = \"bottom\", legend.title = element_blank())"
+  },
+  {
+    "objectID": "posts/2022-10-07_canaper/index.html#ropensci",
+    "href": "posts/2022-10-07_canaper/index.html#ropensci",
+    "title": "canaperがCRANに登録されました",
+    "section": "rOpenSci",
+    "text": "rOpenSci\nもう一つ今回で初めてだったのがROpenSciにパッケージを投稿することでした。rOpenSciはRで書かれた研究用のソフトを支援する団体です。もし自分の研究用のパッケージを公開しようと考えているなら、とてもおすすめです。\nというのは、まずはRパケージの書き方について非常に丁寧な説明書を提供しているからです。また、パッケージの自動的なチェックを行うパッケージも。これを使うだけでも自分のコードの腕がかなり上がりました。\n次に、rOpenSciに投稿されたパッケージは徹底的なコードレビュー（査読）を受けることになっています。こうすることによって、自分だけではなかなか気づかなかったことを教えていただき、さらにコードの改善につながりました3。\nしかし、何と言っても、やはりrOpenSciのコミュニティが素晴らしいです。とてもアクティブで広く開かれたコミュニティです。活動としては、Community Call（誰でも参加できるビデオコール）、バーチャルコーワークスペース、やSlackのチャットチャンネルがあります。\nご興味のある方は是非試してくださいね！そして、rOpenSciに感謝します!"
+  },
+  {
+    "objectID": "posts/2022-10-07_canaper/index.html#参考情報",
+    "href": "posts/2022-10-07_canaper/index.html#参考情報",
+    "title": "canaperがCRANに登録されました",
+    "section": "参考情報",
+    "text": "参考情報\ncanaperについてもっと知りたい方はGitHubのサイト、パッケージのサイト、およびプレプリントをご覧下さい。"
+  },
+  {
+    "objectID": "posts/2022-10-07_canaper/index.html#footnotes",
+    "href": "posts/2022-10-07_canaper/index.html#footnotes",
+    "title": "canaperがCRANに登録されました",
+    "section": "脚注",
+    "text": "脚注\n\n\nアカシアはオーストラリアの被子植物の中で最も種が多い属です。１０００種近くあります。↩︎\nなお、本デモに使う解析設定は都合上使っているだけで、本格的な解析にはおすすめしません。↩︎\n査読者のKlaus SchliepとLuis Osorio、そして編集者のToby Hockingに感謝しています！↩︎"
+  },
+  {
     "objectID": "posts/2021-11-24_using-giscus/index.html",
     "href": "posts/2021-11-24_using-giscus/index.html",
+    "title": "Enable giscus in Distill",
+    "section": "",
+    "text": "Since writing this blogpost, a new publishing system called Quarto is now available that supports giscus natively. If you are setting up a new blog or website, you may want to consider using Quarto instead of Distill1. It will save you the trouble of setting up everything like I describe below."
+  },
+  {
+    "objectID": "posts/2021-11-24_using-giscus/index.html#update-2022-06-06",
+    "href": "posts/2021-11-24_using-giscus/index.html#update-2022-06-06",
     "title": "Enable giscus in Distill",
     "section": "",
     "text": "Since writing this blogpost, a new publishing system called Quarto is now available that supports giscus natively. If you are setting up a new blog or website, you may want to consider using Quarto instead of Distill1. It will save you the trouble of setting up everything like I describe below."
@@ -137,81 +319,95 @@
     "href": "posts/2021-11-24_using-giscus/index.html#how-to-set-up-giscus-on-distill",
     "title": "Enable giscus in Distill",
     "section": "How to set up giscus on Distill",
-    "text": "How to set up giscus on Distill\nThere are several blogposts 4 on how to enable utterances on Distill, but none that I’ve found so far on giscus. So, here goes!\n\nEnable Discussions on your blog repo. Optionally, if you want to use a non-default Discussions category for storing giscus content, add a new category. I did this and called it “Comments”. As recommended by giscus, it’s a good idea to set the discussion format to “Announcement” so that non-authorized users can’t add content via the Discussions interface (only the giscus widget on your blog).\nInstall the giscus GitHub app and configure it to have access to your blog’s repo.\nGo to the giscus app interface, scroll down to “configuration” and fill in the details for your blog. Once you’ve done so, further down you should see an HTML code block under “Enable giscus” populated with your information.\n\n\n\n\nFigure 2: giscus configuration menu.\n\n\n\n\n\nFigure 3: giscus HTML block. Once you fill in the fields in the configuration menu, the parts starting with [ENTER ...] will get automatically populated.\n\n\nAs described in Miles McBain’s blogpost, unfortunately in Distill, you can’t just paste the HTML directly into an Rmd file. It won’t show up. But the same work-around that he describes for utterances also happily works for giscus! Read on…\n\nAdd an .html file (I’ve called mine giscus.html) to the root of your blog repo that looks like this (and is based off of Miles’ HTML):\n\n<script>\n   document.addEventListener(\"DOMContentLoaded\", function () {\n     if (!/posts/.test(location.pathname)) {\n       return;\n     }\n\n     var script = document.createElement(\"script\");\n     script.src = \"https://giscus.app/client.js\";\n     script.setAttribute(\"data-repo\", \"[ENTER REPO HERE]\");\n     script.setAttribute(\"data-repo-id\", \"[ENTER REPO ID HERE]\");\n     script.setAttribute(\"data-category\", \"[ENTER CATEGORY NAME HERE]\");\n     script.setAttribute(\"data-category-id\", \"[ENTER CATEGORY ID HERE]\");\n     script.setAttribute(\"data-mapping\", \"pathname\");\n     script.setAttribute(\"data-reactions-enabled\", \"0\");\n     script.setAttribute(\"data-emit-metadata\", \"0\");\n     script.setAttribute(\"data-theme\", \"light\");\n     script.setAttribute(\"data-lang\", \"en\");\n\n     /* wait for article to load, append script to article element */\n     var observer = new MutationObserver(function (mutations, observer) {\n       var article = document.querySelector(\"d-article\");\n       if (article) {\n         observer.disconnect();\n         /* HACK: article scroll */\n         article.setAttribute(\"style\", \"overflow-y: hidden\");\n         article.appendChild(script);\n       }\n     });\n\n     observer.observe(document.body, { childList: true });\n   });\n </script>\nIf you compare the above code with the HTML block in the giscus app (Figure 3), you should be able to see how the script.setAttribute lines above map to the key-value pairs in the HTML block in the giscus app. All we have to do is copy the contents of the HTML block over to this giscus.html file. You can see what my giscus.html file looks like here.\n\nModify _site.yml so that the giscus.html file gets loaded on every Distill article page 5:\n\noutput: \n  distill::distill_article:\n    includes:\n      in_header: giscus.html\nThat’s it! Or it should be anyways. I recommend trying a test comment to make sure everything is working (nobody will tell you otherwise…)"
+    "text": "How to set up giscus on Distill\nThere are several blogposts 4 on how to enable utterances on Distill, but none that I’ve found so far on giscus. So, here goes!\n\nEnable Discussions on your blog repo. Optionally, if you want to use a non-default Discussions category for storing giscus content, add a new category. I did this and called it “Comments”. As recommended by giscus, it’s a good idea to set the discussion format to “Announcement” so that non-authorized users can’t add content via the Discussions interface (only the giscus widget on your blog).\nInstall the giscus GitHub app and configure it to have access to your blog’s repo.\nGo to the giscus app interface, scroll down to “configuration” and fill in the details for your blog. Once you’ve done so, further down you should see an HTML code block under “Enable giscus” populated with your information.\n\n\n\n\nFigure 2: giscus configuration menu.\n\n\n\n\n\nFigure 3: giscus HTML block. Once you fill in the fields in the configuration menu, the parts starting with [ENTER ...] will get automatically populated.\n\n\nAs described in Miles McBain’s blogpost, unfortunately in Distill, you can’t just paste the HTML directly into an Rmd file. It won’t show up. But the same work-around that he describes for utterances also happily works for giscus! Read on…\n\nAdd an .html file (I’ve called mine giscus.html) to the root of your blog repo that looks like this (and is based off of Miles’ HTML):\n\n&lt;script&gt;\n   document.addEventListener(\"DOMContentLoaded\", function () {\n     if (!/posts/.test(location.pathname)) {\n       return;\n     }\n\n     var script = document.createElement(\"script\");\n     script.src = \"https://giscus.app/client.js\";\n     script.setAttribute(\"data-repo\", \"[ENTER REPO HERE]\");\n     script.setAttribute(\"data-repo-id\", \"[ENTER REPO ID HERE]\");\n     script.setAttribute(\"data-category\", \"[ENTER CATEGORY NAME HERE]\");\n     script.setAttribute(\"data-category-id\", \"[ENTER CATEGORY ID HERE]\");\n     script.setAttribute(\"data-mapping\", \"pathname\");\n     script.setAttribute(\"data-reactions-enabled\", \"0\");\n     script.setAttribute(\"data-emit-metadata\", \"0\");\n     script.setAttribute(\"data-theme\", \"light\");\n     script.setAttribute(\"data-lang\", \"en\");\n\n     /* wait for article to load, append script to article element */\n     var observer = new MutationObserver(function (mutations, observer) {\n       var article = document.querySelector(\"d-article\");\n       if (article) {\n         observer.disconnect();\n         /* HACK: article scroll */\n         article.setAttribute(\"style\", \"overflow-y: hidden\");\n         article.appendChild(script);\n       }\n     });\n\n     observer.observe(document.body, { childList: true });\n   });\n &lt;/script&gt;\nIf you compare the above code with the HTML block in the giscus app (Figure 3), you should be able to see how the script.setAttribute lines above map to the key-value pairs in the HTML block in the giscus app. All we have to do is copy the contents of the HTML block over to this giscus.html file. You can see what my giscus.html file looks like here.\n\nModify _site.yml so that the giscus.html file gets loaded on every Distill article page 5:\n\noutput: \n  distill::distill_article:\n    includes:\n      in_header: giscus.html\nThat’s it! Or it should be anyways. I recommend trying a test comment to make sure everything is working (nobody will tell you otherwise…)"
   },
   {
-    "objectID": "posts/2019-02-16_building-r-docker-images-with-secrets/index.html",
-    "href": "posts/2019-02-16_building-r-docker-images-with-secrets/index.html",
-    "title": "Building R docker images with secrets",
+    "objectID": "posts/2021-11-24_using-giscus/index.html#footnotes",
+    "href": "posts/2021-11-24_using-giscus/index.html#footnotes",
+    "title": "Enable giscus in Distill",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nI have converted my website to Quarto.↩︎\nblogdown and Distill are R packages for making websites. In a nutshell, Distill is much simpler to use than blogdown, at the cost of some design flexibility. For more about making the switch, you can get caught up with posts from Thomas Mock, Frie Preu, Lisa Lendway, and Andreas Handel.↩︎\ndisqus and utterances are tools that let users comment on blog posts. Recently many R-bloggers have been moving away from disqus because it has a habit of tracking user’s data and causing page bloat. More recently, when I checked on my disqus account (in the process of migrating away!), it had a option to “opt-out” of data tracking, but that means data-tracking is on by default.↩︎\nFor example, Vebash Naidoo’s tutorial and Michael McCarthy’s post describing how to control the location of the comments section.↩︎\nThe _site.yml file is longer than this, but I’m just showing the relevant code to add. You can see my _site.yml file here.↩︎"
+  },
+  {
+    "objectID": "posts/2021-06-02_color-scheme-anc-states/index.html",
+    "href": "posts/2021-06-02_color-scheme-anc-states/index.html",
+    "title": "Selecting color schemes for mapping ancestral states",
     "section": "",
-    "text": "Docker is an incredibly useful tool for running reproducible analysis workflows. For useRs, the rocker collection of images is very convenient for creating version-controlled R environments. This is pretty straightforward if you are using packages on CRAN, or publicly available packages on GitHub. But what if we want to use private packages on GitHub, or need for any other reason to enter authentication credentials during the build?\nThere are various ways to copy data into the image during the build, but when handling secrets that we don’t want hanging around after it’s finished, caution is needed. Approaches such as using COPY or ARGS will leave traces in the build. Staged builds are more secure, but tricky. Fortunately, as of v. 18.09, Docker is now providing official support for handling secrets."
+    "text": "The phytools package provides (among many other things) the contMap() function for estimating ancestral character states and visualizing their changes along the branches of a phylogenetic tree. It can either produce the plot directly (default), or be saved as an object with the plot = FALSE argument, to be further manipulated and plotted later with plot()."
   },
   {
-    "objectID": "posts/2019-02-16_building-r-docker-images-with-secrets/index.html#a-simple-example",
-    "href": "posts/2019-02-16_building-r-docker-images-with-secrets/index.html#a-simple-example",
-    "title": "Building R docker images with secrets",
-    "section": "A simple example",
-    "text": "A simple example\nHere is how to use the new Docker features to securely pass a secret during a build 1.\nThere are few non-default settings that need to be specified for this. First of all, prior to the docker build command, you need to specify that you want to use the new BuildKit backend with DOCKER_BUILDKIT=1. So the command starts DOCKER_BUILDKIT=1 docker build ...\nNext, we must add a syntax directive to the top line of the Dockerfile. For example, for a Dockerfile based on rocker/tidyverse:\n# syntax=docker/dockerfile:1.0.0-experimental\nFROM rocker/tidyverse\nSave your secrets in a text file. Let’s call it my_secret_stash2. If you are using it to store your GitHub PAT, it would just be one line with the PAT. Here, let’s put in some random word:\necho \"FABULOUS\" > my_secret_stash\nThis is all we need to use secrets during the build. Here is an example Dockerfile similar to the one in the Docker documentation.\n# syntax = docker/dockerfile:1.0-experimental\nFROM alpine\n\nRUN --mount=type=secret,id=mysecret cat /run/secrets/mysecret\nTo see how it works, save this as Dockerfile, then from the same directory containing Dockerfile and my_secret_stash, build the image:\nDOCKER_BUILDKIT=1 docker build --progress=plain --no-cache \\\n--secret id=mysecret,src=my_secret_stash .\nI’ve truncated the output, but you should see something like this (the exact build step number may vary).\n\n#7 [2/2] RUN --mount=type=secret,id=mysecret cat /run/secrets/mysecret\n#7       digest: sha256:75601a522ebe80ada66dedd9dd86772ca932d30d7e1b11bba94c04aa55c237de\n#7         name: \"[2/2] RUN --mount=type=secret,id=mysecret cat /run/secrets/mysecret\"\n#7      started: 2019-02-18 20:51:20.1092144 +0000 UTC\n#7 0.668 FABULOUS\n#7    completed: 2019-02-18 20:51:21.0927656 +0000 UTC\n#7     duration: 983.5512ms\n\nCan you spot our secret? It’s showing up from the cat command. However, it will not remain in the image."
-  },
-  {
-    "objectID": "posts/2019-02-16_building-r-docker-images-with-secrets/index.html#installing-a-private-r-package",
-    "href": "posts/2019-02-16_building-r-docker-images-with-secrets/index.html#installing-a-private-r-package",
-    "title": "Building R docker images with secrets",
-    "section": "Installing a private R package",
-    "text": "Installing a private R package\nTo install a package from my private GitHub repo, I created an additional simple R script, called install_git_packages.R:\n# install_git_packages.R\nsecret <- commandArgs(trailing = TRUE)\ndevtools::install_github(\"joelnitta/my-private-package\", auth_token = secret)\ncommandArgs(trailing = TRUE) will return whatever command line arguments were passed to Rscript after the name of the script, as a character vector.\nWe will call this script from the Dockerfile and pass the secret to it.\nHere is the Dockerfile to do that. (Note that although we copy the install_git_packages.R script into the image, we are passing it the secret variable that is only present during the build, so this should not remain afterwards.)\n# syntax = docker/dockerfile:1.0-experimental\nFROM rocker/tidyverse:3.5.1\n\nENV DEBIAN_FRONTEND noninteractive\n\nCOPY install_git_packages.R .\n\nRUN apt-get update\n\nRUN --mount=type=secret,id=mysecret \\\nRscript install_git_packages.R `cat /run/secrets/mysecret`\nLet’s build the image and tag it:\nDOCKER_BUILDKIT=1 docker build --progress=plain --no-cache \\\n--secret id=mysecret,src=my_secret_stash . -t my_special_image\nThat’s it!"
-  },
-  {
-    "objectID": "posts/2022-10-07_canaper/index.html",
-    "href": "posts/2022-10-07_canaper/index.html",
-    "title": "canaperがCRANに登録されました",
+    "objectID": "posts/2021-06-02_color-scheme-anc-states/index.html#about-contmap",
+    "href": "posts/2021-06-02_color-scheme-anc-states/index.html#about-contmap",
+    "title": "Selecting color schemes for mapping ancestral states",
     "section": "",
-    "text": "(Read this blogpost in English)\ncanaper v1.0.0がCRANに登録されました！今までいくつかのRパッケージを書いてGitHubで公開したことがありますが、自分のパッケージがCRANに登録されるのが初めてです。\nそもそも、canaperって一体何だろう？\nパッケージのDESCRIPTIONにはこのような文章があります：\n\ncanaper provides functions to analyze the spatial distribution of biodiversity, in particular categorical analysis of neo- and paleo-endemism (CANAPE) as described in Mishler et al (2014) doi:10.1038/ncomms5473. canaper conducts statistical tests to determine the types of endemism that occur in a study area while accounting for the evolutionary relationships of species.\n\nつまり、canaperは生物多様性の地理的分布を解析する関数を提供します。特に、生物の進化的な関係を考慮しながら、ある地域における固有性の種類を統計的に検証する、categorical analysis of neo- and paleo-endemism（CANAPE）というMishler等（2014）doi:10.1038/ncomms5473 が開発した解析を行います。\nもしも上の話を読んで「面白い！」と思ったら、是非続きを読んでください。"
+    "text": "The phytools package provides (among many other things) the contMap() function for estimating ancestral character states and visualizing their changes along the branches of a phylogenetic tree. It can either produce the plot directly (default), or be saved as an object with the plot = FALSE argument, to be further manipulated and plotted later with plot()."
   },
   {
-    "objectID": "posts/2022-10-07_canaper/index.html#系統的固有性とcanape",
-    "href": "posts/2022-10-07_canaper/index.html#系統的固有性とcanape",
-    "title": "canaperがCRANに登録されました",
-    "section": "系統的固有性とCANAPE",
-    "text": "系統的固有性とCANAPE\n生物多様性は種数、つまり、ある地域における種の数で測られることがよくあります。それと同じように、固有性はある地域にしか生息しない種の数で測ることがよくあります。しかし、このような、種名だけを使うアプローチは種の進化的な歴史を考慮しません。最近、分子系統樹の増加によって、種の進化的な歴史を考慮した生物多様性を測定する方法がいくつか開発されました。その一つは系統的固有性(Phylogenetic endemism, PE; Rosauer ほか 2009)です。PEは種ではなく、系統樹の枝によって固有性を測る方法です。\nPEを使うことによって、生物多様性を生み出す進化的なプロセスを垣間見ることができる。例えば、PEの高い、短い枝が密集している地域は最近の種分化（放散）によってできた可能性があり、このような地域を「neo-endemic」と呼びます。一方で、PEの高い、長い枝が密集している地域はかつて広く分布していた系統が多く絶滅したことによってできた可能性が高く、このような地域を「paleo-endemic」と呼びます。このような地域の区別をするために、Mishler ほか (2014) がCANAPEという方法を開発しました。\ncanaperの目的はRでCANAPEを行うことです。"
+    "objectID": "posts/2021-06-02_color-scheme-anc-states/index.html#default-colors",
+    "href": "posts/2021-06-02_color-scheme-anc-states/index.html#default-colors",
+    "title": "Selecting color schemes for mapping ancestral states",
+    "section": "Default colors",
+    "text": "Default colors\nI have to say I’m not a fan of the default color scheme, which is a rainbow palette going from red through yellow and green to blue.\nFor example, let’s borrow some example code and look at the default plot:\n\n# code modified slightly from http://www.phytools.org/eqg2015/asr.html\n\n## Load needed packages for this blogpost\nlibrary(phytools)\nlibrary(ggtree)\nlibrary(tidyverse)\nlibrary(scico)\nlibrary(viridisLite)\n\n\n## Load anole tree\nanole.tree &lt;- read.tree(\"http://www.phytools.org/eqg2015/data/anole.tre\")\n\n## Load anole trait data, extract snout-vent-length (svl) as named vector\nsvl &lt;- read_csv(\"http://www.phytools.org/eqg2015/data/svl.csv\") %&gt;%\n  mutate(svl = set_names(svl, species)) %&gt;%\n  pull(svl)\n\n# Plot with default color scheme\ncontmap_obj &lt;- contMap(anole.tree, svl, plot = FALSE)\n\nplot(\n  contmap_obj, \n  type=\"fan\", \n  legend = 0.7*max(nodeHeights(anole.tree)),\n  fsize = c(0.5, 0.7))\n\n\n\n\n\n\nFigure 1: Default rainbow color scheme. Pretty, but confusing.\n\n\n\n\nAlthough this does provide a wide range of colors, it’s not obvious why one color is greater or less than the others. In particular it’s hard to discern the order of intermediate values (yellow, green, light blue). Indeed, there has been much written on why the rainbow palette is generally not a good way to visualize continuous data."
   },
   {
-    "objectID": "posts/2022-10-07_canaper/index.html#実例オーストラリアのアカシア",
-    "href": "posts/2022-10-07_canaper/index.html#実例オーストラリアのアカシア",
-    "title": "canaperがCRANに登録されました",
-    "section": "実例：オーストラリアのアカシア",
-    "text": "実例：オーストラリアのアカシア\n\n\n\nAcacia pycnantha、写真Bidgee\n\n\ncanaperには元々のCANAPEの論文で解析されたデータセットが備えられています。オーストラリア産のアカシア1 のデータです。系統樹とコミュニティマトリックス（群集⾏列）からなっています。このデータセットを用いて簡単なデモを行います2。\nここで詳細には入りませんが、この例についてもっと知りたければ、canaperのウェブサイトをご覧ください。\nCANAPE解析の全部を二つのコマンドだけでできます：cpr_rand_test()と cpr_classify_endem()。\n\nlibrary(canaper)\nlibrary(tidyverse)\n\n# 再現のためにシードを設定する\nset.seed(12345)\n\n# 1. ランダム化比解析を行う\nacacia_rand_res <- cpr_rand_test(\n  acacia$comm, acacia$phy,\n  null_model = \"curveball\",\n  n_reps = 99, n_iterations = 10000,\n  tbl_out = TRUE\n)\n\n# 2. 固有性を分類化する\nacacia_canape <- cpr_classify_endem(acacia_rand_res)\n\nでは、アウトプットをみてみましょう。\ncpr_rand_testがたくさん（全部で５４）の列を返します。コミュニティの各地点について、様々な（PEを含めた）指標です。\n\nacacia_rand_res\n\n# A tibble: 3,037 × 55\n   site    pd_obs pd_rand_mean pd_rand_sd pd_obs_z pd_obs_c_upper pd_obs_c_lower\n   <chr>    <dbl>        <dbl>      <dbl>    <dbl>          <dbl>          <dbl>\n 1 -1025… 0.0145        0.0227    0.00506  -1.62                1             98\n 2 -1025… 0.0382        0.0497    0.00745  -1.54                8             91\n 3 -1025… 0.0378        0.0369    0.00635   0.138              55             44\n 4 -1025… 0.0570        0.0613    0.00829  -0.517              33             66\n 5 -1025… 0.0409        0.0419    0.00614  -0.172              41             58\n 6 -1025… 0.00998       0.0101    0.00193  -0.0429             49             48\n 7 -1025… 0.0187        0.0225    0.00393  -0.958              19             80\n 8 -1025… 0.0434        0.0536    0.00902  -1.14               15             84\n 9 -1025… 0.0111        0.0101    0.00197   0.495              81             18\n10 -1025… 0.0903        0.0876    0.0112    0.240              61             38\n# … with 3,027 more rows, and 48 more variables: pd_obs_q <dbl>,\n#   pd_obs_p_upper <dbl>, pd_obs_p_lower <dbl>, pd_alt_obs <dbl>,\n#   pd_alt_rand_mean <dbl>, pd_alt_rand_sd <dbl>, pd_alt_obs_z <dbl>,\n#   pd_alt_obs_c_upper <dbl>, pd_alt_obs_c_lower <dbl>, pd_alt_obs_q <dbl>,\n#   pd_alt_obs_p_upper <dbl>, pd_alt_obs_p_lower <dbl>, rpd_obs <dbl>,\n#   rpd_rand_mean <dbl>, rpd_rand_sd <dbl>, rpd_obs_z <dbl>,\n#   rpd_obs_c_upper <dbl>, rpd_obs_c_lower <dbl>, rpd_obs_q <dbl>, …\n\n\ncpr_classify_endem()がもう一つの列をデータに付けます。新しい列は固有性の種類です。それぞれの種類が何回観察されたのか、数えてみましょう：\n\ncount(acacia_canape, endem_type)\n\n# A tibble: 5 × 2\n  endem_type          n\n  <chr>           <int>\n1 mixed             176\n2 neo                 5\n3 not significant  2827\n4 paleo              12\n5 super              17\n\n\nそして、今回計算した固有性の種類を地図にするとこうなります：\n\n\nコード\n# まず、図を作るためにデータをちょっといじる\n# （経緯度の列を加える）\nacacia_canape <- acacia_canape |>\n  separate(site, c(\"long\", \"lat\"), sep = \":\") |>\n  mutate(across(c(long, lat), parse_number))\n\n# 図のテーマをいじる\ntheme_update(\n  panel.background = element_rect(fill = \"white\", color = \"white\"),\n  panel.grid.major = element_line(color = \"grey60\"),\n  panel.grid.minor = element_blank()\n  )\n\nggplot(acacia_canape, aes(x = long, y = lat, fill = endem_type)) +\n  geom_tile() +\n  # cpr_endem_cols_4 はcanaperに入っているカラーユニバーサルデザインのパレット\n  scale_fill_manual(values = cpr_endem_cols_4) +\n  coord_fixed() +\n  guides(\n    fill = guide_legend(title.position = \"top\", label.position = \"bottom\")\n  ) +\n  theme(legend.position = \"bottom\", legend.title = element_blank())"
+    "objectID": "posts/2021-06-02_color-scheme-anc-states/index.html#defining-a-new-color-palette",
+    "href": "posts/2021-06-02_color-scheme-anc-states/index.html#defining-a-new-color-palette",
+    "title": "Selecting color schemes for mapping ancestral states",
+    "section": "Defining a new color palette",
+    "text": "Defining a new color palette\nphytools::setMap() can be used to specify another color palette. setMap() passes its second argument (a vector of color names or hexadecimals) to colorRampPalette(). colorRampPalette() is a bit unusual in that it’s a function that produces a function, in this case, one that generates a vector of colors interpolating between the original input values:\n\n# colorRampPalette() produces a function\nmy_color_func &lt;- colorRampPalette(c(\"red\", \"yellow\"))\nclass(my_color_func)\n\n[1] \"function\"\n\n# The function generates n colors interpolating between\n# the colors originally passed to colorRampPalette()\nmy_colors &lt;- my_color_func(n = 6)\nscales::show_col(my_colors)\n\n\n\n\nFigure 2: A red-to-yellow color ramp.\n\n\n\n\nSo, this works fine for generating custom color gradients. But designing accurate, color-blind friendly color palettes is not a simple task. Fortunately, there are several packages available with such carefully crafted palettes. Two of my favorite are viridis and scico. How can we use these with the plotting function in phytools?"
   },
   {
-    "objectID": "posts/2022-10-07_canaper/index.html#ropensci",
-    "href": "posts/2022-10-07_canaper/index.html#ropensci",
-    "title": "canaperがCRANに登録されました",
-    "section": "rOpenSci",
-    "text": "rOpenSci\nもう一つ今回で初めてだったのがROpenSciにパッケージを投稿することでした。rOpenSciはRで書かれた研究用のソフトを支援する団体です。もし自分の研究用のパッケージを公開しようと考えているなら、とてもおすすめです。\nというのは、まずはRパケージの書き方について非常に丁寧な説明書を提供しているからです。また、パッケージの自動的なチェックを行うパッケージも。これを使うだけでも自分のコードの腕がかなり上がりました。\n次に、rOpenSciに投稿されたパッケージは徹底的なコードレビュー（査読）を受けることになっています。こうすることによって、自分だけではなかなか気づかなかったことを教えていただき、さらにコードの改善につながりました3。\nしかし、何と言っても、やはりrOpenSciのコミュニティが素晴らしいです。とてもアクティブで広く開かれたコミュニティです。活動としては、Community Call（誰でも参加できるビデオコール）、バーチャルコーワークスペース、やSlackのチャットチャンネルがあります。\nご興味のある方は是非試してくださいね！そして、rOpenSciに感謝します!"
+    "objectID": "posts/2021-06-02_color-scheme-anc-states/index.html#using-viridis-or-scico-palettes",
+    "href": "posts/2021-06-02_color-scheme-anc-states/index.html#using-viridis-or-scico-palettes",
+    "title": "Selecting color schemes for mapping ancestral states",
+    "section": "Using viridis or scico palettes",
+    "text": "Using viridis or scico palettes\nWell, it turns out that as long as we specify the same number of colors, we can replicate the viridis color palette with colorRampPalette(). The only difference is the alpha, or transparency level, indicated at the end of each hexidecimal with two letters (here “FF”). There is no reason to use transparency here anyways, so that doesn’t matter.\n\n# viridis color palette with 6 colors\nviridis(6)\n\n[1] \"#440154FF\" \"#414487FF\" \"#2A788EFF\" \"#22A884FF\" \"#7AD151FF\" \"#FDE725FF\"\n\n# colorRampPalette() replicating viridis color palette\ncolorRampPalette(viridis(6))(6)\n\n[1] \"#440154\" \"#414487\" \"#2A788E\" \"#22A884\" \"#7AD151\" \"#FDE725\"\n\n\nSo here is the viridis version of the phytools plot:\n\n# Count the number of unique character states in the observed data:\nn_cols &lt;- n_distinct(svl)\n\n# Change the color palette\ncontmap_obj_viridis &lt;- setMap(contmap_obj, viridis(n_cols))\n\n# Plot the mapped characters with the new colors\nplot(\n  contmap_obj_viridis, \n  type=\"fan\", \n  legend = 0.7*max(nodeHeights(anole.tree)),\n  fsize = c(0.5, 0.7))\n\n\n\n\nFigure 3: Viridis colors. Better.\n\n\n\n\nAnd here is another one, this time using a palette from scico:\n\n# Change the color palette\ncontmap_obj_scico &lt;- setMap(contmap_obj, scico(n_cols, palette = \"bilbao\"))\n\n# Plot the mapped characters with the new colors\nplot(\n  contmap_obj_scico, \n  type=\"fan\", \n  legend = 0.7*max(nodeHeights(anole.tree)),\n  fsize = c(0.5, 0.7))\n\n\n\n\nFigure 4: Scico colors. My personal favorite.\n\n\n\n\nI personally find this one even easier to interpret than viridis. It’s very clear which values are low and high."
   },
   {
-    "objectID": "posts/2022-10-07_canaper/index.html#参考情報",
-    "href": "posts/2022-10-07_canaper/index.html#参考情報",
-    "title": "canaperがCRANに登録されました",
-    "section": "参考情報",
-    "text": "参考情報\ncanaperについてもっと知りたい方はGitHubのサイト、パッケージのサイト、およびプレプリントをご覧下さい。"
+    "objectID": "posts/2021-06-02_color-scheme-anc-states/index.html#ggtree",
+    "href": "posts/2021-06-02_color-scheme-anc-states/index.html#ggtree",
+    "title": "Selecting color schemes for mapping ancestral states",
+    "section": "ggtree",
+    "text": "ggtree\nJust for completeness, here is code to replicate the plot in ggtree.\n\n# Modified from https://yulab-smu.top/treedata-book/chapter4.html#color-tree\n\n# Fit an ancestral state character reconstruction\nfit &lt;- phytools::fastAnc(anole.tree, svl, vars = TRUE, CI = TRUE)\n\n# Make a dataframe with trait values at the tips\ntd &lt;- data.frame(\n  node = nodeid(anole.tree, names(svl)),\n  trait = svl)\n\n# Make a dataframe with estimated trait values at the nodes\nnd &lt;- data.frame(node = names(fit$ace), trait = fit$ace)\n\n# Combine these with the tree data for plotting with ggtree\nd &lt;- rbind(td, nd)\nd$node &lt;- as.numeric(d$node)\ntree &lt;- full_join(anole.tree, d, by = 'node')\n\nggtree(\n  tree, \n  aes(color = trait), \n  layout = 'circular', \n  ladderize = FALSE, continuous = \"color\", size = 1) +\n  # &gt;&gt;&gt; The important part! &lt;&lt;&lt;\n  # Choose your favorite scale_color_* function here: \n  scale_color_scico(palette = \"bilbao\") + \n  geom_tiplab(hjust = -.1, size = 2, color = \"black\") + \n  xlim(0, 1.2) + \n  theme(\n    legend.position = c(0, .82),\n    legend.text = element_text(size = 8),\n    legend.title = element_text(size = 8)\n  ) \n\n\n\n\nFigure 5: Scico colors with ggtree.\n\n\n\n\nThat’s it!"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "ニッタ ジョエル",
     "section": "",
-    "text": "初めまして、東京大学大学院理学系研究科・岩崎研究室の特任助教のニッタ ジョエルです。私はシダ植物の進化と生態学を研究しています。\nシダ植物は非常にユニークなライフサイクルを持つ、とても面白い研究対象です。普段目にしている植物は「胞子体」（二倍体）ですが、もう一つ、極めて小さな（通常は１センチ以下）「配偶体」（一倍体）というライフステージもあり、両方とも独立に生息しています。この特徴は他の陸上植物と根本的に異なり、シダ植物の進化にとって非常に大きな意味を持っています。私は特にシダ植物のライフサイクルがその群集形成のプロセスや生態学などに与える影響について研究しています。\nそして、再現性可能な解析やコード、特にに興味があります。この話については、ブログを見てみてください。\n\n\n\n\nハーバード大学 | 進化生物学研究科博士課程　修了 | 2016年\n東京大学 | 生物科学専攻修士課程　修了 | 2010年\nカリフォルニア大学バークレー校 | 総合生物学・日本語専攻　卒業 | 2007年\n\n\n\n\n\n東京大学大学院理学系研究科岩崎研究室 | 特任助教 | 2020年4月 - 現在\nスミソニアン国立自然史博物館 | 特別研究員 | 2019年1月 - 2020年3月\n国立科学博物館植物研究部 | 外国人特別研究員 | 2016年11月 - 2018年12月"
+    "text": "初めまして、千葉大学 大学院国際学術研究院・国際教養学部の准教授のニッタ ジョエルです。私はシダ植物の進化と生態学を研究しています。\nシダ植物は非常にユニークなライフサイクルを持つ、とても面白い研究対象です。普段目にしている植物は「胞子体」（二倍体）ですが、もう一つ、極めて小さな（通常は１センチ以下）「配偶体」（一倍体）というライフステージもあり、両方とも独立に生息しています。この特徴は他の陸上植物と根本的に異なり、シダ植物の進化にとって非常に大きな意味を持っています。私は特にシダ植物のライフサイクルがその群集形成のプロセスや生態学などに与える影響について研究しています。\nそして、再現性可能な解析やコード、特にに興味があります。この話については、ブログを見てみてください。\n\n\n\n\nハーバード大学 | 進化生物学研究科博士課程　修了 | 2016年\n東京大学 | 生物科学専攻修士課程　修了 | 2010年\nカリフォルニア大学バークレー校 | 総合生物学・日本語専攻　卒業 | 2007年\n\n\n\n\n\n千葉大学 大学院国際学術研究院 国際教養学部 | 准教授 | 2023年4月 - 現在\n東京大学大学院理学系研究科岩崎研究室 | 特任助教 | 2020年4月 - 2023年3月\nスミソニアン国立自然史博物館 | 特別研究員 | 2019年1月 - 2020年3月\n国立科学博物館植物研究部 | 外国人特別研究員 | 2016年11月 - 2018年12月"
   },
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "ブログ",
+    "objectID": "index.html#自己紹介",
+    "href": "index.html#自己紹介",
+    "title": "ニッタ ジョエル",
     "section": "",
-    "text": "canaperがCRANに登録されました\n\n\n\n\n\n\n\nR\n\n\nSpatial phylogenetics\n\n\n\n\nRパッケージcanaperの紹介\n\n\n\n\n\n\n2022/10/07\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\nEnable giscus in Distill\n\n\n\n\n\n\n\nblogging\n\n\ndistill\n\n\n\n\nHow to use the giscus commenting system on a Distill blog\n\n\n\n\n\n\n2021/11/24\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\nManaging bioinformatics pipelines with R\n\n\n\n\n\n\n\nworkflow\n\n\nreproducibility\n\n\n\n\nHow to combine Conda, Docker, and R to run modular, reproducible bioinformatics pipelines\n\n\n\n\n\n\n2021/11/16\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\nSelecting color schemes for mapping ancestral states\n\n\n\n\n\n\n\nr\n\n\nplotting\n\n\n\n\nHow to change the phytools default color scheme when visualizing the results of ancestral character state estimation\n\n\n\n\n\n\n2021/06/02\n\n\nJoel Nitta\n\n\n\n\n\n\n  \n\n\n\n\nBuilding R docker images with secrets\n\n\n\n\n\n\n\ndocker\n\n\n\n\nKeep it secret. Keep it safe.\n\n\n\n\n\n\n2019/02/16\n\n\nJoel Nitta\n\n\n\n\n\n\n一致なし"
+    "text": "初めまして、千葉大学 大学院国際学術研究院・国際教養学部の准教授のニッタ ジョエルです。私はシダ植物の進化と生態学を研究しています。\nシダ植物は非常にユニークなライフサイクルを持つ、とても面白い研究対象です。普段目にしている植物は「胞子体」（二倍体）ですが、もう一つ、極めて小さな（通常は１センチ以下）「配偶体」（一倍体）というライフステージもあり、両方とも独立に生息しています。この特徴は他の陸上植物と根本的に異なり、シダ植物の進化にとって非常に大きな意味を持っています。私は特にシダ植物のライフサイクルがその群集形成のプロセスや生態学などに与える影響について研究しています。\nそして、再現性可能な解析やコード、特にに興味があります。この話については、ブログを見てみてください。"
+  },
+  {
+    "objectID": "index.html#教育歴",
+    "href": "index.html#教育歴",
+    "title": "ニッタ ジョエル",
+    "section": "",
+    "text": "ハーバード大学 | 進化生物学研究科博士課程　修了 | 2016年\n東京大学 | 生物科学専攻修士課程　修了 | 2010年\nカリフォルニア大学バークレー校 | 総合生物学・日本語専攻　卒業 | 2007年"
+  },
+  {
+    "objectID": "index.html#職歴",
+    "href": "index.html#職歴",
+    "title": "ニッタ ジョエル",
+    "section": "",
+    "text": "千葉大学 大学院国際学術研究院 国際教養学部 | 准教授 | 2023年4月 - 現在\n東京大学大学院理学系研究科岩崎研究室 | 特任助教 | 2020年4月 - 2023年3月\nスミソニアン国立自然史博物館 | 特別研究員 | 2019年1月 - 2020年3月\n国立科学博物館植物研究部 | 外国人特別研究員 | 2016年11月 - 2018年12月"
   },
   {
     "objectID": "software.html",
     "href": "software.html",
+    "title": "ソフトウェア",
+    "section": "",
+    "text": "系統的固有性を測るRパッケージ\n Code  Website"
+  },
+  {
+    "objectID": "software.html#canaper",
+    "href": "software.html#canaper",
     "title": "ソフトウェア",
     "section": "",
     "text": "系統的固有性を測るRパッケージ\n Code  Website"

@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joel Nitta">
-<meta name="dcterms.date" content="2021-11-24">
-<meta name="description" content="How to use the giscus commenting system on a Distill blog">
+<meta name="dcterms.date" content="2023-02-21">
+<meta name="description" content="How to make a family-level phylogenetic tree of ferns (or anything else)">
 
-<title>ニッタ ジョエル - Enable giscus in Distill</title>
+<title>ニッタ ジョエル - Making a fern family tree</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -127,15 +161,15 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Enable giscus in Distill</h1>
+      <h1 class="title">Making a fern family tree</h1>
                   <div>
         <div class="description">
-          How to use the giscus commenting system on a Distill blog
+          How to make a family-level phylogenetic tree of ferns (or anything else)
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">blogging</div>
-                <div class="quarto-category">distill</div>
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">ferns</div>
               </div>
                   </div>
   </div>
@@ -162,7 +196,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">November 24, 2021</p>
+        <p class="date">February 21, 2023</p>
       </div>
     </div>
     
@@ -173,16 +207,7 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#update-2022-06-06" id="toc-update-2022-06-06" class="nav-link active" data-scroll-target="#update-2022-06-06">UPDATE 2022-06-06</a></li>
-  <li><a href="#tldr" id="toc-tldr" class="nav-link" data-scroll-target="#tldr">TL;DR</a></li>
-  <li><a href="#why-distill-and-giscus" id="toc-why-distill-and-giscus" class="nav-link" data-scroll-target="#why-distill-and-giscus">Why Distill and giscus?</a></li>
-  <li><a href="#how-to-set-up-giscus-on-distill" id="toc-how-to-set-up-giscus-on-distill" class="nav-link" data-scroll-target="#how-to-set-up-giscus-on-distill">How to set up giscus on Distill</a></li>
-  </ul>
-</nav>
+    
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
@@ -194,118 +219,148 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="update-2022-06-06" class="level2">
-<h2 class="anchored" data-anchor-id="update-2022-06-06">UPDATE 2022-06-06</h2>
-<p>Since writing this blogpost, a new publishing system called <a href="https://quarto.org/">Quarto</a> is now available that <a href="https://quarto.org/docs/output-formats/html-basics.html#commenting">supports giscus natively</a>. If you are setting up a new blog or website, you may want to consider using Quarto instead of Distill<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. It will save you the trouble of setting up everything like I describe below.</p>
-</section>
-<section id="tldr" class="level2">
-<h2 class="anchored" data-anchor-id="tldr">TL;DR</h2>
-<ul>
-<li><a href="https://github.com/giscus/giscus">giscus</a> is a free, open-source commenting system for blogs that uses the GitHub API</li>
-<li>giscus uses GitHub Discussions (not Issues) to store data</li>
-<li>I show how to enable giscus on a Distill blog</li>
-</ul>
-<div id="fig-featured" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/adam-solomon-WHUDOzd5IYU-unsplash.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: Image by <a href="https://unsplash.com/@solomac">Adam Solomon</a> on <a href="https://unsplash.com/photos/WHUDOzd5IYU">unsplash</a></figcaption><p></p>
-</figure>
-</div>
-</section>
-<section id="why-distill-and-giscus" class="level2">
-<h2 class="anchored" data-anchor-id="why-distill-and-giscus">Why Distill and giscus?</h2>
-<p>Like many R-bloggers these days, I have made some changes: I switched from <a href="https://github.com/rstudio/blogdown">blogdown</a> to <a href="https://github.com/rstudio/distill">Distill</a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, and from disqus to <a href="https://github.com/utterance/utterances">utterances</a> <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Several things about utterances appealed to me: <strong>free</strong>, <strong>open-source</strong>, <strong>no data tracking</strong>. But when I started using it, I immediately was turned off by the dual use of GitHub issues as a way to store comments. It just felt odd to have an issue that wasn’t an issue!</p>
-<p>Fortunately, <a href="https://github.com/utterance/utterances/issues/324">I’m not the only one to feel this way</a>, and <a href="https://laymonage.com/"><code>@laymonage</code></a> actually <a href="https://laymonage.com/posts/giscus">did something about it</a>: there is now a very similar app to utterances, <a href="https://github.com/giscus/giscus">called giscus</a>. It offers almost the same functionality, but <strong>it uses GitHub Discussions as the place to store comments</strong> instead of Issues. This makes much more sense to me.</p>
-</section>
-<section id="how-to-set-up-giscus-on-distill" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-set-up-giscus-on-distill">How to set up giscus on Distill</h2>
-<p>There are several blogposts <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> on how to enable utterances on Distill, but none that I’ve found so far on giscus. So, here goes!</p>
+<p>Recently I was asked by a researcher for a family-level phylogenetic tree of ferns. The <a href="https://fernphy.github.io/">Fern Tree of Life (FTOL) project</a> that I maintain generates a maximally sampled global fern phylogeny, but it is at the species level. So how can we go from that to a family-level tree?</p>
+<p>Basically it involves the following steps:</p>
 <ol type="1">
-<li><p><a href="https://docs.github.com/en/discussions/quickstart">Enable Discussions on your blog repo</a>. Optionally, if you want to use a non-default Discussions category for storing giscus content, <a href="https://docs.github.com/en/discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository">add a new category</a>. I did this and called it “Comments”. As recommended by giscus, it’s a good idea to <a href="https://docs.github.com/en/discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository">set the discussion format</a> to “Announcement” so that non-authorized users can’t add content via the Discussions interface (only the giscus widget on your blog).</p></li>
-<li><p><a href="https://github.com/apps/giscus">Install the giscus GitHub app</a> and configure it to have access to your blog’s repo.</p></li>
-<li><p><a href="https://giscus.app/">Go to the giscus app interface</a>, scroll down to “configuration” and fill in the details for your blog. Once you’ve done so, further down you should see an HTML code block under “Enable giscus” populated with your information.</p></li>
+<li>Load a list of all species in the tree and the name of the family each belongs to.</li>
+<li>Check that each family is <a href="https://en.wikipedia.org/wiki/Monophyly">monophyletic</a> or monotypic (this must be true for the next step to work<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>).</li>
+<li>Select a single exemplar species for each family (this could be any species within the family, as long as the family is monophyletic).</li>
+<li>Trim the tree to only the exemplar species (one per family).</li>
+<li>Rename the exemplar species with the family name.</li>
 </ol>
-<div id="fig-giscus-config" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/giscus-config.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2: <a href="https://giscus.app/">giscus</a> configuration menu.</figcaption><p></p>
-</figure>
+<p>The code to do all of this is provided below, and is also available at this repo: <a href="https://github.com/fernphy/ftol_family">https://github.com/fernphy/ftol_family</a>.</p>
+<p>A few packages used here bear extra mention. The <a href="https://github.com/oschwery/MonoPhy">MonoPhy</a> package is great at doing exactly what the name would suggest: checking for monophyly. I am a huge fan of the <a href="https://github.com/ropensci/assertr">assertr</a> package for proactive assertion about data. In this case, the code would fail (issue an error) if the assumption of monophyletic/monotypic families did not hold. Finally, the <a href="https://github.com/fernphy/ftolr">ftolr</a> package by yours truly provides the most recent fern tree and associated taxonomic data.</p>
+<p>Of course, this approach should work for any tree assuming the two requirements are met (the higher level taxa are all monophyletic or monotypic and the tree is ultrametric).</p>
+<div class="cell" data-hash="index_cache/html/make-tree_004063e9be41589e80515a7aed86fb84">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ftolr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ape)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MonoPhy)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(assertr)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Check FTOL version and cutoff date</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ft_data_ver</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1.4.0"</code></pre>
 </div>
-<div id="fig-giscus-html" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/giscus-enable.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3: <a href="https://giscus.app/">giscus</a> HTML block. Once you fill in the fields in the configuration menu, the parts starting with <code>[ENTER ...]</code> will get automatically populated.</figcaption><p></p>
-</figure>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ft_data_ver</span>(<span class="st">"cutoff"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2022-12-15"</code></pre>
 </div>
-<p>As described in <a href="https://milesmcbain.micro.blog/2020/09/04/how-i-got.html">Miles McBain’s blogpost</a>, unfortunately in Distill, you can’t just paste the HTML directly into an Rmd file. It won’t show up. But the same work-around that he describes for utterances also happily works for giscus! Read on…</p>
-<ol start="5" type="1">
-<li>Add an <code>.html</code> file (I’ve called mine <code>giscus.html</code>) to the root of your blog repo that looks like this (and is based off of <a href="https://milesmcbain.micro.blog/2020/09/04/how-i-got.html">Miles’ HTML</a>):</li>
-</ol>
-<pre class="{html}"><code>&lt;script&gt;
-   document.addEventListener("DOMContentLoaded", function () {
-     if (!/posts/.test(location.pathname)) {
-       return;
-     }
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load ultrametric fern tree, drop outgroup</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>phy <span class="ot">&lt;-</span> <span class="fu">ft_tree</span>(<span class="at">branch_len =</span> <span class="st">"ultra"</span>, <span class="at">rooted =</span> <span class="cn">TRUE</span>, <span class="at">drop_og =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect:</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>phy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Phylogenetic tree with 5685 tips and 5684 internal nodes.
 
-     var script = document.createElement("script");
-     script.src = "https://giscus.app/client.js";
-     script.setAttribute("data-repo", "[ENTER REPO HERE]");
-     script.setAttribute("data-repo-id", "[ENTER REPO ID HERE]");
-     script.setAttribute("data-category", "[ENTER CATEGORY NAME HERE]");
-     script.setAttribute("data-category-id", "[ENTER CATEGORY ID HERE]");
-     script.setAttribute("data-mapping", "pathname");
-     script.setAttribute("data-reactions-enabled", "0");
-     script.setAttribute("data-emit-metadata", "0");
-     script.setAttribute("data-theme", "light");
-     script.setAttribute("data-lang", "en");
+Tip labels:
+  Acrostichum_danaeifolium, Acrostichum_speciosum, Acrostichum_aureum, Ceratopteris_richardii, Ceratopteris_cornuta, Ceratopteris_pteridoides, ...
+Node labels:
+  100/100, 100, 100/100, 100/100, 100/100, 50/100, ...
 
-     /* wait for article to load, append script to article element */
-     var observer = new MutationObserver(function (mutations, observer) {
-       var article = document.querySelector("d-article");
-       if (article) {
-         observer.disconnect();
-         /* HACK: article scroll */
-         article.setAttribute("style", "overflow-y: hidden");
-         article.appendChild(script);
-       }
-     });
+Rooted; includes branch lengths.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load fern taxonomy</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>taxonomy <span class="ot">&lt;-</span> ftol_taxonomy <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Subset to only species in tree</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">%in%</span> phy<span class="sc">$</span>tip.label)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect:</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>taxonomy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5,685 × 8
+   species      genus   subfamily  family   suborder order  major_clade outgroup
+   &lt;chr&gt;        &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;       &lt;lgl&gt;   
+ 1 Acrostichum… Acrost… Parkerioi… Pterida… Pteridi… Polyp… Pteridineae FALSE   
+ 2 Actiniopter… Actini… Pteridoid… Pterida… Pteridi… Polyp… Pteridineae FALSE   
+ 3 Actiniopter… Actini… Pteridoid… Pterida… Pteridi… Polyp… Pteridineae FALSE   
+ 4 Actiniopter… Actini… Pteridoid… Pterida… Pteridi… Polyp… Pteridineae FALSE   
+ 5 Actiniopter… Actini… Pteridoid… Pterida… Pteridi… Polyp… Pteridineae FALSE   
+ 6 Onychium_cr… Onychi… Pteridoid… Pterida… Pteridi… Polyp… Pteridineae FALSE   
+ 7 Onychium_mo… Onychi… Pteridoid… Pterida… Pteridi… Polyp… Pteridineae FALSE   
+ 8 Onychium_ja… Onychi… Pteridoid… Pterida… Pteridi… Polyp… Pteridineae FALSE   
+ 9 Onychium_lu… Onychi… Pteridoid… Pterida… Pteridi… Polyp… Pteridineae FALSE   
+10 Onychium_pl… Onychi… Pteridoid… Pterida… Pteridi… Polyp… Pteridineae FALSE   
+# … with 5,675 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Analyze monophyly of each family</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>family_mono_test <span class="ot">&lt;-</span> <span class="fu">AssessMonophyly</span>(</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  phy,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>(taxonomy[, <span class="fu">c</span>(<span class="st">"species"</span>, <span class="st">"family"</span>)])</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Check that all families are monophyletic or monotypic</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>family_mono_summary <span class="ot">&lt;-</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  family_mono_test<span class="sc">$</span>family<span class="sc">$</span>result <span class="sc">%&gt;%</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="st">"family"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">assert</span>(<span class="fu">in_set</span>(<span class="st">"Yes"</span>, <span class="st">"Monotypic"</span>), Monophyly)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect:</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>family_mono_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 48 × 9
+   family            Monophyly MRCA  `#Tips` `Delta-Tips` `#Intruders` Intruders
+   &lt;chr&gt;             &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;        &lt;chr&gt;    
+ 1 Pteridaceae       Yes       5696  885     0            0            ""       
+ 2 Polypodiaceae     Yes       6590  933     0            0            ""       
+ 3 Davalliaceae      Yes       7522  42      0            0            ""       
+ 4 Oleandraceae      Yes       7563  10      0            0            ""       
+ 5 Tectariaceae      Yes       7572  138     0            0            ""       
+ 6 Nephrolepidaceae  Yes       7709  19      0            0            ""       
+ 7 Lomariopsidaceae  Yes       7727  44      0            0            ""       
+ 8 Dryopteridaceae   Yes       7770  964     0            0            ""       
+ 9 Didymochlaenaceae Yes       8733  9       0            0            ""       
+10 Hypodematiaceae   Yes       8741  26      0            0            ""       
+# … with 38 more rows, and 2 more variables: #Outliers &lt;chr&gt;, Outliers &lt;chr&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get one exemplar tip (species) per family</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>rep_tips <span class="ot">&lt;-</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  taxonomy <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(family) <span class="sc">%&gt;%</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset phylogeny to one tip per family</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>phy_family <span class="ot">&lt;-</span> ape<span class="sc">::</span><span class="fu">keep.tip</span>(phy, rep_tips<span class="sc">$</span>species)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Relabel with family names</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>new_tips <span class="ot">&lt;-</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">species =</span> phy_family<span class="sc">$</span>tip.label) <span class="sc">%&gt;%</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(rep_tips, <span class="at">by =</span> <span class="st">"species"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(family)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>phy_family<span class="sc">$</span>tip.label <span class="ot">&lt;-</span> new_tips</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize tree</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">ladderize</span>(phy_family), <span class="at">no.margin =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/make-tree-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
-     observer.observe(document.body, { childList: true });
-   });
- &lt;/script&gt;</code></pre>
-<p>If you compare the above code with the HTML block in the giscus app (<a href="#fig-giscus-html">Figure&nbsp;3</a>), you should be able to see how the <code>script.setAttribute</code> lines above map to the key-value pairs in the HTML block in the giscus app. All we have to do is copy the contents of the HTML block over to this <code>giscus.html</code> file. You can <a href="https://github.com/joelnitta/joelnitta-home/blob/047152c2d1c6cfdeee438b6e23453d4330ece6ef/giscus.html">see what my <code>giscus.html</code> file looks like here</a>.</p>
-<ol start="6" type="1">
-<li><a href="https://rstudio.github.io/distill/website.html#site-output">Modify <code>_site.yml</code></a> so that the <code>giscus.html</code> file gets loaded on every Distill article page <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>:</li>
-</ol>
-<pre><code>output: 
-  distill::distill_article:
-    includes:
-      in_header: giscus.html</code></pre>
-<p><strong>That’s it!</strong> Or it should be anyways. I recommend trying a test comment to make sure everything is working (nobody will tell you otherwise…)</p>
 
-
-</section>
 
 
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>I have converted my website to Quarto.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>blogdown and Distill are R packages for making websites. In a nutshell, Distill is much simpler to use than blogdown, at the cost of some design flexibility. For more about making the switch, you can get caught up with posts from <a href="https://themockup.blog/posts/2020-08-01-building-a-blog-with-distill/">Thomas Mock</a>, <a href="https://frie.codes/posts/tricks-blogdown-to-distill/">Frie Preu</a>, <a href="https://education.rstudio.com/blog/2021/02/distill-it-down/">Lisa Lendway</a>, and <a href="https://www.andreashandel.com/posts/distill-github-website/">Andreas Handel</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>disqus and utterances are tools that let users comment on blog posts. Recently many R-bloggers have been <a href="https://twitter.com/hrbrmstr/status/1135915244532822018">moving away from disqus</a> because it has a habit of <a href="https://nanx.me/blog/post/migrating-from-disqus-to-utterances/">tracking user’s data</a> and <a href="https://victorzhou.com/blog/replacing-disqus/">causing page bloat</a>. More recently, when I checked on my disqus account (in the process of migrating away!), it had a option to “opt-out” of data tracking, but that means data-tracking is <strong>on</strong> by default.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>For example, <a href="https://sciencificity-blog.netlify.app/posts/2021-02-20-enable-utterances-with-distill/">Vebash Naidoo’s tutorial</a> and <a href="https://tidytales.ca/posts/2021-06-19_distill/">Michael McCarthy’s post describing how to control the location of the comments section</a>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>The <code>_site.yml</code> file is longer than this, but I’m just showing the relevant code to add. You can <a href="https://github.com/joelnitta/joelnitta-home/blob/047152c2d1c6cfdeee438b6e23453d4330ece6ef/_site.yml">see my <code>_site.yml</code> file here</a>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Another condition of this approach is that that the tree must be ultrametric (all tips at the same depth). If that is not true, then the choice of exemplar species would affect the branchlengths in the family-level tree.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{nitta2021,
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{nitta2023,
   author = {Nitta, Joel},
-  title = {Enable Giscus in {Distill}},
-  date = {2021-11-24},
-  url = {https://www.joelnitta.com/posts/2021-11-24_using-giscus/},
+  title = {Making a Fern Family Tree},
+  date = {2023-02-21},
+  url = {https://www.joelnitta.com/posts/fern-family/},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-nitta2021" class="csl-entry quarto-appendix-citeas" role="listitem">
-Nitta, Joel. 2021. <span>“Enable Giscus in Distill.”</span> November 24,
-2021. <a href="https://www.joelnitta.com/posts/2021-11-24_using-giscus/">https://www.joelnitta.com/posts/2021-11-24_using-giscus/</a>.
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-nitta2023" class="csl-entry quarto-appendix-citeas" role="listitem">
+Nitta, Joel. 2023. <span>“Making a Fern Family Tree.”</span> February
+21, 2023. <a href="https://www.joelnitta.com/posts/fern-family/">https://www.joelnitta.com/posts/fern-family/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
