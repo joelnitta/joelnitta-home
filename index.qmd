@@ -32,7 +32,7 @@ library(fontawesome)
 
 ## Bio
 
-I am a Project Research Associate in the [Iwasaki Lab](http://iwasakilab.k.u-tokyo.ac.jp) at the University of Tokyo. I study **ferns**, an ancient and diverse lineage of vascular plants.
+I am an Associate Professor in the [Graduate School of Global and Transdisciplinary Studies](https://www.las.chiba-u.jp/transdisciplinary/english/index.html) at [Chiba University](https://www.chiba-u.ac.jp/e/index.html), Japan. I study **ferns**, an ancient and diverse lineage of vascular plants.
 
 Ferns have a unique lifecycle combining two free-living stages (gametophyte and sporophyte) that differ from each other dramatically in appearance and physiology. This sets ferns apart from nearly all other land plants, and has important implications for their ecology and evolution. I am particularly interested in how different stages of the fern lifecycle contribute to community assembly processes, as well as fern ecology, evolution, and systematics.
 
@@ -48,7 +48,9 @@ I am also an enthusiastic adherent of reproducible analysis and coding, especial
 
 ## Experience
 
-- **Iwasaki Lab, The University of Tokyo** | Project Research Associate | April 2020 - Present
+- **Graduate School of Global and Transdisciplinary Studies, Chiba University** | Associate Professor | April 2023 - Present
+
+- **Iwasaki Lab, The University of Tokyo** | Project Research Associate | April 2020 - March 2023
 
 - **National Museum of Natural History, Smithsonian Institution** | Postdoctoral Fellow | January 2019 - March 2020
 
