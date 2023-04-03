@@ -19,7 +19,7 @@ website:
       - href: content/pdf/Nitta_CV.pdf
         text: "CV"
       - href: https://www.ja.joelnitta.com
-        text: "日本語"
+        text: "Japanese"
 
 format:
   html:
