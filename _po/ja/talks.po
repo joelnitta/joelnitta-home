@@ -1,0 +1,59 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2023-04-03 01:22+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: date
+#: /409952fb95fbb825992593fca10961ea_1/talks.qmd:1
+#, no-wrap
+msgid "`r Sys.Date()`"
+msgstr ""
+
+#. type: Yaml Front Matter Hash Value: lang
+#: /409952fb95fbb825992593fca10961ea_1/talks.qmd:1
+#, no-wrap
+msgid "en"
+msgstr "ja"
+
+#. type: Yaml Front Matter Hash Value: listing contents
+#: /409952fb95fbb825992593fca10961ea_1/talks.qmd:1
+#, no-wrap
+msgid "talks"
+msgstr ""
+
+#. type: Yaml Front Matter Array Element: listing sort
+#: /409952fb95fbb825992593fca10961ea_1/talks.qmd:1
+#, no-wrap
+msgid "date desc"
+msgstr ""
+
+#. type: Yaml Front Matter Array Element: listing sort
+#: /409952fb95fbb825992593fca10961ea_1/talks.qmd:1
+#, no-wrap
+msgid "title desc"
+msgstr ""
+
+#. type: Yaml Front Matter Hash Value: listing type
+#: /409952fb95fbb825992593fca10961ea_1/talks.qmd:1
+#, no-wrap
+msgid "default"
+msgstr ""
+
+#. type: Yaml Front Matter Hash Value: title
+#: /409952fb95fbb825992593fca10961ea_1/talks.qmd:1
+#, no-wrap
+msgid "Recorded Talks"
+msgstr "オンライン発表"

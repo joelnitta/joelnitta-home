@@ -24,6 +24,7 @@ md2po(md_in = "index.qmd", po = "_po/ja/index.po")
 md2po(md_in = "software.qmd", po = "_po/ja/software.po")
 md2po(md_in = "blog.qmd", po = "_po/ja/blog.po")
 md2po(md_in = "publications.qmd", po = "_po/ja/publications.po")
+md2po(md_in = "talks.qmd", po = "_po/ja/talks.po")
 md2po(md_in = "posts/2022-10-07_canaper/index.qmd",
   po = "_po/ja/2022-10-07_canaper.po")
 
@@ -56,6 +57,11 @@ po2md(
   md_out = "_locale/ja/publications.qmd"
 )
 po2md(
+  md_in = "talks.qmd",
+  po = "_po/ja/talks.po",
+  md_out = "_locale/ja/talks.qmd"
+)
+po2md(
   md_in = "posts/2022-10-07_canaper/index.qmd",
   po = "_po/ja/2022-10-07_canaper.po",
   md_out = "_locale/ja/posts/2022-10-07_canaper/index.qmd"
@@ -77,6 +83,7 @@ quarto_preview_stop()
 git_branch_checkout("ja-source")
 system(glue::glue(
   "rsync -av \\
+  --update \\
   --exclude '_locale*' --exclude '.git*' --exclude '_site' \\
   --exclude 'renv' --exclude 'working' --exclude 'po' \\
   --exclude '*_cache' --exclude '.Rhistory' --exclude '.Rproj.user' \\
