@@ -74,7 +74,8 @@ plot(
 
 ```{r}
 #| label: fig-plot-contmap-default-hide
-#| include: false
+#| eval: true
+#| echo: false
 #| fig.cap: Default rainbow color scheme. Pretty, but confusing.
 
 tempfile <- tempfile()

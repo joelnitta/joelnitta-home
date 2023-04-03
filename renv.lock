@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.2.1",
+    "Version": "4.2.2",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -61,20 +61,20 @@
     },
     "RcppArmadillo": {
       "Package": "RcppArmadillo",
-      "Version": "0.11.1.1.0",
+      "Version": "0.11.4.3.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "631929e53829901562986c504f86104b",
+      "Hash": "836c1aeec6a7a2b28273bd42a0511a9e",
       "Requirements": [
         "Rcpp"
       ]
     },
     "RcppParallel": {
       "Package": "RcppParallel",
-      "Version": "5.1.5",
+      "Version": "5.1.6",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "f3e94e34ff656a7c8336ce01207bc2b8",
+      "Hash": "9d930f5e12e075d57965f46503a1f9b1",
       "Requirements": []
     },
     "RefManageR": {
@@ -104,10 +104,10 @@
     },
     "assertr": {
       "Package": "assertr",
-      "Version": "2.8",
+      "Version": "3.0.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "38c61c51fa8311904551d58895da2858",
+      "Hash": "e500845b6d773cecb7864ec21eb84081",
       "Requirements": [
         "MASS",
         "dplyr",
@@ -124,15 +124,10 @@
     },
     "babelwhale": {
       "Package": "babelwhale",
-      "Version": "1.0.3",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "babelwhale",
-      "RemoteUsername": "joelnitta",
-      "RemoteRef": "jnfeat",
-      "RemoteSha": "db9e5aa1e59c3f89a063961c3ba17f33c2121400",
-      "Hash": "6d2db65f48ed53a019ad2231d0bfce0f",
+      "Version": "1.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "52b392f242c9376841ed765608d2d872",
       "Requirements": [
         "crayon",
         "digest",
@@ -533,10 +528,10 @@
     },
     "dynutils": {
       "Package": "dynutils",
-      "Version": "1.0.9",
+      "Version": "1.0.11",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "4f776e815a7fdc4ce324a595280468ac",
+      "Hash": "0012b1fb8c49d9c954e960bd0385a936",
       "Requirements": [
         "Matrix",
         "Rcpp",
@@ -1147,10 +1142,10 @@
     },
     "proxyC": {
       "Package": "proxyC",
-      "Version": "0.2.4",
+      "Version": "0.3.3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "e0cecf6d657d4fb9588a9b3698c5c199",
+      "Hash": "95667fa24d3adbc5c93af45bfff5a415",
       "Requirements": [
         "Matrix",
         "Rcpp",

@@ -19,8 +19,7 @@ library(distilltools)
 
 系統的固有性を測るRパッケージ
 
-`r icon_link("github", "Code", "https://github.com/ropensci/canaper")`
-`r icon_link("globe", "Website", "https://docs.ropensci.org/canaper/")`
+`r icon_link("github", "Code", "https://github.com/ropensci/canaper")` `r icon_link("globe", "Website", "https://docs.ropensci.org/canaper/")`
 
 ## `taxastand` <img src="https://github.com/joelnitta/taxastand/blob/main/man/figures/logo.png?raw=true" align="right" alt="" width="120" />
 
@@ -33,5 +32,4 @@ library(distilltools)
 
 [ダーウィンコア形式](https://www.gbif.org/ja/darwin-core)に従った学名の整理をするRパッケージ
 
-`r icon_link("github", "Code", "https://github.com/joelnitta/dwctaxon/")`
-`r icon_link("globe", "Website", "https://joelnitta.github.io/dwctaxon/")`
+`r icon_link("github", "Code", "https://github.com/joelnitta/dwctaxon/")` `r icon_link("globe", "Website", "https://joelnitta.github.io/dwctaxon/")`

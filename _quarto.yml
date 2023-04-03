@@ -17,7 +17,7 @@ website:
       - href: content/pdf/Nitta_CV.pdf
         text: "CV"
       - href: https://www.joelnitta.com
-        text: "英語"
+        text: "English"
 
 format:
   html:

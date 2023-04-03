@@ -95,10 +95,8 @@ oldopts <- BibOptions(
 
 **Nitta, J. H.**, S. W. Laffan, B. D. Mishler, and W. Iwasaki. "canaper: Categorical analysis of neo- and paleo-endemism in R". Submitted.
 
-`r icon_link(text = "Preprint", url =
-"https://www.biorxiv.org/content/10.1101/2022.10.06.511072v1")`
-`r icon_link(icon = "github", text = "Code", url =
-"https://github.com/ropensci/canaper")`
+`r icon_link(text = "Preprint", url = "https://www.biorxiv.org/content/10.1101/2022.10.06.511072v1")`
+`r icon_link(icon = "github", text = "Code", url = "https://github.com/ropensci/canaper")`
 
 ## 2022
 
