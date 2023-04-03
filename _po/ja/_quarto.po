@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-10-04 04:48+0000\n"
+"POT-Creation-Date: 2023-04-03 01:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,15 @@ msgstr ""
 
 #. type: Plain text
 #: /409952fb95fbb825992593fca10961ea_1/_quarto.yml:3
-#, markdown-text, no-wrap
+#, no-wrap
 msgid ""
 "project:\n"
 "  type: website\n"
 msgstr ""
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/_quarto.yml:21
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/_quarto.yml:23
+#, no-wrap
 msgid ""
 "website:\n"
 "  title: \"Joel Nitta\"\n"
@@ -41,10 +41,12 @@ msgid ""
 "        text: Software\n"
 "      - href: blog.qmd\n"
 "        text: Blog\n"
+"      - href: talks.qmd\n"
+"        text: Talks\n"
 "      - href: content/pdf/Nitta_CV.pdf\n"
 "        text: \"CV\"\n"
 "      - href: https://www.ja.joelnitta.com\n"
-"        text: \"æ¥æ¬èª\"\n"
+"        text: \"Japanese\"\n"
 msgstr ""
 "website:\n"
 "  title: \"ニッタ ジョエル\"\n"
@@ -62,11 +64,11 @@ msgstr ""
 "      - href: content/pdf/Nitta_CV.pdf\n"
 "        text: \"CV\"\n"
 "      - href: https://www.joelnitta.com\n"
-"        text: \"英語\"\n"
+"        text: \"English\"\n"
 
 #. type: Plain text
-#: /409952fb95fbb825992593fca10961ea_1/_quarto.yml:40
-#, markdown-text, no-wrap
+#: /409952fb95fbb825992593fca10961ea_1/_quarto.yml:42
+#, no-wrap
 msgid ""
 "format:\n"
 "  html:\n"
@@ -85,6 +87,6 @@ msgid ""
 "        reactions-enabled: false\n"
 "        input-position: top\n"
 "        theme: light\n"
-"        language: en\n"
+"        language: ja\n"
 "    include-in-header: header.html\n"
 msgstr ""

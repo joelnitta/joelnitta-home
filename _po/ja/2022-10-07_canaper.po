@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-10-11 06:59+0000\n"
+"POT-Creation-Date: 2023-04-03 00:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,61 +16,55 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. type: YAML Front Matter: bibliography
+#. type: Yaml Front Matter Hash Value: bibliography
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
 msgid "references.yaml"
 msgstr ""
 
-#. type: YAML Front Matter: categories
+#. type: Yaml Front Matter Array Element: categories
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
 msgid "R"
 msgstr ""
 
-#. type: YAML Front Matter: categories
+#. type: Yaml Front Matter Array Element: categories
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
 msgid "Spatial phylogenetics"
 msgstr ""
 
-#. type: YAML Front Matter: citation url
+#. type: Yaml Front Matter Hash Value: citation url
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
 msgid "https://www.joelnitta.com/posts/canaper/"
 msgstr ""
 
-#. type: YAML Front Matter: date
+#. type: Yaml Front Matter Hash Value: date
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
 msgid "2022-10-07"
 msgstr ""
 
-#. type: YAML Front Matter: description
+#. type: Yaml Front Matter Hash Value: description
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
 msgid "Announcing the canaper R package!"
 msgstr "Rパッケージcanaperの紹介"
 
-#. type: YAML Front Matter: image
+#. type: Yaml Front Matter Hash Value: image
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
 msgid "https://docs.ropensci.org/canaper/logo.png"
 msgstr ""
 
-#. type: YAML Front Matter: knitr opts_chunk cache
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
-#, no-wrap
-msgid "true"
-msgstr ""
-
-#. type: YAML Front Matter: lang
+#. type: Yaml Front Matter Hash Value: lang
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
 msgid "en"
 msgstr "ja"
 
-#. type: YAML Front Matter: title
+#. type: Yaml Front Matter Hash Value: title
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
 msgid "canaper is on CRAN"
@@ -113,6 +107,7 @@ msgstr "そもそも、`canaper`って一体何だろう？"
 
 #. type: Plain text
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:33
+#, no-wrap
 msgid ""
 "> `canaper` provides functions to analyze the spatial distribution of\n"
 "biodiversity, in particular categorical analysis of neo- and paleo-endemism\n"

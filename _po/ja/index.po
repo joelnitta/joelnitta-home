@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-11-21 05:26+0000\n"
+"POT-Creation-Date: 2023-04-03 00:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,79 +16,73 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. type: YAML Front Matter: about image
+#. type: Yaml Front Matter Hash Value: about image
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
 msgid "content/images/joel.png"
 msgstr ""
 
-#. type: YAML Front Matter: about image-width
+#. type: Yaml Front Matter Hash Value: about image-width
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
 msgid "200px;"
 msgstr ""
 
-#. type: YAML Front Matter: about links href
+#. type: Yaml Front Matter Hash Value: about links href
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
 msgid "https://fosstodon.org/@joelnitta"
 msgstr ""
 
-#. type: YAML Front Matter: about links icon
+#. type: Yaml Front Matter Hash Value: about links icon
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
 msgid "mastodon"
 msgstr ""
 
-#. type: YAML Front Matter: about links rel
+#. type: Yaml Front Matter Hash Value: about links rel
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
 msgid "me"
 msgstr ""
 
-#. type: YAML Front Matter: about links href
+#. type: Yaml Front Matter Hash Value: about links href
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
 msgid "https://github.com/joelnitta"
 msgstr ""
 
-#. type: YAML Front Matter: about links icon
+#. type: Yaml Front Matter Hash Value: about links icon
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
 msgid "github"
 msgstr ""
 
-#. type: YAML Front Matter: about links href
+#. type: Yaml Front Matter Hash Value: about links href
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
 msgid "https://researchmap.jp/joelnitta?lang=en"
 msgstr "https://researchmap.jp/joelnitta"
 
-#. type: YAML Front Matter: about links text
+#. type: Yaml Front Matter Hash Value: about links text
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
 msgid "RM"
 msgstr ""
 
-#. type: YAML Front Matter: about template
+#. type: Yaml Front Matter Hash Value: about template
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
 msgid "trestles"
 msgstr ""
 
-#. type: YAML Front Matter: execute echo
-#: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
-#, no-wrap
-msgid "false"
-msgstr ""
-
-#. type: YAML Front Matter: lang
+#. type: Yaml Front Matter Hash Value: lang
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
 msgid "en"
 msgstr "ja"
 
-#. type: YAML Front Matter: title
+#. type: Yaml Front Matter Hash Value: title
 #: /409952fb95fbb825992593fca10961ea_1/index.qmd:1
 #, no-wrap
 msgid "Joel Nitta"
@@ -114,7 +108,7 @@ msgid ""
 "\n"
 "## Bio\n"
 "\n"
-"I am a Project Research Associate in the [Iwasaki Lab](http://iwasakilab.k.u-tokyo.ac.jp) at the University of Tokyo. I study **ferns**, an ancient and diverse lineage of vascular plants.\n"
+"I am an Associate Professor in the [Graduate School of Global and Transdisciplinary Studies](https://www.las.chiba-u.jp/transdisciplinary/english/index.html) at [Chiba University](https://www.chiba-u.ac.jp/e/index.html), Japan. I study **ferns**, an ancient and diverse lineage of vascular plants.\n"
 "\n"
 "Ferns have a unique lifecycle combining two free-living stages (gametophyte and sporophyte) that differ from each other dramatically in appearance and physiology. This sets ferns apart from nearly all other land plants, and has important implications for their ecology and evolution. I am particularly interested in how different stages of the fern lifecycle contribute to community assembly processes, as well as fern ecology, evolution, and systematics.\n"
 "\n"
@@ -130,7 +124,9 @@ msgid ""
 "\n"
 "## Experience\n"
 "\n"
-"- **Iwasaki Lab, The University of Tokyo** | Project Research Associate | April 2020 - Present\n"
+"- **Graduate School of Global and Transdisciplinary Studies, Chiba University** | Associate Professor | April 2023 - Present\n"
+"\n"
+"- **Iwasaki Lab, The University of Tokyo** | Project Research Associate | April 2020 - March 2023\n"
 "\n"
 "- **National Museum of Natural History, Smithsonian Institution** | Postdoctoral Fellow | January 2019 - March 2020\n"
 "\n"
@@ -140,7 +136,7 @@ msgstr ""
 "\n"
 "## 自己紹介\n"
 "\n"
-"初めまして、東京大学大学院理学系研究科・[岩崎研究室](http://iwasakilab.k.u-tokyo.ac.jp)の特任助教のニッタ ジョエルです。私はシダ植物の進化と生態学を研究しています。\n"
+"初めまして、[千葉大学](https://www.chiba-u.ac.jp/) [大学院国際学術研究院・国際教養学部](https://www.las.chiba-u.jp/)の准教授のニッタ ジョエルです。私はシダ植物の進化と生態学を研究しています。\n"
 "\n"
 "シダ植物は非常にユニークなライフサイクルを持つ、とても面白い研究対象です。普段目にしている植物は「胞子体」（二倍体）ですが、もう一つ、極めて小さな（通常は１センチ以下）「配偶体」（一倍体）というライフステージもあり、両方とも独立に生息しています。この特徴は他の陸上植物と根本的に異なり、シダ植物の進化にとって非常に大きな意味を持っています。私は特にシダ植物のライフサイクルがその群集形成のプロセスや生態学などに与える影響について研究しています。\n"
 "\n"
@@ -156,7 +152,9 @@ msgstr ""
 "\n"
 "## 職歴\n"
 "\n"
-"- **東京大学大学院理学系研究科岩崎研究室** | 特任助教 | 2020年4月 - 現在\n"
+"- **千葉大学 大学院国際学術研究院 国際教養学部** | 准教授 | 2023年4月 - 現在\n"
+"\n"
+"- **東京大学大学院理学系研究科岩崎研究室** | 特任助教 | 2020年4月 - 2023年3月\n"
 "\n"
 "- **スミソニアン国立自然史博物館** | 特別研究員 | 2019年1月 - 2020年3月\n"
 "\n"
