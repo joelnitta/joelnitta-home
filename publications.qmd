@@ -49,7 +49,7 @@ mybib_meta <- read_csv("_bib/ref_metadata.csv") %>% select(-title)
 pdf_check <- fs::file_exists(mybib_meta$`file-pdf`)
 pdf_missing <- pdf_check[pdf_check == FALSE]
 pdf_assert <- assertthat::assert_that(
-  length(pdf_missing) == 0,
+  isTRUE(length(pdf_missing) == 0),
   msg = glue::glue("The following pdf files are missing: {paste(names(pdf_missing), sep = ', ')}")
 )
 
@@ -68,7 +68,7 @@ mybib_df <-
 		date = parse_date_time(date, "ymd"),
 		year = year(date)) %>%
 	arrange(desc(year), key) %>%
-	# add other metadata (github repo, dryad link, prprint, etc)
+	# add other metadata (github repo, dryad link, preprint, etc)
 	left_join(mybib_meta, by = "key")
 
 # Set RefManageR options
