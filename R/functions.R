@@ -88,7 +88,7 @@ url_status <- function (x, time_limit = 60) {
   sGET <- purrr::safely(httr::GET)
 
   # Return NA if input is NA
-  if (isTRUE(any(is.na(x)))) return (NA)
+  if (isTRUE(any(is.na(x)))) return (NA_character_)
 
   # Check URL using HEAD
   # see httr::HEAD()
@@ -106,11 +106,11 @@ url_status <- function (x, time_limit = 60) {
     # If neither HEAD nor GET work, it's hard error
     if (is.null(res$result)) return("no response") # or whatever you want to return on "hard" errors # nolint
 
-    return(httr::status_code(res$result))
+    return(as.character(httr::status_code(res$result)))
 
   } else {
 
-    return(httr::status_code(res$result))
+    return(as.character(httr::status_code(res$result)))
 
   }
 

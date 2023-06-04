@@ -75,7 +75,8 @@ mybib_df <-
 oldopts <- BibOptions(
 	style = "text",
 	bib.style = "authoryear", 
-	no.print.fields = c("doi", "url", "urldate", "eprint", "eprinttype"),
+	no.print.fields = c("doi", "issn", "isbn", "url", 
+    "urldate", "eprint", "eprinttype"),
 	max.names = 50,
 	dashed = FALSE, 
 	sorting = "ydnt")
@@ -93,10 +94,16 @@ oldopts <- BibOptions(
 
 ## Forthcoming
 
-**Nitta, J. H.**, S. W. Laffan, B. D. Mishler, and W. Iwasaki. "canaper: Categorical analysis of neo- and paleo-endemism in R". Submitted.
+**Nitta, J. H.**, S. W. Laffan, B. D. Mishler, and W. Iwasaki. "canaper: Categorical analysis of neo- and paleo-endemism in R". In-press, *Ecography*.
 
 `r icon_link(text = "Preprint", url = "https://www.biorxiv.org/content/10.1101/2022.10.06.511072v1")`
 `r icon_link(icon = "github", text = "Code", url = "https://github.com/ropensci/canaper")`
+
+## 2023
+
+`r print_ref("Nitta2023")`
+
+`r print_ref("Chen2023")`
 
 ## 2022
 
