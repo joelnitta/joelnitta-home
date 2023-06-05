@@ -20,9 +20,10 @@ jobs:
           version: pre-release
 
       # install libcurl, needed for curl R package
+      # libfribidi-dev libharfbuzz-dev for textshaping
       - name: Install cURL Headers
         run: |
-          sudo apt-get install libcurl4-openssl-dev
+          sudo apt-get install libcurl4-openssl-dev libfribidi-dev libharfbuzz-dev
 
       - name: Install R
         uses: r-lib/actions/setup-r@v2
