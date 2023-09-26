@@ -1,7 +1,7 @@
 ---
-title: "Publications"
-lang: en
-date: "`r Sys.Date()`"
+title: "論文"
+lang: ja
+date: today
 output: distill::distill_article
 editor_options: 
   chunk_output_type: console
@@ -54,10 +54,10 @@ pdf_assert <- assertthat::assert_that(
 )
 
 # Check that all links work
-github_check <- check_urls(mybib_meta$github)
-biorxiv_check <- check_urls(mybib_meta$biorxiv)
-figshare_check <- check_urls(mybib_meta$figshare)
-dryad_check <- check_urls(mybib_meta$dryad)
+# github_check <- check_urls(mybib_meta$github)
+# biorxiv_check <- check_urls(mybib_meta$biorxiv)
+# figshare_check <- check_urls(mybib_meta$figshare)
+# dryad_check <- check_urls(mybib_meta$dryad)
 
 # Format dataframe version of bibliography
 mybib_df <-
@@ -92,7 +92,7 @@ oldopts <- BibOptions(
 
 <!-- Manually add forthcoming pubs !-->
 
-## Forthcoming
+## 近刊
 
 **Nitta, J. H.**, S. W. Laffan, B. D. Mishler, and W. Iwasaki. "canaper: Categorical analysis of neo- and paleo-endemism in R". In-press, *Ecography*.
 

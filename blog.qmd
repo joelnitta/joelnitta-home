@@ -1,5 +1,5 @@
 ---
-title: "Blog"  # any name you want here
+title: "Blog"
 lang: en
 listing:
   contents: posts

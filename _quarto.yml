@@ -6,20 +6,12 @@ website:
   navbar:
     background: primary
     right:
-      - href: index.qmd
-        text: Home
       - href: publications.qmd
-        text: Publications
       - href: software.qmd
-        text: Software
       - href: blog.qmd
-        text: Blog
       - href: talks.qmd
-        text: Talks
       - href: content/pdf/Nitta_CV.pdf
         text: "CV"
-      - href: https://www.ja.joelnitta.com
-        text: "Japanese"
 
 format:
   html:
@@ -35,8 +27,15 @@ format:
         category: Comments
         category-id: DIC_kwDOGZGr384B_-52
         mapping: pathname
-        reactions-enabled: false
         input-position: top
         theme: light
         language: en
     include-in-header: header.html
+
+babelquarto:
+  mainlanguage: 'en'
+  languages: ['ja']
+title-ja: ニッタ ジョエル
+description-ja: ニッタ ジョエルのウエブサイト
+author-ja: ニッタ ジョエル
+lang: en

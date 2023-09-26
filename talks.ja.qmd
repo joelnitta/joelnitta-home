@@ -1,7 +1,7 @@
 ---
-title: "Recorded Talks"
+title: "オンライン発表"
 comments: false
-lang: en
+lang: ja
 date: today
 listing:
   contents: talks

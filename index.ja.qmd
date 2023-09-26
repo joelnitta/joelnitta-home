@@ -1,6 +1,6 @@
 ---
-title: "Joel Nitta"
-lang: en
+title: ニッタ ジョエル
+lang: ja
 about:
   template: trestles
   image: "content/images/joel.png"
@@ -30,30 +30,30 @@ library(fontawesome)
 
 :::{.column-body-outset}
 
-## Bio
+## 自己紹介
 
-I am an Associate Professor in the [Graduate School of Global and Transdisciplinary Studies](https://www.las.chiba-u.jp/transdisciplinary/english/index.html) at [Chiba University](https://www.chiba-u.ac.jp/e/index.html), Japan. I study **ferns**, an ancient and diverse lineage of vascular plants.
+初めまして、[千葉大学](https://www.chiba-u.ac.jp/) [大学院国際学術研究院・国際教養学部](https://www.las.chiba-u.jp/)の准教授のニッタ ジョエルです。私はシダ植物の進化と生態学を研究しています。
 
-Ferns have a unique lifecycle combining two free-living stages (gametophyte and sporophyte) that differ from each other dramatically in appearance and physiology. This sets ferns apart from nearly all other land plants, and has important implications for their ecology and evolution. I am particularly interested in how different stages of the fern lifecycle contribute to community assembly processes, as well as fern ecology, evolution, and systematics.
+シダ植物は非常にユニークなライフサイクルを持つ、とても面白い研究対象です。普段目にしている植物は「胞子体」（二倍体）ですが、もう一つ、極めて小さな（通常は１センチ以下）「配偶体」（一倍体）というライフステージもあり、両方とも独立に生息しています。この特徴は他の陸上植物と根本的に異なり、シダ植物の進化にとって非常に大きな意味を持っています。私は特にシダ植物のライフサイクルがその群集形成のプロセスや生態学などに与える影響について研究しています。
 
-I am also an enthusiastic adherent of reproducible analysis and coding, especially with [`r fa(name = "r-project", fill = "#5F85A7")`](https://www.r-project.org/)! Please see my [blog](blog.html) for more stories about this topic.
+そして、再現性可能な解析やコード、特に[`r fa(name = "r-project", fill = "#5F85A7")`](https://www.r-project.org/)に興味があります。この話については、[ブログ](blog.ja.html)を見てみてください。
 
-## Education
+## 教育歴
 
-- **Harvard University** | PhD in Organismic and Evolutionary Biology | 2016
+- **ハーバード大学** | 進化生物学研究科博士課程　修了 | 2016年
 
-- **The University of Tokyo** | MS in Biological Sciences | 2010
+- **東京大学** | 生物科学専攻修士課程　修了 | 2010年
 
-- **The University of California, Berkeley** | BA in Integrative Biology and Japanese Language | 2007
+- **カリフォルニア大学バークレー校** | 総合生物学・日本語専攻　卒業 | 2007年
 
-## Experience
+## 職歴
 
-- **Graduate School of Global and Transdisciplinary Studies, Chiba University** | Associate Professor | April 2023 - Present
+- **千葉大学 大学院国際学術研究院 国際教養学部** | 准教授 | 2023年4月 - 現在
 
-- **Iwasaki Lab, The University of Tokyo** | Project Research Associate | April 2020 - March 2023
+- **東京大学大学院理学系研究科岩崎研究室** | 特任助教 | 2020年4月 - 2023年3月
 
-- **National Museum of Natural History, Smithsonian Institution** | Postdoctoral Fellow | January 2019 - March 2020
+- **スミソニアン国立自然史博物館** | 特別研究員 | 2019年1月 - 2020年3月
 
-- **National Museum of Nature and Science, Japan** | Postdoctoral Fellow | November 2016 - December 2018
+- **国立科学博物館植物研究部** | 外国人特別研究員 | 2016年11月 - 2018年12月
 
 :::

@@ -1,6 +1,6 @@
 ---
-title: "Blog"  # any name you want here
-lang: en
+title: "ブログ"
+lang: ja
 listing:
   contents: posts
   sort: "date desc"

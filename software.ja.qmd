@@ -1,6 +1,6 @@
 ---
-title: "Software"
-lang: en
+title: "ソフトウェア"
+lang: ja
 date: "`r Sys.Date()`"
 output: distill::distill_article
 execute:
@@ -17,21 +17,21 @@ library(distilltools)
 
 ## `canaper` <img src="https://github.com/ropensci/canaper/blob/main/man/figures/logo.png?raw=true" align="right" alt="" width="120" />
 
-R package for categorial analysis of neo-and paleo-endemism.
+系統的固有性を測るRパッケージ
 
 `r icon_link("github", "Code", "https://github.com/ropensci/canaper")`
 `r icon_link("globe", "Website", "https://docs.ropensci.org/canaper/")`
 
 ## `taxastand` <img src="https://github.com/joelnitta/taxastand/blob/main/man/figures/logo.png?raw=true" align="right" alt="" width="120" />
 
-R package for taxonomic name resolution.
+学名を統一するRパッケージ
 
 `r icon_link("github", "Code", "https://github.com/joelnitta/taxastand/")`
 `r icon_link("globe", "Website", "https://joelnitta.github.io/taxastand/")`
 
 ## `dwctaxon` <img src="https://github.com/joelnitta/dwctaxon/blob/main/man/figures/logo.png?raw=true" align="right" alt="" width="120" />
 
-R package for handling taxonomic data in Darwin Core format.
+[ダーウィンコア形式](https://www.gbif.org/ja/darwin-core)に従った学名の整理をするRパッケージ
 
 `r icon_link("github", "Code", "https://github.com/joelnitta/dwctaxon/")`
 `r icon_link("globe", "Website", "https://joelnitta.github.io/dwctaxon/")`
