@@ -1,0 +1,37 @@
+---
+title: "Software"
+lang: en
+date: "`r Sys.Date()`"
+output: distill::distill_article
+execute:
+  echo: false
+comments: false
+toc: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(distilltools)
+```
+
+## `canaper` <img src="https://github.com/ropensci/canaper/blob/main/man/figures/logo.png?raw=true" align="right" alt="" width="120" />
+
+R package for categorial analysis of neo-and paleo-endemism.
+
+`r icon_link("github", "Code", "https://github.com/ropensci/canaper")`
+`r icon_link("globe", "Website", "https://docs.ropensci.org/canaper/")`
+
+## `taxastand` <img src="https://github.com/joelnitta/taxastand/blob/main/man/figures/logo.png?raw=true" align="right" alt="" width="120" />
+
+R package for taxonomic name resolution.
+
+`r icon_link("github", "Code", "https://github.com/joelnitta/taxastand/")`
+`r icon_link("globe", "Website", "https://joelnitta.github.io/taxastand/")`
+
+## `dwctaxon` <img src="https://github.com/joelnitta/dwctaxon/blob/main/man/figures/logo.png?raw=true" align="right" alt="" width="120" />
+
+R package for handling taxonomic data in Darwin Core format.
+
+`r icon_link("github", "Code", "https://github.com/joelnitta/dwctaxon/")`
+`r icon_link("globe", "Website", "https://joelnitta.github.io/dwctaxon/")`

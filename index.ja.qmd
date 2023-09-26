@@ -1,0 +1,59 @@
+---
+title: "Joel Nitta"
+lang: en
+about:
+  template: trestles
+  image: "content/images/joel.png"
+  image-width: "200px;"
+  links:
+    - icon: mastodon
+      href: https://fosstodon.org/@joelnitta
+      rel: me
+    - icon: github
+      href: https://github.com/joelnitta
+    - text: RM
+      href: https://researchmap.jp/joelnitta?lang=en
+execute:
+  echo: false
+comments: false
+---
+
+```{r}
+#| label: deps
+#| include: false
+#| message: false
+#| warning: false
+
+# Include dependencies to track with renv here
+library(fontawesome)
+```
+
+:::{.column-body-outset}
+
+## Bio
+
+I am an Associate Professor in the [Graduate School of Global and Transdisciplinary Studies](https://www.las.chiba-u.jp/transdisciplinary/english/index.html) at [Chiba University](https://www.chiba-u.ac.jp/e/index.html), Japan. I study **ferns**, an ancient and diverse lineage of vascular plants.
+
+Ferns have a unique lifecycle combining two free-living stages (gametophyte and sporophyte) that differ from each other dramatically in appearance and physiology. This sets ferns apart from nearly all other land plants, and has important implications for their ecology and evolution. I am particularly interested in how different stages of the fern lifecycle contribute to community assembly processes, as well as fern ecology, evolution, and systematics.
+
+I am also an enthusiastic adherent of reproducible analysis and coding, especially with [`r fa(name = "r-project", fill = "#5F85A7")`](https://www.r-project.org/)! Please see my [blog](blog.html) for more stories about this topic.
+
+## Education
+
+- **Harvard University** | PhD in Organismic and Evolutionary Biology | 2016
+
+- **The University of Tokyo** | MS in Biological Sciences | 2010
+
+- **The University of California, Berkeley** | BA in Integrative Biology and Japanese Language | 2007
+
+## Experience
+
+- **Graduate School of Global and Transdisciplinary Studies, Chiba University** | Associate Professor | April 2023 - Present
+
+- **Iwasaki Lab, The University of Tokyo** | Project Research Associate | April 2020 - March 2023
+
+- **National Museum of Natural History, Smithsonian Institution** | Postdoctoral Fellow | January 2019 - March 2020
+
+- **National Museum of Nature and Science, Japan** | Postdoctoral Fellow | November 2016 - December 2018
+
+:::

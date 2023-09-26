@@ -1,0 +1,10 @@
+---
+title: "Blog"  # any name you want here
+lang: en
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+comments: false
+---
