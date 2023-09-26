@@ -1,0 +1,112 @@
+---
+title: "Making a fern family tree"
+description: How to make a family-level phylogenetic tree of ferns (or anything else)
+date: 2023-02-21
+image: https://github.com/fernphy/fernphy.github.io/raw/main/images/header_ferns.png
+citation:
+  url: https://www.joelnitta.com/posts/fern-family/
+categories:
+  - R
+  - ferns
+knitr:
+  opts_chunk: 
+      cache: true
+lang: en
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: setup
+#| include: false
+#| cache: false
+
+# Increase width for printing tibbles
+options(width = 250)
+```
+
+
+Recently I was asked by a researcher for a family-level phylogenetic tree of ferns. The [Fern Tree of Life (FTOL) project](https://fernphy.github.io/) that I maintain generates a maximally sampled global fern phylogeny, but it is at the species level. So how can we go from that to a family-level tree?
+
+Basically it involves the following steps:
+
+1. Load a list of all species in the tree and the name of the family each belongs to.
+2. Check that each family is [monophyletic](https://en.wikipedia.org/wiki/Monophyly) or monotypic (this must be true for the next step to work^[Another condition of this approach is that that the tree must be ultrametric (all tips at the same depth). If that is not true, then the choice of exemplar species would affect the branchlengths in the family-level tree.]).
+3. Select a single exemplar species for each family (this could be any species within the family, as long as the family is monophyletic).
+4. Trim the tree to only the exemplar species (one per family).
+5. Rename the exemplar species with the family name.
+
+The code to do all of this is provided below, and is also available at this repo: [https://github.com/fernphy/ftol_family](https://github.com/fernphy/ftol_family).
+
+A few packages used here bear extra mention. The [MonoPhy](https://github.com/oschwery/MonoPhy) package is great at doing exactly what the name would suggest: checking for monophyly. I am a huge fan of the [assertr](https://github.com/ropensci/assertr) package for proactive assertion about data. In this case, the code would fail (issue an error) if the assumption of monophyletic/monotypic families did not hold. Finally, the [ftolr](https://github.com/fernphy/ftolr) package by yours truly provides the most recent fern tree and associated taxonomic data. 
+
+Of course, this approach should work for any tree assuming the two requirements are met (the higher level taxa are all monophyletic or monotypic and the tree is ultrametric).
+
+```{r}
+#| label: make-tree
+#| message: false
+#| fig-height: 8
+
+# Load packages
+library(tidyverse)
+library(ftolr)
+library(ape)
+library(MonoPhy)
+library(assertr)
+
+# Check FTOL version and cutoff date
+ft_data_ver()
+ft_data_ver("cutoff")
+
+# Load ultrametric fern tree, drop outgroup
+phy <- ft_tree(branch_len = "ultra", rooted = TRUE, drop_og = TRUE)
+
+# Inspect:
+phy
+
+# Load fern taxonomy
+taxonomy <- ftol_taxonomy %>%
+  # Subset to only species in tree
+  filter(species %in% phy$tip.label)
+
+# Inspect:
+taxonomy
+
+# Analyze monophyly of each family
+family_mono_test <- AssessMonophyly(
+  phy,
+  as.data.frame(taxonomy[, c("species", "family")])
+)
+
+# Check that all families are monophyletic or monotypic
+family_mono_summary <-
+  family_mono_test$family$result %>%
+  rownames_to_column("family") %>%
+  as_tibble() %>%
+  assert(in_set("Yes", "Monotypic"), Monophyly)
+
+# Inspect:
+family_mono_summary
+
+# Get one exemplar tip (species) per family
+rep_tips <-
+  taxonomy %>%
+  group_by(family) %>%
+  slice(1) %>%
+  ungroup()
+
+# Subset phylogeny to one tip per family
+phy_family <- ape::keep.tip(phy, rep_tips$species)
+
+# Relabel with family names
+new_tips <-
+tibble(species = phy_family$tip.label) %>%
+  left_join(rep_tips, by = "species") %>%
+  pull(family)
+
+phy_family$tip.label <- new_tips
+
+# Visualize tree
+plot(ladderize(phy_family), no.margin = TRUE)
+```
+

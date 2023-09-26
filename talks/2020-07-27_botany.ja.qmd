@@ -1,0 +1,22 @@
+---
+title: "Exploring Dimensions of Biodiversity in Japanese Ferns (Botany 2020 talk)"
+image: "2020-07-27_botany.png"
+lang: en
+date: 2020-07-27
+execute:
+  echo: false
+comments: false
+toc: false
+categories:
+  - ferns
+  - biodiversity
+  - conference presentation
+---
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/jxx1Xfuz_Ps" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+### Resources
+
+- [Abstract](http://2020.botanyconference.org/engine/search/index.php?func=detail&aid=514)
+- [Slides](https://joelnitta.github.io/botany2020)
+- [Paper](https://bsapubs.onlinelibrary.wiley.com/doi/10.1002/ajb2.1848)
