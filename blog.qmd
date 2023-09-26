@@ -3,6 +3,8 @@ title: "Blog"
 lang: en
 listing:
   contents: posts
+  include:
+    lang: en
   sort: "date desc"
   type: default
   categories: true
