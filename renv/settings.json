@@ -2,7 +2,11 @@
   "bioconductor.version": [],
   "external.libraries": [],
   "ignored.packages": [
-    "codegrip"
+    "jsonlite",
+    "rlang",
+    "languageserver",
+    "reprex",
+    "mdlincoln/docthis"
   ],
   "package.dependency.fields": [
     "Imports",
