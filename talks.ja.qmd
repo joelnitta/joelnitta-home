@@ -5,6 +5,8 @@ lang: ja
 date: today
 listing:
   contents: talks
+  include:
+    lang: ja
   type: default
   categories: true
   sort:
