@@ -8,27 +8,8 @@ citation:
   url: https://www.joelnitta.com/posts/2019-02-16_building-r-docker-images-with-secrets/
 categories:
   - docker
+lang: ja
 ---
-
-```{r}
-#| label: renv
-#| echo: false
-#| results: false
-renv::use(
-  lockfile = here::here("posts/2019-02-16_building-r-docker-images-with-secrets/renv.lock"),
-  attach = TRUE)
-```
-
-```{r}
-#| label: header
-#| include: false
-library(magick)
-
-# Make "featured" image more rectangular to go next to text
-image_read("https://upload.wikimedia.org/wikipedia/commons/d/d6/UKUSA_top_secret.jpg") |>
-  image_crop("300x150+50+30") |>
-  image_write(path = here::here("posts/2019-02-16_building-r-docker-images-with-secrets/featured.png"), format = "png")
-```
 
 <!--------------- post ----------------->
 

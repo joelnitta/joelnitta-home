@@ -14,14 +14,15 @@ citation:
 categories:
   - r
   - plotting
+lang: ja
 ---
 
 ```{r}
 #| label: renv
 #| echo: false
 #| results: false
-renv::use(
-  lockfile = here::here("posts/2021-06-02_color-scheme-anc-states/renv.lock"),
+renv::use
+  lockfile = "renv.lock",
   attach = TRUE)
 ```
 

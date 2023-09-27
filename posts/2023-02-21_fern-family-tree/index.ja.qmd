@@ -11,7 +11,7 @@ categories:
 knitr:
   opts_chunk: 
       cache: true
-lang: en
+lang: ja
 editor_options: 
   chunk_output_type: console
 ---
@@ -24,7 +24,6 @@ editor_options:
 # Increase width for printing tibbles
 options(width = 250)
 ```
-
 
 Recently I was asked by a researcher for a family-level phylogenetic tree of ferns. The [Fern Tree of Life (FTOL) project](https://fernphy.github.io/) that I maintain generates a maximally sampled global fern phylogeny, but it is at the species level. So how can we go from that to a family-level tree?
 

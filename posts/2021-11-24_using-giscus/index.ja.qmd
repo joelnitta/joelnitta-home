@@ -11,6 +11,7 @@ citation:
 categories:
   - blogging
   - distill
+lang: ja
 ---
 
 ## UPDATE 2022-06-06
@@ -56,7 +57,7 @@ As described in [Miles McBain's blogpost](https://milesmcbain.micro.blog/2020/09
 
 5. Add an `.html` file (I've called mine `giscus.html`) to the root of your blog repo that looks like this (and is based off of [Miles' HTML](https://milesmcbain.micro.blog/2020/09/04/how-i-got.html)):
 
-```{html}
+```
 <script>
    document.addEventListener("DOMContentLoaded", function () {
      if (!/posts/.test(location.pathname)) {

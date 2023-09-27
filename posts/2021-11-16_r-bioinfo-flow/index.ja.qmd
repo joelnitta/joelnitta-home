@@ -9,6 +9,7 @@ citation:
 categories:
   - workflow
   - reproducibility
+lang: ja
 ---
 
 <!--------------- setup post ----------------->
@@ -27,7 +28,7 @@ conda remove --name bioinfo-example-env --all --yes
 #| echo: false
 #| results: false
 renv::use(
-  lockfile = here::here("posts/2021-11-16_r-bioinfo-flow/renv.lock"),
+  lockfile = "renv.lock",
   attach = TRUE)
 ```
 
