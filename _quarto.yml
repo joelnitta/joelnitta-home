@@ -33,6 +33,11 @@ format:
     include-in-header: header.html
 
 babelquarto:
+  languagecodes:
+  - name: ja
+    text: "日本語"
+  - name: en
+    text: "English"
   mainlanguage: 'en'
   languages: ['ja']
 title-ja: ニッタ ジョエル
