@@ -1,5 +1,4 @@
 library(babelquarto)
-library(servr)
 
 # First check URLs
 check_urls <- TRUE
