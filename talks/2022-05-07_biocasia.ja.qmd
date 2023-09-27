@@ -1,6 +1,6 @@
 ---
-title: "How to use {targets} for effective workflows in R (BioC Asia meetup)"
-lang: en
+title: "How to use {targets} for effective workflows in R (BioC Asia ミートアップ)"
+lang: ja
 date: 2022-05-07
 image: "2022-05-07_biocasia.png"
 execute:
@@ -9,14 +9,14 @@ comments: false
 toc: false
 categories:
   - R
-  - targets
-  - tutorial
+  - 「targets」Rパッケージ
+  - チュートリアル
 ---
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/XMvinGSG72k?start=1290" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-### Resources
+### 資料
 
-- [Workshop repo](https://github.com/AsiaR-community/2022-bioCasia_targets)
-- [Slides](https://joelnitta.github.io/asiaR-targets-intro/)
-- [Example code](https://github.com/joelnitta/targets_gapminder_example)
+- [ワークショップ](https://github.com/AsiaR-community/2022-bioCasia_targets)
+- [スライド](https://joelnitta.github.io/asiaR-targets-intro/)
+- [コード](https://github.com/joelnitta/targets_gapminder_example)
