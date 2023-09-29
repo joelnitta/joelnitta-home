@@ -8,7 +8,7 @@ editor: visual
 #   `quarto render` is run on that file
 # - false: always re-render
 # - auto: only re-render during project render if the source has changed
-freeze: auto
+freeze: true
 
 # Enable banner style title blocks
 title-block-banner: true
