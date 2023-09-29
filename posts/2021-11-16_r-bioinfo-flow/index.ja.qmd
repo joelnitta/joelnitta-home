@@ -3,6 +3,7 @@ title: "Managing bioinformatics pipelines with R"
 description:
   How to combine Conda, Docker, and R to run modular, reproducible bioinformatics pipelines
 date: "2021-11-16"
+date-modified: today
 image: "img/t-k-9AxFJaNySB8-unsplash.jpg"
 citation:
   url: https://www.joelnitta.com/posts/2021-11-16_r-bioinfo-flow/
@@ -25,11 +26,8 @@ conda remove --name bioinfo-example-env --all --yes
 
 ```{r}
 #| label: renv
-#| echo: false
-#| results: false
-renv::use(
-  lockfile = "renv.lock",
-  attach = TRUE)
+#| include: false
+renv::use(lockfile = "renv.lock")
 ```
 
 ```{r}
@@ -392,3 +390,8 @@ I am really excited about using `targets` for reproducibly managing bioinformati
 [^7]: I typically use Docker, but Singularity may be a good option if you want to run your workflow on a machine where you don't have root privileges (such as on a cluster). Docker requires root privileges to install, but Singularity doesn't (for that matter neither does Conda). I have not tested any of this with Singularity.
 
 [^8]: I won't go into the details of the `targets` syntax here, but I highly recommend [this chapter in the `targets` manual](https://books.ropensci.org/targets/files.html) for working with external files, which are very common in bioinformatics workflows.
+
+## Reproducibility {.appendix}
+
+- [Source code](https://github.com/joelnitta/joelnitta-home/tree/main/posts/2021-11-16_r-bioinfo-flow/index.ja.qmd)
+- [`renv` lockfile](https://github.com/joelnitta/joelnitta-home/tree/main/posts/2021-11-16_r-bioinfo-flow/renv.lock)

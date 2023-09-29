@@ -3,6 +3,7 @@ title: canaperがCRANに登録されました
 description: Rパッケージcanaperの紹介
 bibliography: references.yaml
 date: 2022-10-07
+date-modified: today
 image: https://docs.ropensci.org/canaper/logo.png
 citation:
   url: https://www.joelnitta.com/posts/canaper/
@@ -16,6 +17,12 @@ lang: ja
 ---
 
 ## `canaper`への紹介
+
+```{r}
+#| label: renv
+#| include: false
+renv::use(lockfile = "renv.lock")
+```
 
 (Read this blogpost in
 [English](https://www.joelnitta.com/posts/2022-10-07_canaper/))
@@ -154,3 +161,11 @@ Call](https://ropensci.org/commcalls/)（誰でも参加できるビデオコー
 `canaper`についてもっと知りたい方は[GitHubのサイト](https://github.com/ropensci/canaper)、[パッケージのサイト](https://docs.ropensci.org/canaper)、および[プレプリント](https://doi.org/10.1101/2022.10.06.511072)をご覧下さい。
 
 ## 参考文献
+
+::: {#refs}
+:::
+
+## 再現性 {.appendix}
+
+- [ソースコード](https://github.com/joelnitta/joelnitta-home/tree/main/posts/2022-10-07_canaper/index.ja.qmd)
+- [`renv`のロックファイル](https://github.com/joelnitta/joelnitta-home/tree/main/posts/2022-10-07_canaper/renv.lock)

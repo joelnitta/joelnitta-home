@@ -4,7 +4,11 @@ editor: visual
 
 # freeze computational output
 # (see https://quarto.org/docs/projects/code-execution.html#freeze)
-freeze: true
+# - true: never re-render during project render, i.e., only re-render when 
+#   `quarto render` is run on that file
+# - false: always re-render
+# - auto: only re-render during project render if the source has changed
+freeze: auto
 
 # Enable banner style title blocks
 title-block-banner: true

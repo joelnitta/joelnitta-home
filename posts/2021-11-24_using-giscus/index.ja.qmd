@@ -3,6 +3,7 @@ title: "Enable giscus in Distill"
 description:
   How to use the giscus commenting system on a Distill blog
 date: "2021-11-24"
+date-modified: today
 image: img/adam-solomon-WHUDOzd5IYU-unsplash.jpg
 execute:
   echo: false
@@ -106,3 +107,7 @@ output:
 ```
 
 **That's it!** Or it should be anyways. I recommend trying a test comment to make sure everything is working (nobody will tell you otherwise...)
+
+## Reproducibility {.appendix}
+
+- [Source code](https://github.com/joelnitta/joelnitta-home/tree/main/posts/2021-11-24_using-giscus/index.ja.qmd)

@@ -3,6 +3,7 @@ title: "Building R docker images with secrets"
 description:
   Keep it secret. Keep it safe.
 date: 2019-02-16
+date-modified: today
 image: featured.png
 citation:
   url: https://www.joelnitta.com/posts/2019-02-16_building-r-docker-images-with-secrets/
@@ -14,9 +15,7 @@ categories:
 #| label: renv
 #| echo: false
 #| results: false
-renv::use(
-  lockfile = here::here("posts/2019-02-16_building-r-docker-images-with-secrets/renv.lock"),
-  attach = TRUE)
+renv::use(lockfile = "renv.lock")
 ```
 
 ```{r}
@@ -124,3 +123,8 @@ DOCKER_BUILDKIT=1 docker build --progress=plain --no-cache \
 ```
 
 That's it!
+
+## Reproducibility {.appendix}
+
+- [Source code](https://github.com/joelnitta/joelnitta-home/tree/main/posts/2019-02-16_building-r-docker-images-with-secrets/index.qmd)
+- [`renv` lockfile](https://github.com/joelnitta/joelnitta-home/tree/main/posts/2019-02-16_building-r-docker-images-with-secrets/renv.lock)

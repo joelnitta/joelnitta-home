@@ -2,6 +2,7 @@
 title: "Making a fern family tree"
 description: How to make a family-level phylogenetic tree of ferns (or anything else)
 date: 2023-02-21
+date-modified: today
 image: https://github.com/fernphy/fernphy.github.io/raw/main/images/header_ferns.png
 citation:
   url: https://www.joelnitta.com/posts/fern-family/
@@ -10,7 +11,7 @@ categories:
   - ferns
 knitr:
   opts_chunk: 
-      cache: true
+      cache: false
 lang: en
 editor_options: 
   chunk_output_type: console
@@ -23,6 +24,8 @@ editor_options:
 
 # Increase width for printing tibbles
 options(width = 250)
+
+renv::use(lockfile = "renv.lock")
 ```
 
 
@@ -110,3 +113,7 @@ phy_family$tip.label <- new_tips
 plot(ladderize(phy_family), no.margin = TRUE)
 ```
 
+## Reproducibility {.appendix}
+
+- [Source code](https://github.com/joelnitta/joelnitta-home/tree/main/posts/2023-02-21_fern-family-tree/index.qmd)
+- [`renv` lockfile](https://github.com/joelnitta/joelnitta-home/tree/main/posts/2023-02-21_fern-family-tree/renv.lock)

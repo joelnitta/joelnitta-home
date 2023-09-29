@@ -3,6 +3,7 @@ title: "canaper is on CRAN"
 description: Announcing the canaper R package!
 bibliography: references.yaml
 date: 2022-10-07
+date-modified: today
 image: https://docs.ropensci.org/canaper/logo.png
 citation:
   url: https://www.joelnitta.com/posts/canaper/
@@ -16,6 +17,12 @@ lang: en
 ---
 
 ## Introducing `canaper`
+
+```{r}
+#| label: renv
+#| include: false
+renv::use(lockfile = "renv.lock")
+```
 
 (Read this blogpost in [Japanese](https://www.ja.joelnitta.com/posts/2022-10-07_canaper/))
 
@@ -150,3 +157,11 @@ So please check it out, and a big **thank-you** to rOpenSci!
 For more information about `canaper`, please see the [GitHub repo](https://github.com/ropensci/canaper), [package website](https://docs.ropensci.org/canaper/), and [preprint](https://doi.org/10.1101/2022.10.06.511072).
 
 ## References
+
+::: {#refs}
+:::
+
+## Reproducibility {.appendix}
+
+- [Source code](https://github.com/joelnitta/joelnitta-home/tree/main/posts/2022-10-07_canaper/index.qmd)
+- [`renv` lockfile](https://github.com/joelnitta/joelnitta-home/tree/main/posts/2022-10-07_canaper/renv.lock)
