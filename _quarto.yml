@@ -45,3 +45,16 @@ title-ja: ニッタ ジョエル
 description-ja: ニッタ ジョエルのウエブサイト
 author-ja: ニッタ ジョエル
 lang: en
+
+# Override language specific fields here
+babelquarto-ja:
+  format:
+    html:
+      comments:
+        giscus:
+          language: ja
+  website:
+    navbar:
+      right:
+        - href: talks.qmd
+          text: 発表
