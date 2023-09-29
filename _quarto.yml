@@ -30,6 +30,7 @@ format:
         input-position: top
         theme: light
         language: en
+        reactions-enabled: false
     include-in-header: header.html
 
 babelquarto:
