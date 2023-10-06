@@ -35,11 +35,12 @@ mybib_df_raw <-
   )
 # Load other metadata
 mybib_meta <- read_csv(here::here("_bib/ref_metadata.csv")) %>%
-  select(-title) %>%
-  mutate(`file-pdf` = here::here(`file-pdf`))
+  select(-title)
 
 # Check that all pdf files exist
-check_pdfs(mybib_meta)
+mybib_meta  %>%
+  mutate(`file-pdf` = here::here(`file-pdf`)) %>%
+  check_pdfs()
 
 # Format dataframe version of bibliography
 mybib_df <-
