@@ -1,3 +1,22 @@
+#' Check for missing PDFS
+#'
+#' @param mybib_meta Metadata for bibliography, including column `file-pdf` with
+#' path to PDF file
+#'
+#' @return Nothing unless one of the PDF files is missing
+#'
+check_pdfs <- function(mybib_meta) {
+  pdf_files <- mybib_meta |>
+    filter(!is.na(`file-pdf`)) |>
+    pull(`file-pdf`)
+  pdf_check <- fs::file_exists(pdf_files)
+  pdf_missing <- pdf_check[pdf_check == FALSE]
+  assertthat::assert_that(
+    isTRUE(length(pdf_missing) == 0),
+    msg = glue::glue("The following pdf files are missing: {paste(names(pdf_missing), sep = ', ')}")
+  )
+}
+
 # Helper function to create a locale/lang directory populated with
 # files needed for translation
 site_create_locale <- function(lang = "ja") {
@@ -133,7 +152,7 @@ url_status <- function (x, time_limit = 60) {
 link_button <- function(key_select, link_type, text, bib_df = mybib_df) {
   url <- filter(bib_df, key == key_select)[[link_type]]
   if (is.na(url)) return(NULL)
-  icon_link(icon = link_type, text = text, url = url)
+  distilltools::icon_link(icon = link_type, text = text, url = url)
 }
 
 #' Make a DOI link

@@ -14,68 +14,10 @@ comments: false
 #| label: setup
 #| include: false
 library(distilltools)
-library(RefManageR)
-library(bib2df)
-library(bibtex)
-library(janitor)
-library(lubridate)
-library(glue)
-library(tidyverse)
-
-source(here::here("R/functions.R"))
 ```
 
 ```{r}
-#| label: setup-refs
-#| message: false
-#| warning: false
-#| echo: false
-
-# Load bibliography
-# Export from Zotero by selecting My References, Export, Better BibLatex
-# on default settings
-bib_path <- "_bib/references.bib"
-# - as list
-mybib <- ReadBib(bib_path, check = FALSE) 
-# - as dataframe
-mybib_df_raw <- 
-  suppressWarnings(
-    suppressMessages(
-      bib2df(bib_path)
-    )
-  )
-# Load other metadata
-mybib_meta <- read_csv("_bib/ref_metadata.csv") %>% select(-title)
-
-# Check that all pdf files exist
-pdf_check <- fs::file_exists(mybib_meta$`file-pdf`)
-pdf_missing <- pdf_check[pdf_check == FALSE]
-pdf_assert <- assertthat::assert_that(
-  isTRUE(length(pdf_missing) == 0),
-  msg = glue::glue("The following pdf files are missing: {paste(names(pdf_missing), sep = ', ')}")
-)
-
-# Format dataframe version of bibliography
-mybib_df <-
-	mybib_df_raw %>%
-	clean_names() %>%
-	select(key = bibtexkey, date, doi, title, author, journaltitle) %>%
-	mutate(
-		date = parse_date_time(date, "ymd"),
-		year = year(date)) %>%
-	arrange(desc(year), key) %>%
-	# add other metadata (github repo, dryad link, preprint, etc)
-	left_join(mybib_meta, by = "key")
-
-# Set RefManageR options
-oldopts <- BibOptions(
-	style = "text",
-	bib.style = "authoryear", 
-	no.print.fields = c("doi", "issn", "isbn", "url", 
-    "urldate", "eprint", "eprinttype"),
-	max.names = 50,
-	dashed = FALSE, 
-	sorting = "ydnt")
+#| child: R/pub-prep.Rmd
 ```
 
 `r icon_link("google-scholar", "Google Scholar", "https://scholar.google.com/citations?hl=en&user=FtzrMYwAAAAJ")`  
@@ -91,6 +33,8 @@ oldopts <- BibOptions(
 `r icon_link(icon = "github", text = "Code", url = "https://github.com/ropensci/canaper")` !-->
 
 ## 2023
+
+`r print_ref("Song2023")`
 
 `r print_ref("Nitta2023a")`
 
