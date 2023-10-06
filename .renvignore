@@ -1,3 +1,10 @@
-_posts
+_bib
+_freeze
+_site
+.github
+.quarto
+content
 posts
+_posts
+temp
 working

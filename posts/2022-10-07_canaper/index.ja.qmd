@@ -1,0 +1,171 @@
+---
+title: canaperがCRANに登録されました
+description: Rパッケージcanaperの紹介
+bibliography: references.yaml
+date: 2022-10-07
+date-modified: today
+image: https://docs.ropensci.org/canaper/logo.png
+citation:
+  url: https://www.joelnitta.com/posts/canaper/
+categories:
+  - R
+  - Spatial phylogenetics
+knitr:
+  opts_chunk: 
+      cache: true
+lang: ja
+---
+
+## `canaper`への紹介
+
+```{r}
+#| label: renv
+#| include: false
+renv::use(lockfile = "renv.lock")
+```
+
+(Read this blogpost in
+[English](https://www.joelnitta.com/posts/2022-10-07_canaper/))
+
+[`canaper`](https://github.com/ropensci/canaper)
+v1.0.0が[CRAN](https://cran.r-project.org/web/packages/canaper/index.html)に登録されました！今までいくつかのRパッケージを書いてGitHubで公開したことがありますが、自分のパッケージがCRANに登録されるのが初めてです。
+
+そもそも、`canaper`って一体何だろう？
+
+パッケージの[DESCRIPTION](https://github.com/ropensci/canaper/blob/main/DESCRIPTION)にはこのような文章があります：
+
+> `canaper` provides functions to analyze the spatial distribution of
+biodiversity, in particular categorical analysis of neo- and paleo-endemism
+(CANAPE) as described in Mishler et al (2014) [doi:10.1038/ncomms5473](https://doi.org/10.1038/ncomms5473).
+`canaper` conducts statistical tests to determine the types of endemism that
+occur in a study area while accounting for the evolutionary relationships of
+species.
+
+つまり、`canaper`は生物多様性の地理的分布を解析する関数を提供します。特に、生物の進化的な関係を考慮しながら、ある地域における固有性の種類を統計的に検証する、categorical
+analysis of neo- and
+paleo-endemism（CANAPE）というMishler等（2014）<doi:10.1038/ncomms5473>
+が開発した解析を行います。
+
+もしも上の話を読んで「面白い！」と思ったら、是非続きを読んでください。
+
+## 系統的固有性とCANAPE
+
+[生物多様性](https://ja.wikipedia.org/wiki/%E7%94%9F%E7%89%A9%E5%A4%9A%E6%A7%98%E6%80%A7)は種数、つまり、ある地域における種の数で測られることがよくあります。それと同じように、固有性はある地域にしか生息しない種の数で測ることがよくあります。しかし、このような、種名だけを使うアプローチは種の進化的な歴史を考慮しません。最近、[分子系統樹](https://ja.wikipedia.org/wiki/%E7%B3%BB%E7%B5%B1%E6%A8%B9)の増加によって、種の進化的な歴史を考慮した生物多様性を測定する方法がいくつか開発されました。その一つは系統的固有性[Phylogenetic
+endemism, PE\; @Rosauer2009]です。PEは種ではなく、系統樹の枝によって固有性を測る方法です。
+
+PEを使うことによって、**生物多様性を生み出す進化的なプロセス**を垣間見ることができる。例えば、PEの高い、短い枝が密集している地域は最近の種分化（放散）によってできた可能性があり、このような地域を「neo-endemic」と呼びます。一方で、PEの高い、長い枝が密集している地域はかつて広く分布していた系統が多く絶滅したことによってできた可能性が高く、このような地域を「paleo-endemic」と呼びます。このような地域の区別をするために、@Mishler2014
+がCANAPEという方法を開発しました。
+
+`canaper`の目的はRでCANAPEを行うことです。
+
+## 実例：オーストラリアのアカシア
+
+![*Acacia
+pycnantha*、写真[Bidgee](https://commons.wikimedia.org/wiki/User:Bidgee)](Golden-wattle.jpg)
+
+`canaper`には元々のCANAPEの論文で解析されたデータセットが備えられています。オーストラリア産のアカシア^[アカシアはオーストラリアの被子植物の中で最も種が多い属です。１０００種近くあります。]
+のデータです。系統樹とコミュニティマトリックス（群集⾏列）からなっています。このデータセットを用いて簡単なデモを行います^[なお、本デモに使う解析設定は都合上使っているだけで、本格的な解析にはおすすめしません。]。
+
+ここで詳細には入りませんが、[この例](https://docs.ropensci.org/canaper/articles/canape.html)についてもっと知りたければ、[`canaper`のウェブサイト](https://docs.ropensci.org/canaper/index.html)をご覧ください。
+
+CANAPE解析の全部を二つのコマンドだけでできます：[`cpr_rand_test()`](https://docs.ropensci.org/canaper/reference/cpr_rand_test.html)と
+[`cpr_classify_endem()`](https://docs.ropensci.org/canaper/reference/cpr_classify_endem.html)。
+
+```{r}
+#| label: acacia-demo
+#| warning: false
+#| message: false
+
+library(canaper)
+library(tidyverse)
+
+# 再現のためにシードを設定する
+set.seed(12345)
+
+# 1. ランダム化比解析を行う
+acacia_rand_res <- cpr_rand_test(
+  acacia$comm, acacia$phy,
+  null_model = "curveball",
+  n_reps = 99, n_iterations = 10000,
+  tbl_out = TRUE
+)
+
+# 2. 固有性を分類化する
+acacia_canape <- cpr_classify_endem(acacia_rand_res)
+```
+
+では、アウトプットをみてみましょう。
+
+[`cpr_rand_test`](https://docs.ropensci.org/canaper/reference/cpr_rand_test.html)がたくさん（全部で５４）の列を返します。コミュニティの各地点について、様々な（PEを含めた）指標です。
+
+```{r}
+#| label: acacia-rand-res
+acacia_rand_res
+```
+
+[`cpr_classify_endem()`](https://docs.ropensci.org/canaper/reference/cpr_classify_endem.html)がもう一つの列をデータに付けます。新しい列は固有性の種類です。それぞれの種類が何回観察されたのか、数えてみましょう：
+
+```{r}
+#| label: acacia-endem-res
+count(acacia_canape, endem_type)
+```
+
+そして、今回計算した固有性の種類を地図にするとこうなります：
+
+```{r}
+#| label: acacia-plot
+#| code-fold: true
+
+# まず、図を作るためにデータをちょっといじる
+# （経緯度の列を加える）
+acacia_canape <- acacia_canape |>
+  separate(site, c("long", "lat"), sep = ":") |>
+  mutate(across(c(long, lat), parse_number))
+
+# 図のテーマをいじる
+theme_update(
+  panel.background = element_rect(fill = "white", color = "white"),
+  panel.grid.major = element_line(color = "grey60"),
+  panel.grid.minor = element_blank()
+  )
+
+ggplot(acacia_canape, aes(x = long, y = lat, fill = endem_type)) +
+  geom_tile() +
+  # cpr_endem_cols_4 はcanaperに入っているカラーユニバーサルデザインのパレット
+  scale_fill_manual(values = cpr_endem_cols_4) +
+  coord_fixed() +
+  guides(
+    fill = guide_legend(title.position = "top", label.position = "bottom")
+  ) +
+  theme(legend.position = "bottom", legend.title = element_blank())
+```
+
+## rOpenSci
+
+もう一つ今回で初めてだったのが[ROpenSci](https://ropensci.org/)にパッケージを投稿することでした。rOpenSciはRで書かれた研究用のソフトを支援する団体です。もし自分の研究用のパッケージを公開しようと考えているなら、とてもおすすめです。
+
+というのは、まずはRパケージの書き方について非常に丁寧な説明書を提供しているからです。また、パッケージの自動的なチェックを行うパッケージも。これを使うだけでも自分のコードの腕がかなり上がりました。
+
+次に、rOpenSciに投稿されたパッケージは徹底的な[コードレビュー](https://devguide.ropensci.org/softwarereviewintro.html)（査読）を受けることになっています。こうすることによって、自分だけではなかなか気づかなかったことを教えていただき、さらに[コードの改善](https://github.com/ropensci/software-review/issues/475)につながりました^[査読者の[Klaus
+Schliep](https://github.com/KlausVigo)と[Luis
+Osorio](https://github.com/luismurao)、そして編集者の[Toby
+Hocking](https://github.com/tdhock)に感謝しています！]。
+
+しかし、何と言っても、やはりrOpenSciのコミュニティが素晴らしいです。とてもアクティブで広く開かれたコミュニティです。活動としては、[Community
+Call](https://ropensci.org/commcalls/)（誰でも参加できるビデオコール）、[バーチャルコーワークスペース](https://ropensci.org/events/)、やSlackのチャットチャンネルがあります。
+
+ご興味のある方は是非試してくださいね！そして、rOpenSciに感謝します!
+
+## 参考情報
+
+`canaper`についてもっと知りたい方は[GitHubのサイト](https://github.com/ropensci/canaper)、[パッケージのサイト](https://docs.ropensci.org/canaper)、および[プレプリント](https://doi.org/10.1101/2022.10.06.511072)をご覧下さい。
+
+## 参考文献
+
+::: {#refs}
+:::
+
+## 再現性 {.appendix}
+
+- [ソースコード](https://github.com/joelnitta/joelnitta-home/tree/main/posts/2022-10-07_canaper/index.ja.qmd)
+- [`renv`のロックファイル](https://github.com/joelnitta/joelnitta-home/tree/main/posts/2022-10-07_canaper/renv.lock)

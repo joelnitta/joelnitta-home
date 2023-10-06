@@ -2,9 +2,11 @@
 title: "Recorded Talks"
 comments: false
 lang: en
-date: "`r Sys.Date()`"
+date: today
 listing:
   contents: talks
+  include:
+    lang: en
   type: default
   categories: true
   sort:

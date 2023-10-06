@@ -1,0 +1,18 @@
+---
+title: "【研究者に聞いてみた】シダ植物の多様性：進化生態学的なアプローチ"
+lang: ja
+date: 2023-01-23
+image: "2023-01-21_yurufuwa.png"
+execute:
+  echo: false
+comments: false
+toc: false
+categories:
+  - シダ植物
+---
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/kDrRJ9SICN8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+### 資料
+
+- [ゆるふわ生物学](https://www.yurufuwa-biology.com/)

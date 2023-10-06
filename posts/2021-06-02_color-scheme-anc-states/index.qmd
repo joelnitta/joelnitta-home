@@ -3,6 +3,7 @@ title: "Selecting color schemes for mapping ancestral states"
 description:
   How to change the phytools default color scheme when visualizing the results of ancestral character state estimation
 date: "2021-06-02"
+date-modified: today
 image: featured.png
 execute:
   echo: true
@@ -20,9 +21,7 @@ categories:
 #| label: renv
 #| echo: false
 #| results: false
-renv::use(
-  lockfile = here::here("posts/2021-06-02_color-scheme-anc-states/renv.lock"),
-  attach = TRUE)
+renv::use(lockfile = "renv.lock")
 ```
 
 ## About `contMap()`
@@ -216,3 +215,8 @@ ggtree(
 ```
 
 That's it!
+
+## Reproducibility {.appendix}
+
+- [Source code](https://github.com/joelnitta/joelnitta-home/tree/main/posts/2021-06-02_color-scheme-anc-states/index.qmd)
+- [`renv` lockfile](https://github.com/joelnitta/joelnitta-home/tree/main/posts/2021-06-02_color-scheme-anc-states/renv.lock)

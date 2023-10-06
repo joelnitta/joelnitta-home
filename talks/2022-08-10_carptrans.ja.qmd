@@ -1,0 +1,19 @@
+---
+title: "Translation at The Carpentries: Technology Past, Present, and Future (CarpentryCon 2022 口頭発表)"
+image: "2022-08-10_carptrans.png"
+lang: ja
+date: 2022-08-10
+execute:
+  echo: false
+comments: false
+toc: false
+categories:
+  - カーペントリーズ
+  - 翻訳
+---
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/9zCrGda6p7Q?start=286" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+### 資料
+
+- [スライド](https://joelnitta.github.io/carpentrycon_2022_trans/)

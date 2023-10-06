@@ -1,0 +1,21 @@
+---
+title: "DNA Barcoding of Fern Gametophytes: Past, Present, and Future (XVI Indian Fern Symposium 口頭発表)"
+image: "2022-03-17_india.png"
+lang: ja
+date: 2022-09-27
+execute:
+  echo: false
+comments: false
+toc: false
+categories:
+  - シダ植物
+  - 学会発表
+  - 招待あり
+---
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/kdEblDxSCY8?start=25600" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+### 資料
+
+- [スライド](https://joelnitta.github.io/gameto_barcode_ifs/)
+- [論文](https://bsapubs.onlinelibrary.wiley.com/doi/10.1002/aps3.11465)

@@ -1,0 +1,20 @@
+---
+title: "An Open and Continuously Updated Fern Tree of Life (Botany 2022 口頭発表)"
+image: "2022-07-24_botany_ftol.png"
+lang: ja
+date: 2022-07-24
+execute:
+  echo: false
+comments: false
+toc: false
+categories:
+  - シダ植物
+  - 学会発表
+---
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/aQQVEhquJvs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+### 資料
+
+- [スライド](https://joelnitta.github.io/botany_2022_ftol/)
+- [論文](https://doi.org/10.3389/fpls.2022.909768)

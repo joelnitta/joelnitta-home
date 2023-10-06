@@ -1,0 +1,15 @@
+---
+title: "オンライン発表"
+comments: false
+lang: ja
+date: today
+listing:
+  contents: talks
+  include:
+    lang: ja
+  type: default
+  categories: true
+  sort:
+    - "date desc"
+    - "title desc"
+---

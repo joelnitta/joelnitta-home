@@ -1,5 +1,5 @@
 ---
-title: "Joel Nitta"
+title: Joel Nitta
 lang: en
 about:
   template: trestles

@@ -1,7 +1,7 @@
 ---
 title: "Publications"
 lang: en
-date: "`r Sys.Date()`"
+date: today
 output: distill::distill_article
 editor_options: 
   chunk_output_type: console
@@ -32,6 +32,8 @@ source(here::here("R/functions.R"))
 #| echo: false
 
 # Load bibliography
+# Export from Zotero by selecting My References, Export, Better BibLatex
+# on default settings
 bib_path <- "_bib/references.bib"
 # - as list
 mybib <- ReadBib(bib_path, check = FALSE) 
@@ -52,12 +54,6 @@ pdf_assert <- assertthat::assert_that(
   isTRUE(length(pdf_missing) == 0),
   msg = glue::glue("The following pdf files are missing: {paste(names(pdf_missing), sep = ', ')}")
 )
-
-# Check that all links work
-github_check <- check_urls(mybib_meta$github)
-biorxiv_check <- check_urls(mybib_meta$biorxiv)
-figshare_check <- check_urls(mybib_meta$figshare)
-dryad_check <- check_urls(mybib_meta$dryad)
 
 # Format dataframe version of bibliography
 mybib_df <-
@@ -82,24 +78,20 @@ oldopts <- BibOptions(
 	sorting = "ydnt")
 ```
 
-```{r}
-#| label: cite-func
-
-
-```
-
 `r icon_link("google-scholar", "Google Scholar", "https://scholar.google.com/citations?hl=en&user=FtzrMYwAAAAJ")`  
 
-<!-- Manually add forthcoming pubs !-->
+<!-- Manually add forthcoming pubs, e.g. 
 
-## Forthcoming
+## Forthcoming 
 
 **Nitta, J. H.**, S. W. Laffan, B. D. Mishler, and W. Iwasaki. "canaper: Categorical analysis of neo- and paleo-endemism in R". In-press, *Ecography*.
 
 `r icon_link(text = "Preprint", url = "https://www.biorxiv.org/content/10.1101/2022.10.06.511072v1")`
-`r icon_link(icon = "github", text = "Code", url = "https://github.com/ropensci/canaper")`
+`r icon_link(icon = "github", text = "Code", url = "https://github.com/ropensci/canaper")` !-->
 
 ## 2023
+
+`r print_ref("Nitta2023a")`
 
 `r print_ref("Nitta2023")`
 

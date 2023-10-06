@@ -1,0 +1,21 @@
+---
+title: "データ解析ワークフローを無駄なく、再現可能にするRパッケージ｢targets｣の紹介"
+image: "2022-01-12_biohack.png"
+lang: ja
+date: 2022-01-12
+execute:
+  echo: false
+comments: false
+toc: false
+categories:
+  - R
+  - 「targets」Rパッケージ
+  - チュートリアル
+---
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/qwZsMKUMu6U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+### 資料
+
+- [スライド](https://joelnitta.github.io/workflow-meetup-targets-intro)
+- [コード](https://github.com/joelnitta/targets_vcf_example)

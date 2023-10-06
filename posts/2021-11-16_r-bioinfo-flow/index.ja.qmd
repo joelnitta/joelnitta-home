@@ -1,0 +1,397 @@
+---
+title: "Managing bioinformatics pipelines with R"
+description:
+  How to combine Conda, Docker, and R to run modular, reproducible bioinformatics pipelines
+date: "2021-11-16"
+date-modified: today
+image: "img/t-k-9AxFJaNySB8-unsplash.jpg"
+citation:
+  url: https://www.joelnitta.com/posts/2021-11-16_r-bioinfo-flow/
+categories:
+  - workflow
+  - reproducibility
+lang: ja
+---
+
+<!--------------- setup post ----------------->
+
+```{bash}
+#| label: delete-env
+#| echo: false
+#| results: false
+
+# Delete conda env so no error when building during post
+conda remove --name bioinfo-example-env --all --yes
+```
+
+```{r}
+#| label: renv
+#| include: false
+renv::use(lockfile = "renv.lock")
+```
+
+```{r}
+#| label: visnetwork
+#| echo: false
+#| results: false
+library(visNetwork) # need for tar_visnetwork()
+```
+
+## tl;dr
+
+- The `targets` R package is great for managing bioinformatics workflows
+- `renv`, Conda, and Docker can be combined so that all steps are modular and reproducible
+- Demo available at [https://github.com/joelnitta/targets_bioinfo_example](https://github.com/joelnitta/targets_bioinfo_example)
+
+![Image by [T K](https://unsplash.com/@realaxer) on [unsplash](https://unsplash.com/photos/9AxFJaNySB8).](img/t-k-9AxFJaNySB8-unsplash.jpg){#fig-image-1}
+
+Bioinformatics projects tend to have a similar pattern: they all start with raw data, then pass the data through various programs until arriving at the final result. These "pipelines" can become very long and complicated, so there are many platforms that automate this process either relying on code (e.g., [nextflow](https://www.nextflow.io/), [CWL](https://www.commonwl.org/)) or graphical interfaces (e.g., [galaxy](https://galaxyproject.org/)). Python's [snakemake](https://snakemake.readthedocs.io/en/stable/) is also commonly used for this purpose. That got me thinking---can we do this in R?
+
+## What I'm looking for in a pipeline manager
+
+These are some qualities that I want to see in a pipeline manager.
+
+1. **Automated**: I should be able to run one central script that will orchestrate the whole pipeline, rather than manually keeping track of which step depends on which and when each needs to be run. 
+2. **Efficient**: The pipeline manager should keep track of what is out of date and only re-run those parts, rather than re-run the whole pipeline each time.
+3. **Reproducible**: Software packages should be isolated and version controlled so that the same input results in the same output on any machine.
+
+## Enter `targets`
+
+The [targets](https://docs.ropensci.org/targets/) R package pretty much fits the bill perfectly for Points **1** and **2**. `targets` completely automates the workflow, so that the user doesn't have to manually run steps, and guarantees that the output is up-to-date (if the workflow is designed correctly). Furthermore, it has capabilities for easily looping and running processes in parallel, so it scales quite well to large analyses. I won't go into too many details of how to use `targets` here, since it has an excellent [user manual](https://books.ropensci.org/targets/).
+
+## `targets` meets Docker
+
+However, `targets` by itself isn't quite enough to meet all of my bioinformatics needs. What about Point **3**---how can we make `targets` workflows reproducible?
+
+Most bioinformatics tools are open-source software packages that have a command-line interface (CLI). Furthermore, these days, most well-established bioinformatics tools have Docker images[^1] available to run them. Good sources to find Docker images for bioinformatics software are [Bioconda](http://bioconda.github.io/) or [Biocontainers](https://biocontainers.pro/)[^2]. Docker frees us from manual installations and [dependency hell](https://en.wikipedia.org/wiki/Dependency_hell), as well as vastly improving reproducibility, since all the software versions are fixed within the container. 
+
+So **I will run most of the steps of the pipeline in available Docker containers**.
+
+## Avoiding Docker-in-Docker
+
+![Image by [Giordano Rossoni](https://unsplash.com/@reddgio) on [unsplash](https://unsplash.com/photos/czu8X_gfpP0).](img/giordano-rossoni-czu8X_gfpP0-unsplash.jpg){#fig-image-2}
+
+However, I then encounter a problem: what about the environment to run R, `targets`, and launch the Docker containers? That environment should be version-controlled and reproducible too. Normally my solution to create such an environment **is** Docker, but it's generally a bad idea to try and run [docker from within docker](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/)[^3]
+
+The solution I reached is to use two more environment managers: [Conda](https://docs.conda.io/en/latest/)[^4] and [renv](https://rstudio.github.io/renv/articles/renv.html). I use Conda for **running R**, and `renv` for **managing R packages**.
+
+## First things first: Set up the project
+
+I need to explain one thing before continuing: for this example, I'm following [the practice of using a "project" for the analysis](http://swcarpentry.github.io/good-enough-practices-in-scientific-computing/). This simply means all of the files needed for the analysis are put in a single folder (with subfolders as necessary), and that folder is used as the "home base" for the project. So if I type some command at the command line prompt, it is assumed that the project folder is the [current working directory](https://en.wikipedia.org/wiki/Working_directory). The two main tools I use to maintain the pipeline, `renv` and `targets`, both [rely on this concept](https://books.ropensci.org/targets/walkthrough.html#file-structure).
+
+From the command line, that just looks like:
+
+```{bash prep-project, eval = FALSE}
+mkdir targets_bioinfo_example
+cd targets_bioinfo_example
+```
+
+Next, let's download some files that I will use in the subsequent steps (don't worry about what these do yet; I will explain each one below):
+
+<!-- for some reason include=FALSE doesn't seem to work with bash, so write two chunks-->
+```{bash}
+#| label: download-files-show
+#| eval: false
+# environment.yml
+curl https://raw.githubusercontent.com/joelnitta/targets_bioinfo_example/main/environment.yml > environment.yml
+# renv.lock
+curl https://raw.githubusercontent.com/joelnitta/targets_bioinfo_example/main/renv.lock > renv.lock
+# _targets.R
+curl https://raw.githubusercontent.com/joelnitta/joelnitta-home/main/posts/2021-11-16_r-bioinfo-flow/_targets.R > _targets.R
+```
+
+```{bash}
+#| label: download-files-run
+#| echo: false
+#| include: false
+ 
+# environment.yml
+curl https://raw.githubusercontent.com/joelnitta/targets_bioinfo_example/main/environment.yml > environment.yml
+# _targets.R
+curl https://raw.githubusercontent.com/joelnitta/joelnitta-home/main/posts/2021-11-16_r-bioinfo-flow/_targets.R > _targets.R
+```
+
+From here on, I assume we are running everything a folder called `targets_bioinfo_example` containing the files `environment.yml`, `renv.lock`, and `_targets.R`.
+
+Also, although I've mentioned several pieces of software so far, there are only two required for this workflow: [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) and [Docker](https://docs.docker.com/get-docker/). Make sure those are both installed before continuing.
+
+## Running R with Conda
+
+Conda environments [can be specified using a `yml` file](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file), often named `environment.yml`.
+
+[This is the `environment.yml` file](https://raw.githubusercontent.com/joelnitta/targets_bioinfo_example/main/environment.yml) for this project:
+
+```
+name: bioinfo-example-env
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - r-renv=0.14.*
+```
+
+It's quite short: all it does is install `renv` and its dependencies (which includes R). Here I've specified the most recent major version[^5] of `renv`, which will come with R v4.1.1.
+
+We can recreate the Conda environment from `environment.yml` (you should have downloaded it [above](#first-things-first-set-up-the-project)) with:
+
+<!-- Chunk to show, but don't run-->
+```{bash}
+#| label: create-env-show
+#| eval: false
+conda env create -f environment.yml
+```
+
+```{bash}
+#| label: create-env-hide
+#| eval: true
+#| echo: false
+#| include: true
+
+# Chunk to actually run, but don't show
+# need to manually source conda when knitting
+source ~/miniconda3/etc/profile.d/conda.sh
+# remove any existing bioinfo-example-env environment
+# conda remove --name bioinfo-example-env --all --yes
+# build env
+conda env create -f environment.yml
+```
+
+As the output says near the bottom, run `conda activate bioinfo-example-env` to enter this environment, then from there you can use R as usual with `R`.
+
+On my computer, this looks like:
+
+```
+(base) Joels-iMac:targets_bioinfo_example joelnitta$ conda activate bioinfo-example-env
+(bioinfo-example-env) Joels-iMac:targets_bioinfo_example joelnitta$ R
+
+R version 4.1.1 (2021-08-10) -- "Kick Things"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin13.4.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> 
+```
+
+Notice the change from `(base)` to `(bioinfo-example-env)`, indicating that we are now inside the Conda environment.
+
+Now we have a fixed version of R, with a fixed version of `renv`.
+
+## Maintain R packages with `renv`
+
+The next step is to use `renv` to install and track R package versions. `renv` does this with a ["lock file"](https://rstudio.github.io/renv/articles/lockfile.html), which is essentially a specification of every package needed to run the code, its version, and where it comes from. 
+
+This is what the entry in [the `renv.lock` file for this project](https://raw.githubusercontent.com/joelnitta/targets_bioinfo_example/main/renv.lock) for the package `Matrix` looks like:
+
+```
+"Matrix": {
+  "Package": "Matrix",
+  "Version": "1.5-4",
+  "Source": "Repository",
+  "Repository": "CRAN",
+  "Hash": "e779c7d9f35cc364438578f334cffee2",
+  "Requirements": [
+    "lattice"
+  ]
+}
+```
+
+Assuming `renv.lock` is present in the working directory (you should have downloaded it [above](#first-things-first-set-up-the-project)), we can install all packages needed for this example by running the following in R within the Conda environment:
+
+```{r}
+#| label: renv-restore
+#| eval: false
+renv::activate() # Turn on renv
+renv::restore() # Install packages
+```
+
+You should see something like this[^6]:
+
+```
+The following package(s) will be updated:
+
+# CRAN ===============================
+- Matrix          [* -> 1.3-4]
+- R6              [* -> 2.5.1]
+- Rcpp            [* -> 1.0.7]
+- RcppArmadillo   [* -> 0.10.6.0.0]
+- RcppParallel    [* -> 5.1.4]
+- assertthat      [* -> 0.2.1]
+- babelwhale      [* -> 1.0.3]
+- callr           [* -> 3.7.0]
+
+...
+```
+
+If you look at the contents of the project directory, you will also notice a new folder called `renv` that contains all of the R packages we just installed.
+
+## Putting it all together
+
+OK, now we can run R and Docker from a reproducible environment. What is the best way to run Docker from R? There are some functions in base R for running external commands ([`system()`](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/system), [`system2()`](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/system2)) as well as the excellent [processx](https://github.com/r-lib/processx) package. Here, though I will use the [babelwhale](https://github.com/dynverse/babelwhale) package, which provides some nice wrappers to run Docker (or [Singularity](https://sylabs.io/singularity/))[^7].
+
+[Here is an example `_targets.R` file](https://raw.githubusercontent.com/joelnitta/joelnitta-home/main/_posts/2021-11-16_r-bioinfo-flow/_targets.R) using `babelwhale` to run Docker. This workflow downloads a pair of fasta files, then trims low-quality bases using the [fastp](https://github.com/OpenGene/fastp) program[^8]:
+
+```{r}
+#| label: example-targets
+#| eval: false
+library(targets)
+library(tarchetypes)
+library(babelwhale)
+
+# Set babelwhale backend for running containers
+# (here, we are using Docker, not Singularity)
+set_default_config(create_docker_config())
+
+# Define workflow
+list(
+	# Download example fastq files
+	tar_file(
+		read_1, { 
+			download.file(
+				url = "https://raw.githubusercontent.com/OpenGene/fastp/master/testdata/R1.fq",
+				destfile = "R1.fq")
+			"R1.fq"
+		}
+	),
+	tar_file(
+		read_2, { 
+			download.file(
+				url = "https://raw.githubusercontent.com/OpenGene/fastp/master/testdata/R2.fq",
+				destfile = "R2.fq")
+			"R2.fq"
+		}
+	),
+	# Clean the fastq file with fastp
+	tar_file(
+		fastp_out, {
+			babelwhale::run(
+				# Name of docker image, with tag specifying version
+				"quay.io/biocontainers/fastp:0.23.1--h79da9fb_0",
+				# Command to run
+				command = "fastp",
+				# Arguments to the command
+				args = c(
+					# fastq input files
+					"-i", paste0("/wd/", read_1), 
+					"-I", paste0("/wd/", read_2), 
+					# fastq output files
+					"-o", "/wd/R1_trim.fq",
+				  "-O", "/wd/R2_trim.fq",
+					# trim report file
+					"-h", "/wd/trim_report.html"),
+				# Volume mounting specification
+				# this uses getwd(), but here::here() is also a good method
+				volumes = paste0(getwd(), ":/wd/")
+			)
+			c("R1_trim.fq", "R2_trim.fq", "trim_report.html")
+		}
+	)
+)
+```
+
+In order to run this `targets` workflow, the above code must be saved as `_targets.R` in the project root directory (you should have downloaded it [above](#first-things-first-set-up-the-project)).
+
+Finally, everything is in place! All we need to do now is run `targets::tar_make()`, sit back, and enjoy the show:
+
+```{r}
+#| label: clean-targets
+#| eval: true
+#| include: false
+#| echo: false
+# Clean the targets cache before running anything
+targets::tar_destroy("all")
+```
+
+```{r}
+#| label: build-targets
+targets::tar_make()
+```
+
+You should be able to confirm that the read files were downloaded, cleaned, and a report generated in your working directory. Also, notice there is a new folder called `_targets`. This contains the metadata that `targets` uses to track each step of the pipeline (generally it should not be modified by hand; the same goes for the `renv` folder).
+
+## Next steps
+
+![Image by [JOHN TOWNER](https://unsplash.com/@heytowner) on [unsplash](https://unsplash.com/photos/3Kv48NS4WUU)](img/john-towner-3Kv48NS4WUU-unsplash.jpg){#fig-image-3}
+
+The example workflow just consists of a couple of steps, but I hope you can see how they are chained together: `fastp_out` depends on `read_1` and `read_2`. We could add a third step that uses `fastp_out` for something else, and so forth.
+
+We can also see this by visualizing the pipeline:
+
+```{r}
+#| label: tar-viz
+targets::tar_visnetwork()
+```
+
+To keep things simple for this post, I have written the workflow as a single R script, but that's not really the ideal way to do it. You can see that the syntax is rather verbose, and such a script would rapidly become very long. The best practice for `targets` workflows is to write the targets plan and the functions that build each target separately, as `_targets.R` and `functions.R`, respectively.
+
+By splitting the plan from the functions this way, our `_targets.R` file becomes much shorter and more readable:
+
+```{r}
+#| label: real-plan
+#| eval: false
+library(targets)
+library(tarchetypes)
+library(babelwhale)
+
+# Set babelwhale backend for running containers
+set_default_config(create_docker_config())
+
+# Load functions
+source("R/functions.R")
+
+tar_plan(
+	# Download example fastq files
+	tar_file(read_1, download_read("R1.fq")),
+	tar_file(read_2, download_read("R2.fq")),
+	# Clean the fastq files with fastp
+	tar_file(
+		fastp_out, 
+		fastp(read_1, read_2, "R1_trim.fq", "R2_trim.fq", "trim_report.html"
+		)
+	)
+)
+```
+
+You can see how it provides a high-level overview of each step in the workflow, without getting bogged down in the details. And the best part is, you **don't have to install `fastp`** (or any other software used for a particular step)! Docker takes care of that for you.
+
+Furthermore, thanks to `targets`, if one part of the workflow changes and we run `tar_make()` again, only the part that changed will be run. Try it by deleting `R1.fq`, then run `tar_make()` again and see what happens.
+
+I have made this plan and the accompanying `functions.R` file available at this repo: https://github.com/joelnitta/targets_bioinfo_example. Please check it out!
+
+## Conclusion
+
+I am really excited about using `targets` for reproducibly managing bioinformatics workflows from R. I hope this helps others who may want to do the same!
+
+[^1]: [Docker images](https://docs.docker.com/get-started/overview/) are basically completely self-contained computing environments, such that the software inside the image is exactly the same no matter where it is run. A major benefit of using a docker image is that you don't have to install all of the various dependencies for a particular package: it all comes bundled in the image. And if the image has been tagged (versioned) correctly, you can specify the exact software version and know that the results won't change in the future.
+
+[^2]: [Bioconda](https://bioconda.github.io/) creates a Docker image for each package, which is listed in [Biocontainers](https://biocontainers.pro/) and uploaded to [Quay.io](https://quay.io/organization/biocontainers), so Bioconda and Biocontainers are largely overlapping. I find the Bioconda interface easier to use for finding images. You can also just try googling the name of the software you want to use plus "docker". If there is no available image, [you can build one yourself](https://carpentries-incubator.github.io/docker-introduction/05-creating-container-images/index.html), but that's outside the scope of this post.
+
+[^3]: Think *Inception*.
+
+[^4]: Conda was originally developed for managing python and python packages, but it has expanded greatly and works as a general software package manager.
+
+[^5]: The asterisk in `r-renv=0.14.*` indicates to install the most recent version with the `0.14` version number.
+
+[^6]: I'm not actually running this command and showing the output, since this post is already rendered using `renv`, and running `renv` within `renv` is also getting too *Inception*-y!
+
+[^7]: I typically use Docker, but Singularity may be a good option if you want to run your workflow on a machine where you don't have root privileges (such as on a cluster). Docker requires root privileges to install, but Singularity doesn't (for that matter neither does Conda). I have not tested any of this with Singularity.
+
+[^8]: I won't go into the details of the `targets` syntax here, but I highly recommend [this chapter in the `targets` manual](https://books.ropensci.org/targets/files.html) for working with external files, which are very common in bioinformatics workflows.
+
+## Reproducibility {.appendix}
+
+- [Source code](https://github.com/joelnitta/joelnitta-home/tree/main/posts/2021-11-16_r-bioinfo-flow/index.ja.qmd)
+- [`renv` lockfile](https://github.com/joelnitta/joelnitta-home/tree/main/posts/2021-11-16_r-bioinfo-flow/renv.lock)

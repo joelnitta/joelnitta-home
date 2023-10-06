@@ -1,0 +1,22 @@
+---
+title: "taxastand and dwctaxon: A pair of R packages for standardizing species names in Darwin Core format (BioDigiCon 2022 口頭発表)"
+image: "2022-09-27_biodigi.png"
+lang: ja
+date: 2022-09-27
+execute:
+  echo: false
+comments: false
+toc: false
+categories:
+  - R
+  - 生物多様性
+  - 学会発表
+---
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/NUM3tFCF5XY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+### 資料
+
+- [スライド](https://joelnitta.github.io/biodigi_2022)
+- [dwctaxon Rパッケージ](https://joelnitta.github.io/dwctaxon/)
+- [taxastand Rパッケージ](https://joelnitta.github.io/taxastand/)

@@ -1,0 +1,59 @@
+---
+title: ニッタ ジョエル
+lang: ja
+about:
+  template: trestles
+  image: "content/images/joel.png"
+  image-width: "200px;"
+  links:
+    - icon: mastodon
+      href: https://fosstodon.org/@joelnitta
+      rel: me
+    - icon: github
+      href: https://github.com/joelnitta
+    - text: RM
+      href: https://researchmap.jp/joelnitta?lang=en
+execute:
+  echo: false
+comments: false
+---
+
+```{r}
+#| label: deps
+#| include: false
+#| message: false
+#| warning: false
+
+# Include dependencies to track with renv here
+library(fontawesome)
+```
+
+:::{.column-body-outset}
+
+## 自己紹介
+
+初めまして、[千葉大学](https://www.chiba-u.ac.jp/) [大学院国際学術研究院・国際教養学部](https://www.las.chiba-u.jp/)の准教授のニッタ ジョエルです。私はシダ植物の進化と生態学を研究しています。
+
+シダ植物は非常にユニークなライフサイクルを持つ、とても面白い研究対象です。普段目にしている植物は「胞子体」（二倍体）ですが、もう一つ、極めて小さな（通常は１センチ以下）「配偶体」（一倍体）というライフステージもあり、両方とも独立に生息しています。この特徴は他の陸上植物と根本的に異なり、シダ植物の進化にとって非常に大きな意味を持っています。私は特にシダ植物のライフサイクルがその群集形成のプロセスや生態学などに与える影響について研究しています。
+
+そして、再現性可能な解析やコード、特に[`r fa(name = "r-project", fill = "#5F85A7")`](https://www.r-project.org/)に興味があります。この話については、[ブログ](blog.ja.html)を見てみてください。
+
+## 教育歴
+
+- **ハーバード大学** | 進化生物学研究科博士課程　修了 | 2016年
+
+- **東京大学** | 生物科学専攻修士課程　修了 | 2010年
+
+- **カリフォルニア大学バークレー校** | 総合生物学・日本語専攻　卒業 | 2007年
+
+## 職歴
+
+- **千葉大学 大学院国際学術研究院 国際教養学部** | 准教授 | 2023年4月 - 現在
+
+- **東京大学大学院理学系研究科岩崎研究室** | 特任助教 | 2020年4月 - 2023年3月
+
+- **スミソニアン国立自然史博物館** | 特別研究員 | 2019年1月 - 2020年3月
+
+- **国立科学博物館植物研究部** | 外国人特別研究員 | 2016年11月 - 2018年12月
+
+:::
