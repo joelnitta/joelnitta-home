@@ -131,7 +131,7 @@
       "RemoteUsername": "ropensci-review-tools",
       "RemoteRepo": "babelquarto",
       "RemoteRef": "main",
-      "RemoteSha": "ee2871313f29bbe8dfe63077da94895b3226b42e",
+      "RemoteSha": "3cabe92ba3419fb3cd397016472c703e59de23a1",
       "Requirements": [
         "brio",
         "cli",
@@ -145,7 +145,7 @@
         "xml2",
         "yaml"
       ],
-      "Hash": "ffc5246ef73df37063860861b21b2935"
+      "Hash": "ef36786fe66f1fc622fc0170cb66fcac"
     },
     "backports": {
       "Package": "backports",
