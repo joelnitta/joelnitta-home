@@ -17,8 +17,8 @@ website:
 format:
   html:
     theme:
-      light: cosmo
-      dark: superhero
+      light: flatly
+      dark: darkly
     css: jnitta_theme.css
     toc: true
     comments:
