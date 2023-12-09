@@ -20,8 +20,19 @@ library(distilltools)
 #| child: R/pub-prep.Rmd
 ```
 
-`r icon_link("google-scholar", "Google Scholar", "https://scholar.google.com/citations?hl=en&user=FtzrMYwAAAAJ")`  
+```{r}
+#| label: translate-refs
+Nitta2023b_ja <- print_ref("Nitta2023b") %>%
+  str_replace_all(
+    "Ferns as a model system for evolutionary biology",
+    "進化生物学のモデルシステムとしてのシダ植物研究") %>% 
+  str_replace_all(
+    "The Journal of Phytogeography and Taxonomy",
+    "植物地理・分類研究"
+  )
+```
 
+`r icon_link("google-scholar", "Google Scholar", "https://scholar.google.com/citations?hl=en&user=FtzrMYwAAAAJ")`  
 
 <!-- Manually add forthcoming pubs, e.g. 
 
@@ -34,13 +45,15 @@ library(distilltools)
 
 ## 2023
 
-`r print_ref("Song2023")`
-
-`r print_ref("Nitta2023a")`
+`r print_ref("Chen2023")`
 
 `r print_ref("Nitta2023")`
 
-`r print_ref("Chen2023")`
+`r print_ref("Nitta2023a")`
+
+`r Nitta2023b_ja`
+
+`r print_ref("Song2023")`
 
 ## 2022
 

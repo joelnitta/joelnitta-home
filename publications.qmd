@@ -2,7 +2,7 @@
 title: "Publications"
 lang: en
 date: today
-output: distill::distill_article
+output: distill::distill_article`
 editor_options: 
   chunk_output_type: console
 execute:
@@ -33,13 +33,15 @@ library(distilltools)
 
 ## 2023
 
-`r print_ref("Song2023")`
-
-`r print_ref("Nitta2023a")`
+`r print_ref("Chen2023")`
 
 `r print_ref("Nitta2023")`
 
-`r print_ref("Chen2023")`
+`r print_ref("Nitta2023a")`
+
+`r print_ref("Nitta2023b")`
+
+`r print_ref("Song2023")`
 
 ## 2022
 
