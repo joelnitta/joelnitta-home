@@ -21,10 +21,11 @@ jobs:
 
       # install libcurl, needed for curl R package
       # libfribidi-dev libharfbuzz-dev for textshaping
-      - name: Install cURL Headers
+      # libxslt1-dev for xslt
+      - name: Install R package deps
         run: |
           sudo apt-get update
-          sudo apt-get install libcurl4-openssl-dev libfribidi-dev libharfbuzz-dev
+          sudo apt-get install libcurl4-openssl-dev libfribidi-dev libharfbuzz-dev libxslt1-dev
 
       - name: Install R
         uses: r-lib/actions/setup-r@v2
