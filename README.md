@@ -8,6 +8,12 @@ Created with [Quarto](https://quarto.org/) in [R](https://www.r-project.org/).
 
 Site built by [GitHub actions](.github/workflows/build_site.yml) to the [`gh_pages` branch](https://github.com/joelnitta/joelnitta-home/tree/gh-pages), deployed by [Netlify](https://www.netlify.com/).
 
+## Local deployment
+
+- Generate the translated website with `babelquarto::render_website()`
+
+- Preview the website with `servr::httw("_site")`
+
 ## Licenses
 
 Code: [MIT](LICENSE)
