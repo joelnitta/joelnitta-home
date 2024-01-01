@@ -1,0 +1,378 @@
+---
+title: "Getting started with 17lands data in R"
+description: Drafting with data for fun and improved win-rate
+date: 2024-01-01
+date-modified: today
+image: header_17lands.png
+citation:
+  url: https://www.joelnitta.com/posts/17lands-intro/
+categories:
+  - R
+  - "Magic the Gathering"
+knitr:
+  opts_chunk: 
+      cache: false
+lang: en
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: setup
+#| include: false
+#| cache: false
+
+# Increase width for printing tibbles
+options(width = 250)
+
+renv::use(lockfile = "renv.lock")
+
+library(R.utils)
+library(english)
+
+card_image <- function(card_name, caption = FALSE) {
+  card_data <-
+    scryr::scry_card_name(card_name)
+
+  if ("card_faces" %in% colnames(card_data)) {
+    card_data <-
+      card_data |>
+      pull("card_faces") |>
+      purrr::pluck(1) |>
+      filter(name == card_name)
+  }
+
+  res <-
+    card_data |>
+    dplyr::pull("image_uris") |>
+    purrr::pluck(1) |>
+    dplyr::pull("art_crop")
+  
+  if (caption) {
+    res <- glue::glue("*{card_name}* by {card_data$artist}")
+  } else {
+    res <- knitr::include_graphics(res)
+  }
+
+  return(res)
+}
+```
+
+## TL;DR
+
+I demonstrate how to analyze win-rate statistics for [Magic cards](https://en.wikipedia.org/wiki/Magic:_The_Gathering) based on [17lands](https://www.17lands.com) data in R.
+
+## About 17lands
+
+One of my favorite pastimes is playing the one of the greatest games ever invented, [**Magic the Gathering**](https://en.wikipedia.org/wiki/Magic:_The_Gathering) (MtG).
+I have been an MtG fan almost since it first came it out (*Fallen Empires*).
+I had a fairly long hiatus, but have since returned to it recently and happily discovered a lively online community of players and, more importantly for this post, data nerds.
+One key source of data for those playing the [draft format](https://en.wikipedia.org/wiki/Magic:_The_Gathering_formats#Limited) is [17lands](https://www.17lands.com), a website that collects user-contributed data to help players improve their game.
+
+Here I will show how to analyze 17lands data in R.
+These are very complex datasets, and the possibilities for analysis are nearly limitless.
+I will start by recreating one of the basic 17lands analyses that most players are interested in: [**win-rate**](https://www.17lands.com/card_data)^[If you just care about actually looking at win-rate statistics, you should head straight to the 17lands [card data](https://www.17lands.com/card_data). This post is for those folks interested in learning how to calculate the stats on their own so they can use them for further analyses].
+
+```{r}
+#| label: card-image-1
+#| echo: false
+#| fig-cap: !expr 'card_image("Bonehoard Dracosaur", TRUE)'
+card_image("Bonehoard Dracosaur")
+```
+
+## Load the data
+
+Fortunately, 17lands posts aggregated, anonymized datasets for us to analyze, so we don't need to scrape anything^[Scraping [is discouraged by 17lands](https://www.17lands.com/usage_guidelines).].
+The full list of datasets is at <https://www.17lands.com/public_datasets>.
+Here, we will analyze one of the more recent sets from 2023, [*Lost Caverns of Ixalan*](https://mtg.fandom.com/wiki/The_Lost_Caverns_of_Ixalan) (LCI).
+
+You will need to copy the link to the game data, which you can find as shown in this screenshot:
+
+![](screenshot_17lands-link.png)
+
+The datasets can be quite large, and can result in crashing due to insufficient memory when you try to load them.
+To avoid this, I recommend the [`data.table`](https://rdatatable.gitlab.io/data.table/) package, which is quite efficient and can usually handle these large files.
+`data.table` also includes a whole set of functions for wrangling data, but I am more used to [`tidyverse`](https://tidyverse.tidyverse.org/) syntax, so I will use the latter (which works just fine on data read in with `data.table`).
+Another perk of the `fread()` function of `data.table` is that it can load a zipped file from the URL --- you don't even have to download it to separate file!
+
+```{r}
+#| label: packages-show
+#| eval: false
+library(data.table)
+library(tidyverse)
+```
+
+```{r}
+#| label: packages-hide
+#| include: false
+library(data.table)
+library(tidyverse)
+```
+
+```{r}
+#| label: load-data
+#| cache: true
+#| cache.lazy: false
+
+# Specify URL of the CSV file
+url <- "https://17lands-public.s3.amazonaws.com/analysis_data/game_data/game_data_public.LCI.PremierDraft.csv.gz"
+
+# Load the data
+games_data <- fread(url)
+
+# Check dimensions of the data (rows and columns)
+dim(games_data)
+```
+
+```{r}
+#| label: card-image-2
+#| echo: false
+#| fig-cap: !expr 'card_image("Aclazotz, Deepest Betrayal", TRUE)'
+card_image("Aclazotz, Deepest Betrayal")
+```
+
+## Structure of the dataset
+
+That is a big dataset!
+We can't print the whole thing to the screen, so let's just take a look at a subset of the data.
+I like the tidyverse `glimpse()` function for this.
+It prints out information vertically, so it works especially well when you have a lot of columns that otherwise would not fit on your monitor.
+
+```{r}
+#| label: glimpse
+games_data %>%
+  # Grab the first row
+  slice(1) %>%
+  # Grab the first 30 columns
+  select(1:30) %>%
+  glimpse()
+```
+
+Each row is one game.
+The first 18 columns or so give us game data like player rank, deck color, etc.
+The rest of the columns each start with names like `opening_hand_`, `drawn_`, `tutored_`, `deck_`, and `sideboard_`, followed by the name of a card.
+These are some of the most useful columns for gaining insight into how particular cards perform: they tell us where each card in the set was seen in a particular matchup.
+Some of the stats that 17lands users care the most about include which cards perform better; that is, what is the win-rate when a particular card is included in a deck, drawn, etc.
+We can calculate card specific win-rate statistics from these columns.
+
+Are there any columns at the end (after all the card names) that we might be interested in though?
+
+```{r}
+#| label: end-cols
+games_data %>%
+  # Exclude all the card columns
+  select(-matches("opening_hand|drawn_|tutored_|deck_|sideboard_")) %>%
+  slice(1) %>%
+  glimpse()
+```
+
+Yes!
+There are two more columns of interest after all the card columns: `user_n_games_bucket` and `user_game_win_rate_bucket`.
+What do these mean?
+Let's see what kind of values they contain.
+
+```{r}
+#| label: n-games-bucket
+games_data %>%
+  count(user_n_games_bucket)
+```
+
+```{r}
+#| label: n-games-bucket-hide
+#| echo: false
+n_games <-
+  games_data %>%
+  count(user_n_games_bucket)
+
+n_games_freq_max <-
+  n_games %>%
+  slice_max(n) %>%
+  pull(user_n_games_bucket)
+
+win_rate_freq_max <-
+  games_data %>%
+  count(user_game_win_rate_bucket) %>%
+  slice_max(n) %>%
+  pull(user_game_win_rate_bucket)
+```
+
+`user_n_games_bucket` describes the number of games played by the user in a given row. Ordinarily, you would expect this to have a wide range of numbers, but it only contains `r nrow(n_games) %>% english() %>% as.character()` distinct values.
+As the column name suggests, the raw data have been aggregated into "buckets".
+So `1` actually means some range of games played by that user (probably one to four), not exactly one game.
+This has been done to protect the privacy of 17lands users.
+We can see that the majority of users have played around `r n_games_freq_max` games.
+
+What about `user_game_win_rate_bucket`?
+
+```{r}
+#| label: win-games-bucket
+games_data %>%
+  count(user_game_win_rate_bucket)
+```
+
+`user_game_win_rate_bucket` describes the win-rate of the user in a given row.
+It is also aggregated, but at a finer scale: the buckets are in 2% win-rate increments.
+The mode of the win-rate is `r win_rate_freq_max %>% scales::percent()`.
+This demonstrates an important point when using 17lands data: 17lands users are slightly more skilled than the average player overall.
+So your point of reference for judging whether a card improves win-rate should be `r win_rate_freq_max %>% scales::percent()`, not 50%^[Average win-rate also varies from set to set, so you should keep that in mind when comparing stats between sets.].
+
+These data are useful for partitioning the dataset into high-performing (high win-rate) vs. lower performing (low win-rate) users.
+
+```{r}
+#| label: card-image-3
+#| echo: false
+#| fig-cap: "*Palani's Hatcher* by Aaron Miller"
+card_image("Palani's Hatcher")
+```
+
+## Calculate win-rate
+
+### Win-rate per card
+
+The data provided by 17lands are close to "raw" form, with a single row per game.
+How can we go from that to win-rate?
+
+Below I show a function that takes the raw game data and calculates win-rate statistics for a single card.
+To learn more about what each statistic means, see the [17lands definitions](https://www.17lands.com/metrics_definitions).
+
+```{r}
+card_wr <- function(card, games_data) {
+  games_data %>%
+    # Select a single card and whether the game was won or not
+    select(
+      matches(glue::glue("won|{card}"))
+    ) %>%
+    # Since we only have one card now, strip the card name from
+    # the column names
+    rename_with(~ str_remove_all(., glue::glue("_{card}"))) %>%
+    # We only care about decks that played that card
+    filter(deck > 0) %>%
+    # Add stats:
+    # - how many times the card was drawn (game_in_hand),
+    # - how many times it was seen during a game (game_seen),
+    # - if it was not seen during a game (game_not_seen)
+    rowwise() %>%
+    mutate(
+      game_in_hand = sum(opening_hand, drawn),
+      game_seen = sum(game_in_hand, tutored),
+      game_not_seen = deck - game_seen,
+    ) %>%
+    ungroup() %>%
+    # Adjust Number of Games Not Seen
+    # "If more copies are seen in a game than are in the maindeck,
+    # this value is set to 0."
+    mutate(
+      game_not_seen = case_when(
+        game_not_seen < 0 ~ 0,
+        .default = game_not_seen
+      )
+    ) %>%
+    mutate(
+      opening_hand_win = opening_hand * won,
+      game_played_win = deck * won,
+      game_in_hand_win = game_in_hand * won,
+      game_not_seen_win = game_not_seen * won
+    ) %>%
+    summarize(
+      card = card,
+      games_played_n = sum(deck),
+      game_played_wr = sum(game_played_win) / games_played_n,
+      opening_hand_n = sum(opening_hand),
+      opening_hand_wr = sum(opening_hand_win) / opening_hand_n,
+      game_in_hand_n = sum(game_in_hand),
+      game_in_hand_wr = sum(game_in_hand_win) / game_in_hand_n,
+      game_not_seen_n = sum(game_not_seen),
+      game_not_seen_wr = sum(game_not_seen_win) / game_not_seen_n,
+      iwd = game_in_hand_wr - game_not_seen_wr
+    )
+}
+```
+
+Let's try it out!
+
+```{r}
+#| label: demo-func
+card_wr("Abuelo's Awakening", games_data) %>%
+  glimpse()
+```
+
+We can compare this to the actual stats on 17lands (notice you will need adjust the start and end dates to match the data we downloaded, since there is a lag between posted datasets and stats on 17lands).
+
+![](screenshot_17Lands.png)
+
+Looks pretty good!
+
+```{r}
+#| label: card-image-4
+#| echo: false
+#| fig-cap: !expr 'card_image("Kitesail Larcenist", TRUE)'
+card_image("Kitesail Larcenist")
+```
+
+### Win-rate for a set
+
+The next step is to scale-up and apply our win-rate counting function to the whole set.
+
+First, let's make a vector of all the cards in LCI:
+
+```{r}
+#| label: list-cards
+# Extract card names from column titles
+cards <- games_data %>%
+  select(matches("deck_")) %>%
+  colnames() %>%
+  str_remove_all("deck_")
+
+# Have a look at some of the card names
+head(cards)
+```
+
+Next, use the function on each one, and save the results to a dataframe:
+
+```{r}
+#| label: make-wr-df
+#| cache: true
+win_rate <-
+  map_df(cards, ~card_wr(., games_data))
+
+win_rate
+```
+
+We can see the top-performing cards by sorting by game-in-hand win-rate:
+
+```{r}
+#| label: win-rate-sort
+win_rate %>%
+  arrange(desc(game_in_hand_wr))
+```
+
+```{r}
+#| label: card-image-5
+#| echo: false
+#| fig-cap: !expr 'card_image("Magmatic Galleon", TRUE)'
+card_image("Magmatic Galleon")
+```
+
+## Wrap-up
+
+I hope this post helps you analyze 17lands data in R.
+So far, we have only reproduced the win-rate statistics, which are available on 17lands anyways.
+In the future, I plan to demonstrate other custom analyses that build on this post to explore the data in more detail.
+
+Please comment in the discussion if you have any ideas for analyses to try!
+
+```{r}
+#| label: card-image-6
+#| echo: false
+#| fig-cap: !expr 'card_image("Huatli, Poet of Unity", TRUE)'
+card_image("Huatli, Poet of Unity")
+```
+
+## Reproducibility {.appendix}
+
+- [Source code](https://github.com/joelnitta/joelnitta-home/tree/main/posts/2023-12-23_17lands-intro/index.qmd)
+- [`renv` lockfile](https://github.com/joelnitta/joelnitta-home/tree/main/posts/2023-12-23_17lands-intro/renv.lock)
+
+## Images {.appendix}
+
+Card images copyright [Wizards of the Coast](https://company.wizards.com/) obtained via the [Scryfall](https://scryfall.com/) API and are considered to qualify as [fair use](https://en.wikipedia.org/wiki/Fair_use).
