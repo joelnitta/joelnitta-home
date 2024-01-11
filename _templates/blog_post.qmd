@@ -1,0 +1,24 @@
+---
+title: "TITLE"
+description:
+  DESCRIPTION
+date: DATE
+date-modified: today
+image: IMAGE
+citation:
+  url: URL
+lang: LANG
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+renv::use(lockfile = "renv.lock")
+```
+
+
+## Reproducibility {.appendix}
+
+- [Source code](https://github.com/joelnitta/joelnitta-home/tree/main/posts/URL/index.qmd)
+- [`renv` lockfile](https://github.com/joelnitta/joelnitta-home/tree/main/posts/URL/renv.lock)

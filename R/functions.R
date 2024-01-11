@@ -260,7 +260,7 @@ draft_post <- function(
     cli::cli_alert_info("Creating new directory at {.file {post_dir}}")
     fs::dir_create(post_dir)
   }
-  qmd_lines <- readr::read_lines("templates/blog_post.qmd") |>
+  qmd_lines <- readr::read_lines("_templates/blog_post.qmd") |>
     stringr::str_replace_all(
       c(
         TITLE = title,
