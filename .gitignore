@@ -9,6 +9,7 @@ working
 *_cache
 locale
 _locale
+README.html
 
 /.quarto/
 posts/*/renv/
