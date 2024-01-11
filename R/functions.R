@@ -271,12 +271,14 @@ draft_post <- function(
         LANG = lang)
     )
   if (!is.null(categories)) {
-    qmd_lines <- qmd_lines[1:length(qmd_lines) - 1]
-    qmd_lines <- c(
-      qmd_lines,
-      "categories:",
-      paste("  -", categories),
-      "---"
+    yaml_head_border <- which(grepl("^---$", qmd_lines))
+    qmd_lines <- append(
+      x = qmd_lines,
+      values = c(
+        "categories:",
+        paste("  -", categories)
+      ),
+      after = yaml_head_border[2] - 1
     )
   }
   cli::cli_alert_info("Writing blog post template at {.file {post_file}}")

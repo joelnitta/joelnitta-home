@@ -1,0 +1,51 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file and render with rmarkdown::render("README.Rmd")-->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# joelnitta-home
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4dec3009-d025-4fdf-b25e-76e98b2f34e1/deploy-status)](https://app.netlify.com/sites/laughing-cray-e2c0db/deploys)
+
+Source code for [personal website of Joel Nitta](https://www.joelnitta.com).
+
+Created with [Quarto](https://quarto.org/) in [R](https://www.r-project.org/). 
+
+Site built by [GitHub actions](.github/workflows/build_site.yml) to the [`gh_pages` branch](https://github.com/joelnitta/joelnitta-home/tree/gh-pages), deployed by [Netlify](https://www.netlify.com/).
+
+## Local deployment
+
+- Generate the translated website with `babelquarto::render_website()`
+
+- Preview the website with `servr::httw("_site")`
+
+## Drafting a new blogpost
+
+Use the [custom `draft_post()` function](R/functions.R):
+
+```{r}
+post_qmd <- draft_post(
+  slug = "example_post",
+  title = "How to use the draft_post() function",
+  desc = "Using templates to increase productivity",
+  categories = c("R", "data")
+)
+readr::read_lines(post_qmd)
+fs::dir_delete(fs::path_dir(post_qmd))
+```
+
+## Licenses
+
+Code: [MIT](LICENSE)
+
+Text and images, unless otherwise indicated: Creative Commons Attribution [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode)
+
+Publications (PDF files): Indicated in each publication.
