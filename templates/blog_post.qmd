@@ -1,0 +1,11 @@
+---
+title: "TITLE"
+description:
+  DESCRIPTION
+date: DATE
+date-modified: today
+image: IMAGE
+citation:
+  url: URL
+lang: LANG
+---

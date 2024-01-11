@@ -225,3 +225,61 @@ check_urls <- function(urls) {
     msg = glue::glue("The following URLs are broken: {paste(fail, collapse = ', ')}")
 )
 }
+
+# Blog ----
+
+#' Draft a blog post
+#'
+#' Writes a .qmd file including a YAML header for a blog post
+#'
+#' @param slug Single string to use in the post URL. Should use snake case.
+#' @param title Blog post title.
+#' @param desc Short blog post description (one to two sentences).
+#' @param categories Character vector of blog post categories (tags).
+#' @param feat Name of file to use as featured image.
+#' @param lang Language code.
+#'
+#' @return Path to the newly created blog post .qmd file
+#' @examples
+#' post_qmd <- draft_post(
+#'   slug = "example_post"
+#'   title = "How to use the draft_post() function",
+#'   desc = "Using templates to increase productivity",
+#'   categories = c("R", "data")
+#' )
+#' readr::read_lines(post_qmd)
+#' fs::dir_delete(fs::path_dir(post_qmd))
+#'
+draft_post <- function(
+  slug, title, desc, categories = NULL, feat = "featured.png", lang = "en") {
+  today <- Sys.Date()
+  date_slug <- paste0(today, "_", slug)
+  post_dir <- fs::path("posts", date_slug)
+  post_file <- fs::path(post_dir, "index.qmd")
+  if (!fs::dir_exists(post_dir)) {
+    cli::cli_alert_info("Creating new directory at {.file {post_dir}}")
+    fs::dir_create(post_dir)
+  }
+  qmd_lines <- readr::read_lines("templates/blog_post.qmd") |>
+    stringr::str_replace_all(
+      c(
+        TITLE = title,
+        DESCRIPTION = desc,
+        DATE = as.character(today),
+        IMAGE = feat,
+        URL = date_slug,
+        LANG = lang)
+    )
+  if (!is.null(categories)) {
+    qmd_lines <- qmd_lines[1:length(qmd_lines) - 1]
+    qmd_lines <- c(
+      qmd_lines,
+      "categories:",
+      paste("  -", categories),
+      "---"
+    )
+  }
+  cli::cli_alert_info("Writing blog post template at {.file {post_file}}")
+  readr::write_lines(qmd_lines, post_file)
+  post_file
+}

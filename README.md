@@ -14,6 +14,21 @@ Site built by [GitHub actions](.github/workflows/build_site.yml) to the [`gh_pag
 
 - Preview the website with `servr::httw("_site")`
 
+## Drafting a new blogpost
+
+Use the [custom `draft_post()` function](R/functions.R):
+
+```
+post_qmd <- draft_post(
+  slug = "example_post",
+  title = "How to use the draft_post() function",
+  desc = "Using templates to increase productivity",
+  categories = c("R", "data")
+)
+readr::read_lines(post_qmd)
+fs::dir_delete(fs::path_dir(post_qmd))
+```
+
 ## Licenses
 
 Code: [MIT](LICENSE)
