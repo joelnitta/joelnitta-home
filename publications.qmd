@@ -31,6 +31,10 @@ library(distilltools)
 `r icon_link(text = "Preprint", url = "https://www.biorxiv.org/content/10.1101/2022.10.06.511072v1")`
 `r icon_link(icon = "github", text = "Code", url = "https://github.com/ropensci/canaper")` !-->
 
+## 2024
+
+`r print_ref("Nitta2024")`
+
 ## 2023
 
 `r print_ref("Chen2023")`

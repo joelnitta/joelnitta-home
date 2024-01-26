@@ -21,7 +21,7 @@ source(here::here("R/functions.R"))
 #| echo: false
 
 # Load bibliography
-# Export from Zotero by selecting My References, Export, Better BibLatex
+# Export from Zotero by selecting My Publications, Export, Better BibLaTex
 # on default settings
 bib_path <- here::here("_bib/references.bib")
 # - as list
