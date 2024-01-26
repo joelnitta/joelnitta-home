@@ -1,0 +1,42 @@
+/* variables inherit from bootswatch css */
+
+/* Links */
+
+a {
+    color: var(--bs-primary);
+    border-bottom: 0px;
+    text-decoration: none;
+}
+
+d-article a {
+    color: var(--bs-primary);
+    border-bottom: 0px;
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    color: var(--bs-secondary);
+    font-weight: 500;
+    border-color: var(--bs-secondary);
+}
+
+d-article a:hover, a:focus {
+    color: var(--bs-secondary);
+    font-weight: 500;
+    border-color: var(--bs-secondary);
+}
+
+/* Link buttons */
+
+.icon-link {
+    background-color: var(--bs-primary);
+    color: var(--bs-white);
+    padding: 3px 5px 3px 5px;
+    margin: 0 2px 0 2px;
+    border-radius: 5px; /* Rounded edges */
+}
+
+.icon-link:hover {
+    background-color: var(--bs-secondary);
+    color: var(--bs-white);
+}
