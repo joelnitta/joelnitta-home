@@ -8,12 +8,27 @@ comments: false
 toc: false
 ---
 
-## Biodiversity and Japan
+## Graduate
+
+### Data Science\*
+
+- [Course website](https://data-science-chiba-2024.github.io/)
+- [Syllabus](https://syllabus.gs.chiba-u.jp/2024/211218201000000/Z021100201/ja_JP)
+
+## Undergraduate
+
+### Biodiversity and Japan
 
 - [Course website](https://joelnitta.github.io/biodiv-japan/)
-- [Syllabus](https://syllabus.gs.chiba-u.jp/2023/401001000000000/G15N945001/en_US)
+- [Syllabus](https://syllabus.gs.chiba-u.jp/2024/401001000000000/G15N945001/en_US)
 
-## Reproducible Data Analysis
+### Reproducible Data Analysis
 
 - [Course website](https://data-analysis-chiba-2023.github.io/)
-- [Syllabus](https://syllabus.gs.chiba-u.jp/2023/101101101076000/Z011531301/en_US)
+- [Syllabus](https://syllabus.gs.chiba-u.jp/2024/101101101076000/Z011531301/en_US)
+
+### Seminar in Infomation Processing\*
+
+- [Syllabus](https://syllabus.gs.chiba-u.jp/2024/101101101076000/Z011202901/ja_JP)
+
+\* Courses taught in Japanese

@@ -8,12 +8,27 @@ comments: false
 toc: false
 ---
 
-## 生物多様性と日本
+## 大学院
+
+### データサイエンス
+
+- [ウエブサイト](https://data-science-chiba-2024.github.io/)
+- [シラバス](https://syllabus.gs.chiba-u.jp/2024/211218201000000/Z021100201/ja_JP)
+
+## 学部
+
+### 生物多様性と日本\*
 
 - [ウエブサイト](https://joelnitta.github.io/biodiv-japan/)
-- [シラバス](https://syllabus.gs.chiba-u.jp/2023/401001000000000/G15N945001/ja_JP)
+- [シラバス](https://syllabus.gs.chiba-u.jp/2024/401001000000000/G15N945001/en_US)
 
-## 再現可能なデータ解析
+### 再現可能なデータ解析\*
 
 - [ウエブサイト](https://data-analysis-chiba-2023.github.io/)
-- [シラバス](https://syllabus.gs.chiba-u.jp/2023/101101101076000/Z011531301/en_US)
+- [シラバス](https://syllabus.gs.chiba-u.jp/2024/101101101076000/Z011531301/en_US)
+
+### 情報処理演習
+
+- [シラバス](https://syllabus.gs.chiba-u.jp/2024/101101101076000/Z011202901/ja_JP)
+
+\* 英語で行う授業
