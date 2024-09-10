@@ -2,7 +2,7 @@ website:
   navbar:
     right:
       - href: content/pdf/Nitta_CV.pdf
-        text: "履歴"
+        text: "CV"
 
 format:
   html:
@@ -20,6 +20,6 @@ format:
         mapping: pathname
         input-position: top
         theme: light
-        language: ja
+        language: en
         reactions-enabled: false
     include-in-header: header.html
