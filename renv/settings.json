@@ -6,7 +6,8 @@
     "rlang",
     "languageserver",
     "reprex",
-    "mdlincoln/docthis"
+    "mdlincoln/docthis",
+    "MilesMcBain/tflow"
   ],
   "package.dependency.fields": [
     "Imports",
