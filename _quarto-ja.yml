@@ -1,0 +1,13 @@
+# Override language specific fields here
+website:
+  navbar:
+    right:
+      - href: content/pdf/Nitta_CV.pdf
+        text: "履歴"
+
+format:
+  html:
+    comments:
+      giscus:
+        repo: joelnitta/joelnitta-home
+        language: ja
