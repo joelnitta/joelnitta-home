@@ -1,16 +1,16 @@
 website:
   navbar:
     right:
+      - href: publications.qmd
+      - href: software.qmd
+      - href: blog.qmd
+      - href: talks.qmd
+      - href: teaching.qmd
       - href: content/pdf/Nitta_CV.pdf
         text: "CV"
 
 format:
   html:
-    theme:
-      light: flatly
-      dark: darkly
-    css: jnitta_theme.css
-    toc: true
     comments:
       giscus:
         repo: joelnitta/joelnitta-home
@@ -20,6 +20,5 @@ format:
         mapping: pathname
         input-position: top
         theme: light
-        language: en
         reactions-enabled: false
-    include-in-header: header.html
+        language: en

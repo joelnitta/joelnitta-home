@@ -5,12 +5,16 @@ website:
   title: "Joel Nitta"
   navbar:
     background: primary
-    right:
-      - href: publications.qmd
-      - href: software.qmd
-      - href: blog.qmd
-      - href: talks.qmd
-      - href: teaching.qmd
+    right: []
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    css: jnitta_theme.css
+    toc: true
+    include-in-header: header.html
 
 babelquarto:
   languagecodes:
@@ -23,3 +27,4 @@ babelquarto:
 title-ja: ニッタ ジョエル
 description-ja: ニッタ ジョエルのウエブサイト
 author-ja: ニッタ ジョエル
+lang: en
