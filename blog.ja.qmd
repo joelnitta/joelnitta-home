@@ -3,8 +3,6 @@ title: "ブログ"
 lang: ja
 listing:
   contents: posts
-  include:
-    lang: ja
   sort: "date desc"
   type: default
   categories: true
