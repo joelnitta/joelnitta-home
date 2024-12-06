@@ -1,5 +1,4 @@
 # options specified here will apply to all posts in this folder
-editor: visual
 
 # Enable banner style title blocks
 title-block-banner: true
@@ -8,8 +7,8 @@ title-block-banner: true
 license: "CC BY"
 
 # Default for table of contents
+# toc-title: in profile yml files (_metadata-en.yml, _metadata-ja.yml)
 toc: true
-toc-title: Table of contents
 toc-location: left
 
 # freeze computational output
@@ -25,12 +24,6 @@ execute:
   message: true
   warning: true
 
-# Default author
-author:
-  - name: Joel Nitta
-    url: https://joelnitta.com
-    affiliation: Chiba University
-    affiliation-url: https://www.las.chiba-u.jp/
-    orcid: 0000-0003-4719-7472
+# author: in profile yml files (_metadata-en.yml, _metadata-ja.yml)
 
-lang: en
+# lang: in profile yml files (_metadata-en.yml, _metadata-ja.yml) en
