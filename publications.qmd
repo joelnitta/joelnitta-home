@@ -2,7 +2,7 @@
 title: "Publications"
 lang: en
 date: today
-output: distill::distill_article`
+output: distill::distill_article
 editor_options: 
   chunk_output_type: console
 execute:
@@ -32,6 +32,10 @@ library(distilltools)
 `r icon_link(icon = "github", text = "Code", url = "https://github.com/ropensci/canaper")` !-->
 
 ## 2024
+
+`r print_ref("Kato2024")`
+
+`r print_ref("Kuo2024")`
 
 `r print_ref("Nitta2024")`
 

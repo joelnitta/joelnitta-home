@@ -45,6 +45,10 @@ Nitta2023b_ja <- print_ref("Nitta2023b") %>%
 
 ## 2024
 
+`r print_ref("Kato2024")`
+
+`r print_ref("Kuo2024")`
+
 `r print_ref("Nitta2024")`
 
 ## 2023
