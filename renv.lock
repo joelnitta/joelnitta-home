@@ -126,8 +126,13 @@
     "babelquarto": {
       "Package": "babelquarto",
       "Version": "0.0.0.9000",
-      "Source": "Repository",
-      "Repository": "https://ropensci.r-universe.dev",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "ropensci-review-tools",
+      "RemoteRepo": "babelquarto",
+      "RemoteRef": "main",
+      "RemoteSha": "f3f4ce6c9e3e1c6d5c2f57f471f0f78248f08853",
       "Requirements": [
         "brio",
         "cli",
@@ -141,7 +146,7 @@
         "xml2",
         "yaml"
       ],
-      "Hash": "dd4aa3bdaa0b9ed008da7ba26ded2146"
+      "Hash": "2cb22ea9319949aae7dd721b287ab2c4"
     },
     "backports": {
       "Package": "backports",
