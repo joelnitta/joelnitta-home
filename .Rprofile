@@ -1,3 +1,6 @@
-options(repos = c('https://ropensci.r-universe.dev', 'https://cloud.r-project.org'))
+options(repos = c(
+  "https://ropensci.r-universe.dev",
+  "https://carpentries.r-universe.dev/",
+  "https://cloud.r-project.org"))
 source("renv/activate.R")
 source("R/functions.R")
