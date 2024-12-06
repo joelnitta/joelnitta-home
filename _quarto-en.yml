@@ -1,0 +1,12 @@
+website:
+  navbar:
+    background: primary
+    right:
+      - href: publications.qmd
+      - href: software.qmd
+      - href: blog.qmd
+      - href: talks.qmd
+        text: "Talks"
+      - href: teaching.qmd
+      - href: content/pdf/Nitta_CV.pdf
+        text: "CV"
