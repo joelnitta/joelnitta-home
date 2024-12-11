@@ -1,0 +1,31 @@
+project:
+  type: website
+
+website:
+  title: "テスト用のサイト"
+  navbar:
+    left:
+      - index.qmd
+      - about.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+
+
+babelquarto:
+  languagecodes:
+  - name: en
+    text: "English"
+  - name: ja
+    text: "日本語"
+  mainlanguage: 'ja'
+  languages: ['en']
+title-en: Test Site
+description-en: My test website
+author-en: Joel Nitta
+lang: ja

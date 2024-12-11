@@ -16,6 +16,13 @@ categories:
 
 ## Say hi to `babelquarto`
 
+```{r}
+#| label: renv
+#| include: false
+
+renv::use(lockfile = "renv.lock")
+```
+
 [Quarto](https://quarto.org) is an amazingly flexible tool connecting the data analysis powers of languages like R, python, and Julia to output formats ranging from PDF to websites. New features are rapidly released, but one that has been lacking so far is support for multilingual websites[^1]. Fortunately, developers (namely `@maelle`) at [rOpenSci](https://ropensci.org/) have stepped up to fill the gap with the `babelquarto` R package. Here, I demonstrate how to use it and point out some pitfalls to be aware of.
 
 [^1]: The `lang` option [can be used](https://quarto.org/docs/authoring/language.html) to change the *overall* language of a website, but this does not allow selecting from among multiple languages.
@@ -34,10 +41,10 @@ library(fs)
 # Create the website in a temporary directory.
 temp_dir <- tempdir()
 
-project_path <- fs::path(temp_dir, "example")
+website_dir <- fs::path(temp_dir, "example")
 
-if (fs::dir_exists(project_path)) {
-  fs::dir_delete(project_path)
+if (fs::dir_exists(website_dir)) {
+  fs::dir_delete(website_dir)
 }
 
 quarto_create_project(
@@ -70,18 +77,20 @@ Let's check the contents of the new website:
 
 ```{r}
 #| label: show-website-1
-dir_tree(path(temp_dir, "example"))
+website_dir <- path(temp_dir, "example")
+
+dir_tree(website_dir)
 ```
 
-And inspect `_quarto.yml` in particular:
+In subsequent steps we will modify `_quarto.yml`, so let's see what it looks like in its default form:
 
 ```{r}
 #| label: show-quarto-yml-1
-readr::read_lines(path(temp_dir, "example", "_quarto.yml")) |>
+readr::read_lines(path(website_dir, "_quarto.yml")) |>
   cat(sep = "\n")
 ```
 
-## Register the main language
+## Register languages
 
 The next step is to modify `_quarto.yml` by registering the main language of the website (in other words, the default language that appears when accessing the main URL). Here, we will register Japanese as the main language:
 
@@ -89,7 +98,7 @@ The next step is to modify `_quarto.yml` by registering the main language of the
 #| label: register-main-lang
 register_main_language(
   main_language = "ja",
-  project_path = path(temp_dir, "example")
+  project_path = website_dir
 )
 ```
 
@@ -97,6 +106,53 @@ This will modify `_quarto.yml`:
 
 ```{r}
 #| label: show-quarto-yml-2
-readr::read_lines(path(temp_dir, "example", "_quarto.yml")) |>
+readr::read_lines(path(website_dir, "_quarto.yml")) |>
   cat(sep = "\n")
 ```
+
+You can see a new key `babelquarto` has been added near the end. We'll get to the details of that in a moment.
+
+Next, let's add an additional language. You can add as many additional languages as you like, but here we will only add English:
+
+```{r}
+#| label: add-en
+register_further_languages(c("en"), website_dir)
+
+readr::read_lines(path(website_dir, "_quarto.yml")) |>
+  cat(sep = "\n")
+```
+
+## Edit `_quarto.yml`
+
+So far, `babelquarto` has generated files and content for us, but the next step is to get our hands dirty and actually edit `_quarto.yml`.
+
+We will make the following changes:
+
+-   Change the text on the **language selector** from `Version in en` to `English` and `Version in ja` to `日本語`.
+
+-   Set the English versions of the homepage title, author, and description.
+
+-   Simplify the layout of the navbar (more on this later...)
+
+This is what edited version looks like:
+
+```{r}
+#| label: show-edited-quarto-yml
+#| echo: true
+getwd()
+fs::file_copy(
+  path = "./example-quarto.yml",
+  path(website_dir, "_quarto.yml"),
+  overwrite = TRUE
+)
+readr::read_lines(path(website_dir, "_quarto.yml")) |>
+  cat(sep = "\n")
+```
+
+## Add translated files
+
+It bears repeating that `{babelquarto}` renders multilingual websites, and does not actually *translate* any contents. So we need to provide those ourselves.
+
+`{babelquarto}` expects the translated files to be named with `.<lang>` inserted between the original file name and the `.qmd` extension. For example, the English version of `index.qmd` is `index.en.qmd`. In this example, `index.qmd` has contents in the default language (Japanese). \
+\
+Once you've written out those files, the website folder should look like this:
