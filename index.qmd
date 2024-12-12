@@ -6,6 +6,8 @@ about:
   image: "content/images/joel.png"
   image-width: "200px;"
   links:
+    - text: "{{< fa brands bluesky >}}"
+      href: https://bsky.app/profile/joelnitta.com
     - icon: mastodon
       href: https://fosstodon.org/@joelnitta
       rel: me
