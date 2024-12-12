@@ -24,7 +24,7 @@ Production deployment is set up using GitHub Actions with [./.github/workflows/p
 
 The workflow file is very simple and basically runs two commands:
 
-1. `Rscript -e 'babelquarto::render_website()'`, which compiles the Quarto blog to a static website within the `_site` folder. This folder contains an `index.html` which is the root of the website, as well as various JavaScript and CSS files and images; you can read more on [`quarto render`](https://quarto.org/docs/projects/quarto-projects.html#rendering-projects). Note that `_site` is ignored in `.gitignore` because it is generated from the source code; the source code is what we track in version control, not the built files.
+1. `Rscript -e 'babelquarto::render_website()'`, which compiles the Quarto blog to a static website within the `_site` folder. This folder contains an `index.html` which is the root of the website, as well as various JavaScript and CSS files and images; you can read more on [`babelquarto`](https://docs.ropensci.org/babelquarto/). Note that `_site` is ignored in `.gitignore` because it is generated from the source code; the source code is what we track in version control, not the built files.
 
 2. `wrangler pages deploy _site --project-name=joelnitta-home`, which deploys the `_site` folder to Cloudflare Pages. You can read more details on [`wrangler pages deploy`](https://developers.cloudflare.com/workers/wrangler/commands/#deploy-1).
 
