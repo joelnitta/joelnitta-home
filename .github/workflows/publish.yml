@@ -48,6 +48,7 @@ jobs:
       - name: Commit results
         run: |
           cd _site
+          cp ../CNAME ./
           git init
           git add .
           git commit -m 'update website'
