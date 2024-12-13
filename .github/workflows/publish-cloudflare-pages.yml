@@ -1,7 +1,7 @@
 on:
   workflow_dispatch:
   push:
-    branches: cf-pages
+    branches: main
 
 name: Publish Quarto to Cloudflare Plages
 
