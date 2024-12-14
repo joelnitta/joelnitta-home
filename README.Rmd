@@ -22,6 +22,8 @@ Created with [Quarto](https://quarto.org/) in [R](https://www.r-project.org/).
 
 Production deployment is set up using GitHub Actions with [./.github/workflows/publish-cloudflare-pages.yml](./.github/workflows/publish-cloudflare-pages.yml).
 
+On pushes to the `main` branch, this workflow will deploy the site to Cloudflare Pages.
+
 The workflow file is very simple and basically runs two commands:
 
 1. `Rscript -e 'babelquarto::render_website()'`, which compiles the Quarto blog to a static website within the `_site` folder. This folder contains an `index.html` which is the root of the website, as well as various JavaScript and CSS files and images; you can read more on [`babelquarto`](https://docs.ropensci.org/babelquarto/). Note that `_site` is ignored in `.gitignore` because it is generated from the source code; the source code is what we track in version control, not the built files.
