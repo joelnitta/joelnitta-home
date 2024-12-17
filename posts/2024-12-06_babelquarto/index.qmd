@@ -163,14 +163,18 @@ We will make the following changes:
 This is what edited version looks like:
 
 ```{r}
+#| label: hide-edited-quarto-yml
+#| echo: false
+download.file(
+  url = "https://raw.githubusercontent.com/joelnitta/2024-12-07-japanr/refs/heads/main/example-quarto.yml",
+  destfile = path(website_dir, "_quarto.yml")
+)
+```
+
+
+```{r}
 #| label: show-edited-quarto-yml
 #| echo: true
-getwd()
-fs::file_copy(
-  path = "./example-quarto.yml",
-  path(website_dir, "_quarto.yml"),
-  overwrite = TRUE
-)
 readr::read_lines(path(website_dir, "_quarto.yml")) |>
   cat(sep = "\n")
 ```
@@ -257,7 +261,7 @@ Your browser should open a tab with the website shown below:
 ## Example repo
 
 I've posted this same example to a repository at <https://github.com/joelnitta/example-babelquarto/>.
-The rendered website (<https://joelnitta.github.io/example-babelquarto/>) is exactly what you see above.
+The [rendered website](https://joelnitta.github.io/example-babelquarto/) is exactly what you see above.
 
 ## What's next
 
