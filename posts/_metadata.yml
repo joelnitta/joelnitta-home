@@ -18,7 +18,7 @@ toc-location: left
 # - false: always re-render
 # - auto: only re-render during project render if the source has changed
 execute:
-  freeze: true
+  freeze: auto
   # knitr options
   echo: true
   message: true
